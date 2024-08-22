@@ -1,9 +1,11 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
+
 import './Resume.css';
 
 function Resume() {
     return (
-        <section id="resume" className="resume-section">
+        <Parallax id="resume" className="resume-section">
             <div className="resume-container">
                 <h2 className="resume-title">Mon Parcours</h2>
                 <div className="resume-row">
@@ -113,7 +115,7 @@ function Resume() {
                     </div>
                 </div>
             </div>
-        </section>
+        </Parallax>
     );
 }
 

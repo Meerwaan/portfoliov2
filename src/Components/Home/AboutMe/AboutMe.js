@@ -1,9 +1,11 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
+
 import './AboutMe.css';
 
 function AboutMe() {
     return (
-        <section id="about" className="about-me-section">
+        <Parallax id="about" className="about-me-section">
             <div className="container">
                 <h2 className="about-title">En savoir plus sur moi</h2>
                 <div className="row">
@@ -41,7 +43,7 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
-        </section>
+        </Parallax>
     );
 }
 
