@@ -1,6 +1,6 @@
 .about-me-section {
-    height: 70vh; /* Hauteur fixée à 70% de la vue */
-    padding: 60px 0;
+    height: 100vh; /* Hauteur fixée à 100% de la vue */
+    padding: 0; /* Élimine le padding pour un meilleur centrage vertical */
     background-color: #ffffff;
     display: flex;
     justify-content: center;
@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px; /* Ajoute du padding interne pour un meilleur espacement */
 }
 
 .row {
@@ -40,7 +41,7 @@
 
 .about-title {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Ajuste l'espace sous le titre */
     position: relative;
     font-weight: bold;
     text-align: center;
@@ -105,7 +106,7 @@ p {
     background-color: transparent; /* Fond transparent */
     border: 2px solid #00aaff; /* Bordure bleu cyan */
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
     margin-top: 20px;
 }
