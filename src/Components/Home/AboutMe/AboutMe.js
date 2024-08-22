@@ -5,7 +5,7 @@ import './AboutMe.css';
 
 function AboutMe() {
     return (
-        <Parallax id="about" className="about-me-section">
+        <section id="about" className="about-me-section">
             <div className="container">
                 <h2 className="about-title">En savoir plus sur moi</h2>
                 <div className="row">
@@ -43,7 +43,7 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
-        </Parallax>
+        </section>
     );
 }
 

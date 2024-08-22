@@ -5,7 +5,7 @@ import './Resume.css';
 
 function Resume() {
     return (
-        <Parallax id="resume" className="resume-section">
+        <section id="resume" className="resume-section">
             <div className="resume-container">
                 <h2 className="resume-title">Mon Parcours</h2>
                 <div className="resume-row">
@@ -115,7 +115,7 @@ function Resume() {
                     </div>
                 </div>
             </div>
-        </Parallax>
+        </section>
     );
 }
 
