@@ -21,13 +21,14 @@ function SideMenu() {
                 <ul>
                     <li>
                         <a
-                            href="#hero"
-                            className={activeSection === 'hero' ? 'active' : ''}
-                            onClick={() => handleLinkClick('hero')}
+                            href="#accueil"
+                            className={activeSection === 'accueil' ? 'active' : ''}
+                            onClick={() => handleLinkClick('accueil')}
                         >
                             Accueil
                         </a>
                     </li>
+
                     <li>
                         <a
                             href="#about"
@@ -76,7 +77,8 @@ function SideMenu() {
                 </ul>
             </nav>
             <div className="social-icons">
-                <a href="https://www.linkedin.com/in/merwan-laouini-4b5688204/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/merwan-laouini-4b5688204/" target="_blank"
+                   rel="noopener noreferrer">
                     <img src={LinkedInIcon} alt="LinkedIn" className="social-icon"/>
                 </a>
                 <a href="https://github.com/Meerwaan" target="_blank" rel="noopener noreferrer">
