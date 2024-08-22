@@ -1,0 +1,116 @@
+.about-me-section {
+    height: 70vh; /* Hauteur fixée à 70% de la vue */
+    padding: 60px 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.col-left {
+    flex: 2;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.col-right {
+    flex: 1;
+    padding-left: 20px;
+    padding-top: 15px;
+    text-align: left;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+}
+
+.about-title::before {
+    content: "ABOUT ME";
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.about-title::after {
+    content: "";
+    width: 150px;
+    height: 3px;
+    background-color: #00aaff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #00aaff;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.personal-info {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.personal-info li {
+    margin-bottom: 10px;
+}
+
+.download-cv-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #00aaff; /* Couleur du texte initial */
+    background-color: transparent; /* Fond transparent */
+    border: 2px solid #00aaff; /* Bordure bleu cyan */
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 20px;
+}
+
+.download-cv-btn:hover {
+    background-color: #00aaff; /* Fond bleu cyan au survol */
+    color: white; /* Texte devient blanc au survol */
+}
