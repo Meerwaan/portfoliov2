@@ -5,6 +5,7 @@ import HeroSection from "../../Components/Home/HeroSection/HeroSection";
 import AboutMe from "../../Components/Home/AboutMe/AboutMe";
 import Resume from "../../Components/Home/Resume/Resume";
 import { Parallax } from 'react-parallax';
+import WhatIDo from "../../Components/Home/WhatIDo/WhatIDo";
 
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
                 <HeroSection />
                 <AboutMe />
                 <Resume />
+                <WhatIDo />
             </Parallax>
         </div>
     );
