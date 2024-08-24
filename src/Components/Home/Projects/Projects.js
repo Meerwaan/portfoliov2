@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Projects.css';
-import HOA from '../../../Assets/projects/HallofArts.png';
+import HOA from '../../../Assets/projects/hallofarts.png';
 import Youggy from '../../../Assets/projects/Youggy.png';
-import DrinkAPP from '../../../Assets/projects/DrinkApp.png';
-import WorkR from '../../../Assets/projects/WorkR.png';
+import DrinkAPP from '../../../Assets/projects/Drinkapp.png';
+import WorkR from '../../../Assets/projects/workr.png';
 import ScanIA from '../../../Assets/projects/IaImage.png';
 
 
