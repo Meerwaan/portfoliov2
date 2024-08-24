@@ -6,6 +6,7 @@ import AboutMe from "../../Components/Home/AboutMe/AboutMe";
 import Resume from "../../Components/Home/Resume/Resume";
 import { Parallax } from 'react-parallax';
 import WhatIDo from "../../Components/Home/WhatIDo/WhatIDo";
+import Projects from "../../Components/Home/Projects/Projects";
 
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
                 <AboutMe />
                 <Resume />
                 <WhatIDo />
+                <Projects/>
             </Parallax>
         </div>
     );

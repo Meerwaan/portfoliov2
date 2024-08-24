@@ -1,0 +1,208 @@
+.projects-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+}
+
+.projects-title::before {
+    content: "PORTFOLIO";
+    font-size: 6rem;
+    color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.projects-title::after {
+    content: "";
+    width: 150px;
+    height: 3px;
+    background-color: #00aaff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Styles pour le menu de filtrage */
+.projects-filter {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.projects-filter button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.projects-filter button.active {
+    background-color: #00aaff;
+    color: #fff;
+}
+
+.projects-filter button:hover {
+    background-color: #0077cc;
+    color: #fff;
+}
+
+/* Styles pour les éléments de projet */
+.project-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    margin: 10px;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.project-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-item .project-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-item:hover .project-info {
+    opacity: 1;
+}
+
+.project-info h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.project-info p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Grid styling */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styles pour le popup */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.project-popup {
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-image {
+    max-width: 45%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.project-popup-info {
+    max-width: 50%;
+    margin-left: 20px;
+}
+
+/* Styles pour le bouton de fermeture */
+.close-btn {
+    position: absolute;
+    top: 20px; /* Ajuste selon ta préférence */
+    right: 20px; /* Ajuste selon ta préférence */
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001; /* Assure que le bouton est au-dessus du contenu du popup */
+    color: white; /* Assure une bonne visibilité sur le fond blanc */
+}
+
+.close-btn:hover {
+    color: #0077cc; /* Change la couleur lors du survol pour indiquer que c'est cliquable */
+}
+
+
+.project-popup-info h3 {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.project-popup-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-popup-info ul li {
+    margin-bottom: 10px;
+}
+
+.project-popup-info ul li strong {
+    font-weight: bold;
+}
+
+/* Blur effect */
+.container.blur {
+    filter: blur(8px);
+}
