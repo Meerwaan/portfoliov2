@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Home from './Views/Home/Home';
 import SideMenu from './Components/Home/SideMenu/SideMenu';
 import BurgerMenu from './Components/Home/BurgerMenu/BurgerMenu';
+import Home from "./Views/Home/Home";
 
 function App() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 950);
         };
 
         window.addEventListener('resize', handleResize);
-        handleResize(); // Appelle initiale pour définir l'état lors du chargement de la page
+        handleResize(); // Initial call to set the correct menu on page load
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);

@@ -10,7 +10,7 @@
 }
 
 /* Supprime la marge pour les petits écrans */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     .content {
         margin-left: 0;
     }

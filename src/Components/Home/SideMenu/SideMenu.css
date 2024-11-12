@@ -2,7 +2,7 @@
     width: 250px;
     background-color: #1c1c1c;
     color: white;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     left: 0;
     top: 0;
@@ -13,7 +13,7 @@
 }
 
 /* Cache le SideMenu sur les petits écrans */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     .side-menu {
         display: none !important;
     }
@@ -34,6 +34,8 @@
 
 .navigation {
     padding-top: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .navigation ul {
@@ -60,20 +62,6 @@
     border-radius: 5px;
 }
 
-.social-icons {
-    margin-top: auto;
-    margin-bottom: 20px;
-}
-
-.social-icons a {
-    color: white;
-    margin: 0 15px;
-    font-size: 1.8rem;
-}
-
-.social-icons a:hover {
-    color: #00aaff;
-}
 
 .navigation ul li a.active {
     color: #ffffff;
