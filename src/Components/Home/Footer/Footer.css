@@ -1,0 +1,16 @@
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.footer-name {
+    color: #00aaff; /* Couleur bleu pour le nom */
+    text-decoration: none;
+}
+
+.footer-name:hover {
+    color: #0077cc; /* Couleur plus sombre au survol */
+}
