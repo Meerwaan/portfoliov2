@@ -79,3 +79,35 @@ textarea {
 .send-message-btn:hover {
     background-color: #0077cc;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-content {
+        padding: 0 15px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 1.8rem;
+    }
+
+    .send-message-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
