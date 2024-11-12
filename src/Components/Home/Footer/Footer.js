@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer className="footer">
             <p>
-                Copyright © {new Date().getFullYear()} <span className="footer-name">Merwan</span>. All Rights Reserved.
+                Copyright © {new Date().getFullYear()} <span className="footer-name">Merwan</span>.tous droits réservés.
             </p>
         </footer>
     );
