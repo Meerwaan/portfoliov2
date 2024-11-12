@@ -104,14 +104,14 @@ function Resume() {
                         <div className="skill-item">
                             <span>Nest JS</span>
                             <div className="skill-bar">
-                                <div className="skill-level" style={{width: '45%'}}></div>
+                                <div className="skill-level" style={{width: '55%'}}></div>
                             </div>
                             <span className="skill-percent">45%</span>
                         </div>
                         <div className="skill-item">
                             <span>JAVA</span>
                             <div className="skill-bar">
-                                <div className="skill-level" style={{width: '35%'}}></div>
+                                <div className="skill-level" style={{width: '55%'}}></div>
                             </div>
                             <span className="skill-percent">35%</span>
                         </div>
