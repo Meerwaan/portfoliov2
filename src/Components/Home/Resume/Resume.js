@@ -25,6 +25,15 @@ function Resume() {
                         <h3 className="resume-h3">Mon Expérience</h3>
                         <div className="resume-item">
                             <h4 className="resume-h4">Développeur Full-Stack en alternance</h4>
+                            <h5 className="resume-h5">14/10/2024 - ????</h5>
+                            <p className="resume-p"><em>Neocortex, Paris - Maison Alfort - Aix En Provence</em></p>
+                            <ul className="resume-ul">
+                                <li>Développement d'un outil interne  en utilisant Electron Js</li>
+                                <li>Afin de permettre une centralisation des outils utilisé par les differents neuropsychologue</li>
+                            </ul>
+                        </div>
+                        <div className="resume-item">
+                            <h4 className="resume-h4">Développeur Full-Stack en alternance</h4>
                             <h5 className="resume-h5">10/2022 - 02/2024</h5>
                             <p className="resume-p"><em>YOUGGY, Paris</em></p>
                             <ul className="resume-ul">
@@ -60,7 +69,7 @@ function Resume() {
                         <div className="skill-item">
                             <span>React Native</span>
                             <div className="skill-bar">
-                                <div className="skill-level" style={{width: '65%'}}></div>
+                            <div className="skill-level" style={{width: '65%'}}></div>
                             </div>
                             <span className="skill-percent">65%</span>
                         </div>
