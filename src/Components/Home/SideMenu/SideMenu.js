@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './SideMenu.css';
 import Avatar from '../../../Assets/AvatarDarkMode.jpeg';
-import LinkedInIcon from '../../../Assets/icons/linkedin.svg';
-import GitHubIcon from '../../../Assets/icons/github.svg';
 
 function SideMenu() {
     const [activeSection, setActiveSection] = useState('');
@@ -76,15 +74,6 @@ function SideMenu() {
                     </li>
                 </ul>
             </nav>
-            <div className="social-icons">
-                <a href="https://www.linkedin.com/in/merwan-laouini-4b5688204/" target="_blank"
-                   rel="noopener noreferrer">
-                    <img src={LinkedInIcon} alt="LinkedIn" className="social-icon"/>
-                </a>
-                <a href="https://github.com/Meerwaan" target="_blank" rel="noopener noreferrer">
-                    <img src={GitHubIcon} alt="GitHub" className="social-icon"/>
-                </a>
-            </div>
         </aside>
     );
 }

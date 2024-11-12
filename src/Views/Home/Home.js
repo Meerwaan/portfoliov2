@@ -7,6 +7,7 @@ import Resume from "../../Components/Home/Resume/Resume";
 import { Parallax } from 'react-parallax';
 import WhatIDo from "../../Components/Home/WhatIDo/WhatIDo";
 import Projects from "../../Components/Home/Projects/Projects";
+import Contact from "../../Components/Home/contact/Contact";
 
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
                 <Resume />
                 <WhatIDo />
                 <Projects/>
+                <Contact />
             </Parallax>
         </div>
     );
