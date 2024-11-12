@@ -140,50 +140,31 @@
 
 .project-popup {
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    max-height: 90vh; /* Limite la hauteur pour éviter les débordements sur les petits écrans */
 }
 
 .popup-main-content {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
-.popup-image {
-    max-width: 45%;
+.project-popup img {
+    max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
-
-.project-popup-info {
-    max-width: 50%;
-    margin-left: 20px;
-}
-
-/* Styles pour le bouton de fermeture */
-.close-btn {
-    position: absolute;
-    top: 20px; /* Ajuste selon ta préférence */
-    right: 20px; /* Ajuste selon ta préférence */
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001; /* Assure que le bouton est au-dessus du contenu du popup */
-    color: white; /* Assure une bonne visibilité sur le fond blanc */
-}
-
-.close-btn:hover {
-    color: #0077cc; /* Change la couleur lors du survol pour indiquer que c'est cliquable */
-}
-
 
 .project-popup-info h3 {
     margin-top: 20px;
@@ -203,7 +184,95 @@
     font-weight: bold;
 }
 
-/* Blur effect */
-.container.blur {
-    filter: blur(8px);
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #0077cc;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .projects-title {
+        font-size: 2.2rem;
+    }
+
+    .projects-title::before {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-item {
+        flex: 1 1 calc(50% - 20px); /* Chaque élément occupe 50% de la largeur */
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .projects-title::before {
+        font-size: 4rem;
+    }
+
+    .project-popup {
+        width: 90%; /* Ajuste la largeur pour les écrans plus petits */
+        padding: 15px;
+    }
+
+    .project-popup-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .project-popup-info ul li {
+        font-size: 0.9rem;
+    }
+
+    .close-btn {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-item {
+        flex: 1 1 100%; /* Chaque élément occupe toute la largeur sur les petits écrans */
+        max-width: 100%;
+    }
+
+    .projects-title {
+        font-size: 1.8rem;
+    }
+
+    .projects-title::before {
+        font-size: 3rem;
+    }
+
+    .project-popup {
+        width: 95%; /* Largeur presque complète pour les très petits écrans */
+        padding: 10px;
+    }
+
+    .project-popup-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-popup-info ul li {
+        font-size: 0.8rem;
+    }
+
+    .close-btn {
+        position: fixed;
+        right: 35px;
+        font-size: 50px;
+        color: red;
+    }
 }

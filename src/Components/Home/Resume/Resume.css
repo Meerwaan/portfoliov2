@@ -1,5 +1,6 @@
 .resume-section {
-    background-color: #f1f1f1; /* Couleur de fond légère pour créer la séparation */
+    background-color: #f1f1f1;
+    padding: 20px 0;
 }
 
 .resume-container {
@@ -43,12 +44,13 @@
 .resume-row {
     display: flex;
     justify-content: space-between;
-
+    flex-wrap: wrap;
 }
 
 .resume-col-left, .resume-col-right {
-    flex: 1 1 50%; /* Les deux colonnes prennent 50% de la largeur */
+    flex: 1 1 48%;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .resume-item {
@@ -57,7 +59,7 @@
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-height: 200px; /* Hauteur minimale égale pour toutes les cases */
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -92,15 +94,9 @@
     margin-bottom: 5px;
 }
 
-.resume-h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
-}
 .skills-section {
     margin-top: 50px;
     position: relative;
-
 }
 
 .skills-title {
@@ -148,7 +144,7 @@
     margin-bottom: 20px;
     position: relative;
     display: flex;
-    align-items: center; /* Aligne les éléments au centre verticalement */
+    align-items: center;
 }
 
 .skill-bar {
@@ -167,7 +163,7 @@
 }
 
 .skill-percent {
-    margin-left: 10px; /* Ajoute un espace entre la barre et le pourcentage */
+    margin-left: 10px;
     font-size: 1rem;
     color: #333;
 }
@@ -193,4 +189,70 @@
 .skills-download-cv-btn:hover {
     background-color: #00aaff;
     color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .resume-title {
+        font-size: 2.2rem;
+    }
+
+    .resume-title::before {
+        font-size: 4rem;
+    }
+
+    .resume-col-left, .resume-col-right {
+        padding: 15px;
+    }
+
+    .skills-title {
+        font-size: 2.2rem;
+    }
+
+    .skills-title::before {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .resume-row {
+        flex-direction: column;
+    }
+
+    .resume-col-left, .resume-col-right {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .resume-title, .skills-title {
+        font-size: 2rem;
+    }
+
+    .resume-title::before, .skills-title::before {
+        font-size: 3rem;
+    }
+
+    .skill-item {
+        width: 100%;
+    }
+
+    .skills-download-cv-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-title, .skills-title {
+        font-size: 1.8rem;
+    }
+
+    .resume-title::before, .skills-title::before {
+        font-size: 2.5rem;
+    }
+
+    .skills-download-cv-btn {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+    }
 }

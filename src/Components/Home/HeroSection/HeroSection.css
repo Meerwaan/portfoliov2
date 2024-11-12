@@ -1,5 +1,5 @@
 .hero-section {
-    height: 100vh; /* La section occupe toute la hauteur de la fenêtre */
+    height: 100vh; /* Occupe toute la hauteur de la fenêtre */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,14 +15,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Couleur sombre avec opacité */
-    z-index: 1; /* S'assure que le flou est en dessous du texte */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-section .content {
     margin-left: 0;
     position: relative;
-    z-index: 2; /* Assure que le texte est au-dessus de l'effet de flou */
+    z-index: 2;
+    padding: 20px; /* Ajout d’un padding pour l'espace sur petits écrans */
 }
 
 .hero-section h1 {
@@ -60,3 +61,60 @@
     border: 2px solid #00aaff;
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-section h2 {
+        font-size: 3.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+
+    .Btn-contact {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .Btn-contact {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .Btn-contact {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
