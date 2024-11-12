@@ -1,5 +1,5 @@
 .about-me-section {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     background-color: #ffffff;
     display: flex;
@@ -7,6 +7,7 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin-top: 20px; /* Espace pour éviter le chevauchement avec la HeroSection */
 }
 
 .container {
@@ -114,4 +115,85 @@ p {
 .download-cv-btn:hover {
     background-color: #00aaff;
     color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .about-title {
+        font-size: 2.2rem;
+    }
+
+    .about-title::before {
+        font-size: 3.5rem;
+    }
+
+    .col-left, .col-right {
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .col-left, .col-right {
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-title::before {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .download-cv-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-title {
+        font-size: 1.8rem;
+    }
+
+    .about-title::before {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+
+    .download-cv-btn {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+    }
 }
