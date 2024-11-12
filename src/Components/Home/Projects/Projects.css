@@ -148,42 +148,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.popup-main-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.popup-image {
-    max-width: 45%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.project-popup-info {
-    max-width: 50%;
-    margin-left: 20px;
-}
-
-/* Styles pour le bouton de fermeture */
 .close-btn {
     position: absolute;
-    top: 20px; /* Ajuste selon ta préférence */
-    right: 20px; /* Ajuste selon ta préférence */
+    top: 20px;
+    right: 20px;
     background: transparent;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    z-index: 1001; /* Assure que le bouton est au-dessus du contenu du popup */
-    color: white; /* Assure une bonne visibilité sur le fond blanc */
+    z-index: 1001;
+    color: white;
 }
 
 .close-btn:hover {
-    color: #0077cc; /* Change la couleur lors du survol pour indiquer que c'est cliquable */
+    color: #0077cc;
 }
-
 
 .project-popup-info h3 {
     margin-top: 20px;
@@ -206,4 +188,52 @@
 /* Blur effect */
 .container.blur {
     filter: blur(8px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .projects-title {
+        font-size: 2.2rem;
+    }
+
+    .projects-title::before {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-item {
+        flex: 1 1 calc(50% - 20px); /* Chaque élément occupe 50% de la largeur */
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .projects-title::before {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-item {
+        flex: 1 1 100%; /* Chaque élément occupe toute la largeur sur les petits écrans */
+        max-width: 100%;
+    }
+
+    .projects-title {
+        font-size: 1.8rem;
+    }
+
+    .projects-title::before {
+        font-size: 3rem;
+    }
+
+    .project-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-info p {
+        font-size: 0.9rem;
+    }
 }
