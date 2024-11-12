@@ -4,7 +4,14 @@
 }
 
 .content {
-    margin-left: 250px; /* Assurez-vous que cela correspond à la largeur de votre menu latéral */
     flex: 1;
     align-items: center;
+    margin-left: 250px; /* Pour les écrans larges */
+}
+
+/* Supprime la marge pour les petits écrans */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+    }
 }
