@@ -17,12 +17,13 @@ function AboutMe() {
                             programmation et des frameworks modernes, tels que React, Node.js, et bien d'autres.
                         </p>
                         <p>
-                            En 2025, je serai diplômé et j'ai pour ambition de me spécialiser en tant que Lead
-                            Développeur, où je pourrai mettre à profit mes compétences techniques et mon esprit
-                            d'innovation pour accompagner les entreprises dans leurs projets digitaux. <strong>Je suis
-                            actuellement à la recherche d'une alternance pour ma dernière année d'études</strong>, afin
-                            de consolider mes connaissances et de préparer mon intégration dans le monde professionnel.
+                            En 2025, je serai diplômé, avec l'ambition de me spécialiser en tant que Lead Développeur.
+                            Dans mon poste actuel en alternance, je mets en pratique mes compétences techniques et mon
+                            esprit d'innovation pour accompagner les projets digitaux de mon entreprise. <strong>Bien
+                            que je sois pleinement engagé dans cette mission, je reste ouvert aux opportunités qui pourraient
+                            enrichir mon parcours professionnel et accélérer ma carrière.</strong>
                         </p>
+
                         <p>
                             Ma capacité à travailler en équipe, à résoudre des problèmes complexes et à apprendre
                             rapidement de nouvelles technologies me rend particulièrement apte à relever les défis du
@@ -35,10 +36,10 @@ function AboutMe() {
                         <ul className="personal-info">
                             <li><strong>Nom:</strong> Merwan Laouini</li>
                             <li><strong>Email:</strong> Merwanlaouini@gmail.com</li>
-                            <li><strong>Âge:</strong> 23</li>
+                            <li><strong>Âge:</strong> 23 ans</li>
                             <li><strong>Localisation:</strong> Île-de-France, disponible en remote</li>
                         </ul>
-                        <a href="/CV_MerwanLaouini.pdf" className="download-cv-btn">Télécharger CV</a>
+                        <a href="/CV_MerwanLaouini.pdf" className="download-cv-btn">Télécharger mon CV</a>
                     </div>
                 </div>
             </div>
