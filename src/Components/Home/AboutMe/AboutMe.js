@@ -11,7 +11,7 @@ function AboutMe() {
                     <div className="col-left">
                         <h3>Je suis <span className="highlight">Merwan Laouini</span>, un Développeur Web</h3>
                         <p>
-                            Actuellement étudiant en cinquième année en Master Lead Développeur, je suis passionné par
+                            Actuellement étudiant en cinquième année de Master Lead Développeur, je suis passionné par
                             le développement web et les nouvelles technologies. Mon parcours académique et mes
                             expériences professionnelles m'ont permis d'acquérir une solide maîtrise des langages de
                             programmation et des frameworks modernes, tels que React, Node.js, et bien d'autres.
@@ -20,16 +20,17 @@ function AboutMe() {
                             En 2025, je serai diplômé, avec l'ambition de me spécialiser en tant que Lead Développeur.
                             Dans mon poste actuel en alternance, je mets en pratique mes compétences techniques et mon
                             esprit d'innovation pour accompagner les projets digitaux de mon entreprise. <strong>Bien
-                            que je sois pleinement engagé dans cette mission, je reste ouvert aux opportunités qui pourraient
-                            enrichir mon parcours professionnel et accélérer ma carrière.</strong>
+                            que pleinement engagé dans cette mission, je reste ouvert aux opportunités qui pourraient
+                            enrichir mon parcours professionnel et me permettre d'accéder à un poste avec plus de
+                            responsabilités.</strong>
                         </p>
-
                         <p>
                             Ma capacité à travailler en équipe, à résoudre des problèmes complexes et à apprendre
                             rapidement de nouvelles technologies me rend particulièrement apte à relever les défis du
                             secteur du développement web. Je suis déterminé à contribuer à des projets ambitieux et à
                             jouer un rôle clé dans la réussite des missions qui me seront confiées.
                         </p>
+
 
                     </div>
                     <div className="col-right">
