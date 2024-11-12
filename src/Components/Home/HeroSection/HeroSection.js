@@ -24,7 +24,7 @@ function HeroSection() {
                     />
                     </h2>
                     <p>Basé en iles de France et disponible en remote</p>
-                    <a href="#contact" className="Btn-contact">Embauchez-moi !</a>
+                    <a href="#contact" className="Btn-contact">Embauchez-moi ! </a>
                 </div>
             </div>
         </Parallax>
