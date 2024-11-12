@@ -140,31 +140,30 @@
 
 .project-popup {
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 90vh; /* Limite la hauteur pour éviter les débordements sur les petits écrans */
 }
 
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-    color: white;
+.popup-main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.close-btn:hover {
-    color: #0077cc;
+.project-popup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .project-popup-info h3 {
@@ -185,9 +184,20 @@
     font-weight: bold;
 }
 
-/* Blur effect */
-.container.blur {
-    filter: blur(8px);
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #0077cc;
 }
 
 /* Responsive Styles */
@@ -213,6 +223,23 @@
     .projects-title::before {
         font-size: 4rem;
     }
+
+    .project-popup {
+        width: 90%; /* Ajuste la largeur pour les écrans plus petits */
+        padding: 15px;
+    }
+
+    .project-popup-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .project-popup-info ul li {
+        font-size: 0.9rem;
+    }
+
+    .close-btn {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -229,11 +256,23 @@
         font-size: 3rem;
     }
 
-    .project-info h3 {
+    .project-popup {
+        width: 95%; /* Largeur presque complète pour les très petits écrans */
+        padding: 10px;
+    }
+
+    .project-popup-info h3 {
         font-size: 1.2rem;
     }
 
-    .project-info p {
-        font-size: 0.9rem;
+    .project-popup-info ul li {
+        font-size: 0.8rem;
+    }
+
+    .close-btn {
+        position: fixed;
+        right: 35px;
+        font-size: 50px;
+        color: red;
     }
 }
