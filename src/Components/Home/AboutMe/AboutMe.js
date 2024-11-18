@@ -21,7 +21,7 @@ function AboutMe() {
                             Dans mon poste actuel en alternance, je mets en pratique mes compétences techniques et mon
                             esprit d'innovation pour accompagner les projets digitaux de mon entreprise. <strong>Bien
                             que pleinement engagé dans cette mission, je reste ouvert aux opportunités qui pourraient
-                            enrichir mon parcours professionnel et me permettre d'accéder à un poste avec plus de
+                            enrichir mon parcours professionnel et me permettre d'accéder à plus de
                             responsabilités.</strong>
                         </p>
                         <p>

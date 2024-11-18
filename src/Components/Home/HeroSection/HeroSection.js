@@ -23,7 +23,7 @@ function HeroSection() {
                         loop
                     />
                     </h2>
-                    <p>Basé en iles de France et disponible en remote</p>
+                    <p>Basé en Île-de-France et disponible en remote</p>
                     <a href="#contact" className="Btn-contact">Embauchez-moi ! </a>
                 </div>
             </div>

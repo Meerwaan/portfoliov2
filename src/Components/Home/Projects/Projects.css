@@ -270,8 +270,6 @@
     }
 
     .close-btn {
-        position: fixed;
-        right: 35px;
         font-size: 50px;
         color: red;
     }
