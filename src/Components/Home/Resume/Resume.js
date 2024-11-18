@@ -106,7 +106,7 @@ function Resume() {
                             <div className="skill-bar">
                                 <div className="skill-level" style={{width: '55%'}}></div>
                             </div>
-                            <span className="skill-percent">45%</span>
+                            <span className="skill-percent">55%</span>
                         </div>
                         <div className="skill-item">
                             <span>JAVA</span>
