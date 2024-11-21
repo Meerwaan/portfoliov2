@@ -1,5 +1,4 @@
 import React from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import SideMenu from "../../Components/Home/SideMenu/SideMenu";
 import './Home.css';
 import HeroSection from "../../Components/Home/HeroSection/HeroSection";
@@ -24,7 +23,6 @@ function Home() {
                 <Projects/>
                 <Contact />
                 <Footer />
-                <SpeedInsights />
             </Parallax>
         </div>
     );
