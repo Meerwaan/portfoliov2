@@ -25,7 +25,7 @@ function Resume() {
                         <h3 className="resume-h3">Mon Expérience</h3>
                         <div className="resume-item">
                             <h4 className="resume-h4">Développeur Full-Stack en alternance</h4>
-                            <h5 className="resume-h5">14/10/2024 - ????</h5>
+                            <h5 className="resume-h5">En poste actuellement</h5>
                             <p className="resume-p"><em>Neocortex, Paris - Maison Alfort - Aix En Provence</em></p>
                             <ul className="resume-ul">
                                 <li>Développement d'un outil interne  en utilisant Electron Js</li>
