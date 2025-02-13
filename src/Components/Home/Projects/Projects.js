@@ -41,7 +41,7 @@ function Projects() {
             technologies: 'Swift',
             client: 'Projet d\'études',
             date: '2022',
-            url: '',
+            url: 'https://github.com/AxelDemorest/drink_app',
             images: [DrinkAPP]
         },
         {
@@ -51,7 +51,7 @@ function Projects() {
             technologies: 'Flutter , MongoDB',
             client: 'Projet d\'études',
             date: '2022',
-            url: '',
+            url: 'https://github.com/fayssalmechmeche/Projet-Work-r',
             images: [WorkR]
         },
         {
