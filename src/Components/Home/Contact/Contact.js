@@ -47,7 +47,7 @@ function Contact() {
             <h2 className="contact-title">Contactez-moi</h2>
             <div className="contact-content">
                 <div className="contact-form">
-                    <h3>ÉCRIVEZ-NOUS</h3>
+                    <h3>ÉCRIVEZ-MOI</h3>
                     <form ref={form} onSubmit={sendEmail}>
                         <div className="form-group">
                             <input type="text" name="from_name" placeholder="Nom" required />
