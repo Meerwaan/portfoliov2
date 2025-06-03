@@ -1,9 +1,10 @@
 /* ---------------------------------------------------
-   Projects.css (taille des cartes agrandie)
+   Projects.css (avec “PORTFOLIO” en arrière-plan)
    • Grille “Mes Projets” (avant ouverture de la modal)
    • Boutons de filtrage
    • Comportement de la modal + Styles “close”
    • Cartes plus larges / responsive
+   • Ajout de "PORTFOLIO" en grand et transparent derrière le titre
 --------------------------------------------------- */
 
 /* ======= Section “Mes Projets” ======= */
@@ -13,12 +14,26 @@
 }
 
 .projects-title {
+    position: relative;      /* Nécessaire pour les pseudo-éléments */
     font-size: 2.5rem;
     margin-bottom: 20px;
-    position: relative;
     font-weight: bold;
     text-align: center;
     color: #333;
+    z-index: 1;              /* Assure que le titre soit au-dessus du ::before */
+}
+
+/* Grand “PORTFOLIO” transparent en arrière-plan */
+.projects-title::before {
+    content: "PORTFOLIO";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;                    /* Ajuster la taille selon le rendu */
+    color: rgba(0, 0, 0, 0.05);         /* Très clair / transparent */
+    z-index: -1;                        /* Derrière le titre principal */
+    white-space: nowrap;                /* Empêche le mot de se couper */
 }
 
 /* Soulignement bleu sous “Mes Projets” */
@@ -255,6 +270,9 @@
     .projects-title {
         font-size: 2.2rem;
     }
+    .projects-title::before {
+        font-size: 5rem;
+    }
     .projects-title::after {
         width: 60px;
         height: 3px;
@@ -290,6 +308,9 @@
 @media (max-width: 480px) {
     .projects-title {
         font-size: 1.8rem;
+    }
+    .projects-title::before {
+        font-size: 4rem;
     }
     .projects-title::after {
         width: 50px;
