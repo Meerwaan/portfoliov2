@@ -9,7 +9,12 @@ function Resume() {
                 <h2 className="resume-title">Mon Parcours</h2>
                 <div className="resume-row">
                     <div className="resume-col-left">
-                        <h3 className="resume-h3">Ma Formation</h3>
+                        <h3 className="resume-h3">Mes Formations</h3>
+                        <div className="resume-item">
+                            <h4 className="resume-h4">Programme en business et entrepreneuriat international</h4>
+                            <h5 className="resume-h5">2025</h5>
+                            <p className="resume-p"><em>Université Laval, Québec, Canada</em></p>
+                        </div>
                         <div className="resume-item">
                             <h4 className="resume-h4">Master Manager en Ingénierie Informatique</h4>
                             <h5 className="resume-h5">2023 - 2025</h5>

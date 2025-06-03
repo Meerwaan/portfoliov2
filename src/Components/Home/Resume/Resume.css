@@ -1,3 +1,6 @@
+/* Resume.css */
+
+/* ---------- Section Principale ---------- */
 .resume-section {
     background-color: #f1f1f1;
     padding: 20px 0;
@@ -6,6 +9,7 @@
 .resume-container {
     width: 80%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .resume-title {
@@ -41,28 +45,36 @@
     transform: translateX(-50%);
 }
 
+/* ---------- Mise en page des Colonnes ---------- */
 .resume-row {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.resume-col-left, .resume-col-right {
+.resume-col-left,
+.resume-col-right {
     flex: 1 1 48%;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
 
+/* ---------- Styles des Items (Formations & Expériences) ---------- */
 .resume-item {
     background-color: #f9f9f9;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
+
+    /* Chaque bloc prendra la même hauteur dans sa colonne */
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 200px; /* Vous pouvez ajuster ou retirer si nécessaire */
 }
 
 .resume-item h4 {
@@ -94,6 +106,7 @@
     margin-bottom: 5px;
 }
 
+/* ---------- Section Compétences ---------- */
 .skills-section {
     margin-top: 50px;
     position: relative;
@@ -144,30 +157,40 @@
     margin-bottom: 20px;
     position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
+.skill-item h4 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Barre de progression pour chaque compétence */
 .skill-bar {
     width: 100%;
     height: 10px;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
-    margin-top: 5px;
 }
 
 .skill-level {
     height: 100%;
     background-color: #00aaff;
     border-radius: 5px;
+    /* La largeur sera gérée en inline style ou via une classe spécifique en fonction du pourcentage */
 }
 
 .skill-percent {
     margin-left: 10px;
     font-size: 1rem;
     color: #333;
+    align-self: flex-end;
+    margin-top: 5px;
 }
 
+/* Bouton de téléchargement du CV */
 .skills-btn-section {
     text-align: center;
     margin-top: 30px;
@@ -191,7 +214,81 @@
     color: white;
 }
 
-/* Responsive Styles */
+/* ---------- Section Langues (Experience en Langages) ---------- */
+.languages-section {
+    margin-top: 50px;
+    position: relative;
+}
+
+.languages-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    z-index: 1;
+    position: relative;
+}
+
+.languages-title::before {
+    content: "LANGUAGES";
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.languages-title::after {
+    content: "";
+    width: 150px;
+    height: 3px;
+    background-color: #00aaff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.languages-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.language-item {
+    width: 48%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.language-label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.language-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.language-level {
+    height: 100%;
+    background-color: #00aaff;
+    border-radius: 5px;
+    /* La largeur (en %) indique le niveau de maîtrise dans la langue */
+}
+
+/* ---------- Responsive Styles ---------- */
 @media (max-width: 1024px) {
     .resume-title {
         font-size: 2.2rem;
@@ -201,15 +298,18 @@
         font-size: 4rem;
     }
 
-    .resume-col-left, .resume-col-right {
+    .resume-col-left,
+    .resume-col-right {
         padding: 15px;
     }
 
-    .skills-title {
+    .skills-title,
+    .languages-title {
         font-size: 2.2rem;
     }
 
-    .skills-title::before {
+    .skills-title::before,
+    .languages-title::before {
         font-size: 3.5rem;
     }
 }
@@ -219,20 +319,26 @@
         flex-direction: column;
     }
 
-    .resume-col-left, .resume-col-right {
+    .resume-col-left,
+    .resume-col-right {
         width: 100%;
         padding: 10px 0;
     }
 
-    .resume-title, .skills-title {
+    .resume-title,
+    .skills-title,
+    .languages-title {
         font-size: 2rem;
     }
 
-    .resume-title::before, .skills-title::before {
+    .resume-title::before,
+    .skills-title::before,
+    .languages-title::before {
         font-size: 3rem;
     }
 
-    .skill-item {
+    .skill-item,
+    .language-item {
         width: 100%;
     }
 
@@ -243,11 +349,15 @@
 }
 
 @media (max-width: 480px) {
-    .resume-title, .skills-title {
+    .resume-title,
+    .skills-title,
+    .languages-title {
         font-size: 1.8rem;
     }
 
-    .resume-title::before, .skills-title::before {
+    .resume-title::before,
+    .skills-title::before,
+    .languages-title::before {
         font-size: 2.5rem;
     }
 
