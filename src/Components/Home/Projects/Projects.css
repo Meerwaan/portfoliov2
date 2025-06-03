@@ -1,51 +1,72 @@
-.projects-title {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-    z-index: 1;
+/* ---------------------------------------------------
+   Projects.css (avec “PORTFOLIO” en arrière-plan)
+   • Grille “Mes Projets” (avant ouverture de la modal)
+   • Boutons de filtrage
+   • Comportement de la modal + Styles “close”
+   • Cartes plus larges / responsive
+   • Ajout de "PORTFOLIO" en grand et transparent derrière le titre
+--------------------------------------------------- */
+
+/* ======= Section “Mes Projets” ======= */
+.projects-section {
+    padding: 60px 0;
+    background-color: #fafafa;
 }
 
+.projects-title {
+    position: relative;      /* Nécessaire pour les pseudo-éléments */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    z-index: 1;              /* Assure que le titre soit au-dessus du ::before */
+}
+
+/* Grand “PORTFOLIO” transparent en arrière-plan */
 .projects-title::before {
     content: "PORTFOLIO";
-    font-size: 6rem;
-    color: rgba(0, 0, 0, 0.05);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: -1;
-    pointer-events: none;
+    font-size: 6rem;                    /* Ajuster la taille selon le rendu */
+    color: rgba(0, 0, 0, 0.05);         /* Très clair / transparent */
+    z-index: -1;                        /* Derrière le titre principal */
+    white-space: nowrap;                /* Empêche le mot de se couper */
 }
 
+/* Soulignement bleu sous “Mes Projets” */
 .projects-title::after {
-    content: "";
-    width: 150px;
-    height: 3px;
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
     background-color: #00aaff;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
 
-/* Styles pour le menu de filtrage */
+/* ======= Boutons de Filtrage ======= */
 .projects-filter {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .projects-filter button {
-    background-color: #f4f4f4;
+    background: #f0f0f0;
     border: none;
-    padding: 10px 20px;
     margin: 0 10px;
-    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px 20px;
     border-radius: 20px;
-    font-weight: bold;
-    color: #333;
+    cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    color: #555;
+}
+
+.projects-filter button:hover {
+    background-color: #e0e0e0;
 }
 
 .projects-filter button.active {
@@ -53,50 +74,83 @@
     color: #fff;
 }
 
-.projects-filter button:hover {
-    background-color: #0077cc;
-    color: #fff;
+/* ======= Grille des Projets ======= */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;               /* Espace entre les cartes */
+    margin: 0 auto;
+    max-width: 1200px;       /* Largeur max du conteneur */
+    padding: 0 12px;
 }
 
-/* Styles pour les éléments de projet */
+/* Carte projet (avant modal) */
 .project-item {
     position: relative;
+    background-color: #a8dbff; /* Bleu clair */
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 10px;
-    background-color: rgba(0, 170, 255, 0.42);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 300px;
-    margin: 10px;
-    flex: 1 1 calc(33.333% - 20px);
-    box-sizing: border-box;
-}
+    cursor: pointer;
 
-.project-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 0.3s ease;
+    /* Adaptation responsive :
+       • Prend environ 32% de la largeur disponible
+       • Maximum 380px, minimum 280px */
+    flex: 1 1 calc(32% - 24px);
+    max-width: 380px;
+    min-width: 280px;
+
+    /* Pour que la hauteur soit proportionnelle (ratio 4/3) */
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.project-item .project-info {
+/* Image centrée sans remplir tout le conteneur */
+.project-item img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Overlay sombre (semi-transparent) qui apparaît au survol */
+.project-item::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0); /* Transparent au départ */
+    transition: background 0.3s ease;
+    border-radius: 12px;
+}
+
+.project-item:hover::before {
     background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+}
+
+/* Texte (titre + catégorie) centré dans l’overlay */
+.project-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 1;
+    color: #fff;
+    width: 90%;
 }
 
 .project-item:hover .project-info {
@@ -104,27 +158,18 @@
 }
 
 .project-info h3 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
     color: #fff;
-    font-size: 1.5rem;
-    margin: 0;
-    text-align: center;
 }
 
 .project-info p {
-    color: #ccc;
-    font-size: 1rem;
-    margin-top: 10px;
-    text-align: center;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #ddd;
 }
 
-/* Grid styling */
-.projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Styles pour le popup */
+/* ======= Styles de la Modal (Popup) ======= */
 .overlay {
     position: fixed;
     top: 0;
@@ -138,52 +183,66 @@
     z-index: 1000;
 }
 
+/* Conteneur de la popup */
 .project-popup {
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    width: 80%;
+    background-color: #fff;
+    border-radius: 8px;
     max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 90%;
+    max-height: 90vh;
     overflow-y: auto;
-    max-height: 90vh; /* Limite la hauteur pour éviter les débordements sur les petits écrans */
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+/* Contenu interne (image + texte) */
 .popup-main-content {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.project-popup img {
-    max-width: 60%;
+.popup-image {
+    max-width: 80%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
+.project-popup-info {
+    width: 100%;
+}
+
 .project-popup-info h3 {
-    margin-top: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.project-popup-info p {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #555;
+    margin-bottom: 15px;
 }
 
 .project-popup-info ul {
     list-style: none;
-    padding: 0;
+    padding-left: 0;
 }
 
 .project-popup-info ul li {
     margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
 }
 
 .project-popup-info ul li strong {
     font-weight: bold;
 }
 
+/* Bouton pour fermer la modal */
 .close-btn {
     position: absolute;
     top: 10px;
@@ -192,85 +251,94 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    z-index: 1001;
     color: #333;
+    transition: color 0.2s ease;
 }
 
 .close-btn:hover {
-    color: #0077cc;
+    color: #00aaff;
 }
 
-/* Responsive Styles */
+/* Blur en arrière-plan quand la modal est ouverte */
+.blur {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+/* ======= Responsive (tablettes et mobiles) ======= */
 @media (max-width: 1024px) {
     .projects-title {
         font-size: 2.2rem;
     }
-
     .projects-title::before {
         font-size: 5rem;
+    }
+    .projects-title::after {
+        width: 60px;
+        height: 3px;
+    }
+    .project-item {
+        /* Passe à 45% de la largeur dispo quand l’écran diminue */
+        flex: 1 1 calc(45% - 24px);
+        max-width: calc(45% - 24px);
     }
 }
 
 @media (max-width: 768px) {
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
     .project-item {
-        flex: 1 1 calc(50% - 20px); /* Chaque élément occupe 50% de la largeur */
+        /* Passe à 80% sur tablettes mobiles */
+        flex: 1 1 80%;
+        max-width: 80%;
+        aspect-ratio: 16 / 9; /* Optionnel : change le ratio si vous préférez */
     }
-
-    .projects-title {
-        font-size: 2rem;
-    }
-
-    .projects-title::before {
-        font-size: 4rem;
-    }
-
     .project-popup {
-        width: 90%; /* Ajuste la largeur pour les écrans plus petits */
+        width: 95%;
+        max-width: 95%;
         padding: 15px;
     }
-
-    .project-popup-info h3 {
-        font-size: 1.5rem;
-    }
-
-    .project-popup-info ul li {
-        font-size: 0.9rem;
-    }
-
-    .close-btn {
-        font-size: 20px;
+    .popup-image {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    .project-item {
-        flex: 1 1 100%; /* Chaque élément occupe toute la largeur sur les petits écrans */
-        max-width: 100%;
-    }
-
     .projects-title {
         font-size: 1.8rem;
     }
-
     .projects-title::before {
-        font-size: 3rem;
+        font-size: 4rem;
     }
-
+    .projects-title::after {
+        width: 50px;
+        height: 3px;
+    }
+    .project-item {
+        width: 90%;
+        max-width: 90%;
+        aspect-ratio: 16 / 9;
+    }
     .project-popup {
-        width: 95%; /* Largeur presque complète pour les très petits écrans */
+        width: 100%;
+        max-width: 100%;
         padding: 10px;
     }
-
-    .project-popup-info h3 {
-        font-size: 1.2rem;
+    .popup-image {
+        max-width: 100%;
+        margin-bottom: 15px;
     }
-
-    .project-popup-info ul li {
-        font-size: 0.8rem;
-    }
-
+    /* Taille et couleur de la croix (close) en mobile */
     .close-btn {
-        font-size: 50px;
-        color: red;
+        font-size: 30px;
+        color: #333;
+    }
+    /* Réduire l’espacement des boutons de filtre en mobile */
+    .projects-filter button {
+        margin: 5px 5px;
+        padding: 6px 14px;
+        font-size: 0.9rem;
     }
 }
