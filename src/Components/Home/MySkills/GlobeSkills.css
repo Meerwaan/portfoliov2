@@ -1,0 +1,62 @@
+/* Le globe s’aligne avec le reste grâce au wrapper .skills-globe-wrap (padding déjà défini dans Myskills.css) */
+.skills-globe {
+    width: 100%;
+    height: 420px;               /* sera recalculé en JS ; valeur par défaut */
+    border-radius: 12px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #f7f7f7 0%, #efefef 100%);
+    box-shadow: 0 0 10px rgba(0,0,0,.08);
+}
+
+/* Panneau info sous le globe */
+.skills-globe-panel {
+    width: 100%;
+    margin: 12px auto 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    color: #333;
+}
+
+.skills-globe-title {
+    margin: 0 0 6px;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.skills-globe-note {
+    margin: 0 0 10px;
+    color: #555;
+    line-height: 1.45;
+}
+
+.skills-globe-hint {
+    margin: 0;
+    color: #666;
+}
+
+.skills-globe-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.skills-globe-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.skills-globe-bar > div {
+    height: 100%;
+    background: #00aaff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .skills-globe { height: 360px; }
+}
+@media (max-width: 480px) {
+    .skills-globe { height: 320px; }
+}
