@@ -5,21 +5,34 @@ import "./Myskills.css";
 const GlobeSkills = React.lazy(() => import("./GlobeSkills"));
 
 const SKILLS = [
-    { label: "React JS", pct: 80, note: "Ma compétence c’est React JS. J’ai appris ce framework pour construire des interfaces rapides et modulaires." },
-    { label: "React Native", pct: 65, note: "Apps mobiles iOS/Android avec React Native : navigation, API, build." },
-    { label: "Flutter", pct: 50, note: "Bases solides pour prototyper des applis multi-plateformes." },
-    { label: "Node JS", pct: 85, note: "APIs performantes, services, scripts, tooling." },
-    { label: "Python", pct: 55, note: "Automatisation, scripts, data light." },
-    { label: "JS", pct: 70, note: "Langage du quotidien pour web front/back." },
-    { label: "Nest JS", pct: 55, note: "Archi modulaire, controllers/services, validation." },
-    { label: "JAVA", pct: 55, note: "Fondamentaux & projets académiques." },
+    // Frontend cœur
+    { label: "JavaScript", pct: 95, note: "ES202x, async/await, patterns modernes. J’optimise le rendu et le bundle pour des interfaces réactives et stables." },
+    { label: "TypeScript", pct: 85, note: "Typage strict, DX améliorée, contrats d’API robustes. Moins de bugs en prod et meilleure maintenabilité." },
+    { label: "React JS", pct: 95, note: "Hooks, Context, performance (memo, suspense) et bonnes pratiques. Interfaces modulaires et scalables (Lighthouse 90+)." },
+    { label: "HTML5", pct: 95, note: "Sémantique, SEO & accessibilité (a11y). Structure propre pour de meilleures bases produit." },
+    { label: "CSS3 (Sass/Tailwind)", pct: 90, note: "Responsive design au pixel près, Flex/Grid, design system, thèmes dark/light." },
+    { label: "GSAP", pct: 75, note: "Micro-interactions, timelines et animations fluides (ScrollTrigger, entrée de pages) pour une UX premium." },
+    { label: "Three.js", pct: 70, note: "Scènes 3D et visualisations interactives. Optimisations perfs (matériaux, géométries, contrôles)." },
+
+    // Mobile
+    { label: "React Native", pct: 80, note: "Apps iOS/Android : navigation, API, stockage local, build et publication." },
+    { label: "Flutter", pct: 60, note: "Prototypage multi-plateformes rapide et UI réactive." },
+
+    // Backend & data
+    { label: "Node JS", pct: 85, note: "APIs REST/GraphQL performantes, streaming, jobs, sécurité et logs." },
+    { label: "Nest JS", pct: 80, note: "Architecture modulaire, validation, guards/interceptors, tests. Code maintenable et clair." },
+    { label: "Express", pct: 75, note: "Middlewares, auth JWT, rate-limit & best practices pour APIs fiables." },
+    { label: "MongoDB", pct: 70, note: "Modélisation de schémas, agrégations, indexes. Rapidité sur les reads." },
+    { label: "PostgreSQL", pct: 60, note: "Schemas relationnels, requêtes optimisées, transactions." }
 ];
+
 
 export default function MySkills() {
     const [view, setView] = useState("list"); // "list" | "globe"
+    const isGlobe = view === "globe";         // <<< NEW
 
     return (
-        <div className="skills-section">
+        <div className={`skills-section ${isGlobe ? "is-globe" : ""}`}> {/* <<< NEW */}
             <h3 className="skills-title">Mes Compétences</h3>
 
             {/* Toggle simple, centré, sans casser ta DA */}
@@ -64,7 +77,10 @@ export default function MySkills() {
                 <>
                     <div className="skills-globe-wrap">
                         <Suspense fallback={<div className="skills-globe-fallback">Chargement du globe…</div>}>
-                            <GlobeSkills skills={SKILLS} />
+                            <GlobeSkills
+                                skills={SKILLS}
+                                sizing={{ heightScale: 0.75, min: 520, max: 720 }} // <<< NEW (plus haut en mode globe)
+                            />
                         </Suspense>
                     </div>
 
