@@ -9,6 +9,7 @@ import WhatIDo from "../../Components/Home/WhatIDo/WhatIDo";
 import Projects from "../../Components/Home/Projects/Projects";
 import Contact from "../../Components/Home/Contact/Contact";
 import Footer from "../../Components/Home/Footer/Footer";
+import MySkills from "../../Components/Home/MySkills/Myskills";
 
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
                 <HeroSection />
                 <AboutMe />
                 <Resume />
+                <MySkills />
                 <WhatIDo />
                 <Projects/>
                 <Contact />
