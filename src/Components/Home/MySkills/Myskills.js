@@ -1,8 +1,10 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import "./Myskills.css";
 
-// Lazy-load du globe pour ne pas alourdir le bundle initial
-const GlobeSkills = React.lazy(() => import("./GlobeSkills"));
+// Lazy-load du globe (avec prefetch pour réduire le fallback)
+const GlobeSkills = React.lazy(() =>
+    import(/* webpackPrefetch: true */ "./GlobeSkills")
+);
 
 const SKILLS = [
     // Frontend cœur
@@ -26,24 +28,34 @@ const SKILLS = [
     { label: "PostgreSQL", pct: 60, note: "Schemas relationnels, requêtes optimisées, transactions." }
 ];
 
-
 export default function MySkills() {
-    const [view, setView] = useState("list"); // "list" | "globe"
-    const isGlobe = view === "globe";         // <<< NEW
+    // Globe par défaut + restauration du dernier choix utilisateur
+    const [view, setView] = useState(() => {
+        if (typeof window !== "undefined") {
+            return localStorage.getItem("skillsView") || "globe";
+        }
+        return "globe";
+    });
+    const isGlobe = view === "globe";
+
+    // Mémorise le choix (globe/liste)
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            localStorage.setItem("skillsView", view);
+        }
+    }, [view]);
+
+    // Précharge le module dès le mount pour réduire le fallback visuel
+    useEffect(() => {
+        import("./GlobeSkills");
+    }, []);
 
     return (
-        <div className={`skills-section ${isGlobe ? "is-globe" : ""}`}> {/* <<< NEW */}
+        <div className={`skills-section ${isGlobe ? "is-globe" : ""}`}>
             <h3 className="skills-title">Mes Compétences</h3>
 
             {/* Toggle simple, centré, sans casser ta DA */}
             <div className="skills-toggle">
-                <button
-                    className={`skills-toggle-btn ${view === "list" ? "active" : ""}`}
-                    onClick={() => setView("list")}
-                    aria-pressed={view === "list"}
-                >
-                    Liste
-                </button>
                 <button
                     className={`skills-toggle-btn ${view === "globe" ? "active" : ""}`}
                     onClick={() => setView("globe")}
@@ -51,9 +63,34 @@ export default function MySkills() {
                 >
                     Globe 3D
                 </button>
+                <button
+                    className={`skills-toggle-btn ${view === "list" ? "active" : ""}`}
+                    onClick={() => setView("list")}
+                    aria-pressed={view === "list"}
+                >
+                    Liste
+                </button>
             </div>
 
-            {view === "list" ? (
+
+            {isGlobe ? (
+                <>
+                    <div className="skills-globe-wrap">
+                        <Suspense fallback={<div className="skills-globe-fallback">Chargement du globe…</div>}>
+                            <GlobeSkills
+                                skills={SKILLS}
+                                sizing={{ heightScale: 0.75, min: 520, max: 720 }}  // plus haut en mode globe
+                            />
+                        </Suspense>
+                    </div>
+
+                    <div className="skills-btn-section">
+                        <a href="/CV_MerwanLaouini.pdf" className="skills-download-cv-btn">
+                            Télécharger CV
+                        </a>
+                    </div>
+                </>
+            ) : (
                 <>
                     <div className="skills-row">
                         {SKILLS.map((s) => (
@@ -65,23 +102,6 @@ export default function MySkills() {
                                 <span className="skill-percent">{s.pct}%</span>
                             </div>
                         ))}
-                    </div>
-
-                    <div className="skills-btn-section">
-                        <a href="/CV_MerwanLaouini.pdf" className="skills-download-cv-btn">
-                            Télécharger CV
-                        </a>
-                    </div>
-                </>
-            ) : (
-                <>
-                    <div className="skills-globe-wrap">
-                        <Suspense fallback={<div className="skills-globe-fallback">Chargement du globe…</div>}>
-                            <GlobeSkills
-                                skills={SKILLS}
-                                sizing={{ heightScale: 0.75, min: 520, max: 720 }} // <<< NEW (plus haut en mode globe)
-                            />
-                        </Suspense>
                     </div>
 
                     <div className="skills-btn-section">
