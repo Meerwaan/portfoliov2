@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SideMenu.css';
-import Avatar from '../../../Assets/AvatarDarkMode.jpeg';
+import Avatar from '../../../Assets/PhotoPro.jpeg';
 
 function SideMenu() {
     const [activeSection, setActiveSection] = useState('');
