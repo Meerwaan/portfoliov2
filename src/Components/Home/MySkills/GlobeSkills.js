@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import "./GlobeSkills.css"; // on réutilise le CSS du globe (wrapper + panel)
+import "./GlobeSkills.css";
 
+/* ===== Helpers ===== */
 function fibonacciSphere(count, radius = 2.2) {
-    // distribution régulière de points sur une sphère
     const pts = [];
-    const phi = (1 + Math.sqrt(5)) / 2; // golden ratio
+    const phi = (1 + Math.sqrt(5)) / 2;
     for (let i = 0; i < count; i++) {
-        const y = 1 - (i / (count - 1)) * 2; // [-1, 1]
+        const y = 1 - (i / (count - 1)) * 2;
         const r = Math.sqrt(1 - y * y);
         const theta = (2 * Math.PI * i) / phi;
         const x = Math.cos(theta) * r;
@@ -18,106 +18,157 @@ function fibonacciSphere(count, radius = 2.2) {
     return pts;
 }
 
-export default function DotGlobeSkills({ skills }) {
-    const wrapRef = useRef(null);
+function makeDotSprite(size = 128) {
+    const c = document.createElement("canvas");
+    c.width = c.height = size;
+    const ctx = c.getContext("2d");
+    const g = ctx.createRadialGradient(size/2, size/2, size*0.05, size/2, size/2, size*0.5);
+    g.addColorStop(0, "#33c3ff");
+    g.addColorStop(1, "#00aaff");
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(size/2, size/2, size*0.22, 0, Math.PI*2); ctx.fill();
+    const tex = new THREE.CanvasTexture(c);
+    const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: true });
+    const spr = new THREE.Sprite(mat);
+    spr.scale.set(0.28, 0.28, 1); // discret
+    return spr;
+}
+function makeRingSprite(size = 256) {
+    const c = document.createElement("canvas");
+    c.width = c.height = size;
+    const ctx = c.getContext("2d");
+    ctx.strokeStyle = "rgba(0,170,255,0.55)";
+    ctx.lineWidth = size * 0.05;
+    ctx.beginPath(); ctx.arc(size/2, size/2, size*0.34, 0, Math.PI*2); ctx.stroke();
+    const tex = new THREE.CanvasTexture(c);
+    const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: true });
+    const spr = new THREE.Sprite(mat);
+    spr.scale.set(0.55, 0.55, 1);
+    return spr;
+}
+
+export default function GlobeSkills({ skills }) {
+    const containerRef = useRef(null);
     const rendererRef = useRef(null);
-    const sceneRef = useRef(null);
     const cameraRef = useRef(null);
     const controlsRef = useRef(null);
-    const globeGroupRef = useRef(null);
-    const clickableRef = useRef([]); // meshes cliquables
+    const sceneRef = useRef(null);
+    const clickableRef = useRef([]); // hitboxes
     const hoverRef = useRef(null);
+    const tooltipRef = useRef(null);
+
     const [active, setActive] = useState(null);
 
-    // positions pour les gros points (une place par skill)
     const skillPositions = useMemo(
         () => fibonacciSphere(skills.length, 2.2),
         [skills.length]
     );
 
     useEffect(() => {
-        const container = wrapRef.current;
+        const container = containerRef.current;
         if (!container) return;
 
-        // --- renderer ---
+        // ===== Tooltip HTML (collé au point, suit la rotation) =====
+        const tip = document.createElement("div");
+        tip.className = "skills-globe-tooltip";
+        tip.style.display = "none";
+        container.appendChild(tip);
+        tooltipRef.current = tip;
+
+        // ===== Renderer =====
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
-        renderer.setSize(container.clientWidth, 420);
         container.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
-        // --- scene / camera ---
+        // ===== Scene / Camera =====
         const scene = new THREE.Scene();
         sceneRef.current = scene;
 
-        const camera = new THREE.PerspectiveCamera(
-            45,
-            container.clientWidth / 420,
-            0.1,
-            1000
-        );
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
         camera.position.set(0, 0, 6);
         cameraRef.current = camera;
 
-        const light = new THREE.AmbientLight(0xffffff, 1);
-        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 1));
 
-        // --- controls ---
+        // ===== Controls =====
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.06;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.45;
-        controls.minDistance = 3.8;
-        controls.maxDistance = 10;
+        controls.autoRotateSpeed = 0.35;
+        controls.minDistance = 4.0;
+        controls.maxDistance = 10.0;
         controlsRef.current = controls;
 
-        // --- groupe de la "sphère" ---
-        const globe = new THREE.Group();
-        scene.add(globe);
-        globeGroupRef.current = globe;
+        // ===== Wireframe + nuage de points =====
+        const wireGeo = new THREE.IcosahedronGeometry(2.2, 2);
+        const wire = new THREE.LineSegments(
+            new THREE.EdgesGeometry(wireGeo),
+            new THREE.LineBasicMaterial({ color: 0xb0bec5, opacity: 0.5, transparent: true })
+        );
+        scene.add(wire);
 
-        // --- petits points décoratifs (constellation) ---
-        const bgPts = fibonacciSphere(950, 2.2);
-        const pos = new Float32Array(bgPts.length * 3);
-        for (let i = 0; i < bgPts.length; i++) {
-            pos[i * 3] = bgPts[i].x;
-            pos[i * 3 + 1] = bgPts[i].y;
-            pos[i * 3 + 2] = bgPts[i].z;
+        const cloudPts = fibonacciSphere(1000, 2.2);
+        const buf = new Float32Array(cloudPts.length * 3);
+        for (let i = 0; i < cloudPts.length; i++) {
+            buf[i*3] = cloudPts[i].x; buf[i*3+1] = cloudPts[i].y; buf[i*3+2] = cloudPts[i].z;
         }
-        const bgGeo = new THREE.BufferGeometry();
-        bgGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-        const bgMat = new THREE.PointsMaterial({
-            color: 0xcfd8dc,         // gris léger
-            size: 2,                 // pixels
-            sizeAttenuation: false,  // taille en pixels (pas en unités monde)
-            transparent: true,
-            opacity: 0.65
+        const cloudGeo = new THREE.BufferGeometry();
+        cloudGeo.setAttribute("position", new THREE.BufferAttribute(buf, 3));
+        const cloudMat = new THREE.PointsMaterial({
+            color: 0x94a3ab, size: 2.1, sizeAttenuation: false, opacity: 0.85, transparent: true
         });
-        const bgPoints = new THREE.Points(bgGeo, bgMat);
-        globe.add(bgPoints);
+        scene.add(new THREE.Points(cloudGeo, cloudMat));
 
-        // --- gros points cliquables (compétences) ---
-        const clickable = [];
-        const nodeBase = 0x00aaff;
+        // ===== Marqueurs cliquables (point + anneau + hitbox) =====
+        const clickables = [];
+        const PICK_RADIUS = 0.34;
 
-        skills.forEach((s, idx) => {
-            const p = skillPositions[idx];
+        skills.forEach((s, i) => {
+            const pos = skillPositions[i];
+            const group = new THREE.Group();
+            group.position.copy(pos);
 
-            const r = 0.085; // rayon du point (monde)
-            const geo = new THREE.SphereGeometry(r, 16, 16);
-            const mat = new THREE.MeshBasicMaterial({ color: nodeBase });
-            const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.copy(p);
-            mesh.userData = { skill: s, baseScale: 1 };
-            globe.add(mesh);
-            clickable.push(mesh);
+            const ring = makeRingSprite();
+            const dot  = makeDotSprite();
+            group.add(ring);
+            group.add(dot);
+
+            const hit = new THREE.Mesh(
+                new THREE.SphereGeometry(PICK_RADIUS, 12, 12),
+                new THREE.MeshBasicMaterial({ visible: false })
+            );
+            hit.userData = { skill: s, group, ring, dot, base: { ring: 0.55, dot: 0.28 } };
+            group.add(hit);
+
+            scene.add(group);
+            clickables.push(hit);
         });
-        clickableRef.current = clickable;
+        clickableRef.current = clickables;
 
-        // --- raycaster pour hover/click ---
+        // ===== Raycaster (hover/click) =====
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
+
+        const projectToScreen = (obj) => {
+            const v = new THREE.Vector3();
+            obj.getWorldPosition(v);
+            v.project(camera);
+            const rect = renderer.domElement.getBoundingClientRect();
+            return {
+                x: ((v.x + 1) / 2) * rect.width + rect.left,
+                y: ((-v.y + 1) / 2) * rect.height + rect.top
+            };
+        };
+
+        function placeTooltipOn(obj, text) {
+            const p = projectToScreen(obj);
+            tip.textContent = text;
+            tip.style.display = "block";
+            tip.style.left = `${p.x}px`;
+            tip.style.top  = `${p.y - 16}px`; // juste au-dessus du point
+        }
 
         function onMove(e) {
             const rect = renderer.domElement.getBoundingClientRect();
@@ -125,17 +176,26 @@ export default function DotGlobeSkills({ skills }) {
             mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
             raycaster.setFromCamera(mouse, camera);
 
-            const hits = raycaster.intersectObjects(clickableRef.current, false);
-            const hit = hits[0]?.object || null;
+            const hit = raycaster.intersectObjects(clickableRef.current, false)[0]?.object || null;
 
             if (hoverRef.current !== hit) {
-                // reset ancien hover
+                // reset ancien
                 if (hoverRef.current) {
-                    hoverRef.current.scale.setScalar(hoverRef.current.userData.baseScale);
+                    const { ring, dot, base } = hoverRef.current.userData;
+                    ring.scale.set(base.ring, base.ring, 1);
+                    dot.scale.set(base.dot, base.dot, 1);
                 }
                 hoverRef.current = hit;
                 container.style.cursor = hit ? "pointer" : "grab";
-                if (hit) hit.scale.setScalar(1.35); // effet hover
+            }
+
+            if (hit) {
+                const { ring, dot, skill } = hit.userData;
+                ring.scale.set(0.72, 0.72, 1);
+                dot.scale.set(0.34, 0.34, 1);
+                placeTooltipOn(hit, skill.label);
+            } else {
+                tip.style.display = "none";
             }
         }
 
@@ -147,54 +207,65 @@ export default function DotGlobeSkills({ skills }) {
         renderer.domElement.addEventListener("mousemove", onMove);
         renderer.domElement.addEventListener("click", onClick);
 
-        // --- resize ---
-        function onResize() {
+        // ===== Resize (plus haut pour ne plus couper) =====
+        function fitCanvas() {
             const w = container.clientWidth;
-            const h = Math.max(340, Math.min(520, Math.floor(w * 0.5)));
+            const h = Math.max(420, Math.min(560, Math.floor(w * 0.6))); // <<< plus de hauteur
             renderer.setSize(w, h);
             camera.aspect = w / h;
             camera.updateProjectionMatrix();
         }
-        onResize();
-        window.addEventListener("resize", onResize);
+        fitCanvas();
+        window.addEventListener("resize", fitCanvas);
 
-        // --- boucle anim ---
+        // ===== Animation (et suivi du tooltip même sans bouger la souris) =====
         let raf;
         const tick = () => {
             controls.update();
-            // pulsation douce des points cliquables
+
+            // ring pulsation légère
             const t = performance.now() * 0.0015;
-            clickableRef.current.forEach((m, i) => {
-                const pulse = 1 + Math.sin(t + i) * 0.05;
-                m.scale.setScalar(m.userData.baseScale * pulse);
+            clickableRef.current.forEach((obj, i) => {
+                const { ring, base } = obj.userData;
+                // stop pulsation sur l'élément survolé pour plus de stabilité visuelle
+                const k = (hoverRef.current && hoverRef.current === obj)
+                    ? 0.72
+                    : base.ring + Math.sin(t + i) * 0.02;
+                ring.scale.set(k, k, 1);
             });
+
+            // si un point est survolé et que la scène bouge, on recale le tooltip
+            if (hoverRef.current) {
+                const { skill } = hoverRef.current.userData;
+                placeTooltipOn(hoverRef.current, skill.label);
+            }
+
             renderer.render(scene, camera);
             raf = requestAnimationFrame(tick);
         };
         tick();
 
-        // cleanup
+        // ===== Cleanup =====
         return () => {
             cancelAnimationFrame(raf);
-            window.removeEventListener("resize", onResize);
+            window.removeEventListener("resize", fitCanvas);
             renderer.domElement.removeEventListener("mousemove", onMove);
             renderer.domElement.removeEventListener("click", onClick);
             controls.dispose();
             renderer.dispose();
+            if (tip && tip.parentNode) tip.parentNode.removeChild(tip);
             container.innerHTML = "";
         };
     }, [skills, skillPositions]);
 
     return (
         <>
-            <div ref={wrapRef} className="skills-globe" aria-label="Globe de points des compétences" />
+            <div ref={containerRef} className="skills-globe" aria-label="Globe de points des compétences" />
             <div className="skills-globe-panel">
                 {active ? (
                     <>
                         <h4 className="skills-globe-title">{active.label}</h4>
-                        <p className="skills-globe-note">
-                            {active.note || "Compétence clé de mon stack."}
-                        </p>
+                        <p className="skills-globe-note">{active.note || "Compétence clé de mon stack."}</p>
                         <div className="skills-globe-meter">
                             <span>Niveau estimé : {active.pct}%</span>
                             <div className="skills-globe-bar">
@@ -203,9 +274,7 @@ export default function DotGlobeSkills({ skills }) {
                         </div>
                     </>
                 ) : (
-                    <p className="skills-globe-hint">
-                        💡 Fais tourner (drag) et clique un gros point bleu pour voir le détail.
-                    </p>
+                    <p className="skills-globe-hint">💡 Survole une pastille — le nom s’affiche à côté. Clique pour voir le détail.</p>
                 )}
             </div>
         </>
