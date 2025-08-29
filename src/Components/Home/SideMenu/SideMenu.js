@@ -47,6 +47,15 @@ function SideMenu() {
                     </li>
                     <li>
                         <a
+                            href="#myskills"
+                            className={activeSection === 'myskills' ? 'active' : ''}
+                            onClick={() => handleLinkClick('myskills')}
+                        >
+                            Mes compétences
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="#whatido"
                             className={activeSection === 'whatido' ? 'active' : ''}
                             onClick={() => handleLinkClick('whatido')}

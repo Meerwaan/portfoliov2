@@ -14,6 +14,7 @@ const SKILLS = [
 
 export default function MySkills() {
     return (
+        <section id="myskills" className="myskills-section">
         <div className="skills-section">
             <h3 className="skills-title">Mes Compétences</h3>
 
@@ -35,5 +36,6 @@ export default function MySkills() {
                 </a>
             </div>
         </div>
+        </section>
     );
 }
