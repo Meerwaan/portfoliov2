@@ -51,6 +51,7 @@ export default function MySkills() {
     }, []);
 
     return (
+        <section id="myskills" className="myskills-section">
         <div className={`skills-section ${isGlobe ? "is-globe" : ""}`}>
             <h3 className="skills-title">Mes Compétences</h3>
 
@@ -112,5 +113,6 @@ export default function MySkills() {
                 </>
             )}
         </div>
+        </section>
     );
 }
