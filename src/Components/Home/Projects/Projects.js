@@ -5,12 +5,45 @@ import Youggy from '../../../Assets/projects/Youggy.png';
 import DrinkAPP from '../../../Assets/projects/Drinkapp.png';
 import WorkR from '../../../Assets/projects/workr.png';
 import ScanIA from '../../../Assets/projects/IaImage.png';
+import G2TikTok from '../../../Assets/projects/g2tiktok.png';
+import Kasteme from '../../../Assets/projects/kasteme.png';
+import G2TikTokWork from '../../../Assets/projects/g2tiktokwork.png';
 
 function Projects() {
     const [activeFilter, setActiveFilter] = useState('TOUT');
     const [selectedProject, setSelectedProject] = useState(null);
 
     const projects = [
+        {
+            title: 'G2TikTok',
+            category: 'Site web',
+            description: "Moteur SaaS d'automatisation de montage vidéo propulsé par l'IA, conçu pour maximiser l'engagement sur TikTok, Reels et Shorts. Ce projet intègre des algorithmes de sous-titrage dynamique, recadrage intelligent et traitement audio. L'impact a été massif : la plateforme a généré des vidéos dépassant les 200k à 300k vues individuelles, pour un trafic organique cumulé de plus d'un million de vues en 3 mois, prouvant sa forte viabilité technique et marketing.",
+            technologies: 'React.JS, IA, Python',
+            client: 'Projet Personnel',
+            date: '2025',
+            url: 'https://g2-tiktok.vercel.app/',
+            images: [G2TikTok]
+        },
+        {
+            title: 'Kastme',
+            category: 'Site web',
+            description: "Pensée comme l'alternative premium et ultra-design aux agrégateurs de liens classiques comme Linktree. Kastme offre une véritable galerie interactive et immersive. Conçue spécifiquement pour les créatifs exigeants (artistes, réalisateurs, photographes), cette architecture front-end propose une expérience utilisateur unique et une direction artistique pointue, permettant de sublimer n'importe quel portfolio en un clin d'œil.",
+            technologies: 'React.JS, UI/UX Avancé',
+            client: 'Projet Personnel',
+            date: '2025',
+            url: 'https://kasteme.vercel.app/',
+            images: [Kasteme]
+        },
+        {
+            title: 'G2TikTok Work',
+            category: 'Site web',
+            description: "Déclinaison métier experte du moteur G2TikTok, cette application transforme de simples anecdotes de bureau en vidéos 'Storytimes' hautement virales. Le pipeline technique est 100% automatisé et garantit l'anonymat : de la captation du texte jusqu'à la génération d'une vidéo prête à publier (voix-off IA, sous-titres, background). Un produit conçu de bout en bout pour capter l'attention de millions de spectateurs.",
+            technologies: 'React.JS, API OpenAI',
+            client: 'Projet Personnel',
+            date: '2025',
+            url: 'https://g2tiktok-work.vercel.app/',
+            images: [G2TikTokWork]
+        },
         {
             title: 'Hall Of Arts ',
             category: 'Application',
@@ -43,7 +76,7 @@ function Projects() {
         },
         {
             title: 'Work R',
-            category: 'Site web',
+            category: 'Application',
             description: 'WorkR est une plateforme de ...',
             technologies: 'React.JS, Firebase',
             client: 'Projet Personnel',
