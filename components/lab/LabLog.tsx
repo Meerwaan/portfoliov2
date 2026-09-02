@@ -1,37 +1,61 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import Image from "next/image";
 import type { LabEntry } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/mdx";
+import { ActiveOnView } from "@/components/motion/ActiveOnView";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { LabViewer, type ViewerEntry } from "./LabViewer";
 
-/** Reverse-chronological log. Each entry is anchored (/lab#slug) so the command palette can deep-link. */
+/**
+ * The lab as a bench: a timeline rail that fills as you read (left), the log (centre), and a sticky monitor
+ * showing the experiment in view (right). Below lg the monitor disappears and each entry shows its capture.
+ */
 export async function LabLog({ entries }: { entries: LabEntry[] }) {
   const t = await getTranslations("lab");
   const rendered = await Promise.all(entries.map((e) => renderMdx(e.body)));
+  const viewer: ViewerEntry[] = entries.map((e, index) => ({
+    slug: e.slug,
+    index,
+    title: e.title,
+    status: e.status,
+    year: e.year,
+    stack: e.stack,
+    shot: e.screenshots[0] ? { src: e.screenshots[0].src, width: e.screenshots[0].width, height: e.screenshots[0].height, blurDataURL: e.screenshots[0].blurDataURL, alt: e.screenshots[0].alt } : null,
+  }));
+
   return (
-    <section className="container-page pb-section">
-      <ol className="divide-y divide-rule border-t border-rule">
-        {entries.map((entry, i) => (
-          <li key={entry.slug} id={entry.slug} className="scroll-mt-24 py-12 md:py-16">
-            <article className="grid gap-8 lg:grid-cols-12">
-              <div className="mono-label flex flex-col gap-3 text-ink-3 lg:col-span-3">
-                <span className="text-ink">{entry.year}</span>
-                <span className={entry.status === "active" ? "text-signal" : undefined}>{t(`status.${entry.status}`)}</span>
-                <span className="normal-case tracking-normal text-ink-2">{entry.myRole}</span>
-                {entry.stack.length > 0 && <span className="normal-case tracking-normal">{entry.stack.join(" · ")}</span>}
-              </div>
-              <div className="lg:col-span-7">
+    <section className="lab-bench container-page relative pb-section" data-track-root="lab">
+      <ScrollProgress start="top 60%" end="bottom 70%" />
+      <ActiveOnView selector="[data-track-root='lab'] [data-track]" />
+      <div className="grid gap-10 lg:grid-cols-12">
+        <div className="lab-rail hidden lg:col-span-1 lg:block" aria-hidden="true">
+          <div className="lab-rail-line" />
+        </div>
+        <ol className="lg:col-span-6">
+          {entries.map((entry, i) => (
+            <li key={entry.slug} id={entry.slug} data-track={entry.slug} className="lab-entry scroll-mt-24 border-t border-rule py-12 md:py-16">
+              <article className="flex flex-col gap-5">
+                <p className="mono-label flex flex-wrap gap-x-4 text-ink-3">
+                  <span className="lab-entry-index text-ink">LAB/{String(i + 1).padStart(2, "0")}</span>
+                  <span>{entry.year}</span>
+                  <span className={entry.status === "active" ? "text-signal" : undefined}>{t(`status.${entry.status}`)}</span>
+                </p>
                 <h2 className="font-display text-2xl font-medium text-ink">{entry.title}</h2>
-                <p className="mt-3 text-lg text-ink-2">{entry.summary}</p>
-                {entry.fallbackBody && <p className="mono-label mt-4 text-ink-3">{t("fallbackBody")}</p>}
-                <div className="prose-lab mt-6">{rendered[i]}</div>
+                <p className="text-lg text-ink-2">{entry.summary}</p>
+                <p className="mono-label text-ink-3">
+                  {entry.myRole}
+                  {entry.stack.length > 0 && <span className="normal-case tracking-normal"> · {entry.stack.join(" · ")}</span>}
+                </p>
+                {entry.fallbackBody && <p className="mono-label text-ink-3">{t("fallbackBody")}</p>}
                 {entry.screenshots[0] && (
-                  <figure className="mt-8 overflow-hidden rounded-md border border-rule bg-paper-2">
-                    <Image src={entry.screenshots[0].src} alt={entry.screenshots[0].alt} width={entry.screenshots[0].width} height={entry.screenshots[0].height} sizes="(min-width: 64rem) 56vw, 100vw" placeholder={entry.screenshots[0].blurDataURL ? "blur" : "empty"} blurDataURL={entry.screenshots[0].blurDataURL} className="h-auto w-full" />
+                  <figure className="overflow-hidden rounded-md border border-rule bg-paper-2 lg:hidden">
+                    <Image src={entry.screenshots[0].src} alt={entry.screenshots[0].alt} width={entry.screenshots[0].width} height={entry.screenshots[0].height} sizes="100vw" placeholder={entry.screenshots[0].blurDataURL ? "blur" : "empty"} blurDataURL={entry.screenshots[0].blurDataURL} className="h-auto w-full" />
                   </figure>
                 )}
+                <div className="prose-lab">{rendered[i]}</div>
                 {(entry.links.live || entry.links.repo) && (
-                  <p className="mono-label mt-6 flex gap-6">
+                  <p className="mono-label flex gap-6">
                     {entry.links.live && (
                       <a href={entry.links.live} target="_blank" rel="noopener" className="inline-flex items-center gap-1 border-b border-rule-strong text-ink hover:border-signal hover:text-signal">
                         {t("links.live")} <ArrowUpRight size={12} />
@@ -44,11 +68,14 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
                     )}
                   </p>
                 )}
-              </div>
-            </article>
-          </li>
-        ))}
-      </ol>
+              </article>
+            </li>
+          ))}
+        </ol>
+        <aside className="hidden lg:col-span-5 lg:block">
+          <LabViewer entries={viewer} />
+        </aside>
+      </div>
     </section>
   );
 }

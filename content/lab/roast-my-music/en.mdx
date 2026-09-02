@@ -1,17 +1,17 @@
 ---
 title: "Roast My Music"
-summary: "A Letterboxd for music: rate, review and rank albums, with an interactive variant driven from a live stream's chat."
+summary: "Platform for streamers: listen to tracks live and rate them with the community, with Twitch and TikTok chat votes in real time."
 myRole: "Design and development, solo"
-keywords: ["music", "reviews", "albums", "letterboxd", "rap", "live", "twitch", "tiktok", "community", "prototype"]
+keywords: ["streamers", "music", "live rating", "twitch", "tiktok", "chat", "community", "overlay", "prototype"]
 screenshotAlt:
   streamer-dashboard: "Streamer dashboard: now playing, the streamer's grade, Twitch and TikTok averages, locked final score and live activity."
   album: "Album page with its average rating and listeners' reviews."
 ---
 
-The long-term idea: a social platform for music criticism, where you keep a listening diary, rate albums, and rankings come from the community rather than an editorial team. Two prototypes explore that ground.
+The starting point is a live-stream format: a streamer listens to tracks or albums with their community and rates them on air. Roast My Music equips that moment. The streamer loads a track, gives a grade from 1 to 10, and the chat votes at the same time: Twitch and TikTok messages are read in real time, weighted (a TikTok gift counts more than a message), and the final score locks when votes close.
 
-The first is a Next.js app focused on rap: album pages, ratings and reviews, profile pages and rankings. Reviews are stored locally, which is enough to test the rating flow but not to host a community.
+Three surfaces: the streamer dashboard (now playing, their grade, per-platform averages, live chat activity), an overlay to embed in the stream showing the moving score, and a history of sessions. A bridge listens to the chats through `tmi.js` for Twitch and a TikTok Live connector.
 
-The second plugs rating into a live stream: Twitch or TikTok chat messages vote in real time, an overlay shows the moving ranking, and a history keeps the sessions. This version taught the most about the product: a collective score in real time is more alive than a solitary review page.
+An older second track explored the classic album page with ratings and reviews. It served to test the rating flow, but the live format is what carries the product: a collective score in real time is what neither Letterboxd nor RateYourMusic does.
 
-Actual state: two prototypes, no user accounts, no shared database. The next step is to choose the common data model before writing another line.
+Actual state: working prototype locally, no accounts, sessions stored as JSON. Next step: a shared data model and Twitch authentication to open the tool to other streamers.

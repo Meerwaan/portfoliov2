@@ -47,10 +47,14 @@ One spin per scan session, a 24-hour cooldown per device, a soft limit per hashe
 
 ## The journey as it runs
 
+<Screens ids="scan-mobile,wheel-mobile,ticket-mobile" caption="What the customer sees between the plate and the counter: the three steps, the wheel, the ticket to be validated." />
+
 1. The plate opens a URL of the form `/s/{publicToken}`. The server resolves the tag, the location and the active campaign, then creates a `scan_session` with its anti-abuse metadata and expiry.
 2. The page shows the location's branding and a single button: leave a review. The click records a review intent and opens the Google listing.
 3. On return, the wheel is available if the session is still valid. The draw is server-side, the animation is client-side.
 4. The ticket shows its code. At the counter, staff look it up by code and validate or reject.
+
+<Architecture />
 
 ## What is not solved
 
@@ -59,6 +63,8 @@ Reputap does not know whether the review was actually published. It knows the pe
 </Callout>
 
 ## Operations
+
+<Screen id="admin-system" caption="The super-admin control centre: uptime, latency, service status and live console." />
 
 A super-admin console lists tenants, manages subscriptions and generates magic login links for support. A system dashboard shows database latency, disk usage and logs. Transactional email goes through Resend, billing is wired to Stripe, and everything runs on Vercel with PostgreSQL managed by Supabase.
 

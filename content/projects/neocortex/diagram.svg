@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="neo-diagram-title neo-diagram-desc" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="11" letter-spacing="0.04em">
+  <title id="neo-diagram-title">Architecture Neocortex : application Electron, API Express avec rôles, Sequelize, PostgreSQL, bilan PDF</title>
+  <desc id="neo-diagram-desc">Le praticien utilise une application de bureau Electron. Elle parle à une API Express protégée par jetons signés et middleware de rôles. Sequelize porte le modèle vers PostgreSQL en production et SQLite en développement. Le parcours va du dossier patient à la passation puis au bilan exporté en PDF.</desc>
+  <g data-step="1">
+    <path data-draw d="M20 40 H200 V110 H20 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="32" y="64">PRATICIEN</text><text x="32" y="86" opacity="0.6">poste du cabinet</text></g>
+  </g>
+  <g data-step="2">
+    <path data-draw d="M200 75 H260"/>
+    <path data-draw d="M260 40 H460 V110 H260 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="272" y="64">ELECTRON · renderer</text><text x="272" y="86" opacity="0.6">dossier · passation · bilan</text></g>
+  </g>
+  <g data-step="3">
+    <path data-draw d="M460 75 H520"/>
+    <path data-draw stroke="var(--signal)" d="M520 40 H720 V110 H520 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="532" y="64" fill="var(--signal)">API EXPRESS</text><text x="532" y="86" opacity="0.6">JWT · bcrypt · middleware de rôle</text></g>
+  </g>
+  <g data-step="4">
+    <path data-draw d="M720 75 H780"/>
+    <path data-draw d="M780 40 H940 V110 H780 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="792" y="64">SEQUELIZE</text><text x="792" y="86" opacity="0.6">PostgreSQL · SQLite en dev</text></g>
+  </g>
+  <g data-step="5">
+    <path data-draw d="M620 110 V170"/>
+    <path data-draw d="M520 170 H720 V240 H520 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="532" y="194">ROUTES</text><text x="532" y="216" opacity="0.6">/auth · /users · /admin</text></g>
+  </g>
+  <g data-step="6">
+    <path data-draw d="M360 110 V170"/>
+    <path data-draw d="M260 170 H460 V240 H260 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="272" y="194">BILAN → PDF</text><text x="272" y="216" opacity="0.6">composé depuis les résultats</text></g>
+  </g>
+</svg>

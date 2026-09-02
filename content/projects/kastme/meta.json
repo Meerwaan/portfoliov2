@@ -37,7 +37,7 @@
     }
   ],
   "heroScreenshot": 0,
-  "diagram": false,
+  "diagram": true,
   "order": 3,
   "featured": true,
   "space": {

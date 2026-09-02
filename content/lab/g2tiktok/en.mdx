@@ -1,15 +1,28 @@
 ---
-title: "G2TikTok, video production pipeline"
-summary: "Automation suite that turns a script sent on Telegram into a subtitled vertical video, ready to publish."
+title: "G2TikTok, a suite of bots for vertical video"
+summary: "Six Python tools driven from Telegram that cover the whole chain: script, voice, editing, splitting, publishing and live."
 myRole: "Design and development, solo"
-keywords: ["automation", "python", "ffmpeg", "telegram", "tts", "whisper", "video", "tiktok", "pipeline"]
+keywords: ["automation", "python", "ffmpeg", "telegram", "tts", "whisper", "video", "tiktok", "pipeline", "selenium", "bots", "suite"]
 screenshotAlt:
   dashboard-tiktokdash: "TikTokDash interface: list of long-video splits, API settings and analysis prompt."
   dashboard: "Landing page of the G2TikTok suite with its Telegram bot."
 ---
 
-The entry point is a Telegram bot: send it a script, it returns an edited vertical video, voiced by speech synthesis and subtitled word by word. In between, a Python pipeline orchestrates the speech synthesis, Whisper transcription to align subtitles, background footage selection and FFmpeg assembly.
+Not one bot but a suite: six tools that share conventions (Telegram control, `assets/` and `outputs/` folders, SQLite user and credit databases) and cover every step of vertical video.
 
-Most of the work went into robustness rather than video: task queues persisted in SQLite to resume after an interruption, render history, temporary file cleanup, and JSON job configuration to change formats without touching code.
+```text
+G2tiktokWork        idea + niche  →  script and hook (OpenAI)
+                    → ElevenLabs voice (edge-tts as fallback)
+                    → royalty-free B-roll (Pexels, Pixabay)
+                    → word-level karaoke subtitles (faster-whisper)
+                    → 1080x1920 render, beat-cut editing
+G2Tiktok (bot)      long video → 9:16 clips, blurred background, Telegram Stars credits
+TiktokDash          same engine, as a Streamlit dashboard
+G2Tiktok-Clipping   Twitch / Kick framing engine, karaoke subtitles
+G2TiktokAutopost    series publishing across several accounts (Selenium)
+G2Tiktok-Live-inter live guessing game for TikTok Live, OBS overlay
+```
 
-It is a workshop, not a product: the tool runs for personal use and serves as a test bench for audio and video building blocks reused elsewhere.
+Most of the work went into robustness rather than video: persisted task queues to resume after an interruption, render history, temporary file cleanup, two-gigabyte transfers over MTProto, per-user accounts and credits, niche configuration in JSON (voice, price range) to change formats without touching code.
+
+Actual state: the generation chain runs and has produced about sixty videos; the splitter and the publisher have served on real series. The missing link is the automatic hand-off from renders to the publisher, still done by hand.

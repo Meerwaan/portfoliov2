@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="kastme-diagram-title kastme-diagram-desc" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="11" letter-spacing="0.04em">
+  <title id="kastme-diagram-title">Architecture KastMe : page publique SSR + ISR, Firestore, Storage, image OG, réservation de slug</title>
+  <desc id="kastme-diagram-desc">Un visiteur ouvre kastme.fr/slug. Le serveur rend la page et la met en cache par ISR, lit le portfolio dans Firestore et les médias dans Cloud Storage, et génère l'image de partage. Le créatif édite depuis l'éditeur, qui sauvegarde via l'API validée par Zod et revalide la page. La réservation du slug passe par une collection en création seule.</desc>
+  <g data-step="1">
+    <path data-draw d="M20 40 H180 V110 H20 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="32" y="64">VISITEUR</text><text x="32" y="86" opacity="0.6">kastme.fr/slug</text></g>
+  </g>
+  <g data-step="2">
+    <path data-draw d="M180 75 H240"/>
+    <path data-draw stroke="var(--signal)" d="M240 40 H420 V110 H240 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="252" y="64" fill="var(--signal)">app/[slug] · SSR + ISR</text><text x="252" y="86" opacity="0.6">revalidate 3600 · 404 seulement si absent</text></g>
+  </g>
+  <g data-step="3">
+    <path data-draw d="M420 60 H480"/>
+    <path data-draw d="M480 25 H640 V95 H480 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="492" y="49">FIRESTORE</text><text x="492" y="71" opacity="0.6">portfolios · slugs · users</text></g>
+  </g>
+  <g data-step="4">
+    <path data-draw d="M420 90 H480 V150"/>
+    <path data-draw d="M480 120 H640 V190 H480 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="492" y="144">CLOUD STORAGE</text><text x="492" y="166" opacity="0.6">images 10 Mo · vidéos 50 Mo</text></g>
+  </g>
+  <g data-step="5">
+    <path data-draw d="M330 110 V160"/>
+    <path data-draw d="M240 160 H420 V230 H240 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="252" y="184">opengraph-image</text><text x="252" y="206" opacity="0.6">générée depuis les médias</text></g>
+  </g>
+  <g data-step="6">
+    <path data-draw d="M700 60 H760"/>
+    <path data-draw d="M760 25 H940 V95 H760 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="772" y="49">ÉDITEUR</text><text x="772" y="71" opacity="0.6">PATCH /api/portfolios/[id] · Zod</text></g>
+    <path data-draw d="M640 60 H700"/>
+  </g>
+  <g data-step="7">
+    <path data-draw d="M850 95 V250 H100 V110"/>
+    <g data-label fill="currentColor" stroke="none"><text x="600" y="270" opacity="0.6">revalidation de la page publique après sauvegarde</text></g>
+  </g>
+</svg>

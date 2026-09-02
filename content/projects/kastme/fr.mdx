@@ -12,6 +12,8 @@ screenshotAlt:
 
 ## Le problème
 
+<Screen id="home" caption="La vitrine : une adresse, une sphère, pas une liste de liens." />
+
 Un photographe ou un mannequin met en bio un lien vers une liste de liens. Sa meilleure image est à trois clics. KastMe remplace la liste par une page publique `kastme.fr/son-slug` où ses images et ses vidéos flottent dans une sphère que le visiteur fait tourner au doigt. Le produit est en ligne, en construction : la vitrine, l'inscription, l'éditeur et les pages publiques tournent ; la facturation n'est pas encore branchée.
 
 ## Les contraintes
@@ -37,6 +39,8 @@ C'est la règle la plus importante du dépôt. Une page publique en ISR qui rép
 <Decision title="Unicité du slug par une collection en création seule">
 Une collection `slugs/{slug}` accepte la création et refuse la mise à jour. Deux inscriptions simultanées sur le même nom ne peuvent pas réussir toutes les deux : la deuxième écriture est rejetée par les règles, pas par une vérification applicative qu'une course pourrait contourner.
 </Decision>
+
+<Architecture />
 
 ## Sécurité par les règles
 

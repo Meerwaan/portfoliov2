@@ -47,10 +47,14 @@ Un spin maximum par session de scan, cooldown de 24 h par appareil, limite douce
 
 ## Le parcours, tel qu'il tourne
 
+<Screens ids="scan-mobile,wheel-mobile,ticket-mobile" caption="Ce que voit le client entre la plaque et la caisse : les trois étapes, la roue, le ticket à faire valider." />
+
 1. La plaque ouvre une URL du type `/s/{publicToken}`. Le serveur résout le tag, l'établissement et la campagne active, puis crée une `scan_session` avec ses métadonnées anti-abus et son expiration.
 2. La page affiche le branding de l'établissement et un seul bouton : laisser un avis. Le clic enregistre une intention d'avis et ouvre la fiche Google.
 3. Au retour, la roue est disponible si la session est valide. Le tirage est serveur, l'animation est client.
 4. Le ticket s'affiche avec son code. En caisse, le staff le retrouve par code, valide ou rejette.
+
+<Architecture />
 
 ## Ce qui n'est pas résolu
 
@@ -59,6 +63,8 @@ Reputap ne sait pas si l'avis a réellement été publié. Il sait que la person
 </Callout>
 
 ## Côté exploitation
+
+<Screen id="admin-system" caption="Le centre de contrôle super-admin : uptime, latence, statut des services et console temps réel." />
 
 Une console super-admin liste les tenants, gère les abonnements et génère des liens de connexion magiques pour le support. Un tableau de bord système affiche la latence de la base, l'usage disque et les journaux. Les emails transactionnels partent par Resend, la facturation est branchée sur Stripe, le tout est déployé sur Vercel avec PostgreSQL géré par Supabase.
 

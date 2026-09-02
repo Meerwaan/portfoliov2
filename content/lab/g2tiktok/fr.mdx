@@ -1,15 +1,28 @@
 ---
-title: "G2TikTok, chaîne de production vidéo"
-summary: "Suite d'automatisation qui transforme un script envoyé sur Telegram en vidéo verticale sous-titrée, prête à publier."
+title: "G2TikTok, une suite de bots pour la vidéo verticale"
+summary: "Six outils Python pilotés depuis Telegram qui couvrent toute la chaîne : script, voix, montage, découpage, publication et live."
 myRole: "Conception et développement, seul"
-keywords: ["automatisation", "python", "ffmpeg", "telegram", "tts", "whisper", "vidéo", "tiktok", "pipeline"]
+keywords: ["automatisation", "python", "ffmpeg", "telegram", "tts", "whisper", "vidéo", "tiktok", "pipeline", "selenium", "bots", "suite"]
 screenshotAlt:
   dashboard-tiktokdash: "Interface TikTokDash : liste des découpages de vidéos longues, paramètres d'API et prompt d'analyse."
   dashboard: "Page de présentation de la suite G2TikTok avec son bot Telegram."
 ---
 
-Le point de départ est un bot Telegram : on lui envoie un script, il renvoie une vidéo verticale montée, doublée par synthèse vocale et sous-titrée mot à mot. Entre les deux, une chaîne Python orchestre la synthèse vocale, la transcription par Whisper pour caler les sous-titres, la sélection d'un fond vidéo et l'assemblage par FFmpeg.
+Ce n'est pas un bot mais une suite : six outils qui se partagent des conventions (pilotage par Telegram, dossiers `assets/` et `outputs/`, bases SQLite d'utilisateurs et de crédits) et couvrent chaque étape de la vidéo verticale.
 
-Ce qui a demandé le plus de travail n'est pas la vidéo mais la robustesse : files de tâches persistées en SQLite pour reprendre après une coupure, historique des rendus, nettoyage des fichiers temporaires, et configuration des jobs en JSON pour changer de format sans toucher au code.
+```text
+G2tiktokWork        idée + niche  →  script et accroche (OpenAI)
+                    → voix ElevenLabs (edge-tts en secours)
+                    → B-roll libre de droits (Pexels, Pixabay)
+                    → sous-titres karaoké mot à mot (faster-whisper)
+                    → rendu 1080x1920, montage au tempo
+G2Tiktok (bot)      vidéo longue → clips 9:16, fond flouté, crédits Telegram Stars
+TiktokDash          même moteur, en tableau de bord Streamlit
+G2Tiktok-Clipping   moteur de cadrage Twitch / Kick, sous-titres karaoké
+G2TiktokAutopost    publication par séries sur plusieurs comptes (Selenium)
+G2Tiktok-Live-inter jeu de devinettes en direct pour TikTok Live, overlay OBS
+```
 
-C'est un atelier, pas un produit : l'outil tourne pour un usage propre, et sert de banc d'essai pour les briques audio et vidéo réutilisées ailleurs.
+Ce qui a demandé le plus de travail n'est pas la vidéo mais la robustesse : files de tâches persistées pour reprendre après une coupure, historique des rendus, nettoyage des fichiers temporaires, transferts de deux gigaoctets par MTProto, comptes et crédits par utilisateur, configuration des niches en JSON (voix, fourchette de prix) pour changer de format sans toucher au code.
+
+État réel : la chaîne de génération tourne et a produit une soixantaine de vidéos ; le découpeur et le publieur ont servi sur de vraies séries. Le maillon manquant est le passage automatique des rendus vers le publieur, encore fait à la main.

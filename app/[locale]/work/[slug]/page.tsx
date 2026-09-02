@@ -10,7 +10,7 @@ import { getProject, getProjectDiagram, getProjectSlugs, getProjects } from "@/l
 import { renderMdx } from "@/lib/content/mdx";
 import { CaseHero } from "@/components/work/CaseHero";
 import { Diagram } from "@/components/work/Diagram";
-import { ScreenSequence } from "@/components/work/ScreenSequence";
+import { caseComponents } from "@/components/mdx/case-components";
 import { MetricsTable } from "@/components/work/MetricsTable";
 import { NextProject } from "@/components/work/NextProject";
 
@@ -40,14 +40,19 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
   setRequestLocale(project.locale);
   const t = await getTranslations("work");
 
-  const [body, diagram, all] = await Promise.all([
-    renderMdx(project.body),
-    project.diagram ? getProjectDiagram(slug) : Promise.resolve(null),
-    getProjects(project.locale),
-  ]);
+  const [diagram, all] = await Promise.all([project.diagram ? getProjectDiagram(slug) : Promise.resolve(null), getProjects(project.locale)]);
+  const body = await renderMdx(
+    project.body,
+    caseComponents({
+      screenshots: project.screenshots,
+      diagram,
+      diagramLabel: t("diagram"),
+      captionLabel: (n) => t("step", { n }),
+    }),
+  );
+  const inlineDiagram = project.body.includes("<Architecture");
   const index = all.findIndex((p) => p.slug === slug);
   const next = all[(index + 1) % all.length];
-  const gallery = project.screenshots.filter((s) => s !== project.hero);
 
   const jsonLd = [
     {
@@ -82,15 +87,14 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
       <div className="container-page grid gap-12 lg:grid-cols-12">
         <div className="prose-case lg:col-span-8 lg:col-start-3">
           {body}
-          {diagram && (
+          {diagram && !inlineDiagram && (
             <section className="my-16">
-              <h2 className="font-display text-2xl font-medium text-ink">{t("diagram")}</h2>
+              <p className="mono-label text-ink-3">{t("diagram")}</p>
               <Diagram svg={diagram} label={`${project.title}: ${t("diagram")}`} />
             </section>
           )}
         </div>
       </div>
-      <ScreenSequence screenshots={gallery} />
       <MetricsTable metrics={project.metrics} />
       {next && next.slug !== slug && <NextProject slug={next.slug} title={next.title} node={next.node} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />

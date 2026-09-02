@@ -599,3 +599,111 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ---------- Captures inside the case narrative ---------- */
+@media (min-width: 64rem) {
+  .case-screen,
+  .case-screens,
+  .case-architecture {
+    width: calc(100% + 12rem);
+    margin-left: -6rem;
+  }
+}
+.case-screens-phones ol {
+  align-items: start;
+}
+
+/* ---------- Lab bench: rail that fills with scroll, sticky monitor ---------- */
+.lab-bench {
+  --progress: 0;
+}
+.lab-rail {
+  position: relative;
+}
+.lab-rail-line {
+  position: sticky;
+  top: 6rem;
+  height: calc(100svh - 12rem);
+  width: 1px;
+  margin-left: 0.5rem;
+  background: var(--rule);
+}
+.lab-rail-line::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 1px;
+  height: calc(var(--progress) * 100%);
+  background: var(--signal);
+}
+.lab-entry .lab-entry-index {
+  transition: color var(--dur-2) var(--ease-out);
+}
+.lab-entry[data-active="true"] .lab-entry-index {
+  color: var(--signal);
+}
+.lab-viewer-frame {
+  display: grid;
+  aspect-ratio: 16 / 10;
+}
+.lab-viewer-shot {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+.lab-viewer-shot.is-active {
+  opacity: 1;
+}
+.lab-viewer-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  background: var(--paper);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lab-viewer-shot {
+    transition: none;
+  }
+}
+
+/* ---------- Path trace ---------- */
+.path-trace {
+  --progress: 0;
+}
+.path-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.5rem;
+  width: 1px;
+  background: var(--rule);
+}
+.path-line::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 1px;
+  height: calc(var(--progress) * 100%);
+  background: var(--signal);
+  transition: height 80ms linear;
+}
+.path-node {
+  position: absolute;
+  top: 2.55rem;
+  left: 0.5rem;
+  width: 9px;
+  height: 9px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
+  transition: background var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+.path-step[data-active="true"] .path-node {
+  background: var(--signal);
+  box-shadow: inset 0 0 0 1.5px var(--signal);
+}
+.path-step + .path-step {
+  border-top: 1px solid var(--rule);
+}

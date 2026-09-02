@@ -114,7 +114,8 @@
     "outcomes": "Outcomes",
     "source": "Source",
     "next": "Next system",
-    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING"
+    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
+    "step": "Step {n}"
   },
   "command": {
     "label": "Command",
@@ -158,7 +159,8 @@
       "live": "Visit",
       "repo": "Code"
     },
-    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING"
+    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
+    "noScreen": "SCREEN PENDING"
   },
   "about": {
     "title": "About",
@@ -175,7 +177,10 @@
     },
     "cv": "Download CV (PDF)",
     "today": "today",
-    "readCase": "Read the case study"
+    "readCase": "Read the case study",
+    "pathTitle": "The path, most recent first",
+    "pathIntro": "From now back to the start. Each step left something in the way of building.",
+    "stackNote": "WHAT I RUN IN PRODUCTION, NOT A WALL OF LOGOS"
   },
   "contact": {
     "title": "Contact",

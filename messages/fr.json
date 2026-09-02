@@ -114,7 +114,8 @@
     "outcomes": "Résultats",
     "source": "Source",
     "next": "Système suivant",
-    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS"
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
+    "step": "Étape {n}"
   },
   "command": {
     "label": "Commande",
@@ -158,7 +159,8 @@
       "live": "Voir en ligne",
       "repo": "Code"
     },
-    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS"
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
+    "noScreen": "CAPTURE À VENIR"
   },
   "about": {
     "title": "Parcours",
@@ -175,7 +177,10 @@
     },
     "cv": "Télécharger le CV (PDF)",
     "today": "aujourd'hui",
-    "readCase": "Lire l'étude de cas"
+    "readCase": "Lire l'étude de cas",
+    "pathTitle": "Le parcours, dans l'ordre inverse",
+    "pathIntro": "Du plus récent au plus ancien. Chaque étape a laissé quelque chose dans la façon de construire.",
+    "stackNote": "CE QUE JE TIENS EN PRODUCTION, PAS UN MUR DE LOGOS"
   },
   "contact": {
     "title": "Contact",

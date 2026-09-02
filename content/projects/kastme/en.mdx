@@ -12,6 +12,8 @@ screenshotAlt:
 
 ## The problem
 
+<Screen id="home" caption="The marketing site: one address, one sphere, not a list of links." />
+
 A photographer or a model puts a link-list in their bio. Their best image is three taps away. KastMe replaces the list with a public page at `kastme.fr/their-slug` where images and videos float in a sphere the visitor spins with a finger. The product is live and still being built: the marketing site, sign-up, editor and public pages run; billing is not wired yet.
 
 ## The constraints
@@ -37,6 +39,8 @@ This is the most important rule in the repository. An ISR page answering `notFou
 <Decision title="Slug uniqueness through a create-only collection">
 A `slugs/{slug}` collection accepts creation and refuses updates. Two simultaneous sign-ups for the same name cannot both succeed: the second write is rejected by the rules, not by an application check a race could slip past.
 </Decision>
+
+<Architecture />
 
 ## Security through rules
 
