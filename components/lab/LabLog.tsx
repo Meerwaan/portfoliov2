@@ -32,10 +32,10 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
         <div className="lab-rail hidden lg:col-span-1 lg:block" aria-hidden="true">
           <div className="lab-rail-line" />
         </div>
-        <ol className="lg:col-span-6">
+        <ol className="min-w-0 lg:col-span-6">
           {entries.map((entry, i) => (
             <li key={entry.slug} id={entry.slug} data-track={entry.slug} className="lab-entry scroll-mt-24 border-t border-rule py-12 md:py-16">
-              <article className="flex flex-col gap-5">
+              <article className="flex min-w-0 flex-col gap-5">
                 <p className="mono-label flex flex-wrap gap-x-4 text-ink-3">
                   <span className="lab-entry-index text-ink">LAB/{String(i + 1).padStart(2, "0")}</span>
                   <span>{entry.year}</span>
@@ -53,7 +53,7 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
                     <Image src={entry.screenshots[0].src} alt={entry.screenshots[0].alt} width={entry.screenshots[0].width} height={entry.screenshots[0].height} sizes="100vw" placeholder={entry.screenshots[0].blurDataURL ? "blur" : "empty"} blurDataURL={entry.screenshots[0].blurDataURL} className="h-auto w-full" />
                   </figure>
                 )}
-                <div className="prose-lab">{rendered[i]}</div>
+                <div className="prose-lab min-w-0">{rendered[i]}</div>
                 {(entry.links.live || entry.links.repo) && (
                   <p className="mono-label flex gap-6">
                     {entry.links.live && (
