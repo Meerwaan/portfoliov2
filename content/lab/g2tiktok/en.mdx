@@ -1,29 +1,13 @@
 ---
-title: "G2, a family of Telegram-driven bots"
-summary: "Go to TikTok: four Python tools covering vertical video end to end, plus a trading bot built on the same foundations."
+title: "G2Tiktok, the splitter"
+summary: "A long video goes in, subtitled 9:16 clips come out, sold as credits directly inside Telegram."
 myRole: "Design and development, solo"
-keywords: ["g2", "go to tiktok", "automation", "python", "ffmpeg", "telegram", "tts", "whisper", "video", "tiktok", "pipeline", "selenium", "bots", "suite", "solana", "trading"]
+keywords: ["g2", "splitting", "clips", "9:16", "telegram stars", "pyrogram", "whisper", "yt-dlp", "bot"]
 screenshotAlt:
-  dashboard-tiktokdash: "Long-video splitting interface: list of splits, API settings and analysis prompt."
-  dashboard: "G2TikTok landing page with its Telegram bot."
+  landing: "G2Tiktok bot landing page: automatic splitting of long videos into vertical clips."
+  dashboard-tiktokdash: "Dashboard version of the same engine: list of splits, API settings and analysis prompt."
 ---
 
-G2 reads "Go to". Not one bot but a family: Python tools that share one way of working (Telegram control, `assets/` and `outputs/` folders, SQLite user and credit databases) and cover every step of vertical video.
+The second member of the family takes the problem the other way round: the material already exists as a long video (YouTube, TikTok, Instagram). The bot downloads it, spots the segments that stand on their own, reframes them to 9:16 with a blurred background, burns Whisper subtitles in and returns the clips.
 
-```text
-G2tiktokWork        idea + niche  →  script and hook (OpenAI)
-                    → ElevenLabs voice (edge-tts as fallback)
-                    → royalty-free B-roll (Pexels, Pixabay)
-                    → word-level karaoke subtitles (faster-whisper)
-                    → 1080×1920 render, beat-cut editing
-G2Tiktok            long video → 9:16 clips, blurred background, Telegram Stars credits
-G2TiktokAutopost    series publishing across several accounts (Selenium)
-G2Tiktok-Live-inter live guessing game for TikTok Live, OBS overlay
-G2Trading-safe      off video: Solana / Raydium trading bot, same Telegram base
-```
-
-Most of the work went into robustness rather than video: persisted task queues to resume after an interruption, render history, temporary file cleanup, two-gigabyte transfers over MTProto, per-user accounts and credits, niche configuration in JSON (voice, price range) to change formats without touching code.
-
-The trading bot is the serious cousin of the family: detection of new Raydium pools over WebSocket, automated safety analysis (honeypot, mint authorities, holder distribution), paper or live execution, post-trade position management, and the same Telegram dashboard as the others. It is shown here for the mechanics, not as advice.
-
-Actual state: the generation chain runs and has produced about sixty videos; the splitter and the publisher have served on real series. The missing link is the automatic hand-off from renders to the publisher, still done by hand.
+Two constraints shaped the architecture: heavy files, hence Pyrogram and the MTProto protocol to send up to two gigabytes, and a paid model, hence credits bought with Telegram Stars and a per-user processing queue. The same engine exists as a web dashboard, which served as a test bench before the bot version.

@@ -1,0 +1,10 @@
+---
+title: "G2TiktokAutopost, le publieur"
+summary: "Publie des séries de vidéos sur plusieurs comptes TikTok, piloté depuis Telegram, en tenant compte des limites de la plateforme."
+myRole: "Conception et développement, seul"
+keywords: ["g2", "publication", "selenium", "tiktok", "séries", "telegram", "automatisation"]
+---
+
+Le dernier maillon avant l'écran du spectateur. Les vidéos rendues sont rangées par séries, chaque série a son compte, et le bot publie à la cadence voulue en pilotant un navigateur avec Selenium sur des sessions enregistrées. Il contourne les fenêtres surgissantes, respecte les limites de débit et déplace chaque fichier publié dans un dossier `posted/` pour ne jamais republier deux fois.
+
+Pas d'interface au-delà de Telegram : on y reçoit l'état des séries et les erreurs. C'est l'outil le plus fragile de la famille, parce qu'il dépend d'une interface qui n'est pas la sienne.

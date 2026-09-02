@@ -1,14 +1,15 @@
 {
-  "slug": "g2tiktok",
+  "slug": "g2tiktokwork",
   "status": "active",
   "year": "2025-2026",
   "stack": [
     "Python",
     "python-telegram-bot",
-    "Pyrogram",
-    "yt-dlp",
+    "OpenAI",
+    "ElevenLabs",
     "faster-whisper",
-    "MoviePy"
+    "MoviePy",
+    "FFmpeg"
   ],
   "links": {},
   "screenshots": [
@@ -17,9 +18,9 @@
       "frame": "browser"
     },
     {
-      "id": "dashboard-tiktokdash",
-      "frame": "browser"
+      "id": "demo-frame",
+      "frame": "phone"
     }
   ],
-  "order": 2
+  "order": 1
 }

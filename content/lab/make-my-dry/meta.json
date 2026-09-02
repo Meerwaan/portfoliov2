@@ -10,19 +10,5 @@
   ],
   "links": {},
   "screenshots": [],
-  "order": 4,
-  "steps": {
-    "fr": [
-      "7 jours de référence",
-      "plan par paliers",
-      "relevé quotidien + raison",
-      "écart plan / réel"
-    ],
-    "en": [
-      "7-day baseline",
-      "staged plan",
-      "daily log + reason",
-      "plan vs actual gap"
-    ]
-  }
+  "order": 8
 }

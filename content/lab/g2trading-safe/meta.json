@@ -1,0 +1,15 @@
+{
+  "slug": "g2trading-safe",
+  "status": "paused",
+  "year": "2025-2026",
+  "stack": [
+    "Python",
+    "asyncio",
+    "aiogram",
+    "Solana",
+    "WebSocket"
+  ],
+  "links": {},
+  "screenshots": [],
+  "order": 5
+}

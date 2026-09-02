@@ -181,9 +181,10 @@
     "cv": "Télécharger le CV (PDF)",
     "today": "aujourd'hui",
     "readCase": "Lire l'étude de cas",
-    "pathTitle": "Le parcours, en coupe.",
-    "pathIntro": "Chaque étape a touché des systèmes, une partie de la stack et un terrain. Survole une étape : les couches s'allument.",
-    "stackNote": "CE QUE JE TIENS EN PRODUCTION, PAS UN MUR DE LOGOS"
+    "pathTitle": "Le parcours, une étape par écran.",
+    "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
+    "stackNote": "CE QUE JE TIENS EN PRODUCTION, PAS UN MUR DE LOGOS",
+    "founder": "Fondateur"
   },
   "contact": {
     "title": "Contact",

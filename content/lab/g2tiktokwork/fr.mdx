@@ -1,0 +1,15 @@
+---
+title: "G2tiktokWork, l'usine à vidéos"
+summary: "Un script envoyé sur Telegram ressort en vidéo verticale montée, doublée et sous-titrée mot à mot, prête à publier."
+myRole: "Conception et développement, seul"
+keywords: ["g2", "go to tiktok", "automatisation", "python", "telegram", "elevenlabs", "whisper", "ffmpeg", "vidéo verticale", "bot"]
+screenshotAlt:
+  landing: "Page de présentation de G2tiktokWork : « Tes pires anecdotes de boulot. En millions de vues. », avec l'accès au bot Telegram."
+  demo-frame: "Image extraite d'une vidéo produite par G2tiktokWork : format vertical, sous-titres karaoké mot à mot sur un fond vidéo."
+---
+
+G2 se lit « Go to ». G2tiktokWork est la pièce centrale de la famille : un bot Telegram auquel on donne une niche et une idée, et qui rend une vidéo 1080×1920 terminée. Entre les deux, une chaîne Python : script et accroche générés, voix de synthèse ElevenLabs avec repli local, fond vidéo libre de droits choisi par mots-clés, transcription par Whisper pour caler chaque mot des sous-titres, montage au tempo et rendu par FFmpeg.
+
+Chaque niche a sa configuration en JSON : voix, fourchette de prix, rushs propres. Les utilisateurs ont des comptes et des crédits en SQLite, sauvegardés chaque jour ; l'historique des rendus et des accroches déjà utilisées évite de produire deux fois la même chose.
+
+État réel : en service, une soixantaine de vidéos rendues. La publication reste manuelle : c'est le rôle de G2TiktokAutopost.

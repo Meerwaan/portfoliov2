@@ -7,7 +7,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import {
   AboutFrontmatter,
-  LayersData,
+  StoryData,
   StackData,
   PathData,
   LabFrontmatter,
@@ -211,13 +211,9 @@ export async function getAbout(locale: Locale): Promise<About> {
   return { ...data, locale, fallbackBody, body, path: pathData };
 }
 
-/** Exploded layers of the path page (content/about/layers.json), validated: every link must exist. */
-export async function getAboutLayers(): Promise<LayersData> {
-  const file = path.join(CONTENT, "about", "layers.json");
-  const data = await readJson(file, LayersData);
-  const ids = new Set(data.layers.flatMap((l) => l.cells.map((c) => c.id)));
-  for (const cell of data.layers[0].cells) for (const link of cell.links) if (!ids.has(link)) fail(file, `cell "${cell.id}" links to unknown "${link}"`);
-  return data;
+/** Steps of the path page (content/about/story.json). */
+export async function getStory(): Promise<StoryData> {
+  return readJson(path.join(CONTENT, "about", "story.json"), StoryData);
 }
 
 export { LOCALES as CONTENT_LOCALES };

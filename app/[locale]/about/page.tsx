@@ -5,10 +5,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowDown } from "@phosphor-icons/react/ssr";
 import { routing } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { getAbout, getAboutLayers } from "@/lib/content/loader";
+import { getAbout } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/mdx";
 import { site } from "@/lib/site";
-import { ExplodedLayers } from "@/components/stack/ExplodedLayers";
+import { PathStory } from "@/components/about/PathStory";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -22,7 +22,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations("about");
-  const [about, layers] = await Promise.all([getAbout(locale), getAboutLayers()]);
+  const about = await getAbout(locale);
   const body = await renderMdx(about.body);
   const years = about.path.education.concat(about.path.experience).map((e) => e.from.slice(0, 4));
   const span = `${Math.min(...years.map(Number))} → ${new Date().getFullYear()}`;
@@ -53,7 +53,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           <h2 className="font-display text-3xl font-medium text-ink lg:col-span-7">{t("pathTitle")}</h2>
           <p className="max-w-[44ch] text-lg text-ink-2 lg:col-span-5 lg:col-start-8">{t("pathIntro")}</p>
         </div>
-        <ExplodedLayers data={layers} locale={locale} eyebrow={`PATH · ${span}`} />
+        <PathStory locale={locale} eyebrow={`PATH · ${span}`} />
       </section>
 
     </>

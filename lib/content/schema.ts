@@ -158,18 +158,23 @@ export const StackData = z.object({
 });
 export type StackData = z.infer<typeof StackData>;
 
-const LocalizedOrString = z.union([z.string(), Localized]);
-export const LayerCell = z.object({
+export const StoryStep = z.object({
   id: z.string().min(1),
-  title: LocalizedOrString,
-  sub: LocalizedOrString.optional(),
+  from: z.string().regex(/^\d{4}$/),
+  to: z.string().regex(/^\d{4}$/).nullable(),
+  kind: z.enum(["founder", "experience", "education"]),
+  org: z.string().min(1),
+  place: z.string().optional(),
+  role: Localized,
+  line: Localized,
+  stack: z.array(z.string()).default([]),
+  proof: z.discriminatedUnion("kind", [
+    z.object({ kind: z.literal("screen"), project: z.string(), id: z.string() }),
+    z.object({ kind: z.literal("diagram"), project: z.string() }),
+    z.object({ kind: z.literal("none") }),
+  ]),
   href: z.string().optional(),
-  /** Ids of cells in other layers lit when this cell is hovered (only meaningful on the top layer). */
-  links: z.array(z.string()).default([]),
 });
-export type LayerCell = z.infer<typeof LayerCell>;
-export const LayersData = z.object({
-  hint: Localized,
-  layers: z.array(z.object({ id: z.string(), label: Localized, cells: z.array(LayerCell).min(1) })).min(2).max(4),
-});
-export type LayersData = z.infer<typeof LayersData>;
+export type StoryStep = z.infer<typeof StoryStep>;
+export const StoryData = z.object({ steps: z.array(StoryStep).min(3) });
+export type StoryData = z.infer<typeof StoryData>;

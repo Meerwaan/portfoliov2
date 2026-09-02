@@ -1,0 +1,20 @@
+{
+  "slug": "g2tiktok-live-inter",
+  "status": "prototype",
+  "year": "2026",
+  "stack": [
+    "Python",
+    "TikTokLive",
+    "WebSocket",
+    "edge-tts",
+    "OBS"
+  ],
+  "links": {},
+  "screenshots": [
+    {
+      "id": "overlay",
+      "frame": "browser"
+    }
+  ],
+  "order": 4
+}

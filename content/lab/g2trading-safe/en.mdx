@@ -1,0 +1,10 @@
+---
+title: "G2Trading-safe, the off-video cousin"
+summary: "Asynchronous trading bot on Solana: new pool detection, automated safety analysis, paper or live execution, Telegram control."
+myRole: "Design and development, solo"
+keywords: ["g2", "trading", "solana", "raydium", "bot", "asyncio", "telegram", "safety"]
+---
+
+Same base as the rest of the family, Telegram dashboard included, but a completely different ground. The bot listens to the Solana blockchain over WebSocket to spot new liquidity pools on Raydium, screens every candidate (honeypot, mint and freeze authorities, holder concentration), then executes, in simulation or for real, with post-trade rules: securing part of the gains, liquidating stagnant positions, dynamic stop and target.
+
+It is shown here for the mechanics: real time, automated safety, asynchronous end to end. Not as advice, and it is paused.

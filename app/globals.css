@@ -643,157 +643,105 @@ body {
   color: var(--signal);
 }
 
-/* ---------- Generic exploded layers (path page) ---------- */
-.stack-layer-top {
-  background: var(--paper-2);
+/* ---------- Lab cards: laid flat, lifted on hover ---------- */
+.lab-card-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 20%;
+  overflow: clip;
+  margin-inline: -0.5rem;
+  padding: 0.5rem;
 }
-.stack-layer-top .stack-layer-tag {
-  opacity: 1;
-}
-.stack-grid-top {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: start;
-}
-.stack-grid-dense {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.3rem;
-}
-.stack-grid-dense .stack-cell {
-  padding: 0.3rem 0.45rem;
-}
-.stack-cell-hot {
-  position: relative;
-  text-align: left;
-  cursor: pointer;
-  transform-style: preserve-3d;
-}
-.stack-cell-hot.is-active,
-.stack-cell-hot:hover,
-.stack-cell-hot:focus-visible {
-  border-color: var(--signal);
-  background: var(--signal-soft);
-}
-.stack-cell-hot .stack-thread {
-  left: 1rem;
-  top: 50%;
-}
-.stack-cell-hot:hover .stack-thread,
-.stack-cell-hot:focus-visible .stack-thread,
-.stack-cell-hot.is-active .stack-thread {
-  opacity: 1;
-}
-.stack-cell-link:hover {
-  border-color: var(--signal);
-}
-.stack-layer-top .stack-grid-top {
-  padding-top: 0;
-}
-.stack-layer.stack-layer-top:not(.stack-layer-ui) {
-  justify-content: flex-start;
-}
-
-/* ---------- Lab bench cards: small exploded objects ---------- */
-.bench-card {
-  --explode: 0;
-}
-.bench-card:hover,
-.bench-card:focus-within,
-.bench-card[data-active="true"] {
-  --explode: 1;
-}
-.bench-stage {
-  perspective: 1400px;
-  perspective-origin: 50% 30%;
-  padding: 2.5rem 1rem 6.5rem;
-}
-.bench-stack {
+.lab-card-stack {
   position: relative;
   aspect-ratio: 16 / 10;
   transform-style: preserve-3d;
-  transform: translateY(calc(var(--explode) * -1.5rem)) rotateX(56deg) rotateZ(-24deg);
+  transform: rotateX(46deg) rotateZ(-14deg) scale(0.92);
   transition: transform var(--dur-3) var(--ease-out);
 }
-.bench-layer {
+.lab-card:hover .lab-card-stack,
+.lab-card:focus-within .lab-card-stack {
+  transform: rotateX(0deg) rotateZ(0deg) scale(1);
+}
+.lab-card-face,
+.lab-card-shadow {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  overflow: hidden;
-  padding: 1.75rem 0.75rem 0.75rem;
-  border: 1px solid var(--rule-strong);
   border-radius: var(--radius-md);
+  border: 1px solid var(--rule-strong);
+}
+.lab-card-face {
+  overflow: hidden;
   background: var(--paper-2);
-  transform: translateZ(calc(var(--explode) * -60px * var(--n) - var(--n) * 3px));
+  transform: translateZ(0);
+}
+.lab-card-shadow {
+  background: var(--paper-2);
+  transform: translateZ(-14px) translate(6px, 6px);
   transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-3) var(--ease-out);
 }
-.bench-layer:not(.bench-layer-shot) {
-  opacity: calc(0.35 + var(--explode) * 0.65);
+.lab-card:hover .lab-card-shadow,
+.lab-card:focus-within .lab-card-shadow {
+  transform: translateZ(-4px) translate(2px, 2px);
+  opacity: 0.6;
 }
-.bench-layer-shot {
-  padding: 0;
-  background: var(--paper);
-}
-.bench-layer-shot img {
-  height: 100%;
-}
-.bench-plate {
+.lab-card-plate {
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
 }
-.bench-tag {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.bench-steps {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.25rem 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  line-height: 1.35;
-  color: var(--ink-2);
-}
-.bench-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.bench-chips li {
-  padding: 0.15rem 0.45rem;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--ink-2);
-}
-.bench-card[data-active="true"] .bench-index,
-.bench-card:hover .bench-index {
-  color: var(--signal);
+.lab-card a:focus-visible .lab-card-face {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
-  .bench-card {
-    --explode: 1;
-  }
-  .bench-stack,
-  .bench-layer {
+  .lab-card-stack {
+    transform: none;
     transition: none;
   }
+  .lab-card-shadow {
+    display: none;
+  }
+}
+
+/* ---------- Path story: one step per screen ---------- */
+.path-year {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.path-rail-tick {
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.path-rail-item[aria-current="step"] .path-rail-tick {
+  opacity: 1;
+  width: 2rem;
+}
+.path-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.path-story[data-pinned="true"] .path-steps {
+  display: grid;
+  gap: 0;
+}
+.path-story[data-pinned="true"] .path-step-panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+}
+.path-story[data-pinned="true"] .path-step-panel[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.path-diagram svg text {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }

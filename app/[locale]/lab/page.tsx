@@ -6,7 +6,7 @@ import { routing } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getLabEntries } from "@/lib/content/loader";
 import { LabLog } from "@/components/lab/LabLog";
-import { LabBench } from "@/components/lab/LabBench";
+import { LabCards } from "@/components/lab/LabCards";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/lab">): Promise<Metadata> {
   const { locale } = await params;
@@ -27,7 +27,7 @@ export default async function LabPage({ params }: PageProps<"/[locale]/lab">) {
         <h1 className="font-display text-3xl font-medium text-ink">{t("title")}</h1>
         <p className="mt-5 max-w-[52ch] text-xl text-ink-2">{t("intro")}</p>
       </section>
-      <LabBench entries={entries} locale={locale} />
+      <LabCards entries={entries} />
       <LabLog entries={entries} />
     </>
   );
