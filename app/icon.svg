@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="8" fill="#111210"/>
+  <text x="10" y="41" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" font-weight="700" fill="#f6f5f1" letter-spacing="-1">mwn</text>
+  <circle cx="52" cy="48" r="4" fill="#0a5bff"/>
+</svg>

@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+/* ---------- Tokens: paper (light) is the default, operations (dark) swaps the same variables ---------- */
+:root {
+  --paper: #f6f5f1;
+  --paper-2: #ffffff;
+  --ink: #111210;
+  --ink-2: #4b4b47;
+  --ink-3: #6f6f69;
+  --rule: #dddcd6;
+  --rule-strong: #b9b8b1;
+  --signal: #0a5bff;
+  --signal-soft: rgb(10 91 255 / 0.1);
+  --on-signal: #ffffff;
+  --shadow-command: 0 24px 64px -24px rgb(10 91 255 / 0.18);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #0c0d0f;
+  --paper-2: #121316;
+  --ink: #ecebe6;
+  --ink-2: #a5a49e;
+  --ink-3: #7c7c76;
+  --rule: #232428;
+  --rule-strong: #34353a;
+  --signal: #3b82ff;
+  --signal-soft: rgb(59 130 255 / 0.14);
+  --on-signal: #0c0d0f;
+  --shadow-command: 0 24px 64px -24px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c0d0f;
+    --paper-2: #121316;
+    --ink: #ecebe6;
+    --ink-2: #a5a49e;
+    --ink-3: #7c7c76;
+    --rule: #232428;
+    --rule-strong: #34353a;
+    --signal: #3b82ff;
+    --signal-soft: rgb(59 130 255 / 0.14);
+    --on-signal: #0c0d0f;
+    --shadow-command: 0 24px 64px -24px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-*: initial;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-on-signal: var(--on-signal);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--font-cabinet), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-cabinet), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-commit), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-display: clamp(3.5rem, 9vw, 8rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.03em;
+  --text-3xl: clamp(2.5rem, 5vw, 4.5rem);
+  --text-3xl--line-height: 1.02;
+  --text-3xl--letter-spacing: -0.025em;
+  --text-2xl: 2.125rem;
+  --text-2xl--line-height: 1.12;
+  --text-2xl--letter-spacing: -0.02em;
+  --text-xl: 1.625rem;
+  --text-xl--line-height: 1.25;
+  --text-xl--letter-spacing: -0.01em;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.4;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.55;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-mono: 0.8125rem;
+  --text-mono--line-height: 1.4;
+
+  --radius-*: initial;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+
+  --shadow-*: initial;
+  --shadow-command: var(--shadow-command);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --spacing-gutter: clamp(1rem, 4vw, 3rem);
+  --spacing-section: clamp(4rem, 10vw, 10rem);
+  --spacing-nav: 4rem;
+  --spacing-rail: 2rem;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+}
+
+/* Motion durations kept as plain variables (used by CSS and by JS via getComputedStyle). */
+:root {
+  --dur-1: 120ms;
+  --dur-2: 240ms;
+  --dur-3: 480ms;
+  --dur-4: 900ms;
+}
+
+/* ---------- Base ---------- */
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--signal-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  border-radius: var(--radius-sm);
+}
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ---------- Utilities ---------- */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: var(--text-mono--line-height);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Live dot: the only circle, the only pulse ---------- */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  vertical-align: middle;
+}
+.live-dot[data-state="probing"] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
+}
+.live-dot[data-state="degraded"] {
+  background: var(--ink-3);
+}
+.live-dot[data-state="live"] {
+  animation: live-pulse 1.6s var(--ease-in-out) infinite;
+}
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* ---------- Name resolve: server text, CSS-only crossfade from mono to display ---------- */
+.name-resolve {
+  position: relative;
+  display: block;
+}
+.name-resolve .name-mono,
+.name-resolve .name-display {
+  display: block;
+}
+.name-resolve .name-mono {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: name-mono-out var(--dur-4) var(--ease-out) 200ms both;
+}
+.name-resolve .name-display {
+  animation: name-display-in var(--dur-4) var(--ease-out) 200ms both;
+}
+@keyframes name-mono-out {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes name-display-in {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.02em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* ---------- Route transitions (React <ViewTransition default="page">) ---------- */
+::view-transition-old(.page) {
+  animation: var(--dur-2) var(--ease-out) both page-out;
+}
+::view-transition-new(.page) {
+  animation: var(--dur-2) var(--ease-out) both page-in;
+}
+::view-transition-group(.screen) {
+  animation-duration: var(--dur-3);
+  animation-timing-function: var(--ease-out);
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* ---------- Reduced motion: everything settles instantly ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .live-dot[data-state="live"],
+  .name-resolve .name-mono,
+  .name-resolve .name-display {
+    animation: none !important;
+  }
+  .name-resolve .name-mono {
+    visibility: hidden;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

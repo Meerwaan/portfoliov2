@@ -1,0 +1,71 @@
+{
+  "site": {
+    "name": "Merwan Laouini",
+    "tagline": "Full-stack product engineer",
+    "description": "Full-stack product engineer. I build software end to end, from the database schema to the day it goes live: healthcare software, multi-tenant SaaS, billing."
+  },
+  "a11y": {
+    "skipLink": "Skip to content",
+    "mainNav": "Main navigation",
+    "rail": "System status",
+    "openCommand": "Open command"
+  },
+  "nav": {
+    "work": "Work",
+    "lab": "Lab",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "sentence": "I build software end to end, from the database schema to the day it goes live.",
+    "commandPlaceholder": "Ask me about the healthcare project, multi-tenancy, the stack…",
+    "commandLabel": "Query the site",
+    "doors": {
+      "work": { "title": "Work", "meta": "Four systems in production or delivered" },
+      "lab": { "title": "Lab", "meta": "Prototypes, automations, experiments" },
+      "contact": { "title": "Contact", "meta": "Reply within 48 hours" }
+    }
+  },
+  "rail": {
+    "status": "STATUS",
+    "probing": "PROBING",
+    "live": "LIVE",
+    "degraded": "DEGRADED",
+    "region": "REGION",
+    "rtt": "RTT",
+    "build": "BUILD",
+    "deploy": "DEPLOY",
+    "local": "LOCAL",
+    "context": {
+      "home": "ENTRY",
+      "work": "INDEX",
+      "node": "NODE",
+      "lab": "LAB",
+      "about": "PATH",
+      "contact": "CONTACT",
+      "notFound": "ROUTE_NOT_FOUND"
+    }
+  },
+  "theme": {
+    "toNight": "Night mode",
+    "toDay": "Day mode",
+    "night": "NIGHT",
+    "day": "DAY"
+  },
+  "locale": {
+    "switchTo": "Passer en français",
+    "short": "FR"
+  },
+  "notFound": {
+    "title": "This route does not exist.",
+    "body": "The requested path matches no node of the system.",
+    "home": "Back to entry"
+  },
+  "error": {
+    "title": "A runtime error occurred.",
+    "retry": "Retry"
+  },
+  "footer": {
+    "rights": "Merwan Laouini, Sèvres. Source code on GitHub."
+  }
+}

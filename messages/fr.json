@@ -1,0 +1,71 @@
+{
+  "site": {
+    "name": "Merwan Laouini",
+    "tagline": "Ingénieur produit full-stack",
+    "description": "Ingénieur produit full-stack. Je construis des logiciels de bout en bout, du schéma de base de données à la mise en service : logiciel de santé, SaaS multi-tenant, facturation."
+  },
+  "a11y": {
+    "skipLink": "Aller au contenu",
+    "mainNav": "Navigation principale",
+    "rail": "État du système",
+    "openCommand": "Ouvrir la commande"
+  },
+  "nav": {
+    "work": "Travaux",
+    "lab": "Atelier",
+    "about": "Parcours",
+    "contact": "Contact"
+  },
+  "hero": {
+    "sentence": "Je construis des logiciels de bout en bout, du schéma de base de données à la mise en service.",
+    "commandPlaceholder": "Demande-moi le projet santé, le multi-tenant, la stack…",
+    "commandLabel": "Interroger le site",
+    "doors": {
+      "work": { "title": "Travaux", "meta": "Quatre systèmes en production ou livrés" },
+      "lab": { "title": "Atelier", "meta": "Prototypes, automatisations, essais" },
+      "contact": { "title": "Contact", "meta": "Réponse sous 48 h" }
+    }
+  },
+  "rail": {
+    "status": "STATUS",
+    "probing": "PROBING",
+    "live": "LIVE",
+    "degraded": "DEGRADED",
+    "region": "REGION",
+    "rtt": "RTT",
+    "build": "BUILD",
+    "deploy": "DEPLOY",
+    "local": "LOCAL",
+    "context": {
+      "home": "ENTRY",
+      "work": "INDEX",
+      "node": "NODE",
+      "lab": "LAB",
+      "about": "PATH",
+      "contact": "CONTACT",
+      "notFound": "ROUTE_NOT_FOUND"
+    }
+  },
+  "theme": {
+    "toNight": "Mode nuit",
+    "toDay": "Mode jour",
+    "night": "NUIT",
+    "day": "JOUR"
+  },
+  "locale": {
+    "switchTo": "Switch to English",
+    "short": "EN"
+  },
+  "notFound": {
+    "title": "Cette route n'existe pas.",
+    "body": "Le chemin demandé ne correspond à aucun nœud du système.",
+    "home": "Retour à l'entrée"
+  },
+  "error": {
+    "title": "Une erreur d'exécution s'est produite.",
+    "retry": "Réessayer"
+  },
+  "footer": {
+    "rights": "Merwan Laouini, Sèvres. Code source sur GitHub."
+  }
+}
