@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { site } from "@/lib/site";
 import { Hero } from "@/components/hero/Hero";
 import { LegacyHashRedirect } from "@/components/home/LegacyHashRedirect";
-import { InterfaceSpace } from "@/components/space/InterfaceSpace";
+import { StackSection } from "@/components/stack/StackSection";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -27,7 +27,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <>
       <LegacyHashRedirect />
       <Hero />
-      <InterfaceSpace />
+      <StackSection />
     </>
   );
 }

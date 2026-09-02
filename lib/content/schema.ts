@@ -131,3 +131,27 @@ export type PathData = z.infer<typeof PathData>;
 
 export const AboutFrontmatter = z.object({ title: z.string().min(1), statement: z.string().min(10).max(120) });
 export type AboutFrontmatter = z.infer<typeof AboutFrontmatter>;
+
+const Hotspot = z.object({
+  id: z.string().min(1),
+  label: Localized,
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+  w: z.number().min(1).max(100),
+  h: z.number().min(1).max(100),
+  routes: z.array(z.string()).default([]),
+  /** "Model.field" references into `models`. */
+  fields: z.array(z.string()).default([]),
+});
+export type Hotspot = z.infer<typeof Hotspot>;
+
+export const StackData = z.object({
+  /** Screenshot id used as the interface layer. Falls back to the hero when not processed. */
+  ui: z.string().min(1),
+  hotspots: z.array(Hotspot).min(1).max(6),
+  routes: z.array(z.object({ id: z.string(), method: z.string(), path: z.string(), note: Localized })).min(1),
+  models: z.array(z.object({ name: z.string(), fields: z.array(z.string()).min(1) })).min(1),
+  infra: z.array(z.object({ name: z.string(), role: Localized })).min(1),
+  totals: z.object({ routes: z.number().int(), models: z.number().int() }),
+});
+export type StackData = z.infer<typeof StackData>;

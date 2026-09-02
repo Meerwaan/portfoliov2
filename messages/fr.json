@@ -195,9 +195,22 @@
       "error": "L'envoi a échoué. Écrivez-moi directement par email."
     }
   },
-  "space": {
-    "title": "Les interfaces, en service.",
-    "meta": "{count, plural, one {# capture réelle} other {# captures réelles}}",
-    "open": "Voir l'étude de cas"
+  "stack": {
+    "title": "Un système, en coupe.",
+    "intro": "Chaque produit éclaté en ses vraies couches, de l'interface à l'infrastructure. Les routes et les modèles ci-dessous sont lus dans le code des projets, pas dessinés pour l'occasion.",
+    "layers": {
+      "ui": "Interface",
+      "routes": "Routes et actions",
+      "models": "Modèle de données",
+      "infra": "Infrastructure"
+    },
+    "counts": {
+      "ui": "{count, plural, one {# zone reliée} other {# zones reliées}}",
+      "routes": "{count} routes dans le code",
+      "models": "{count} modèles",
+      "infra": "{count, plural, one {# service} other {# services}}"
+    },
+    "hint": "Survoler l'interface pour suivre une donnée jusqu'à la base.",
+    "open": "Lire l'étude de cas"
   }
 }

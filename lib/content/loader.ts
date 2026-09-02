@@ -7,6 +7,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import {
   AboutFrontmatter,
+  StackData,
   PathData,
   LabFrontmatter,
   LabMeta,
@@ -176,6 +177,20 @@ export async function getLabEntries(locale: Locale): Promise<LabEntry[]> {
   const slugs = await getLabSlugs();
   const entries = await Promise.all(slugs.map((slug) => getLabEntry(slug, locale)));
   return entries.sort((a, b) => a.order - b.order);
+}
+
+/** Exploded-stack data (content/projects/<slug>/stack.json), or null when the project has none. */
+export async function getProjectStack(slug: string): Promise<StackData | null> {
+  const file = path.join(CONTENT, "projects", slug, "stack.json");
+  if (!(await exists(file))) return null;
+  const data = await readJson(file, StackData);
+  const known = new Set(data.models.flatMap((m) => m.fields.map((f) => `${m.name}.${f}`)));
+  const routes = new Set(data.routes.map((r) => r.id));
+  for (const h of data.hotspots) {
+    for (const f of h.fields) if (!known.has(f)) fail(file, `hotspot "${h.id}" references unknown field "${f}"`);
+    for (const r of h.routes) if (!routes.has(r)) fail(file, `hotspot "${h.id}" references unknown route "${r}"`);
+  }
+  return data;
 }
 
 export async function getProjectDiagram(slug: string): Promise<string | null> {

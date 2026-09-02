@@ -195,9 +195,22 @@
       "error": "Sending failed. Please write to me directly by email."
     }
   },
-  "space": {
-    "title": "The interfaces, in service.",
-    "meta": "{count, plural, one {# real capture} other {# real captures}}",
-    "open": "Open case study"
+  "stack": {
+    "title": "A system, in section.",
+    "intro": "Each product exploded into its real layers, from the interface down to the infrastructure. The routes and models below are read from the projects' code, not drawn for the occasion.",
+    "layers": {
+      "ui": "Interface",
+      "routes": "Routes and actions",
+      "models": "Data model",
+      "infra": "Infrastructure"
+    },
+    "counts": {
+      "ui": "{count, plural, one {# linked area} other {# linked areas}}",
+      "routes": "{count} routes in the code",
+      "models": "{count} models",
+      "infra": "{count, plural, one {# service} other {# services}}"
+    },
+    "hint": "Hover the interface to follow a piece of data down to the database.",
+    "open": "Read the case study"
   }
 }

@@ -410,23 +410,192 @@ body {
   color: var(--ink-2);
 }
 
-/* ---------- Interface space ---------- */
-.space-strip {
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+/* ---------- Exploded stack (CSS 3D, --explode scrubbed by GSAP on desktop) ---------- */
+.stack-stage {
+  --explode: 1;
+  --tilt: 56;
+  --spin: -30;
+  --gap: 115px;
 }
-.space-strip::-webkit-scrollbar {
-  display: none;
+.stack-scene {
+  perspective: 1800px;
+  perspective-origin: 50% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34rem;
 }
-.space-stage canvas {
-  display: block;
-  touch-action: pan-y;
+.stack {
+  position: relative;
+  width: min(100%, 40rem);
+  aspect-ratio: 16 / 10;
+  transform-style: preserve-3d;
+  /* Lift the whole stack as it explodes so the lowest layer stays inside the stage. */
+  transform: translateY(calc(var(--explode) * -9rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
 }
-/* Hand-off proxy: a DOM copy of the clicked plane, fixed at its projected rect, named for the view transition. */
-.space-proxy {
-  position: fixed;
-  z-index: 40;
-  object-fit: cover;
-  pointer-events: none;
+.stack-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
   background: var(--paper-2);
+  transform: translateZ(calc(var(--explode) * var(--gap) * var(--n) * -1 - var(--n) * 3px));
+  transform-style: preserve-3d;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.stack-layer-ui {
+  padding: 0;
+  overflow: visible; /* the threads must leave the plane */
+  background: var(--paper);
+}
+.stack-layer-ui .stack-shot {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+/* Lower layers are partly covered by the ones above (top-left band), so their content sits at the bottom. */
+.stack-layer:not(.stack-layer-ui) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.25rem 0.9rem 0.9rem;
+}
+.stack-layer-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.75rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  opacity: var(--explode);
+}
+.stack-layer-ui .stack-layer-tag {
+  padding: 0.15rem 0.4rem;
+  background: var(--paper-2);
+  border-radius: var(--radius-sm);
+}
+.stack-stage[data-focus-layer] .stack-layer {
+  opacity: 0.22;
+}
+.stack-stage[data-focus-layer="ui"] .stack-layer[data-layer="ui"],
+.stack-stage[data-focus-layer="routes"] .stack-layer[data-layer="routes"],
+.stack-stage[data-focus-layer="models"] .stack-layer[data-layer="models"],
+.stack-stage[data-focus-layer="infra"] .stack-layer[data-layer="infra"] {
+  opacity: 1;
+}
+.stack-hotspot {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+}
+.stack-hotspot:hover,
+.stack-hotspot:focus-visible,
+.stack-hotspot.is-active {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+}
+.stack-hotspot:focus-visible {
+  outline-offset: 2px;
+}
+/* The thread: a vertical line from the hotspot down through the layers, standing up in 3D. */
+.stack-thread {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  margin-left: -1px;
+  height: calc(var(--explode) * var(--gap) * 3);
+  background: var(--signal);
+  opacity: 0;
+  transform-origin: top;
+  transform: rotateX(-90deg); /* stands into the stack, toward the lower layers */
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.stack-hotspot:hover .stack-thread,
+.stack-hotspot:focus-visible .stack-thread,
+.stack-hotspot.is-active .stack-thread {
+  opacity: 1;
+}
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.stack-grid-models {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.stack-grid-infra {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.stack-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  transition: border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+}
+.stack-cell > span {
+  overflow-wrap: anywhere;
+}
+.stack-cell.is-lit {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+}
+.stack-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-2);
+  white-space: normal !important;
+}
+.stack-fields .is-lit {
+  color: var(--signal);
+  font-weight: 700;
+}
+/* Flat layout below lg and for reduced motion: same content, no perspective, no pin. */
+@media (max-width: 63.9375rem), (prefers-reduced-motion: reduce) {
+  .stack-scene {
+    perspective: none;
+    min-height: 0;
+  }
+  .stack {
+    width: 100%;
+    aspect-ratio: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .stack-layer {
+    position: relative;
+    inset: auto;
+    transform: none;
+  }
+  .stack-thread {
+    display: none;
+  }
+  .stack-layer-tag {
+    opacity: 1;
+  }
+  .stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
