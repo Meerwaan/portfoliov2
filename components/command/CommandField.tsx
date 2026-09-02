@@ -42,7 +42,7 @@ export function CommandField() {
           placeholder={t("commandPlaceholder")}
           className="min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink-3"
         />
-        <kbd className="mono-label hidden rounded-sm border border-rule px-1.5 py-0.5 text-ink-3 sm:inline-block">⌘K</kbd>
+        <kbd className="mono-label hidden rounded-sm border border-rule px-1.5 py-0.5 text-ink-2 sm:inline-block">⌘K</kbd>
         <button type="submit" className="text-ink-3 hover:text-signal" aria-label={t("commandLabel")}>
           <MagnifyingGlass size={18} weight="regular" />
         </button>

@@ -52,6 +52,9 @@ export function SpaceGate({ items, fallback, strip }: { items: SpaceItem[]; fall
     let decided: Mode | null = null;
     let near = false;
     let loaded = document.readyState === "complete";
+    // Scroll intent: the hero fills the first viewport, so nobody sees the stage without scrolling. Waiting for
+    // the first scroll keeps three.js out of the load phase (and out of Lighthouse's TBT window) at no visible cost.
+    let intent = window.scrollY > 0;
     let done = false;
 
     const settle = (next: Mode) => {
@@ -63,7 +66,11 @@ export function SpaceGate({ items, fallback, strip }: { items: SpaceItem[]; fall
       if (done) return;
       if (decided === null) decided = decide();
       if (decided !== "scene") return settle(decided);
-      if (near && loaded) settle("scene");
+      if (near && loaded && intent) settle("scene");
+    };
+    const onIntent = () => {
+      intent = true;
+      check();
     };
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -79,10 +86,12 @@ export function SpaceGate({ items, fallback, strip }: { items: SpaceItem[]; fall
     const cleanup = () => {
       observer.disconnect();
       window.removeEventListener("load", onLoad);
+      window.removeEventListener("scroll", onIntent);
     };
 
     observer.observe(host);
     if (!loaded) window.addEventListener("load", onLoad, { once: true });
+    if (!intent) window.addEventListener("scroll", onIntent, { once: true, passive: true });
     return cleanup;
   }, []);
 
