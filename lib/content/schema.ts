@@ -109,3 +109,25 @@ export const ScreensManifest = z.record(
   }),
 );
 export type ScreensManifest = z.infer<typeof ScreensManifest>;
+
+const Localized = z.object({ fr: z.string().min(1), en: z.string().min(1) });
+const PathEntry = z.object({
+  from: z.string().regex(/^\d{4}(-\d{2})?$/),
+  to: z.string().regex(/^\d{4}(-\d{2})?$/).nullable(),
+  org: z.string().min(1),
+  place: z.string().optional(),
+  role: Localized,
+  line: Localized.optional(),
+  href: z.string().optional(),
+});
+export type PathEntry = z.infer<typeof PathEntry>;
+
+export const PathData = z.object({
+  experience: z.array(PathEntry).min(1),
+  education: z.array(PathEntry).min(1),
+  stack: z.record(z.string(), z.array(z.string()).min(1)),
+});
+export type PathData = z.infer<typeof PathData>;
+
+export const AboutFrontmatter = z.object({ title: z.string().min(1), statement: z.string().min(10).max(120) });
+export type AboutFrontmatter = z.infer<typeof AboutFrontmatter>;

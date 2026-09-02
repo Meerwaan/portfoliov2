@@ -143,5 +143,56 @@
       "actions": "actions",
       "go": "go to"
     }
+  },
+  "lab": {
+    "title": "Lab",
+    "description": "Prototypes, automations and experiments by Merwan Laouini, with their real status: active, paused, prototype.",
+    "intro": "What is in progress, what was tried, what is paused. Each entry says where it really stands.",
+    "status": {
+      "prototype": "Prototype",
+      "active": "Active",
+      "paused": "Paused",
+      "archived": "Archived"
+    },
+    "links": {
+      "live": "Visit",
+      "repo": "Code"
+    },
+    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING"
+  },
+  "about": {
+    "title": "About",
+    "description": "Merwan Laouini's path as a full-stack product engineer: work-study at Neocortex and Youggy, Master's at ESIEE IT, what he is looking for.",
+    "experience": "Experience",
+    "education": "Education",
+    "stack": "Stack",
+    "stackGroups": {
+      "front": "Front",
+      "mobile": "Mobile",
+      "back": "Back",
+      "data": "Data",
+      "infra": "Infra"
+    },
+    "cv": "Download CV (PDF)",
+    "today": "today",
+    "readCase": "Read the case study"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contact Merwan Laouini for a full-time product engineer role or a freelance mission. Reply within 48 hours.",
+    "intro": "A full-time role, a mission, a question about a project: write to me directly. I reply within 48 hours.",
+    "copy": "Copy address",
+    "copied": "ADDRESS COPIED",
+    "availabilityTitle": "Availability",
+    "availability": "Open to a full-time product engineer role and to short, well-scoped freelance missions. On site in the Paris region, remote anywhere.",
+    "form": {
+      "title": "Or through this form",
+      "email": "Your email",
+      "message": "Your message",
+      "send": "Send",
+      "sending": "Sending…",
+      "success": "Message sent. I will get back to you within 48 hours.",
+      "error": "Sending failed. Please write to me directly by email."
+    }
   }
 }

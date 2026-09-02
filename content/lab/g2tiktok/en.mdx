@@ -1,0 +1,12 @@
+---
+title: "G2TikTok, video production pipeline"
+summary: "Automation suite that turns a script sent on Telegram into a subtitled vertical video, ready to publish."
+myRole: "Design and development, solo"
+keywords: ["automation", "python", "ffmpeg", "telegram", "tts", "whisper", "video", "tiktok", "pipeline"]
+---
+
+The entry point is a Telegram bot: send it a script, it returns an edited vertical video, voiced by speech synthesis and subtitled word by word. In between, a Python pipeline orchestrates the speech synthesis, Whisper transcription to align subtitles, background footage selection and FFmpeg assembly.
+
+Most of the work went into robustness rather than video: task queues persisted in SQLite to resume after an interruption, render history, temporary file cleanup, and JSON job configuration to change formats without touching code.
+
+It is a workshop, not a product: the tool runs for personal use and serves as a test bench for audio and video building blocks reused elsewhere.

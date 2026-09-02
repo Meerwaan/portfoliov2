@@ -1,0 +1,1 @@
+{ "slug": "hall-of-arts", "status": "paused", "year": "2024-2026", "stack": ["React Native", "TypeScript", "ViroReact (AR)", "react-native-maps", "Axios"], "links": { "repo": "https://github.com/HallOfArt" }, "screenshots": [], "order": 3 }

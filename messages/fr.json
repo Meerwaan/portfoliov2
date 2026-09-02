@@ -143,5 +143,56 @@
       "actions": "actions",
       "go": "aller à"
     }
+  },
+  "lab": {
+    "title": "Atelier",
+    "description": "Prototypes, automatisations et essais de Merwan Laouini, avec leur statut réel : en cours, en pause, prototype.",
+    "intro": "Ce qui est en cours, ce qui a été essayé, ce qui est en pause. Chaque entrée dit où elle en est vraiment.",
+    "status": {
+      "prototype": "Prototype",
+      "active": "En cours",
+      "paused": "En pause",
+      "archived": "Archivé"
+    },
+    "links": {
+      "live": "Voir en ligne",
+      "repo": "Code"
+    },
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS"
+  },
+  "about": {
+    "title": "Parcours",
+    "description": "Parcours de Merwan Laouini, ingénieur produit full-stack : alternances Neocortex et Youggy, Master ESIEE IT, ce qu'il cherche.",
+    "experience": "Expérience",
+    "education": "Formation",
+    "stack": "Stack",
+    "stackGroups": {
+      "front": "Front",
+      "mobile": "Mobile",
+      "back": "Back",
+      "data": "Données",
+      "infra": "Infra"
+    },
+    "cv": "Télécharger le CV (PDF)",
+    "today": "aujourd'hui",
+    "readCase": "Lire l'étude de cas"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contacter Merwan Laouini pour un CDI d'ingénieur produit ou une mission freelance. Réponse sous 48 h.",
+    "intro": "Un CDI, une mission, une question sur un projet : écris-moi directement. Je réponds sous 48 h.",
+    "copy": "Copier l'adresse",
+    "copied": "ADRESSE COPIÉE",
+    "availabilityTitle": "Disponibilité",
+    "availability": "Ouvert à un poste d'ingénieur produit en CDI et à des missions freelance courtes et cadrées. Présentiel en Île-de-France, à distance partout.",
+    "form": {
+      "title": "Ou par ce formulaire",
+      "email": "Votre email",
+      "message": "Votre message",
+      "send": "Envoyer",
+      "sending": "Envoi…",
+      "success": "Message envoyé. Je reviens vers vous sous 48 h.",
+      "error": "L'envoi a échoué. Écrivez-moi directement par email."
+    }
   }
 }

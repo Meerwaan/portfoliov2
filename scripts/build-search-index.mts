@@ -56,7 +56,7 @@ async function main() {
           title: h.text,
           subtitle: p.title,
           href: `/work/${p.slug}#${h.id}`,
-          keywords: p.keywords,
+          keywords: [],
           order: p.order,
         });
       }

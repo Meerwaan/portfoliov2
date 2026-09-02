@@ -6,6 +6,8 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import {
+  AboutFrontmatter,
+  PathData,
   LabFrontmatter,
   LabMeta,
   ProjectFrontmatter,
@@ -180,6 +182,17 @@ export async function getProjectDiagram(slug: string): Promise<string | null> {
   const file = path.join(CONTENT, "projects", slug, "diagram.svg");
   if (!(await exists(file))) return null;
   return fs.readFile(file, "utf8");
+}
+
+export type About = AboutFrontmatter & { locale: Locale; fallbackBody: boolean; body: string; path: PathData };
+
+export async function getAbout(locale: Locale): Promise<About> {
+  const dir = path.join(CONTENT, "about");
+  const [{ data, body, fallbackBody }, pathData] = await Promise.all([
+    readMdx(dir, locale, AboutFrontmatter),
+    readJson(path.join(dir, "path.json"), PathData),
+  ]);
+  return { ...data, locale, fallbackBody, body, path: pathData };
 }
 
 export { LOCALES as CONTENT_LOCALES };
