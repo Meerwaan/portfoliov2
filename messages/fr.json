@@ -21,9 +21,18 @@
     "commandPlaceholder": "Demande-moi le projet santé, le multi-tenant, la stack…",
     "commandLabel": "Interroger le site",
     "doors": {
-      "work": { "title": "Travaux", "meta": "Quatre systèmes en production ou livrés" },
-      "lab": { "title": "Atelier", "meta": "Prototypes, automatisations, essais" },
-      "contact": { "title": "Contact", "meta": "Réponse sous 48 h" }
+      "work": {
+        "title": "Travaux",
+        "meta": "Systèmes en production ou livrés"
+      },
+      "lab": {
+        "title": "Atelier",
+        "meta": "Prototypes, automatisations, essais"
+      },
+      "contact": {
+        "title": "Contact",
+        "meta": "Réponse sous 48 h"
+      }
     }
   },
   "rail": {
@@ -67,5 +76,44 @@
   },
   "footer": {
     "rights": "Merwan Laouini, Sèvres. Code source sur GitHub."
+  },
+  "work": {
+    "title": "Travaux",
+    "description": "Les systèmes construits de bout en bout par Merwan Laouini : logiciel de santé, SaaS multi-tenant, portfolio interactif. Rôle tenu et statut réel pour chacun.",
+    "intro": "Des systèmes tenus du schéma de base de données au déploiement. Chaque entrée annonce le rôle tenu et son statut réel.",
+    "filters": {
+      "role": "Rôle",
+      "status": "Statut",
+      "search": "Filtrer",
+      "searchPlaceholder": "filtrer par mot, stack…"
+    },
+    "role": {
+      "founder": "Fondateur",
+      "freelance": "Freelance",
+      "employee": "Alternance",
+      "study": "Études"
+    },
+    "status": {
+      "production": "En production",
+      "delivered": "Livré",
+      "building": "En construction"
+    },
+    "count": "{count, plural, =0 {Aucun résultat} one {# système} other {# systèmes}}",
+    "empty": "Aucun système ne correspond à ces filtres.",
+    "screenPending": "CAPTURE À VENIR",
+    "meta": {
+      "role": "Rôle",
+      "period": "Période",
+      "status": "Statut",
+      "stack": "Stack",
+      "links": "Liens",
+      "live": "Voir en ligne",
+      "repo": "Code"
+    },
+    "diagram": "Architecture",
+    "outcomes": "Résultats",
+    "source": "Source",
+    "next": "Système suivant",
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS"
   }
 }

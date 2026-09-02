@@ -1,0 +1,33 @@
+import type { Role, Status } from "@/lib/content/schema";
+
+export const STATUS_KEYS: Record<Status, "production" | "delivered" | "building"> = {
+  production: "production",
+  delivered: "delivered",
+  building: "building",
+};
+
+export const ROLE_KEYS: Record<Role, "founder" | "freelance" | "employee" | "study"> = {
+  founder: "founder",
+  freelance: "freelance",
+  employee: "employee",
+  study: "study",
+};
+
+export type ProjectCard = {
+  slug: string;
+  node: string;
+  title: string;
+  oneLiner: string;
+  role: Role;
+  status: Status;
+  period: { from: string; to: string | null };
+  stack: string[];
+  keywords: string[];
+  hero: { src: string; width: number; height: number; blurDataURL?: string; alt: string } | null;
+};
+
+export function formatPeriod(period: { from: string; to: string | null }, locale: string): string {
+  const year = (v: string) => v.slice(0, 4);
+  if (!period.to) return locale === "fr" ? `${year(period.from)} à aujourd'hui` : `${year(period.from)} to date`;
+  return year(period.from) === year(period.to) ? year(period.from) : `${year(period.from)}-${year(period.to)}`;
+}

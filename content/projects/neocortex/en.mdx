@@ -1,0 +1,39 @@
+---
+title: "Neocortex"
+summary: "Desktop software for neuropsychologists: patient files, cognitive test sessions and PDF reports, carried from architecture to go-live."
+oneLiner: "Neuropsychological follow-up tool, from patient file to PDF report."
+roleLabel: "Full-stack developer (work-study), sole developer on the tool"
+keywords: ["healthcare", "neuropsychology", "electron", "desktop software", "cognitive tests", "report", "pdf", "express", "sequelize", "jwt", "roles"]
+---
+
+## The context
+
+Neocortex is a neuropsychology practice with offices in Paris, Maisons-Alfort and Aix-en-Provence. Practitioners were juggling several tools: a spreadsheet for patients, separate test materials, a word processor for reports. The work-study position was about building one internal tool that centralises that work, then putting it in the practitioners' hands.
+
+## The constraints
+
+- **Health data.** Files must not leave the practice's perimeter and access must be personal and role-based.
+- **Practitioners, not IT people.** The tool had to install on their machines and launch like any application, with no browser or URL to remember.
+- **A single developer.** Every technical choice had to remain maintainable by one person, then handed over.
+
+## Architecture decisions
+
+<Decision title="A desktop application rather than a website">
+Electron wraps the interface and ships it as installed software. Practitioners keep their habits: an icon, a window, a PDF at the end. Rendering stays standard web, which allowed fast iteration on the test session screens.
+</Decision>
+
+<Decision title="A separate API with server-side authentication and roles">
+The desktop client talks to an Express API. Authentication relies on signed tokens and bcrypt-hashed passwords; a middleware checks the role on every sensitive route, with administration reserved to a dedicated role. Sequelize carries the data model and made it possible to target PostgreSQL in production while developing on SQLite.
+</Decision>
+
+<Decision title="The report as the single output">
+The journey runs from the patient file to the session (questionnaires, timed tasks) and then to the report. The report is composed from the results and exported as PDF from the application, so the document handed to the patient or physician is produced in the same place as the data behind it.
+</Decision>
+
+## Go-live
+
+The software was installed on the practitioners' machines and used for real patient follow-up. That part of the work, less visible than the code, mattered just as much: training, collecting feedback after the first sessions, fixing the screens that slowed down a consultation.
+
+<Callout label="Confidentiality">
+Screenshots of the tool are not published: they would show patient file screens. This case study describes the architecture and the decisions, not the data.
+</Callout>

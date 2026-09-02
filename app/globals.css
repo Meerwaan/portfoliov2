@@ -300,3 +300,47 @@ body {
     animation: none !important;
   }
 }
+
+/* ---------- Case study prose & code (Shiki dual theme via CSS variables) ---------- */
+@theme inline {
+  --spacing-section-sm: clamp(3rem, 6vw, 5rem);
+}
+.prose-case {
+  max-width: 68ch;
+}
+.code-block {
+  margin-block: 2rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: 1.6;
+  tab-size: 2;
+}
+.code-block code {
+  font-family: inherit;
+  background: transparent;
+}
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+}
+[data-theme="dark"] .shiki,
+[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .shiki,
+  :root:not([data-theme="light"]) .shiki span {
+    color: var(--shiki-dark);
+  }
+}
+.shiki {
+  background: transparent !important;
+}
+.diagram svg text {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}

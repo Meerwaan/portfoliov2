@@ -1,0 +1,47 @@
+---
+title: "KastMe"
+summary: "Immersive link-in-bio for creatives: a public page where images and videos float in a 3D sphere, server-rendered with a share image."
+oneLiner: "An interactive portfolio at one address, for artists, models and photographers."
+roleLabel: "Founder, design and development"
+keywords: ["link in bio", "portfolio", "3d", "firebase", "firestore", "isr", "slug", "og image", "creatives", "saas"]
+screenshotAlt:
+  home: "KastMe home page: the headline “Your work deserves better than a list of links” above a gallery of images tilted in perspective."
+---
+
+## The problem
+
+A photographer or a model puts a link-list in their bio. Their best image is three taps away. KastMe replaces the list with a public page at `kastme.fr/their-slug` where images and videos float in a sphere the visitor spins with a finger. The product is live and still being built: the marketing site, sign-up, editor and public pages run; billing is not wired yet.
+
+## The constraints
+
+- **The public page must be fast and shareable**: it will be opened from Instagram or TikTok, on a phone, on 4G, and its preview has to look good in messaging apps.
+- **Every creative owns their address.** The slug is a scarce resource and must be unique, with no race between two simultaneous sign-ups.
+- **Client-side Firebase keys are public by design.** Security can only rest on the rules.
+
+## Architecture decisions
+
+<Decision title="Server-rendered public page with revalidation and a dynamic share image">
+The `[slug]` route is rendered on the server and cached with ISR. Each page generates its own Open Graph image from the creative's media, so the shared link shows their work rather than a logo. The older `p/[id]` URL form is permanently redirected to the slug.
+</Decision>
+
+<Decision title="Never turn a database outage into a 404">
+This is the most important rule in the repository. An ISR page answering `notFound()` because Firestore is briefly unavailable freezes a 404 in the CDN for every visitor of that creative. Infrastructure errors therefore surface as exceptions, hence uncached 500s, and only a genuinely missing document produces a 404.
+</Decision>
+
+<Decision title="Reserve route names, and prove it with a test">
+`app/[slug]` lives at the root, and a static route always beats a dynamic one. Adding `app/blog/` without reserving `blog` would silently replace the page of the creative who owns that slug. The reserved list is shared between the router and the Firestore rules, and a unit test fails if a route segment is missing from it.
+</Decision>
+
+<Decision title="Slug uniqueness through a create-only collection">
+A `slugs/{slug}` collection accepts creation and refuses updates. Two simultaneous sign-ups for the same name cannot both succeed: the second write is rejected by the rules, not by an application check a race could slip past.
+</Decision>
+
+## Security through rules
+
+`users/{uid}` is never writable by the client: plan and role only change server-side through the Admin SDK. Portfolios are publicly readable and writable by their owner only. Storage confines writes to the user's folder, with whitelisted file types and caps of 10 MB per image and 50 MB per video. Every rules change runs against the emulator test suite before deployment.
+
+## What remains
+
+<Callout label="Actual state">
+The 3D sphere and the editor work, public pages ship with their share image. Payment is a pricing grid without a checkout: Stripe is the next step, and the final domain is not set up yet.
+</Callout>

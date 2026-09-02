@@ -1,0 +1,62 @@
+---
+title: "Reputap"
+summary: "Multi-tenant SaaS turning an NFC tap into a Google review, with a server-side prize wheel and human validation at the counter."
+oneLiner: "Google review collection via NFC, multi-location, with abuse controls."
+roleLabel: "Founder, design and development"
+keywords: ["nfc", "google reviews", "multi-tenant", "saas", "prisma", "auth.js", "rbac", "stripe", "wheel", "anti-abuse", "local business"]
+screenshotAlt:
+  home: "Reputap home page: an NFC plate on a coffee shop counter, promising to turn every happy customer into a Google review."
+  rapport-exemple: "Sample Reputap report sent to a merchant: scans, reviews and Google rating over the period."
+---
+
+## The problem
+
+A local business lives on its Google reviews, yet asking for one happens at the worst moment: the customer is paying and leaving. Existing tools put a QR code on the table and stop there. They cannot motivate the customer, cannot stop the same person from farming rewards, and give the staff nothing simple to do at the counter.
+
+Reputap starts from a physical constraint: one NFC chip per location. You have to be there to tap. From that point the journey is guided: tap, review, prize wheel, ticket, validation by the merchant. The product is sold today to businesses in the Alpes-Maritimes, plate included.
+
+## The constraints
+
+- **Google offers no reliable API to prove a review was posted.** The whole system had to work without that proof.
+- **Multi-location from day one.** One SaaS customer can run several shops, each with its own tags, campaign and prizes.
+- **Zero friction for the end customer.** No account, no app: a URL the phone opens when it touches the plate.
+- **A five-second gesture at the counter** for staff who will never read documentation.
+
+## Architecture decisions
+
+<Decision title="Move the fraud barrier to where a human already stands">
+Since the review cannot be verified, the reward is. A spin produces an `ISSUED` ticket with a unique code and an expiry. Nothing is handed over until the merchant marks it `REDEEMED` from the validation screen, or rejects it with a reason. Fraud becomes a counter problem, not a cryptography problem.
+</Decision>
+
+<Decision title="Draw the wheel on the server, animate on the client">
+The client never draws. It requests a spin; the server checks the session, cooldowns and caps, picks the prize by configured weight, writes `spin` and `claim` to the database and returns the result. The GSAP animation only plays that result. A tampered client cannot win more often.
+</Decision>
+
+<Decision title="Tenant isolation inside the data access layer">
+Every query goes through a data access layer that receives the current tenant and cannot forget it. The `super_admin`, `owner` and `user` roles are carried by Auth.js and checked server-side on every action. An owner cannot read another location's data, even by guessing an identifier.
+</Decision>
+
+<Decision title="Abuse rules configured per campaign, never hard-coded">
+One spin per scan session, a 24-hour cooldown per device, a soft limit per hashed IP, a cap of spins per tag per hour, unguessable NFC tokens with rotation, expiring tickets. Each rule is a campaign setting, because a night bar and a bakery do not see the same traffic.
+</Decision>
+
+## The journey as it runs
+
+1. The plate opens a URL of the form `/s/{publicToken}`. The server resolves the tag, the location and the active campaign, then creates a `scan_session` with its anti-abuse metadata and expiry.
+2. The page shows the location's branding and a single button: leave a review. The click records a review intent and opens the Google listing.
+3. On return, the wheel is available if the session is still valid. The draw is server-side, the animation is client-side.
+4. The ticket shows its code. At the counter, staff look it up by code and validate or reject.
+
+## What is not solved
+
+<Callout label="Accepted limit">
+Reputap does not know whether the review was actually published. It knows the person was on site, opened Google, and that a human agreed to hand over the reward. This is an explicit trade-off, written in the project brief, preferred to a false promise of verification.
+</Callout>
+
+## Operations
+
+A super-admin console lists tenants, manages subscriptions and generates magic login links for support. A system dashboard shows database latency, disk usage and logs. Transactional email goes through Resend, billing is wired to Stripe, and everything runs on Vercel with PostgreSQL managed by Supabase.
+
+## Stack and conventions
+
+Next.js 16 App Router with Server Actions, strict TypeScript, Prisma on PostgreSQL, Auth.js v5 with role-based access control, Zod validation on every input, SCSS Modules. The brief enforces files under 300 lines and a clean split between UI, orchestration, domain and data access. That is not vanity: it is what lets a new review provider or abuse rule land without touching the rest.

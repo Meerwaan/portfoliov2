@@ -1,0 +1,15 @@
+{
+  "slug": "neocortex",
+  "node": "NODE_01",
+  "status": "delivered",
+  "role": "employee",
+  "period": { "from": "2024", "to": "2025" },
+  "stack": ["Electron", "JavaScript", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT"],
+  "links": {},
+  "screenshots": [],
+  "heroScreenshot": 0,
+  "diagram": false,
+  "order": 1,
+  "featured": true,
+  "space": { "index": 0, "tilt": 0 }
+}

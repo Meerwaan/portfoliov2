@@ -17,7 +17,7 @@ export async function Nav() {
     <header className="sticky top-0 z-20 border-b border-rule bg-paper/90 backdrop-blur-sm">
       <div className="container-page flex h-nav items-center justify-between gap-4">
         <Link href="/" className="whitespace-nowrap text-ink hover:text-signal" aria-label={site.name}>
-          <span className="mono-label sm:hidden">{site.signature}</span>
+          <span className="mono-label normal-case sm:hidden">{site.signature}</span>
           <span className="hidden font-display text-lg font-medium tracking-tight sm:inline">{site.name}</span>
         </Link>
         <nav aria-label={a("mainNav")} className="flex items-center gap-0 sm:gap-2">
