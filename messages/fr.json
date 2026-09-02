@@ -115,5 +115,33 @@
     "source": "Source",
     "next": "Système suivant",
     "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS"
+  },
+  "command": {
+    "label": "Commande",
+    "placeholder": "Chercher un système, une page… ou > pour les actions",
+    "empty": "NO_MATCH",
+    "copied": "EMAIL COPIÉ",
+    "askSoon": "Les questions en langage naturel arrivent dans une prochaine version.",
+    "groups": {
+      "systems": "Systèmes",
+      "lab": "Atelier",
+      "pages": "Pages",
+      "sections": "Sections",
+      "actions": "Actions"
+    },
+    "actions": {
+      "night": "Passer en mode nuit",
+      "day": "Passer en mode jour",
+      "locale": "Switch to English",
+      "copyEmail": "Copier l'adresse email",
+      "cv": "Ouvrir le CV (PDF)",
+      "top": "Remonter en haut de page"
+    },
+    "hints": {
+      "navigate": "naviguer",
+      "open": "ouvrir",
+      "actions": "actions",
+      "go": "aller à"
+    }
   }
 }

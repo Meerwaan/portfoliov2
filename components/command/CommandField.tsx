@@ -1,17 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { MagnifyingGlass } from "@phosphor-icons/react/ssr";
+import { useCommand } from "./CommandStore";
 
 /**
- * Hero command input. Phase 1 without the palette mounted: submits a plain GET to /work?q= so the field
- * works without JavaScript. The command palette (M2) intercepts focus and Enter and takes over.
+ * Hero command input. It is a real form (GET /work?q=) so it works without JavaScript; with JavaScript,
+ * clicking or typing hands the query over to the command palette.
  */
 export function CommandField() {
   const t = useTranslations("hero");
   const locale = useLocale();
+  const { open } = useCommand();
+  const [value, setValue] = useState("");
+
   return (
-    <form action={`/${locale}/work`} method="get" role="search" className="w-full max-w-3xl">
+    <form action={`/${locale}/work`} method="get" role="search" className="w-full max-w-3xl" onSubmit={(e) => { e.preventDefault(); open(value); }}>
       <label htmlFor="command" className="sr-only">
         {t("commandLabel")}
       </label>
@@ -25,12 +30,19 @@ export function CommandField() {
           type="search"
           autoComplete="off"
           spellCheck={false}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onClick={() => open(value)}
+          onKeyDown={(e) => {
+            if (e.key.length === 1 && !e.metaKey && !e.ctrlKey && !e.altKey) {
+              e.preventDefault();
+              open(value + e.key);
+            }
+          }}
           placeholder={t("commandPlaceholder")}
           className="min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink-3"
         />
-        <kbd className="mono-label hidden rounded-sm border border-rule px-1.5 py-0.5 text-ink-3 sm:inline-block">
-          ⌘K
-        </kbd>
+        <kbd className="mono-label hidden rounded-sm border border-rule px-1.5 py-0.5 text-ink-3 sm:inline-block">⌘K</kbd>
         <button type="submit" className="text-ink-3 hover:text-signal" aria-label={t("commandLabel")}>
           <MagnifyingGlass size={18} weight="regular" />
         </button>

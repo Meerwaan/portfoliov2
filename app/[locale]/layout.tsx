@@ -13,6 +13,8 @@ import { Nav } from "@/components/nav/Nav";
 import { TelemetryRail } from "@/components/telemetry/TelemetryRail";
 import { TelemetryProvider } from "@/components/telemetry/TelemetryProvider";
 import { Footer } from "@/components/footer/Footer";
+import { CommandStoreProvider } from "@/components/command/CommandStore";
+import { CommandMount } from "@/components/command/CommandMount";
 import "../globals.css";
 
 const cabinet = localFont({
@@ -79,10 +81,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         </a>
         <NextIntlClientProvider>
           <TelemetryProvider>
-            <Nav />
-            <main id="main">{children}</main>
-            <Footer />
-            <TelemetryRail />
+            <CommandStoreProvider>
+              <Nav />
+              <main id="main">{children}</main>
+              <Footer />
+              <TelemetryRail />
+              <CommandMount />
+            </CommandStoreProvider>
           </TelemetryProvider>
         </NextIntlClientProvider>
         <script

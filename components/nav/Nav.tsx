@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/lib/site";
 import { NavLinks } from "./NavLinks";
+import { CommandTrigger } from "@/components/command/CommandTrigger";
 
 export async function Nav() {
   const t = await getTranslations("nav");
@@ -20,9 +21,12 @@ export async function Nav() {
           <span className="mono-label normal-case sm:hidden">{site.signature}</span>
           <span className="hidden font-display text-lg font-medium tracking-tight sm:inline">{site.name}</span>
         </Link>
-        <nav aria-label={a("mainNav")} className="flex items-center gap-0 sm:gap-2">
-          <NavLinks items={items} />
-        </nav>
+        <div className="flex items-center gap-1 sm:gap-3">
+          <nav aria-label={a("mainNav")} className="flex items-center gap-0 sm:gap-2">
+            <NavLinks items={items} />
+          </nav>
+          <CommandTrigger />
+        </div>
       </div>
     </header>
   );

@@ -115,5 +115,33 @@
     "source": "Source",
     "next": "Next system",
     "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING"
+  },
+  "command": {
+    "label": "Command",
+    "placeholder": "Search a system, a page… or > for actions",
+    "empty": "NO_MATCH",
+    "copied": "EMAIL COPIED",
+    "askSoon": "Natural-language questions arrive in a later version.",
+    "groups": {
+      "systems": "Systems",
+      "lab": "Lab",
+      "pages": "Pages",
+      "sections": "Sections",
+      "actions": "Actions"
+    },
+    "actions": {
+      "night": "Switch to night mode",
+      "day": "Switch to day mode",
+      "locale": "Passer en français",
+      "copyEmail": "Copy email address",
+      "cv": "Open CV (PDF)",
+      "top": "Back to top"
+    },
+    "hints": {
+      "navigate": "navigate",
+      "open": "open",
+      "actions": "actions",
+      "go": "go to"
+    }
   }
 }
