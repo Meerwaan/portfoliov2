@@ -4,14 +4,19 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { site } from "@/lib/site";
 import { Hero } from "@/components/hero/Hero";
 import { LegacyHashRedirect } from "@/components/home/LegacyHashRedirect";
+import { InterfaceSpace } from "@/components/space/InterfaceSpace";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "site" });
-  return buildMetadata({ locale, path: "/", description: t("description") });
+  return {
+    ...buildMetadata({ locale, path: "/", description: t("description") }),
+    title: { absolute: `${site.name} · ${t("tagline")}` },
+  };
 }
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -22,6 +27,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <>
       <LegacyHashRedirect />
       <Hero />
+      <InterfaceSpace />
     </>
   );
 }

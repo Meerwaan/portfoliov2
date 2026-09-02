@@ -6,7 +6,7 @@
   --paper-2: #ffffff;
   --ink: #111210;
   --ink-2: #4b4b47;
-  --ink-3: #6f6f69;
+  --ink-3: #62625c;
   --rule: #dddcd6;
   --rule-strong: #b9b8b1;
   --signal: #0a5bff;
@@ -408,4 +408,25 @@ body {
 .prose-lab p {
   margin-block: 0.75rem;
   color: var(--ink-2);
+}
+
+/* ---------- Interface space ---------- */
+.space-strip {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.space-strip::-webkit-scrollbar {
+  display: none;
+}
+.space-stage canvas {
+  display: block;
+  touch-action: pan-y;
+}
+/* Hand-off proxy: a DOM copy of the clicked plane, fixed at its projected rect, named for the view transition. */
+.space-proxy {
+  position: fixed;
+  z-index: 40;
+  object-fit: cover;
+  pointer-events: none;
+  background: var(--paper-2);
 }

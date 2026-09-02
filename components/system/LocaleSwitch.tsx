@@ -14,7 +14,7 @@ export function LocaleSwitch({ className = "" }: { className?: string }) {
     <button
       type="button"
       lang={next}
-      aria-label={t("switchTo")}
+      aria-label={`${t("short")}: ${t("switchTo")}`}
       title={t("switchTo")}
       onClick={() => router.replace(pathname, { locale: next })}
       className={`mono-label text-ink-2 transition-colors duration-(--dur-1) hover:text-signal ${className}`}

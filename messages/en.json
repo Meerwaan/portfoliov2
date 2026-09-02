@@ -194,5 +194,10 @@
       "success": "Message sent. I will get back to you within 48 hours.",
       "error": "Sending failed. Please write to me directly by email."
     }
+  },
+  "space": {
+    "title": "The interfaces, in service.",
+    "meta": "{count, plural, one {# real capture} other {# real captures}}",
+    "open": "Open case study"
   }
 }

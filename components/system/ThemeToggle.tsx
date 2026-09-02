@@ -26,7 +26,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     <button
       type="button"
       aria-pressed={isDark}
-      aria-label={isDark ? t("toDay") : t("toNight")}
+      aria-label={`${isDark ? t("night") : t("day")}: ${isDark ? t("toDay") : t("toNight")}`}
       title={isDark ? t("toDay") : t("toNight")}
       onClick={() => applyTheme(isDark ? "light" : "dark")}
       className={`mono-label inline-flex h-full items-center gap-2 text-ink-2 transition-colors duration-(--dur-1) hover:text-signal ${className}`}

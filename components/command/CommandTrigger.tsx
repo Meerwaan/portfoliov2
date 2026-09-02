@@ -11,12 +11,12 @@ export function CommandTrigger() {
     <button
       type="button"
       onClick={() => open("")}
-      aria-label={t("openCommand")}
       title={t("openCommand")}
       className="inline-flex h-8 items-center gap-2 rounded-sm px-2 text-ink-2 transition-colors duration-(--dur-1) hover:text-signal"
     >
-      <MagnifyingGlass size={16} />
-      <kbd className="mono-label hidden text-ink-3 md:inline">⌘K</kbd>
+      <MagnifyingGlass size={16} aria-hidden="true" />
+      <span className="sr-only">{t("openCommand")}</span>
+      <kbd className="mono-label hidden text-ink-3 md:inline" aria-hidden="true">⌘K</kbd>
     </button>
   );
 }

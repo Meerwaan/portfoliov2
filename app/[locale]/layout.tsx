@@ -94,7 +94,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd(locale as Locale)) }}
         />
-        <Analytics />
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );

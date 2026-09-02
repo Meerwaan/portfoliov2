@@ -21,7 +21,7 @@ export function buildMetadata({ locale, path, title, description, type = "websit
   const canonical = url(locale, path);
   const languages = Object.fromEntries(routing.locales.map((l) => [l, url(l, path)]));
   return {
-    title,
+    ...(title !== undefined ? { title } : {}),
     description,
     alternates: {
       canonical,

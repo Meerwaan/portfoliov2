@@ -194,5 +194,10 @@
       "success": "Message envoyé. Je reviens vers vous sous 48 h.",
       "error": "L'envoi a échoué. Écrivez-moi directement par email."
     }
+  },
+  "space": {
+    "title": "Les interfaces, en service.",
+    "meta": "{count, plural, one {# capture réelle} other {# captures réelles}}",
+    "open": "Voir l'étude de cas"
   }
 }
