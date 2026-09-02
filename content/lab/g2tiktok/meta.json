@@ -10,7 +10,7 @@
     "MoviePy",
     "FFmpeg",
     "Selenium",
-    "Streamlit"
+    "Solana"
   ],
   "links": {},
   "screenshots": [
@@ -23,5 +23,23 @@
       "frame": "browser"
     }
   ],
-  "order": 1
+  "order": 1,
+  "steps": {
+    "fr": [
+      "script + accroche",
+      "voix ElevenLabs",
+      "B-roll libre de droits",
+      "sous-titres mot à mot",
+      "rendu 1080×1920",
+      "publication par séries"
+    ],
+    "en": [
+      "script + hook",
+      "ElevenLabs voice",
+      "royalty-free B-roll",
+      "word-level subtitles",
+      "1080×1920 render",
+      "series publishing"
+    ]
+  }
 }

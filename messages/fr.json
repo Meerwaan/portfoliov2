@@ -160,7 +160,10 @@
       "repo": "Code"
     },
     "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
-    "noScreen": "CAPTURE À VENIR"
+    "benchLabel": "Le banc d'essai",
+    "steps": "Étapes",
+    "stackLabel": "Stack",
+    "readEntry": "Lire le journal"
   },
   "about": {
     "title": "Parcours",
@@ -178,8 +181,8 @@
     "cv": "Télécharger le CV (PDF)",
     "today": "aujourd'hui",
     "readCase": "Lire l'étude de cas",
-    "pathTitle": "Le parcours, dans l'ordre inverse",
-    "pathIntro": "Du plus récent au plus ancien. Chaque étape a laissé quelque chose dans la façon de construire.",
+    "pathTitle": "Le parcours, en coupe.",
+    "pathIntro": "Chaque étape a touché des systèmes, une partie de la stack et un terrain. Survole une étape : les couches s'allument.",
     "stackNote": "CE QUE JE TIENS EN PRODUCTION, PAS UN MUR DE LOGOS"
   },
   "contact": {

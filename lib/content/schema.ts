@@ -84,6 +84,8 @@ export const LabMeta = z.object({
   stack: z.array(z.string()).max(10).default([]),
   links: z.object({ live: z.string().url().optional(), repo: z.string().url().optional() }).default({}),
   screenshots: z.array(ScreenshotMeta).default([]),
+  /** Real pipeline / flow of the experiment, 3 to 6 short steps per locale, shown on the bench card. */
+  steps: z.object({ fr: z.array(z.string()).min(3).max(6), en: z.array(z.string()).min(3).max(6) }).optional(),
   order: z.number().int(),
 });
 export type LabMeta = z.infer<typeof LabMeta>;
@@ -155,3 +157,19 @@ export const StackData = z.object({
   totals: z.object({ routes: z.number().int(), models: z.number().int() }),
 });
 export type StackData = z.infer<typeof StackData>;
+
+const LocalizedOrString = z.union([z.string(), Localized]);
+export const LayerCell = z.object({
+  id: z.string().min(1),
+  title: LocalizedOrString,
+  sub: LocalizedOrString.optional(),
+  href: z.string().optional(),
+  /** Ids of cells in other layers lit when this cell is hovered (only meaningful on the top layer). */
+  links: z.array(z.string()).default([]),
+});
+export type LayerCell = z.infer<typeof LayerCell>;
+export const LayersData = z.object({
+  hint: Localized,
+  layers: z.array(z.object({ id: z.string(), label: Localized, cells: z.array(LayerCell).min(1) })).min(2).max(4),
+});
+export type LayersData = z.infer<typeof LayersData>;

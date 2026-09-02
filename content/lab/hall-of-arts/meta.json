@@ -13,5 +13,21 @@
     "repo": "https://github.com/HallOfArt"
   },
   "screenshots": [],
-  "order": 3
+  "order": 3,
+  "steps": {
+    "fr": [
+      "carte des œuvres autour de soi",
+      "fiche texte + audio",
+      "photos de la communauté",
+      "frise d'évolution",
+      "vue en réalité augmentée"
+    ],
+    "en": [
+      "map of nearby works",
+      "text + audio page",
+      "community photos",
+      "evolution timeline",
+      "augmented-reality view"
+    ]
+  }
 }

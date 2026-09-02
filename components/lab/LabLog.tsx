@@ -1,28 +1,16 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
-import Image from "next/image";
 import type { LabEntry } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/mdx";
 import { ActiveOnView } from "@/components/motion/ActiveOnView";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
-import { LabViewer, type ViewerEntry } from "./LabViewer";
 
 /**
- * The lab as a bench: a timeline rail that fills as you read (left), the log (centre), and a sticky monitor
- * showing the experiment in view (right). Below lg the monitor disappears and each entry shows its capture.
+ * The log under the bench: the long-form entry of each experiment, with a timeline rail that fills as you read.
  */
 export async function LabLog({ entries }: { entries: LabEntry[] }) {
   const t = await getTranslations("lab");
   const rendered = await Promise.all(entries.map((e) => renderMdx(e.body)));
-  const viewer: ViewerEntry[] = entries.map((e, index) => ({
-    slug: e.slug,
-    index,
-    title: e.title,
-    status: e.status,
-    year: e.year,
-    stack: e.stack,
-    shot: e.screenshots[0] ? { src: e.screenshots[0].src, width: e.screenshots[0].width, height: e.screenshots[0].height, blurDataURL: e.screenshots[0].blurDataURL, alt: e.screenshots[0].alt } : null,
-  }));
 
   return (
     <section className="lab-bench container-page relative pb-section" data-track-root="lab">
@@ -32,7 +20,7 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
         <div className="lab-rail hidden lg:col-span-1 lg:block" aria-hidden="true">
           <div className="lab-rail-line" />
         </div>
-        <ol className="min-w-0 lg:col-span-6">
+        <ol className="min-w-0 lg:col-span-8">
           {entries.map((entry, i) => (
             <li key={entry.slug} id={entry.slug} data-track={entry.slug} className="lab-entry scroll-mt-24 border-t border-rule py-12 md:py-16">
               <article className="flex min-w-0 flex-col gap-5">
@@ -48,11 +36,6 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
                   {entry.stack.length > 0 && <span className="normal-case tracking-normal"> · {entry.stack.join(" · ")}</span>}
                 </p>
                 {entry.fallbackBody && <p className="mono-label text-ink-3">{t("fallbackBody")}</p>}
-                {entry.screenshots[0] && (
-                  <figure className="overflow-hidden rounded-md border border-rule bg-paper-2 lg:hidden">
-                    <Image src={entry.screenshots[0].src} alt={entry.screenshots[0].alt} width={entry.screenshots[0].width} height={entry.screenshots[0].height} sizes="100vw" placeholder={entry.screenshots[0].blurDataURL ? "blur" : "empty"} blurDataURL={entry.screenshots[0].blurDataURL} className="h-auto w-full" />
-                  </figure>
-                )}
                 <div className="prose-lab min-w-0">{rendered[i]}</div>
                 {(entry.links.live || entry.links.repo) && (
                   <p className="mono-label flex gap-6">
@@ -72,9 +55,6 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
             </li>
           ))}
         </ol>
-        <aside className="hidden lg:col-span-5 lg:block">
-          <LabViewer entries={viewer} />
-        </aside>
       </div>
     </section>
   );

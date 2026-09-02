@@ -1,0 +1,60 @@
+---
+title: "Capsule Manufacturing"
+summary: "Plateforme B2B pour un atelier de confection en petites séries : configurateur de devis, admin atelier et portail marque, du chiffrage au suivi de production."
+oneLiner: "Du devis au suivi de production, pour un atelier textile en petites séries."
+roleLabel: "Fondateur, conception et développement, seul"
+keywords: ["textile", "confection", "erp", "b2b", "devis", "configurateur", "production", "prisma", "mysql", "nextauth", "atelier", "petites séries", "moq"]
+screenshotAlt:
+  admin-project-tracker: "Fiche projet côté atelier : détails de fabrication, adresse de livraison et suivi de production en neuf étapes, l'étape courante surlignée."
+  landing-quote-configurator: "Configurateur de devis en six étapes sur la vitrine : produit, matière, marquage, finitions, technique, contact."
+  admin-quote-detail-pricing: "Chiffrage d'un devis par l'atelier : contact, spécifications de confection, prix unitaire, frais techniques, délai et total estimé."
+  client-project-tracking: "Portail marque : la timeline de production d'un projet, identique à celle de l'atelier."
+  admin-dashboard: "Tableau de bord atelier : devis reçus, devis à chiffrer, projets actifs, chiffre d'affaires estimé."
+  landing-hero: "Vitrine Capsule : confection premium en petites séries, avec les chiffres clés de l'atelier."
+---
+
+## Le problème
+
+Une marque indépendante qui veut produire cinquante pièces se heurte à deux murs : les ateliers qui n'acceptent pas les petites séries, et l'opacité du chiffrage. Le devis arrive par email après des allers-retours, le suivi de production se fait au téléphone, l'adresse de livraison se perd dans un fil de messages.
+
+Capsule est la plateforme d'un atelier de confection premium pensé pour ces marques, avec un minimum de cinquante pièces. Trois surfaces dans une seule application : une vitrine avec un configurateur de devis en six étapes, une interface atelier pour chiffrer et produire, un portail marque pour payer et suivre. C'est un produit en construction, que je porte seul.
+
+<Screen id="landing-quote-configurator" caption="Le configurateur : six étapes, un prix estimé en direct, un dossier technique joint." />
+
+## Les contraintes
+
+- **Deux acteurs, un seul état.** Le devis passe de la marque à l'atelier puis revient à la marque. Chaque transition doit créer exactement ce qu'il faut, et rien d'autre.
+- **Des fichiers sensibles.** Les patrons et dossiers techniques d'une marque ne doivent jamais être servis publiquement.
+- **Un prix explicable.** Le chiffrage automatique doit se lire ligne par ligne, parce qu'un acheteur textile négocie sur des postes, pas sur un total.
+
+## Les décisions d'architecture
+
+<Decision title="Un moteur de prix lisible, pas une boîte noire">
+Le prix unitaire est un coût de confection par produit, multiplié par un coefficient matière et une remise volume, auquel s'ajoutent les marquages par emplacement et les finitions. Les frais techniques sont énumérés : écrans de sérigraphie, programme de broderie, patronage si la marque n'en a pas, prototype. Le délai est calculé de la même façon. Tout tient dans une fonction que l'atelier peut relire.
+</Decision>
+
+<Decision title="La machine à états du devis crée les objets métier">
+Un devis chiffré passe en `PRICED`, ce qui crée le compte de la marque à partir de l'email du devis. Le paiement le passe en `PAID`, ce qui crée le projet avec sa référence `PRJ-2026-0002` et son expédition portant l'adresse. Aucun écran ne crée un projet à la main : il naît d'une transition.
+</Decision>
+
+<Decision title="Le suivi de production est une seule timeline, vue de deux côtés">
+Neuf étapes, du devis validé à la livraison. L'atelier avance l'étape en un clic ; la marque voit la même timeline dans son portail. L'adresse reste modifiable par la marque tant que rien n'est expédié, puis se verrouille.
+</Decision>
+
+<Decision title="Fichiers privés et impression sans dépendance">
+Les dossiers techniques sont écrits hors du dossier public et servis par une route authentifiée réservée à l'atelier. Le bon de livraison est une page A4 stylée pour l'impression, sans librairie PDF.
+</Decision>
+
+<Architecture />
+
+<Screens ids="admin-quote-detail-pricing,client-project-tracking" caption="Les deux côtés du même objet : le chiffrage par l'atelier, la timeline suivie par la marque." />
+
+## Ce qui n'est pas fini
+
+<Callout label="État réel">
+Le paiement est simulé, les emails ne partent pas encore, la saisie des réceptions de tissu n'a que son écran, la plateforme n'est pas déployée. Le bon de livraison a un bug à corriger : un gestionnaire d'événement posé dans un composant serveur. Le cœur est là : configurateur, devis, chiffrage, projet, production, portail.
+</Callout>
+
+## Stack
+
+Next.js 16 en App Router avec le React Compiler, Prisma sur MySQL, NextAuth avec deux modes d'accès (lien magique pour les marques, identifiants pour l'atelier) et deux rôles vérifiés à chaque route, GSAP pour la vitrine. Le tout a été construit en un sprint court, ce qui explique autant la cohérence du modèle que la liste de ce qui reste.

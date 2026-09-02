@@ -1,0 +1,38 @@
+{
+  "ui": "admin-project-tracker",
+  "hotspots": [
+    { "id": "timeline", "label": { "fr": "Suivi de production en neuf étapes", "en": "Nine-step production tracker" }, "x": 50, "y": 30, "w": 46, "h": 56, "routes": ["admin-project-patch", "client-project"], "fields": ["Project.status", "Project.reference", "Project.quoteId"] },
+    { "id": "details", "label": { "fr": "Détails de fabrication, issus du devis", "en": "Manufacturing details, from the quote" }, "x": 22, "y": 22, "w": 25, "h": 42, "routes": ["admin-quote", "api-quote"], "fields": ["Quote.product", "Quote.quantity", "Quote.materialType", "Quote.branding", "Quote.unitPrice"] },
+    { "id": "logistics", "label": { "fr": "Logistique et livraison", "en": "Logistics and delivery" }, "x": 22, "y": 67, "w": 25, "h": 31, "routes": ["client-address", "delivery-slip"], "fields": ["Shipment.type", "Shipment.address", "Shipment.carrier", "Shipment.shippedAt"] },
+    { "id": "materials", "label": { "fr": "Stock matières entrant", "en": "Inbound fabric stock" }, "x": 2, "y": 28, "w": 16, "h": 5, "routes": ["admin-materials"], "fields": ["Material.carrier", "Material.quantityMeters", "Material.receivedAt"] }
+  ],
+  "routes": [
+    { "id": "landing", "method": "GET", "path": "/", "note": { "fr": "vitrine et configurateur de devis en six étapes", "en": "marketing site and six-step quote configurator" } },
+    { "id": "api-quote", "method": "POST", "path": "/api/quote", "note": { "fr": "dossier technique en upload privé, devis persisté", "en": "private tech-pack upload, quote persisted" } },
+    { "id": "signin", "method": "GET", "path": "/auth/signin", "note": { "fr": "marque par lien magique, atelier par identifiants", "en": "brand via magic link, workshop via credentials" } },
+    { "id": "admin-quote", "method": "GET", "path": "/admin/quotes/[id]", "note": { "fr": "chiffrage : prix unitaire, frais techniques, délai", "en": "pricing: unit price, setup fees, lead time" } },
+    { "id": "admin-quote-patch", "method": "PATCH", "path": "/api/admin/quotes/[id]", "note": { "fr": "PRICED crée le compte client, PAID crée le projet", "en": "PRICED creates the client account, PAID creates the project" } },
+    { "id": "client-pay", "method": "POST", "path": "/api/client/quotes/[id]/pay", "note": { "fr": "paiement (simulé) puis projet et expédition", "en": "(simulated) payment then project and shipment" } },
+    { "id": "admin-project-patch", "method": "PATCH", "path": "/api/admin/projects/[id]", "note": { "fr": "passage à l'étape suivante", "en": "move to the next step" } },
+    { "id": "client-project", "method": "GET", "path": "/client/projects/[id]", "note": { "fr": "même timeline côté marque", "en": "same timeline on the brand side" } },
+    { "id": "client-address", "method": "PATCH", "path": "/api/client/projects/[id]/address", "note": { "fr": "adresse modifiable tant que rien n'est expédié", "en": "address editable until shipped" } },
+    { "id": "delivery-slip", "method": "GET", "path": "/admin/projects/[id]/delivery-slip", "note": { "fr": "bon de livraison A4, impression navigateur", "en": "A4 delivery slip, browser print" } },
+    { "id": "admin-materials", "method": "GET", "path": "/admin/materials", "note": { "fr": "réceptions de tissu, écran présent, saisie à venir", "en": "fabric receptions, screen present, entry to come" } }
+  ],
+  "models": [
+    { "name": "User", "fields": ["email", "brandName", "role", "emailVerified"] },
+    { "name": "Quote", "fields": ["product", "materialType", "grammage", "branding", "brandingLocations", "quantity", "unitPrice", "setupFees", "leadTime", "schemaFile", "status"] },
+    { "name": "Project", "fields": ["reference", "quoteId", "userId", "product", "quantity", "status"] },
+    { "name": "Material", "fields": ["projectId", "carrier", "trackingNumber", "quantityMeters", "receivedAt"] },
+    { "name": "Shipment", "fields": ["projectId", "type", "carrier", "address", "shippedAt", "deliveredAt"] },
+    { "name": "Session", "fields": ["sessionToken", "userId", "expires"] }
+  ],
+  "infra": [
+    { "name": "Next.js 16", "role": { "fr": "App Router, React Compiler, proxy.ts", "en": "App Router, React Compiler, proxy.ts" } },
+    { "name": "MySQL · Prisma 6", "role": { "fr": "modèle relationnel, huit tables", "en": "relational model, eight tables" } },
+    { "name": "NextAuth 4", "role": { "fr": "JWT, lien magique et identifiants, rôles ADMIN / CLIENT", "en": "JWT, magic link and credentials, ADMIN / CLIENT roles" } },
+    { "name": "Stockage privé", "role": { "fr": "dossiers techniques hors du dossier public", "en": "tech packs outside the public folder" } },
+    { "name": "Impression A4", "role": { "fr": "bon de livraison sans librairie PDF", "en": "delivery slip without a PDF library" } }
+  ],
+  "totals": { "routes": 19, "models": 8 }
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "capsule",
+  "node": "NODE_04",
+  "status": "building",
+  "role": "founder",
+  "period": { "from": "2026-05", "to": null },
+  "stack": ["Next.js 16", "React 19", "TypeScript", "Prisma", "MySQL", "NextAuth", "GSAP", "CSS Modules"],
+  "links": { "repo": "https://github.com/Meerwaan/Capsule-manufacturing" },
+  "screenshots": [
+    { "id": "admin-project-tracker", "frame": "browser" },
+    { "id": "landing-quote-configurator", "frame": "browser" },
+    { "id": "admin-quote-detail-pricing", "frame": "browser" },
+    { "id": "client-project-tracking", "frame": "browser" },
+    { "id": "admin-dashboard", "frame": "browser" },
+    { "id": "landing-hero", "frame": "browser" }
+  ],
+  "heroScreenshot": 0,
+  "diagram": true,
+  "order": 4,
+  "featured": true,
+  "space": { "index": 3, "tilt": 2 }
+}

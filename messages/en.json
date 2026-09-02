@@ -160,7 +160,10 @@
       "repo": "Code"
     },
     "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
-    "noScreen": "SCREEN PENDING"
+    "benchLabel": "The bench",
+    "steps": "Steps",
+    "stackLabel": "Stack",
+    "readEntry": "Read the log"
   },
   "about": {
     "title": "About",
@@ -178,8 +181,8 @@
     "cv": "Download CV (PDF)",
     "today": "today",
     "readCase": "Read the case study",
-    "pathTitle": "The path, most recent first",
-    "pathIntro": "From now back to the start. Each step left something in the way of building.",
+    "pathTitle": "The path, in section.",
+    "pathIntro": "Each step touched systems, part of the stack and a ground. Hover a step: the layers light up.",
     "stackNote": "WHAT I RUN IN PRODUCTION, NOT A WALL OF LOGOS"
   },
   "contact": {

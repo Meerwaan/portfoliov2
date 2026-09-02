@@ -20,5 +20,23 @@
       "frame": "browser"
     }
   ],
-  "order": 2
+  "order": 2,
+  "steps": {
+    "fr": [
+      "charger un morceau",
+      "note du streamer 1-10",
+      "votes du chat Twitch / TikTok",
+      "pondération des cadeaux",
+      "score final verrouillé",
+      "historique de session"
+    ],
+    "en": [
+      "load a track",
+      "streamer grade 1-10",
+      "Twitch / TikTok chat votes",
+      "gift weighting",
+      "locked final score",
+      "session history"
+    ]
+  }
 }

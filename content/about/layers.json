@@ -1,0 +1,438 @@
+{
+  "hint": {
+    "fr": "Survoler une étape pour voir ce qu'elle a touché : systèmes, stack, terrain.",
+    "en": "Hover a step to see what it touched: systems, stack, ground."
+  },
+  "layers": [
+    {
+      "id": "path",
+      "label": {
+        "fr": "Parcours",
+        "en": "Path"
+      },
+      "cells": [
+        {
+          "id": "indie-2025",
+          "title": "2025 → 2026",
+          "sub": {
+            "fr": "Fondateur · produits indépendants",
+            "en": "Founder · independent products"
+          },
+          "links": [
+            "reputap",
+            "kastme",
+            "capsule",
+            "g2tiktok",
+            "roast",
+            "nextjs",
+            "typescript",
+            "prisma",
+            "postgresql",
+            "mysql",
+            "firebase",
+            "authjs",
+            "stripe",
+            "python",
+            "vercel",
+            "commerce",
+            "creatifs",
+            "textile",
+            "video"
+          ]
+        },
+        {
+          "id": "neocortex-2024",
+          "title": "2024 → 2025",
+          "sub": {
+            "fr": "Alternance · Neocortex",
+            "en": "Work-study · Neocortex"
+          },
+          "links": [
+            "neocortex",
+            "electron",
+            "express",
+            "sequelize",
+            "postgresql",
+            "javascript",
+            "sante"
+          ]
+        },
+        {
+          "id": "master-2023",
+          "title": "2023 → 2025",
+          "sub": {
+            "fr": "Master · ESIEE IT, projet de diplôme",
+            "en": "Master's · ESIEE IT, diploma project"
+          },
+          "links": [
+            "hall-of-arts",
+            "react-native",
+            "firebase",
+            "mapbox",
+            "viro",
+            "streetart"
+          ]
+        },
+        {
+          "id": "laval-2025",
+          "title": "2025",
+          "sub": {
+            "fr": "Université Laval · business et entrepreneuriat",
+            "en": "Université Laval · business and entrepreneurship"
+          },
+          "links": [
+            "entrepreneuriat",
+            "reputap",
+            "kastme",
+            "capsule"
+          ]
+        },
+        {
+          "id": "youggy-2022",
+          "title": "2022 → 2024",
+          "sub": {
+            "fr": "Alternance · Youggy",
+            "en": "Work-study · Youggy"
+          },
+          "links": [
+            "youggy-app",
+            "youggy-site",
+            "react",
+            "react-native",
+            "javascript",
+            "benevolat"
+          ]
+        },
+        {
+          "id": "sipp-2022",
+          "title": "2022",
+          "sub": {
+            "fr": "Stage · SIPP",
+            "en": "Internship · SIPP"
+          },
+          "links": [
+            "sipp-site",
+            "wordpress",
+            "figma",
+            "pme"
+          ]
+        },
+        {
+          "id": "licence-2020",
+          "title": "2020 → 2023",
+          "sub": {
+            "fr": "Licence · ESIEE IT",
+            "en": "Bachelor's · ESIEE IT"
+          },
+          "links": [
+            "javascript",
+            "react",
+            "nodejs",
+            "sql"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "systems",
+      "label": {
+        "fr": "Systèmes",
+        "en": "Systems"
+      },
+      "cells": [
+        {
+          "id": "neocortex",
+          "title": "Neocortex",
+          "sub": {
+            "fr": "logiciel de santé, livré",
+            "en": "healthcare software, delivered"
+          },
+          "href": "/work/neocortex"
+        },
+        {
+          "id": "reputap",
+          "title": "Reputap",
+          "sub": {
+            "fr": "avis Google par NFC, en production",
+            "en": "NFC Google reviews, in production"
+          },
+          "href": "/work/reputap"
+        },
+        {
+          "id": "kastme",
+          "title": "KastMe",
+          "sub": {
+            "fr": "portfolio 3D, en construction",
+            "en": "3D portfolio, building"
+          },
+          "href": "/work/kastme"
+        },
+        {
+          "id": "capsule",
+          "title": "Capsule",
+          "sub": {
+            "fr": "plateforme atelier textile, en construction",
+            "en": "textile workshop platform, building"
+          },
+          "href": "/work/capsule"
+        },
+        {
+          "id": "hall-of-arts",
+          "title": "Hall of Arts",
+          "sub": {
+            "fr": "street art en AR, projet de diplôme",
+            "en": "street art in AR, diploma project"
+          },
+          "href": "/lab#hall-of-arts"
+        },
+        {
+          "id": "g2tiktok",
+          "title": "G2",
+          "sub": {
+            "fr": "famille de bots Telegram (vidéo, trading)",
+            "en": "family of Telegram bots (video, trading)"
+          },
+          "href": "/lab#g2tiktok"
+        },
+        {
+          "id": "roast",
+          "title": "Roast My Music",
+          "sub": {
+            "fr": "notation live pour streamers",
+            "en": "live rating for streamers"
+          },
+          "href": "/lab#roast-my-music"
+        },
+        {
+          "id": "youggy-app",
+          "title": "Youggy iOS",
+          "sub": {
+            "fr": "application de bénévolat",
+            "en": "volunteering app"
+          }
+        },
+        {
+          "id": "youggy-site",
+          "title": "Youggy web",
+          "sub": {
+            "fr": "site React de la plateforme",
+            "en": "React website of the platform"
+          }
+        },
+        {
+          "id": "sipp-site",
+          "title": "SIPP",
+          "sub": {
+            "fr": "site d'entreprise",
+            "en": "company website"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "label": {
+        "fr": "Stack",
+        "en": "Stack"
+      },
+      "cells": [
+        {
+          "id": "typescript",
+          "title": "TypeScript"
+        },
+        {
+          "id": "javascript",
+          "title": "JavaScript"
+        },
+        {
+          "id": "react",
+          "title": "React"
+        },
+        {
+          "id": "nextjs",
+          "title": "Next.js"
+        },
+        {
+          "id": "react-native",
+          "title": "React Native"
+        },
+        {
+          "id": "electron",
+          "title": "Electron"
+        },
+        {
+          "id": "nodejs",
+          "title": "Node.js"
+        },
+        {
+          "id": "express",
+          "title": "Express"
+        },
+        {
+          "id": "prisma",
+          "title": "Prisma"
+        },
+        {
+          "id": "sequelize",
+          "title": "Sequelize"
+        },
+        {
+          "id": "authjs",
+          "title": "Auth.js"
+        },
+        {
+          "id": "python",
+          "title": "Python"
+        },
+        {
+          "id": "postgresql",
+          "title": "PostgreSQL"
+        },
+        {
+          "id": "mysql",
+          "title": "MySQL"
+        },
+        {
+          "id": "firebase",
+          "title": "Firebase"
+        },
+        {
+          "id": "sql",
+          "title": "SQL"
+        },
+        {
+          "id": "stripe",
+          "title": "Stripe"
+        },
+        {
+          "id": "vercel",
+          "title": "Vercel"
+        },
+        {
+          "id": "mapbox",
+          "title": "Mapbox"
+        },
+        {
+          "id": "viro",
+          "title": "ViroReact"
+        },
+        {
+          "id": "wordpress",
+          "title": "WordPress"
+        },
+        {
+          "id": "figma",
+          "title": "Figma"
+        }
+      ]
+    },
+    {
+      "id": "ground",
+      "label": {
+        "fr": "Terrain",
+        "en": "Ground"
+      },
+      "cells": [
+        {
+          "id": "sante",
+          "title": {
+            "fr": "Santé",
+            "en": "Healthcare"
+          },
+          "sub": {
+            "fr": "praticiens, données sensibles",
+            "en": "practitioners, sensitive data"
+          }
+        },
+        {
+          "id": "commerce",
+          "title": {
+            "fr": "Commerce local",
+            "en": "Local business"
+          },
+          "sub": {
+            "fr": "comptoirs, caisses, avis",
+            "en": "counters, tills, reviews"
+          }
+        },
+        {
+          "id": "creatifs",
+          "title": {
+            "fr": "Créatifs",
+            "en": "Creatives"
+          },
+          "sub": {
+            "fr": "photographes, artistes, mannequins",
+            "en": "photographers, artists, models"
+          }
+        },
+        {
+          "id": "textile",
+          "title": {
+            "fr": "Textile",
+            "en": "Textile"
+          },
+          "sub": {
+            "fr": "atelier, petites séries",
+            "en": "workshop, small runs"
+          }
+        },
+        {
+          "id": "video",
+          "title": {
+            "fr": "Vidéo courte",
+            "en": "Short video"
+          },
+          "sub": {
+            "fr": "automatisation, créateurs",
+            "en": "automation, creators"
+          }
+        },
+        {
+          "id": "benevolat",
+          "title": {
+            "fr": "Bénévolat",
+            "en": "Volunteering"
+          },
+          "sub": {
+            "fr": "associations, mobile",
+            "en": "charities, mobile"
+          }
+        },
+        {
+          "id": "streetart",
+          "title": {
+            "fr": "Street art",
+            "en": "Street art"
+          },
+          "sub": {
+            "fr": "culture, réalité augmentée",
+            "en": "culture, augmented reality"
+          }
+        },
+        {
+          "id": "entrepreneuriat",
+          "title": {
+            "fr": "Entrepreneuriat",
+            "en": "Entrepreneurship"
+          },
+          "sub": {
+            "fr": "business, international",
+            "en": "business, international"
+          }
+        },
+        {
+          "id": "pme",
+          "title": {
+            "fr": "PME",
+            "en": "SMBs"
+          },
+          "sub": {
+            "fr": "présence en ligne",
+            "en": "online presence"
+          }
+        }
+      ]
+    }
+  ]
+}

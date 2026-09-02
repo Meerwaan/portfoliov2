@@ -605,8 +605,8 @@ body {
   .case-screen,
   .case-screens,
   .case-architecture {
-    width: calc(100% + 12rem);
-    margin-left: -6rem;
+    width: calc(100% + 16rem);
+    margin-left: -8rem;
   }
 }
 .case-screens-phones ol {
@@ -642,72 +642,158 @@ body {
 .lab-entry[data-active="true"] .lab-entry-index {
   color: var(--signal);
 }
-.lab-viewer-frame {
-  display: grid;
-  aspect-ratio: 16 / 10;
+
+/* ---------- Generic exploded layers (path page) ---------- */
+.stack-layer-top {
+  background: var(--paper-2);
 }
-.lab-viewer-shot {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transition: opacity var(--dur-3) var(--ease-out);
-}
-.lab-viewer-shot.is-active {
+.stack-layer-top .stack-layer-tag {
   opacity: 1;
 }
-.lab-viewer-empty {
+.stack-grid-top {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+}
+.stack-grid-dense {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+.stack-grid-dense .stack-cell {
+  padding: 0.3rem 0.45rem;
+}
+.stack-cell-hot {
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+.stack-cell-hot.is-active,
+.stack-cell-hot:hover,
+.stack-cell-hot:focus-visible {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+}
+.stack-cell-hot .stack-thread {
+  left: 1rem;
+  top: 50%;
+}
+.stack-cell-hot:hover .stack-thread,
+.stack-cell-hot:focus-visible .stack-thread,
+.stack-cell-hot.is-active .stack-thread {
+  opacity: 1;
+}
+.stack-cell-link:hover {
+  border-color: var(--signal);
+}
+.stack-layer-top .stack-grid-top {
+  padding-top: 0;
+}
+.stack-layer.stack-layer-top:not(.stack-layer-ui) {
+  justify-content: flex-start;
+}
+
+/* ---------- Lab bench cards: small exploded objects ---------- */
+.bench-card {
+  --explode: 0;
+}
+.bench-card:hover,
+.bench-card:focus-within,
+.bench-card[data-active="true"] {
+  --explode: 1;
+}
+.bench-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 30%;
+  padding: 2.5rem 1rem 6.5rem;
+}
+.bench-stack {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--explode) * -1.5rem)) rotateX(56deg) rotateZ(-24deg);
+  transition: transform var(--dur-3) var(--ease-out);
+}
+.bench-layer {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.25rem;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 1.75rem 0.75rem 0.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  transform: translateZ(calc(var(--explode) * -60px * var(--n) - var(--n) * 3px));
+  transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-3) var(--ease-out);
+}
+.bench-layer:not(.bench-layer-shot) {
+  opacity: calc(0.35 + var(--explode) * 0.65);
+}
+.bench-layer-shot {
+  padding: 0;
   background: var(--paper);
+}
+.bench-layer-shot img {
+  height: 100%;
+}
+.bench-plate {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.bench-tag {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.bench-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+.bench-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bench-chips li {
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-2);
+}
+.bench-card[data-active="true"] .bench-index,
+.bench-card:hover .bench-index {
+  color: var(--signal);
 }
 @media (prefers-reduced-motion: reduce) {
-  .lab-viewer-shot {
+  .bench-card {
+    --explode: 1;
+  }
+  .bench-stack,
+  .bench-layer {
     transition: none;
   }
-}
-
-/* ---------- Path trace ---------- */
-.path-trace {
-  --progress: 0;
-}
-.path-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0.5rem;
-  width: 1px;
-  background: var(--rule);
-}
-.path-line::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 1px;
-  height: calc(var(--progress) * 100%);
-  background: var(--signal);
-  transition: height 80ms linear;
-}
-.path-node {
-  position: absolute;
-  top: 2.55rem;
-  left: 0.5rem;
-  width: 9px;
-  height: 9px;
-  margin-left: -4px;
-  border-radius: 50%;
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
-  transition: background var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
-}
-.path-step[data-active="true"] .path-node {
-  background: var(--signal);
-  box-shadow: inset 0 0 0 1.5px var(--signal);
-}
-.path-step + .path-step {
-  border-top: 1px solid var(--rule);
-}
-.prose-lab .code-block {
-  font-size: 0.72rem;
-  max-width: 100%;
 }

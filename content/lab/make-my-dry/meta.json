@@ -1,1 +1,28 @@
-{ "slug": "make-my-dry", "status": "prototype", "year": "2025", "stack": ["React Native", "TypeScript", "Reanimated", "react-native-chart-kit"], "links": {}, "screenshots": [], "order": 4 }
+{
+  "slug": "make-my-dry",
+  "status": "prototype",
+  "year": "2025",
+  "stack": [
+    "React Native",
+    "TypeScript",
+    "Reanimated",
+    "react-native-chart-kit"
+  ],
+  "links": {},
+  "screenshots": [],
+  "order": 4,
+  "steps": {
+    "fr": [
+      "7 jours de référence",
+      "plan par paliers",
+      "relevé quotidien + raison",
+      "écart plan / réel"
+    ],
+    "en": [
+      "7-day baseline",
+      "staged plan",
+      "daily log + reason",
+      "plan vs actual gap"
+    ]
+  }
+}
