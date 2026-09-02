@@ -1,39 +1,334 @@
 {
-  "ui": "home",
+  "ui": "merchant-dashboard",
   "hotspots": [
-    { "id": "plate", "label": { "fr": "Plaque NFC sur le comptoir", "en": "NFC plate on the counter" }, "x": 57, "y": 55, "w": 16, "h": 26, "routes": ["s-token", "r-token"], "fields": ["NfcTag.publicToken", "ScanSession.sessionToken", "ScanSession.ipHash"] },
-    { "id": "review", "label": { "fr": "Promesse : un avis Google en 3 secondes", "en": "Promise: a Google review in 3 seconds" }, "x": 10, "y": 19, "w": 42, "h": 36, "routes": ["review-link"], "fields": ["Establishment.googleReviewUrl", "ReviewIntent.provider", "ReviewIntent.targetUrl"] },
-    { "id": "order", "label": { "fr": "Commander une plaque", "en": "Order a plate" }, "x": 10, "y": 76, "w": 15, "h": 5, "routes": ["admin-onboarding", "billing"], "fields": ["Tenant.slug", "Subscription.planId", "Invoice.amountTotal"] }
+    {
+      "id": "kpi-scans",
+      "label": {
+        "fr": "Scans totaux, en direct",
+        "en": "Total scans, live"
+      },
+      "x": 24,
+      "y": 21,
+      "w": 17,
+      "h": 20,
+      "routes": [
+        "merchant",
+        "s-token"
+      ],
+      "fields": [
+        "ScanSession.status",
+        "ScanSession.nfcTagId",
+        "NfcTag.publicToken"
+      ]
+    },
+    {
+      "id": "kpi-prizes",
+      "label": {
+        "fr": "Lots distribués",
+        "en": "Prizes handed out"
+      },
+      "x": 79,
+      "y": 21,
+      "w": 17,
+      "h": 20,
+      "routes": [
+        "spin",
+        "win"
+      ],
+      "fields": [
+        "Spin.resultType",
+        "Claim.status",
+        "Claim.claimCode",
+        "Prize.weight"
+      ]
+    },
+    {
+      "id": "activity",
+      "label": {
+        "fr": "Activité en temps réel",
+        "en": "Real-time activity"
+      },
+      "x": 24,
+      "y": 50,
+      "w": 35,
+      "h": 48,
+      "routes": [
+        "merchant"
+      ],
+      "fields": [
+        "Spin.scanSessionId",
+        "ScanSession.deviceId",
+        "Claim.redeemedByMembershipId"
+      ]
+    },
+    {
+      "id": "nav-tags",
+      "label": {
+        "fr": "Tags NFC de l'établissement",
+        "en": "The establishment's NFC tags"
+      },
+      "x": 2,
+      "y": 35,
+      "w": 16,
+      "h": 6,
+      "routes": [
+        "s-token",
+        "r-token"
+      ],
+      "fields": [
+        "NfcTag.publicToken",
+        "NfcTag.lastRotatedAt",
+        "Establishment.name"
+      ]
+    },
+    {
+      "id": "new-campaign",
+      "label": {
+        "fr": "Nouvelle campagne",
+        "en": "New campaign"
+      },
+      "x": 80,
+      "y": 7,
+      "w": 16,
+      "h": 6,
+      "routes": [
+        "campaigns"
+      ],
+      "fields": [
+        "Campaign.type",
+        "Campaign.configJson",
+        "Prize.weight",
+        "Prize.dailyCap"
+      ]
+    }
   ],
   "routes": [
-    { "id": "s-token", "method": "GET", "path": "/s/[publicToken]", "note": { "fr": "résout le tag, crée la session de scan", "en": "resolves the tag, creates the scan session" } },
-    { "id": "r-token", "method": "GET", "path": "/r/[token]", "note": { "fr": "redirection courte imprimée sur la plaque", "en": "short redirect printed on the plate" } },
-    { "id": "review-link", "method": "POST", "path": "/api/session/[sessionToken]/review-link", "note": { "fr": "enregistre l'intention d'avis, ouvre Google", "en": "records the review intent, opens Google" } },
-    { "id": "spin", "method": "POST", "path": "/api/session/[sessionToken]/result", "note": { "fr": "tirage serveur, émission du ticket", "en": "server draw, ticket issued" } },
-    { "id": "win", "method": "GET", "path": "/win/[campaignId]", "note": { "fr": "roue de gains, animation du résultat", "en": "prize wheel, plays the result" } },
-    { "id": "merchant", "method": "GET", "path": "/api/merchant/dashboard", "note": { "fr": "chiffres de l'établissement", "en": "establishment figures" } },
-    { "id": "admin-onboarding", "method": "GET", "path": "/admin/onboarding", "note": { "fr": "création du tenant et du premier établissement", "en": "tenant and first establishment setup" } },
-    { "id": "billing", "method": "GET", "path": "/api/admin/billing/overview", "note": { "fr": "abonnements, factures", "en": "subscriptions, invoices" } },
-    { "id": "health", "method": "GET", "path": "/api/admin/system/health", "note": { "fr": "latence base, disque, journaux", "en": "database latency, disk, logs" } }
+    {
+      "id": "s-token",
+      "method": "GET",
+      "path": "/s/[publicToken]",
+      "note": {
+        "fr": "résout le tag, crée la session de scan",
+        "en": "resolves the tag, creates the scan session"
+      }
+    },
+    {
+      "id": "r-token",
+      "method": "GET",
+      "path": "/r/[token]",
+      "note": {
+        "fr": "redirection courte imprimée sur la plaque",
+        "en": "short redirect printed on the plate"
+      }
+    },
+    {
+      "id": "review-link",
+      "method": "POST",
+      "path": "/api/session/[sessionToken]/review-link",
+      "note": {
+        "fr": "enregistre l'intention d'avis, ouvre Google",
+        "en": "records the review intent, opens Google"
+      }
+    },
+    {
+      "id": "spin",
+      "method": "POST",
+      "path": "/api/session/[sessionToken]/result",
+      "note": {
+        "fr": "tirage serveur, émission du ticket",
+        "en": "server draw, ticket issued"
+      }
+    },
+    {
+      "id": "win",
+      "method": "GET",
+      "path": "/win/[campaignId]",
+      "note": {
+        "fr": "roue de gains, animation du résultat",
+        "en": "prize wheel, plays the result"
+      }
+    },
+    {
+      "id": "merchant",
+      "method": "GET",
+      "path": "/api/merchant/dashboard",
+      "note": {
+        "fr": "chiffres de l'établissement",
+        "en": "establishment figures"
+      }
+    },
+    {
+      "id": "campaigns",
+      "method": "GET",
+      "path": "/admin/campaigns/[id]",
+      "note": {
+        "fr": "règles anti-abus, roue et lots par campagne",
+        "en": "anti-abuse rules, wheel and prizes per campaign"
+      }
+    },
+    {
+      "id": "admin-onboarding",
+      "method": "GET",
+      "path": "/admin/onboarding",
+      "note": {
+        "fr": "création du tenant et du premier établissement",
+        "en": "tenant and first establishment setup"
+      }
+    },
+    {
+      "id": "billing",
+      "method": "GET",
+      "path": "/api/admin/billing/overview",
+      "note": {
+        "fr": "abonnements, factures",
+        "en": "subscriptions, invoices"
+      }
+    },
+    {
+      "id": "health",
+      "method": "GET",
+      "path": "/api/admin/system/health",
+      "note": {
+        "fr": "latence base, disque, journaux",
+        "en": "database latency, disk, logs"
+      }
+    }
   ],
   "models": [
-    { "name": "Tenant", "fields": ["id", "name", "slug", "status"] },
-    { "name": "Establishment", "fields": ["tenantId", "name", "city", "timezone", "googleReviewUrl"] },
-    { "name": "NfcTag", "fields": ["establishmentId", "campaignId", "publicToken", "lastRotatedAt"] },
-    { "name": "ScanSession", "fields": ["nfcTagId", "sessionToken", "deviceId", "ipHash", "status", "expiresAt"] },
-    { "name": "ReviewIntent", "fields": ["scanSessionId", "provider", "targetUrl"] },
-    { "name": "Spin", "fields": ["scanSessionId", "wheelId", "prizeId", "resultType"] },
-    { "name": "Claim", "fields": ["spinId", "claimCode", "status", "expiresAt", "redeemedByMembershipId", "rejectionReason"] },
-    { "name": "Subscription", "fields": ["tenantId", "planId", "status", "currentPeriodEnd"] },
-    { "name": "Invoice", "fields": ["type", "amountTotal", "amountVat", "status"] }
+    {
+      "name": "Tenant",
+      "fields": [
+        "id",
+        "name",
+        "slug",
+        "status"
+      ]
+    },
+    {
+      "name": "Establishment",
+      "fields": [
+        "tenantId",
+        "name",
+        "city",
+        "timezone",
+        "googleReviewUrl"
+      ]
+    },
+    {
+      "name": "NfcTag",
+      "fields": [
+        "establishmentId",
+        "campaignId",
+        "publicToken",
+        "lastRotatedAt"
+      ]
+    },
+    {
+      "name": "Campaign",
+      "fields": [
+        "establishmentId",
+        "type",
+        "status",
+        "configJson",
+        "startsAt"
+      ]
+    },
+    {
+      "name": "ScanSession",
+      "fields": [
+        "nfcTagId",
+        "sessionToken",
+        "deviceId",
+        "ipHash",
+        "status",
+        "expiresAt"
+      ]
+    },
+    {
+      "name": "ReviewIntent",
+      "fields": [
+        "scanSessionId",
+        "provider",
+        "targetUrl"
+      ]
+    },
+    {
+      "name": "Prize",
+      "fields": [
+        "wheelId",
+        "name",
+        "weight",
+        "dailyCap",
+        "totalCap"
+      ]
+    },
+    {
+      "name": "Spin",
+      "fields": [
+        "scanSessionId",
+        "wheelId",
+        "prizeId",
+        "resultType"
+      ]
+    },
+    {
+      "name": "Claim",
+      "fields": [
+        "spinId",
+        "claimCode",
+        "status",
+        "expiresAt",
+        "redeemedByMembershipId",
+        "rejectionReason"
+      ]
+    }
   ],
   "infra": [
-    { "name": "Vercel", "role": { "fr": "hébergement, fonctions serveur", "en": "hosting, server functions" } },
-    { "name": "PostgreSQL · Supabase", "role": { "fr": "base de données, isolation par tenant", "en": "database, tenant isolation" } },
-    { "name": "Prisma", "role": { "fr": "modèle et migrations", "en": "model and migrations" } },
-    { "name": "Auth.js", "role": { "fr": "sessions, rôles super_admin / owner / user", "en": "sessions, super_admin / owner / user roles" } },
-    { "name": "Resend", "role": { "fr": "emails transactionnels", "en": "transactional email" } },
-    { "name": "Stripe", "role": { "fr": "facturation", "en": "billing" } }
+    {
+      "name": "Vercel",
+      "role": {
+        "fr": "hébergement, fonctions serveur",
+        "en": "hosting, server functions"
+      }
+    },
+    {
+      "name": "PostgreSQL · Supabase",
+      "role": {
+        "fr": "base de données, isolation par tenant",
+        "en": "database, tenant isolation"
+      }
+    },
+    {
+      "name": "Prisma",
+      "role": {
+        "fr": "modèle et migrations",
+        "en": "model and migrations"
+      }
+    },
+    {
+      "name": "Auth.js",
+      "role": {
+        "fr": "sessions, rôles super_admin / owner / user",
+        "en": "sessions, super_admin / owner / user roles"
+      }
+    },
+    {
+      "name": "Resend",
+      "role": {
+        "fr": "emails transactionnels",
+        "en": "transactional email"
+      }
+    },
+    {
+      "name": "Stripe",
+      "role": {
+        "fr": "facturation",
+        "en": "billing"
+      }
+    }
   ],
-  "totals": { "routes": 27, "models": 16 }
+  "totals": {
+    "routes": 27,
+    "models": 19
+  }
 }

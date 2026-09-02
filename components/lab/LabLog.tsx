@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import type { LabEntry } from "@/lib/content/loader";
@@ -24,6 +25,11 @@ export async function LabLog({ entries }: { entries: LabEntry[] }) {
                 <p className="mt-3 text-lg text-ink-2">{entry.summary}</p>
                 {entry.fallbackBody && <p className="mono-label mt-4 text-ink-3">{t("fallbackBody")}</p>}
                 <div className="prose-lab mt-6">{rendered[i]}</div>
+                {entry.screenshots[0] && (
+                  <figure className="mt-8 overflow-hidden rounded-md border border-rule bg-paper-2">
+                    <Image src={entry.screenshots[0].src} alt={entry.screenshots[0].alt} width={entry.screenshots[0].width} height={entry.screenshots[0].height} sizes="(min-width: 64rem) 56vw, 100vw" placeholder={entry.screenshots[0].blurDataURL ? "blur" : "empty"} blurDataURL={entry.screenshots[0].blurDataURL} className="h-auto w-full" />
+                  </figure>
+                )}
                 {(entry.links.live || entry.links.repo) && (
                   <p className="mono-label mt-6 flex gap-6">
                     {entry.links.live && (

@@ -1,1 +1,25 @@
-{ "slug": "g2tiktok", "status": "active", "year": "2025-2026", "stack": ["Python", "FFmpeg", "Telegram Bot API", "Whisper", "Edge TTS", "SQLite"], "links": {}, "screenshots": [], "order": 1 }
+{
+  "slug": "g2tiktok",
+  "status": "active",
+  "year": "2025-2026",
+  "stack": [
+    "Python",
+    "FFmpeg",
+    "Telegram Bot API",
+    "Whisper",
+    "Edge TTS",
+    "SQLite"
+  ],
+  "links": {},
+  "screenshots": [
+    {
+      "id": "dashboard-tiktokdash",
+      "frame": "browser"
+    },
+    {
+      "id": "dashboard",
+      "frame": "browser"
+    }
+  ],
+  "order": 1
+}

@@ -3,13 +3,45 @@
   "node": "NODE_03",
   "status": "building",
   "role": "founder",
-  "period": { "from": "2025-11", "to": null },
-  "stack": ["Next.js 16", "React 19", "TypeScript", "Firebase Auth", "Firestore", "Cloud Storage", "Tailwind 4", "Zod", "Vitest", "Vercel"],
-  "links": { "live": "https://kasteme.vercel.app" },
-  "screenshots": [{ "id": "home", "frame": "browser" }],
+  "period": {
+    "from": "2025-11",
+    "to": null
+  },
+  "stack": [
+    "Next.js 16",
+    "React 19",
+    "TypeScript",
+    "Firebase Auth",
+    "Firestore",
+    "Cloud Storage",
+    "Tailwind 4",
+    "Zod",
+    "Vitest",
+    "Vercel"
+  ],
+  "links": {
+    "live": "https://kasteme.vercel.app"
+  },
+  "screenshots": [
+    {
+      "id": "landing-demo",
+      "frame": "browser"
+    },
+    {
+      "id": "home",
+      "frame": "browser"
+    },
+    {
+      "id": "landing",
+      "frame": "browser"
+    }
+  ],
   "heroScreenshot": 0,
   "diagram": false,
   "order": 3,
   "featured": true,
-  "space": { "index": 2, "tilt": 3 }
+  "space": {
+    "index": 2,
+    "tilt": 3
+  }
 }

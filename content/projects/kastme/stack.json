@@ -1,35 +1,276 @@
 {
-  "ui": "home",
+  "ui": "landing-demo",
   "hotspots": [
-    { "id": "gallery", "label": { "fr": "Galerie en perspective", "en": "Gallery in perspective" }, "x": 14, "y": 85, "w": 72, "h": 15, "routes": ["public-slug", "portfolios-id"], "fields": ["Portfolio.gallery", "Media.url", "Media.thumbUrl", "Media.type"] },
-    { "id": "claim", "label": { "fr": "Réserver son adresse", "en": "Claim your address" }, "x": 41, "y": 76, "w": 18, "h": 6, "routes": ["register", "slug-check"], "fields": ["Portfolio.slug", "Portfolio.previousSlugs", "slugs/{slug}.userId"] },
-    { "id": "promise", "label": { "fr": "La page publique d'un créatif", "en": "A creative's public page" }, "x": 20, "y": 22, "w": 60, "h": 34, "routes": ["public-slug", "track"], "fields": ["Portfolio.published", "Profile.name", "Theme.preset", "stats/{day}.views"] }
+    {
+      "id": "sphere",
+      "label": {
+        "fr": "La sphère de médias",
+        "en": "The media sphere"
+      },
+      "x": 15,
+      "y": 17,
+      "w": 70,
+      "h": 66,
+      "routes": [
+        "public-slug",
+        "portfolios-id"
+      ],
+      "fields": [
+        "Portfolio.gallery",
+        "Media.url",
+        "Media.thumbUrl",
+        "Theme.density",
+        "Theme.rotationSpeed"
+      ]
+    },
+    {
+      "id": "profile",
+      "label": {
+        "fr": "Carte de profil",
+        "en": "Profile card"
+      },
+      "x": 43,
+      "y": 34,
+      "w": 14,
+      "h": 18,
+      "routes": [
+        "public-slug"
+      ],
+      "fields": [
+        "Profile.name",
+        "Profile.professions",
+        "Profile.city"
+      ]
+    },
+    {
+      "id": "cta",
+      "label": {
+        "fr": "Lien mis en avant",
+        "en": "Featured link"
+      },
+      "x": 44,
+      "y": 57,
+      "w": 12,
+      "h": 6,
+      "routes": [
+        "track",
+        "portfolios-id"
+      ],
+      "fields": [
+        "Link.label",
+        "Link.url",
+        "Link.featured",
+        "stats/{day}.views"
+      ]
+    },
+    {
+      "id": "start",
+      "label": {
+        "fr": "Réserver son adresse",
+        "en": "Claim your address"
+      },
+      "x": 73,
+      "y": 5,
+      "w": 9,
+      "h": 5,
+      "routes": [
+        "register",
+        "slug-check"
+      ],
+      "fields": [
+        "Portfolio.slug",
+        "slugs/{slug}.userId",
+        "users/{uid}.plan"
+      ]
+    }
   ],
   "routes": [
-    { "id": "public-slug", "method": "GET", "path": "/[slug]", "note": { "fr": "page publique, SSR + ISR, image OG générée", "en": "public page, SSR + ISR, generated OG image" } },
-    { "id": "legacy-p", "method": "GET", "path": "/p/[id]", "note": { "fr": "ancienne URL, redirection 301 vers le slug", "en": "old URL, 301 to the slug" } },
-    { "id": "register", "method": "GET", "path": "/register", "note": { "fr": "inscription Firebase Auth", "en": "Firebase Auth sign-up" } },
-    { "id": "slug-check", "method": "GET", "path": "/api/slug/check", "note": { "fr": "disponibilité et noms réservés", "en": "availability and reserved names" } },
-    { "id": "editor", "method": "GET", "path": "/editor/[[...id]]", "note": { "fr": "éditeur de la sphère et des médias", "en": "sphere and media editor" } },
-    { "id": "portfolios-id", "method": "PATCH", "path": "/api/portfolios/[id]", "note": { "fr": "sauvegarde, validée par Zod", "en": "save, validated with Zod" } },
-    { "id": "track", "method": "POST", "path": "/api/track", "note": { "fr": "statistiques de visite par jour", "en": "daily visit statistics" } },
-    { "id": "export", "method": "GET", "path": "/api/account/export", "note": { "fr": "export des données du compte", "en": "account data export" } }
+    {
+      "id": "public-slug",
+      "method": "GET",
+      "path": "/[slug]",
+      "note": {
+        "fr": "page publique, SSR + ISR, image OG générée",
+        "en": "public page, SSR + ISR, generated OG image"
+      }
+    },
+    {
+      "id": "legacy-p",
+      "method": "GET",
+      "path": "/p/[id]",
+      "note": {
+        "fr": "ancienne URL, redirection 301 vers le slug",
+        "en": "old URL, 301 to the slug"
+      }
+    },
+    {
+      "id": "register",
+      "method": "GET",
+      "path": "/register",
+      "note": {
+        "fr": "inscription Firebase Auth",
+        "en": "Firebase Auth sign-up"
+      }
+    },
+    {
+      "id": "slug-check",
+      "method": "GET",
+      "path": "/api/slug/check",
+      "note": {
+        "fr": "disponibilité et noms réservés",
+        "en": "availability and reserved names"
+      }
+    },
+    {
+      "id": "editor",
+      "method": "GET",
+      "path": "/editor/[[...id]]",
+      "note": {
+        "fr": "éditeur de la sphère et des médias",
+        "en": "sphere and media editor"
+      }
+    },
+    {
+      "id": "portfolios-id",
+      "method": "PATCH",
+      "path": "/api/portfolios/[id]",
+      "note": {
+        "fr": "sauvegarde, validée par Zod",
+        "en": "save, validated with Zod"
+      }
+    },
+    {
+      "id": "track",
+      "method": "POST",
+      "path": "/api/track",
+      "note": {
+        "fr": "statistiques de visite par jour",
+        "en": "daily visit statistics"
+      }
+    },
+    {
+      "id": "export",
+      "method": "GET",
+      "path": "/api/account/export",
+      "note": {
+        "fr": "export des données du compte",
+        "en": "account data export"
+      }
+    }
   ],
   "models": [
-    { "name": "users/{uid}", "fields": ["plan", "role", "createdAt"] },
-    { "name": "Portfolio", "fields": ["userId", "slug", "previousSlugs", "published", "profile", "gallery", "theme"] },
-    { "name": "Profile", "fields": ["name", "professions", "city"] },
-    { "name": "Media", "fields": ["type", "url", "thumbUrl", "posterUrl", "width", "height", "alt"] },
-    { "name": "Theme", "fields": ["preset", "monochrome", "density", "rotationSpeed", "backgroundColor"] },
-    { "name": "slugs/{slug}", "fields": ["userId"] },
-    { "name": "stats/{day}", "fields": ["views", "clicks"] }
+    {
+      "name": "users/{uid}",
+      "fields": [
+        "plan",
+        "role",
+        "createdAt"
+      ]
+    },
+    {
+      "name": "Portfolio",
+      "fields": [
+        "userId",
+        "slug",
+        "previousSlugs",
+        "published",
+        "profile",
+        "gallery",
+        "theme"
+      ]
+    },
+    {
+      "name": "Profile",
+      "fields": [
+        "name",
+        "professions",
+        "city"
+      ]
+    },
+    {
+      "name": "Media",
+      "fields": [
+        "type",
+        "url",
+        "thumbUrl",
+        "posterUrl",
+        "width",
+        "height",
+        "alt"
+      ]
+    },
+    {
+      "name": "Link",
+      "fields": [
+        "id",
+        "label",
+        "url",
+        "featured"
+      ]
+    },
+    {
+      "name": "Theme",
+      "fields": [
+        "preset",
+        "monochrome",
+        "density",
+        "rotationSpeed",
+        "backgroundColor"
+      ]
+    },
+    {
+      "name": "slugs/{slug}",
+      "fields": [
+        "userId"
+      ]
+    },
+    {
+      "name": "stats/{day}",
+      "fields": [
+        "views",
+        "clicks"
+      ]
+    }
   ],
   "infra": [
-    { "name": "Vercel", "role": { "fr": "hébergement, ISR, images OG", "en": "hosting, ISR, OG images" } },
-    { "name": "Firebase Auth", "role": { "fr": "comptes créateurs", "en": "creator accounts" } },
-    { "name": "Firestore", "role": { "fr": "documents, règles de sécurité testées", "en": "documents, tested security rules" } },
-    { "name": "Cloud Storage", "role": { "fr": "images 10 Mo, vidéos 50 Mo", "en": "10 MB images, 50 MB videos" } },
-    { "name": "Firebase Admin", "role": { "fr": "écritures serveur (plan, rôle)", "en": "server-side writes (plan, role)" } }
+    {
+      "name": "Vercel",
+      "role": {
+        "fr": "hébergement, ISR, images OG",
+        "en": "hosting, ISR, OG images"
+      }
+    },
+    {
+      "name": "Firebase Auth",
+      "role": {
+        "fr": "comptes créateurs",
+        "en": "creator accounts"
+      }
+    },
+    {
+      "name": "Firestore",
+      "role": {
+        "fr": "documents, règles de sécurité testées",
+        "en": "documents, tested security rules"
+      }
+    },
+    {
+      "name": "Cloud Storage",
+      "role": {
+        "fr": "images 10 Mo, vidéos 50 Mo",
+        "en": "10 MB images, 50 MB videos"
+      }
+    },
+    {
+      "name": "Firebase Admin",
+      "role": {
+        "fr": "écritures serveur (plan, rôle)",
+        "en": "server-side writes (plan, role)"
+      }
+    }
   ],
-  "totals": { "routes": 23, "models": 7 }
+  "totals": {
+    "routes": 23,
+    "models": 7
+  }
 }

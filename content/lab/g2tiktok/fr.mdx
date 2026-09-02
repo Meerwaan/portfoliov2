@@ -3,6 +3,9 @@ title: "G2TikTok, chaîne de production vidéo"
 summary: "Suite d'automatisation qui transforme un script envoyé sur Telegram en vidéo verticale sous-titrée, prête à publier."
 myRole: "Conception et développement, seul"
 keywords: ["automatisation", "python", "ffmpeg", "telegram", "tts", "whisper", "vidéo", "tiktok", "pipeline"]
+screenshotAlt:
+  dashboard-tiktokdash: "Interface TikTokDash : liste des découpages de vidéos longues, paramètres d'API et prompt d'analyse."
+  dashboard: "Page de présentation de la suite G2TikTok avec son bot Telegram."
 ---
 
 Le point de départ est un bot Telegram : on lui envoie un script, il renvoie une vidéo verticale montée, doublée par synthèse vocale et sous-titrée mot à mot. Entre les deux, une chaîne Python orchestre la synthèse vocale, la transcription par Whisper pour caler les sous-titres, la sélection d'un fond vidéo et l'assemblage par FFmpeg.
