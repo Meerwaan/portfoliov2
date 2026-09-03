@@ -1,0 +1,902 @@
+{
+  "capsule/admin-dashboard": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACwAQCdASoQAAoAA4BaJaQAAugxxVPAAP71bw6IY98/QAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-dashboard-texture.webp"
+  },
+  "capsule/admin-materials": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACwAQCdASoQAAoAA4BaJaQAAud7cIQAAP71rHsWluZm0AAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-materials-texture.webp"
+  },
+  "capsule/admin-project-tracker": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoQAAoAA4BaJZwAAudQqI3gAP71cNIKIGuEOW+s2jzKwAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-project-tracker-texture.webp"
+  },
+  "capsule/admin-projects-list": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoQAAoAA4BaJaQAAudY1kAA/vVvPF7tcYAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-projects-list-texture.webp"
+  },
+  "capsule/admin-quote-detail-pricing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAAAwAQCdASoQAAoAA4BaJZwAA3AA/vGcfZ/5ZmAIOTcp8mYtUAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-quote-detail-pricing-texture.webp"
+  },
+  "capsule/admin-quotes-list": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAACQAQCdASoQAAoAA4BaJaQAAudY1kAA/vVvPF7tcYAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/admin-quotes-list-texture.webp"
+  },
+  "capsule/auth-signin": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vM0TJ3cWP91E6G1VNiAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/auth-signin-texture.webp"
+  },
+  "capsule/client-dashboard": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vM2QI/7GLTS+dAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/client-dashboard-texture.webp"
+  },
+  "capsule/client-project-address": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vK2zEOmAAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/client-project-address-texture.webp"
+  },
+  "capsule/client-project-tracking": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBoAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vL5+w0AAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/client-project-tracking-texture.webp"
+  },
+  "capsule/client-projects-list": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vNxEVIBOAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/client-projects-list-texture.webp"
+  },
+  "capsule/client-quote-detail": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAABQAQCdASoQAAoAA4BaJZwABAAAAP7yszE1PSqmAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/client-quote-detail-texture.webp"
+  },
+  "capsule/landing-hero": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAAoAA4BaJaQAAudmQKdQAAD+9yCbSWbL5VK7ZGBj6JlC8JfuoRuaXjIAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/landing-hero-texture.webp"
+  },
+  "capsule/landing-process": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoQAAoAA4BaJaQAAtrSDnCgAP73CIf3BNhAn7nUjP9d9nEcELHpUv97rR5q+IHNckyxUAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/landing-process-texture.webp"
+  },
+  "capsule/landing-quote-configurator": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAQCdASoQAAoAA4BaJZwAAudj1rWIAP73Bu1Aqn5kR6d6osZjfFV2iKAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/capsule/landing-quote-configurator-texture.webp"
+  },
+  "g2tiktok-live-inter/overlay": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADwAQCdASoQAAoAA4BaJQBOgCFsFOQIZgAA/vV0hofsQTrkj0WmLkQGvDUj2gAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok-live-inter/overlay-texture.webp"
+  },
+  "g2tiktok-live-inter/overlay-idle": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAABQAQCdASoQAAoAA4BaJQBOgCgAAP7x6A7pDE/QSKY9wGD1NBNNDYCAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok-live-inter/overlay-idle-texture.webp"
+  },
+  "g2tiktok-live-inter/overlay-vertical": {
+    "width": 2160,
+    "height": 3840,
+    "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAQAwCdASoQABwAPu1iqU2ppaOiMAgBMB2JY2eeU0AVBAAA/u+fS+fio7hApF5zHoU0CZ82OfLU+I67neAAAA==",
+    "sizes": [
+      800,
+      1600
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok-live-inter/overlay-vertical-texture.webp"
+  },
+  "g2tiktok-live-inter/overlay-winner": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAoAA4BaJZQAAudmHDIYAP75FxidiVbQA1s5/Ogp7YgiiygKUHYAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok-live-inter/overlay-winner-texture.webp"
+  },
+  "g2tiktok/dashboard": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAQAgCdASoQAAoAA4BaJQBOgCHhoUmTeuSwAP7u4uI4kIVKYUQkCrCqJuGTg5hd2HN/5mGHvX9RnIkgAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/dashboard-texture.webp"
+  },
+  "g2tiktok/dashboard-tiktokdash": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAABQAQCdASoQAAoAA4BaJZwABAAAAP7zAszb7v46xSs3bTYEl4AAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/dashboard-tiktokdash-texture.webp"
+  },
+  "g2tiktok/landing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAoAA4BaJYgCdAEPDD2TTUAA/u7vNtVba6qXntW1JhdWa3fIB5GDwO2DQQBDX1JubSgA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/landing-texture.webp"
+  },
+  "g2tiktok/landing-full": {
+    "width": 2880,
+    "height": 10388,
+    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAQBQCdASoQADoAPu1gqE4ppSOpMBgMATAdiWUAy+AQ8Me8MJuhUURF/jtg22sZo0DAAP7kIcNM9Ai3jBS7uvbKoJBEFE/L0gNLlG3zUmlo3uw1/O5cUMqHUjdqJhDEn5R/kJ7rkYs2xx8kA4bdvNNIjyqiNk3uI32QH872TAvRPFeLFiu90pIvNYAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/landing-full-texture.webp"
+  },
+  "g2tiktok/tiktokdash-create": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAABQAQCdASoQAAoAA4BaJZwABAAAAP7zOySf/VjOjXtyxPMnhWAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/tiktokdash-create-texture.webp"
+  },
+  "g2tiktok/tiktokdash-split": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABQAQCdASoQAAoAA4BaJZwABAAAAP7zd7mXYiDrExJDAAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktok/tiktokdash-split-texture.webp"
+  },
+  "g2tiktokwork/demo-frame": {
+    "width": 1080,
+    "height": 1920,
+    "blurDataURL": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBACdASoQABwAPu1orU2ppqSiMAgBMB2JQBdgMYjUGLT0eitDsztU3jTNgAD++nfTXse8bnltQT0+67xCi9lOSM6FBL4CqbzjbgW8viK5pV7wFdbnmtfGnK+idpRWhu/FMronIsGG5pa/yK/URQYRz5wVYNUhXQfPxTaGMqN5cwbbR3e3Ipyl0VZT1oXpGdWGkyKQIRV01fTF2n8AAA==",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktokwork/demo-frame-texture.webp"
+  },
+  "g2tiktokwork/landing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAoAA4BaJQBOgCHhcImg+AD+7uLg/98Oz6Hfn9IpJoX8uuGymq4wzGraMKWIZaU3aAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/g2tiktokwork/landing-texture.webp"
+  },
+  "kastme/home": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAoAA4BaJaQAAvjnl5ecQAD++JObUxF0ZAo6tS4GnEnsO45ZKRalrZL4+cxzdZvDRHpmL+26H1Ll8/kIRYvy8LnxjaRB0ncAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/home-texture.webp"
+  },
+  "kastme/landing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAoAA4BaJaQAAvjnmnwBAAD++JObUxF0ZAo6tS4GnEnsO45ZKRalrZL4+cx1Z3Tc6sCQ+LG1lXNbkSVg1+87h09gAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/landing-texture.webp"
+  },
+  "kastme/landing-demo": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAoAA4BaJZwAD5DwXiK1LmogAP71+SQT5Ea0PgiLxmV4NV0VzNHuTosCU/0OJUq7UZEdX2uX8IdrexTpn9yfx02YCw4zIAAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/landing-demo-texture.webp"
+  },
+  "kastme/landing-full": {
+    "width": 2880,
+    "height": 7200,
+    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoQACgAPu1orFCppaQiqqgBMB2JaQAAPtYya0wCEbzdH38Yyf5rK4AA/vSTD5hbO9t4ZOqEj1tpLrcG7gVLm7zs6OggMk42tJDBLCsMycyUR+0CM5z4VFIdMglBFvmDtqb16DQ+TjyXJ8asW+L3XiR31U1IlFRxWsUB/otthsVLmMNYcAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/landing-full-texture.webp"
+  },
+  "kastme/public-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAAAQBQCdASoQACMAPt1apE2opSOiNUgBEBuJZwAFEsbzzv0cRJM8o9RzfwdFkR7brtdgAP7tIov12XNq697v24LtHvXsSCZLP1ph63H8XD2BvwoM/l206gJ4jMTjQUDV+DE9bYOIvd7LupVJNhXR85ppkeBvyX4Wl7k1+gZ9wfm/guL/o6swsak4A+SxhLR4w3oqcSL4C9xYRzhxi9d/ejfe8PM6GnloO3WQGh73bARCKTp7v/eAAAAA",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/public-mobile-texture.webp"
+  },
+  "kastme/public-page": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAoAA4BaJaQAD5Gsd/QDUAD+7yxEOkp5p4ExVXv9FehS3hssLNtmsHmdN/sL16NSR96zL1PIXra08826m+WRXuGkqSNn63IRgZspOSoAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/public-page-texture.webp"
+  },
+  "kastme/tarifs": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAAAwAQCdASoQAAoAA4BaJaQAA3AA/vXnh2isrQAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/kastme/tarifs-texture.webp"
+  },
+  "reputap/admin-accounting": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAQCdASoQAAoAA4BaJZwAAsf1htoAAP6t6FiPGKLt7StvlHToh5O+AYAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/admin-accounting-texture.webp"
+  },
+  "reputap/admin-clients": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAoAA4BaJZQC7AELXN/wAP6t6FiPGKLt7SsVxM92nqImS1cAchtbimQJcuDAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/admin-clients-texture.webp"
+  },
+  "reputap/admin-overview": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoQAAoAA4BaJZwAAp0JW+AA/q3oWI8You3tK3IXnvjwBI84SV+c0gAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/admin-overview-texture.webp"
+  },
+  "reputap/admin-system": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoQAAoAA4BaJZwCw7EPAT8sYAD+rehYjxii7e0q1RnoudWOwljR9qHoAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/admin-system-texture.webp"
+  },
+  "reputap/home": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAoAA4BaJYgCdAEKeqEsAAD+3f7NjVJX6XRO5YxVY1h6G+O5UFn+UI4AiwygrkQc/yrCvZw72xScx7RO35ScAtN+nTtSvG0jaIYAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/home-texture.webp"
+  },
+  "reputap/merchant-billing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAAoAA4BaJZwAAt0AZx61IAD+rehYjxii5jlnl9N5tpzh+8AJmLD/q5hgAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-billing-texture.webp"
+  },
+  "reputap/merchant-campaigns": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoQAAoAA4BaJZwAApz+BTcAAP6t6FiPGKLlur6cLa1OtShKYiIkMd+rmGAAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-campaigns-texture.webp"
+  },
+  "reputap/merchant-dashboard": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAAoAA4BaJZwAAt0AZx5fQAD+rehYjxii5jlnl9N5tpzh+8AJmLD/q5hgAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-dashboard-texture.webp"
+  },
+  "reputap/merchant-establishments": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAQCdASoQAAoAA4BaJZQCdAEO/EkWAAD+rehYjxii5jlmP1xIjFDD79zHYmAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-establishments-texture.webp"
+  },
+  "reputap/merchant-tags": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACQAQCdASoQAAoAA4BaJZwAApz92sAA/q3oWI8You3XiM2KQouWDDd5gAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-tags-texture.webp"
+  },
+  "reputap/merchant-validations": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoQAAoAA4BaJQBYdhrZCIAA/u5RA9bzGXS9Hp0jweuZ1OcwZIe9ARN4AAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-validations-texture.webp"
+  },
+  "reputap/merchant-validations-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQBACdASoQACMAPu1mqE8ppaOpqqwBMB2JZQDKABZtKvUrJ7H3g+8ZAAD+7UR7YbUYIB5/Zx3POvAeZmjBdC5RAx0+j4bKlnri7RHvzJCFSAAA",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/merchant-validations-mobile-texture.webp"
+  },
+  "reputap/pricing": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAoAA4BaJYgCdAEKeqEsAAD+3f7NjVJX6XRO5YxVY1h6G+O5UFn+UI4AiwygrkQc/yrCvZw72xScx7RO35ScAtN+nTtSvG0jaIYAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/pricing-texture.webp"
+  },
+  "reputap/rapport-exemple": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAoAA4BaJaAAAto4aVwvgAD+5pJGNUO3VWOW3OP/NQeqx9tMoYiVuZo6MC6o15E2hw6UmEuSt/ED5bT+1wcFIWZoWZdf9eRebV4AAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/rapport-exemple-texture.webp"
+  },
+  "reputap/scan": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAwAgCdASoQAAoAA4BaJQBYheACuLB8kNYSAAD+7lED1v4A0rexnvgQRcv9fVvgsfqw5GeCGMt7I6QAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/scan-texture.webp"
+  },
+  "reputap/scan-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoQACMAPulep02pJSOiNVgIASAdCUAYG4itrTcBGJYRAcTAAP7zc04TNFQ+ZFDbOv4zed8ZrWTZ0zOz8MC+Kh0t3ZYkSngX9cxxhMXRdiebW4WrC8zu1Q9WrJEJj9ROhAAAAA==",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/scan-mobile-texture.webp"
+  },
+  "reputap/ticket": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAoAA4BaJQBYdiHabpJ4AAD+7lEDK1FMdxlum0Vl2CsCoLUyneiUzniUEF/8DEbBPewAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/ticket-texture.webp"
+  },
+  "reputap/ticket-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAwBACdASoQACMAPt1YpE2opSOiNUgBEBuJYgCzgCzai0z4vy+6ccUJ7DAA/u+85aw2ArWq2dgbrHEL17RMYsbgAZgyNmYOgwijO3p/kkDHkgFMZ0I/gEuuxN5Q48oIGj+Jj2I5GAiQvFelrb2RPBH+atoKeBKqrE+N3WaAAAA=",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/ticket-mobile-texture.webp"
+  },
+  "reputap/wheel": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoQAAoAA4BaJZACw7YoBajOhdmIZAD+7lDhZC2moji4zmhZ+JOraK/LFX5Np/5AqKbo9a86nIFdctt5MeuMLcAxSjjO5+gAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/wheel-texture.webp"
+  },
+  "reputap/wheel-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAQBQCdASoQACMAPuVkpk2pJiOyNVgIAkAciWwAeM/OZgqfJPvFUx8dsIsYL0nDbbYAAP7xzdW51ORat7Ye28sRYW7u5Dt/6RmxXamIHDdO0S3576I5OXfgZ8oPVLlFvRCvO5VOjhKyeGERfbeY86/d2HhTy6Y7S44V2aykI+LNNazrRpMrylZTwj/sEXycVRI9ClDCyLlMAhBFI8GyYQ3hWHox64VSkaF+gAAA",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/wheel-mobile-texture.webp"
+  },
+  "reputap/wheel-spinning": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABQAgCdASoQAAoAA4BaJYgCxC8AGZclGzPD8kQA/u5RA7kMXArq+aDNPrtrPU8ekdaRooIbhoJLkNdS5vImozaDDM8DMOAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/wheel-spinning-texture.webp"
+  },
+  "reputap/wheel-spinning-mobile": {
+    "width": 1170,
+    "height": 2532,
+    "blurDataURL": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBACdASoQACMAPulgp02pJaOiNVgIASAdCWwAI8zBU+SgRlkczD7gMvh7ScoMAAD+83MphY/8IZ38FGCbOBiUS1S34DnPR9TGp567UIbmXaYZgVMUj/Zdbp9jxTTceg8xQ7zbZfqZ8kN99bg/i9/Mg4V2auQC7fEZdwzpdjVdWIiR7+EuOkLCm2Hmh4nN2sprYsejXZts/YbgL+OjTAAA",
+    "sizes": [
+      800
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/reputap/wheel-spinning-mobile-texture.webp"
+  },
+  "roast-my-music/album": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAABwAQCdASoQAAoAA4BaJaQAApJosAD+94JoqbQ54Mb9Ht6qXQwAAA==",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/roast-my-music/album-texture.webp"
+  },
+  "roast-my-music/history": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAAAwAQCdASoQAAoAA4BaJZwAA3AA/vM7W8eJOnWzD/rpobIAAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/roast-my-music/history-texture.webp"
+  },
+  "roast-my-music/home": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAQCdASoQAAoAA4BaJZwAAuawWtQAAP7psO8nyqmKZWfmA1+1hHWhFwuu4KghMj+SxEUv9OjELUkzMpn2qg4udURZ6jNsYCuBYScti9yvsRB0IYpFMv4obHXACMNhUAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/roast-my-music/home-texture.webp"
+  },
+  "roast-my-music/overlay": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAoAA4BaJYgAAudg72LgAAD+93u70W+aguP3S0qby7cJqDWyxEr3sYoqIlVv9+GZaAAA",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/roast-my-music/overlay-texture.webp"
+  },
+  "roast-my-music/streamer-dashboard": {
+    "width": 2880,
+    "height": 1800,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAoAA4BaJZQC7AEQE54unr/AAP71lZU/jsr93q0/WxF6+ewdZMAj4F3QAL5ZKdfXGypmz7IqsiygAAA=",
+    "sizes": [
+      800,
+      1600,
+      2400
+    ],
+    "formats": [
+      "webp",
+      "avif"
+    ],
+    "texture": "/screens/roast-my-music/streamer-dashboard-texture.webp"
+  }
+}

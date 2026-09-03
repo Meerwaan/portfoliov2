@@ -87,10 +87,9 @@ async function hydrateScreenshots(
   for (const meta of metas) {
     const key = `${slug}/${meta.id}`;
     const entry = manifest[key];
-    if (!entry) {
-      // Declared but not processed yet: skipped so the page renders a labelled placeholder instead of a broken image.
-      continue;
-    }
+    // The manifest is committed with public/screens: a declared capture that is not in it is a content error,
+    // not a pending one, otherwise a fresh clone (Vercel) would silently build without a single capture.
+    if (!entry) fail(file, `screenshot "${meta.id}" is not in content/screens.manifest.json (run pnpm screens)`);
     const alt = alts[meta.id];
     if (!alt) fail(file, `missing screenshotAlt for "${meta.id}"`);
     const largest = Math.max(...entry.sizes);

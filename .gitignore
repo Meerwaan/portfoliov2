@@ -9,7 +9,6 @@
 
 # generated
 /public/search-index.*.json
-/content/screens.manifest.json
 /content/raw-screenshots/
 .lighthouseci/
 
