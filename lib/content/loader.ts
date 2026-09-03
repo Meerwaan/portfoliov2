@@ -12,6 +12,7 @@ import {
   PathData,
   LabFrontmatter,
   LabMeta,
+  LabSpecimen,
   ProjectFrontmatter,
   ProjectMeta,
   ScreensManifest,
@@ -172,6 +173,13 @@ export async function getLabEntry(slug: string, locale: Locale): Promise<LabEntr
   const { data, body, fallbackBody } = await readMdx(dir, locale, LabFrontmatter);
   const screenshots = await hydrateScreenshots(slug, meta.screenshots, data.screenshotAlt, metaFile);
   return { ...meta, ...data, locale, fallbackBody, body, screenshots };
+}
+
+/** The real layers of a lab entry (code excerpt, modules, services), or null when not documented yet. */
+export async function getLabSpecimen(slug: string): Promise<LabSpecimen | null> {
+  const file = path.join(CONTENT, "lab", slug, "specimen.json");
+  if (!(await exists(file))) return null;
+  return readJson(file, LabSpecimen);
 }
 
 export async function getLabEntries(locale: Locale): Promise<LabEntry[]> {

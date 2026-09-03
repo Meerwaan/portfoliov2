@@ -613,95 +613,116 @@ body {
   align-items: start;
 }
 
-/* ---------- Lab bench: rail that fills with scroll, sticky monitor ---------- */
-.lab-bench {
-  --progress: 0;
+/* ---------- Lab ledger: each experiment opened in section, exploded as it reaches the centre ---------- */
+.lab-statement {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
 }
-.lab-rail {
-  position: relative;
+/* --progress is written on .lab-stage by ScrollProgress (0 at the bottom of the viewport, 1 at the centre). */
+.lab-stage {
+  --explode: var(--progress, 1);
+  --tilt: calc(62 - var(--explode) * 8);
+  --spin: calc(-32 + var(--explode) * 8);
+  --gap: 118px;
 }
-.lab-rail-line {
-  position: sticky;
-  top: 6rem;
-  height: calc(100svh - 12rem);
-  width: 1px;
-  margin-left: 0.5rem;
-  background: var(--rule);
+.lab-stage .stack-scene {
+  min-height: 34rem;
+  perspective: 1700px;
+  perspective-origin: 50% 35%;
 }
-.lab-rail-line::after {
-  content: "";
+.lab-stage .stack {
+  width: min(100%, 36rem);
+  transform: translateY(calc(var(--explode) * -4.5rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.lab-stage[data-layers="3"] .stack {
+  transform: translateY(calc(var(--explode) * -2.5rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.lab-file {
   position: absolute;
-  inset: 0 auto auto 0;
-  width: 1px;
-  height: calc(var(--progress) * 100%);
-  background: var(--signal);
+  top: 0.6rem;
+  right: 0.75rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  color: var(--ink-3);
+  opacity: var(--explode);
 }
-.lab-entry .lab-entry-index {
-  transition: color var(--dur-2) var(--ease-out);
+.lab-code {
+  min-width: 0;
 }
-.lab-entry[data-active="true"] .lab-entry-index {
-  color: var(--signal);
-}
-
-/* ---------- Lab cards: laid flat, lifted on hover ---------- */
-.lab-card-stage {
-  perspective: 1200px;
-  perspective-origin: 50% 20%;
-  overflow: clip;
-  margin-inline: -0.5rem;
-  padding: 0.5rem;
-}
-.lab-card-stack {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  transform-style: preserve-3d;
-  transform: rotateX(46deg) rotateZ(-14deg) scale(0.92);
-  transition: transform var(--dur-3) var(--ease-out);
-}
-.lab-card:hover .lab-card-stack,
-.lab-card:focus-within .lab-card-stack {
-  transform: rotateX(0deg) rotateZ(0deg) scale(1);
-}
-.lab-card-face,
-.lab-card-shadow {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--rule-strong);
-}
-.lab-card-face {
+.lab-code pre {
+  margin: 0;
   overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  tab-size: 4;
+}
+/* The produced video stands in front of the page that sells it. */
+.lab-inset {
+  position: absolute;
+  right: 4%;
+  bottom: -7%;
+  width: 22%;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
   background: var(--paper-2);
-  transform: translateZ(0);
+  transform: translateZ(calc(var(--explode) * 44px + 6px));
 }
-.lab-card-shadow {
-  background: var(--paper-2);
-  transform: translateZ(-14px) translate(6px, 6px);
-  transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-3) var(--ease-out);
+.lab-inset img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.lab-card:hover .lab-card-shadow,
-.lab-card:focus-within .lab-card-shadow {
-  transform: translateZ(-4px) translate(2px, 2px);
-  opacity: 0.6;
+.lab-legend li {
+  cursor: default;
 }
-.lab-card-plate {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
+/* Hovering a layer, in the legend or on the stage, isolates it. */
+.lab-entry:has(.lab-legend [data-layer="surface"]:hover) .stack-layer:not([data-layer="surface"]),
+.lab-stage:has(.stack-layer[data-layer="surface"]:hover) .stack-layer:not([data-layer="surface"]),
+.lab-entry:has(.lab-legend [data-layer="code"]:hover) .stack-layer:not([data-layer="code"]),
+.lab-stage:has(.stack-layer[data-layer="code"]:hover) .stack-layer:not([data-layer="code"]),
+.lab-entry:has(.lab-legend [data-layer="modules"]:hover) .stack-layer:not([data-layer="modules"]),
+.lab-stage:has(.stack-layer[data-layer="modules"]:hover) .stack-layer:not([data-layer="modules"]),
+.lab-entry:has(.lab-legend [data-layer="services"]:hover) .stack-layer:not([data-layer="services"]),
+.lab-stage:has(.stack-layer[data-layer="services"]:hover) .stack-layer:not([data-layer="services"]) {
+  opacity: 0.22;
 }
-.lab-card a:focus-visible .lab-card-face {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .lab-card-stack {
-    transform: none;
-    transition: none;
+@media (max-width: 63.9375rem), (prefers-reduced-motion: reduce) {
+  .lab-stage .stack-scene {
+    min-height: 0;
   }
-  .lab-card-shadow {
-    display: none;
+  .lab-stage .stack,
+  .lab-stage[data-layers="3"] .stack {
+    width: 100%;
+    transform: none;
+  }
+  .lab-stage .stack-layer-ui {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+  }
+  .lab-inset {
+    position: static;
+    width: 7rem;
+    transform: none;
+  }
+  .lab-code pre {
+    font-size: 0.75rem;
+    overflow-x: auto;
+  }
+  .lab-file {
+    position: static;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 1;
+  }
+  .lab-entry:has(:hover) .stack-layer {
+    opacity: 1;
   }
 }
 

@@ -148,7 +148,7 @@
   "lab": {
     "title": "Lab",
     "description": "Prototypes, automations and experiments by Merwan Laouini, with their real status: active, paused, prototype.",
-    "intro": "What is in progress, what was tried, what is paused. Each entry says where it really stands.",
+    "intro": "Eight experiments opened in section: the surface when there is one, an excerpt of the real code, the repository's modules, the services it calls. Every status is the real one.",
     "status": {
       "prototype": "Prototype",
       "active": "Active",
@@ -160,10 +160,30 @@
       "repo": "Code"
     },
     "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
-    "benchLabel": "The bench",
-    "steps": "Steps",
-    "stackLabel": "Stack",
-    "readEntry": "Read the log"
+    "statement": "What is running, what was tried, what is paused.",
+    "indexLabel": "Experiments index",
+    "groups": {
+      "g2": {
+        "title": "The G2 family",
+        "intro": "G2 reads \"Go to\". Four video tools on the same Telegram base, from writing a script to publishing, and a cousin that listens to a blockchain."
+      },
+      "other": {
+        "title": "Other experiments",
+        "intro": "Three projects outside the Telegram base: a live format, a field app, a behavioural health prototype."
+      }
+    },
+    "layers": {
+      "surface": "Surface",
+      "code": "Code",
+      "modules": "Modules",
+      "services": "Services"
+    },
+    "layerNotes": {
+      "surface": "Real capture",
+      "modules": "{count} files from the repository",
+      "services": "{count, plural, one {# service called} other {# services called}}"
+    },
+    "layerHint": "Hover a layer to isolate it."
   },
   "about": {
     "title": "About",

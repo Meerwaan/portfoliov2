@@ -84,8 +84,6 @@ export const LabMeta = z.object({
   stack: z.array(z.string()).max(10).default([]),
   links: z.object({ live: z.string().url().optional(), repo: z.string().url().optional() }).default({}),
   screenshots: z.array(ScreenshotMeta).default([]),
-  /** Real pipeline / flow of the experiment, 3 to 6 short steps per locale, shown on the bench card. */
-  steps: z.object({ fr: z.array(z.string()).min(3).max(6), en: z.array(z.string()).min(3).max(6) }).optional(),
   order: z.number().int(),
 });
 export type LabMeta = z.infer<typeof LabMeta>;
@@ -98,6 +96,7 @@ export const LabFrontmatter = z.object({
   screenshotAlt: z.record(z.string(), z.string().min(12)).default({}),
 });
 export type LabFrontmatter = z.infer<typeof LabFrontmatter>;
+
 
 export const ScreensManifest = z.record(
   z.string(), // "<slug>/<id>"
@@ -178,3 +177,17 @@ export const StoryStep = z.object({
 export type StoryStep = z.infer<typeof StoryStep>;
 export const StoryData = z.object({ steps: z.array(StoryStep).min(3) });
 export type StoryData = z.infer<typeof StoryData>;
+
+/** content/lab/<slug>/specimen.json: the real layers of an experiment, read from its repository. */
+export const LabSpecimen = z.object({
+  surface: z.object({
+    kind: z.literal("code"),
+    file: z.string().min(1),
+    lang: z.enum(["python", "typescript", "tsx", "javascript", "jsx"]),
+    title: Localized,
+    code: z.string().min(20),
+  }),
+  modules: z.array(z.object({ name: z.string().min(1), role: Localized })).min(3).max(6),
+  services: z.array(z.object({ name: z.string().min(1), role: Localized })).min(2).max(5),
+});
+export type LabSpecimen = z.infer<typeof LabSpecimen>;

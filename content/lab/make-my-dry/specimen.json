@@ -1,0 +1,72 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "src/components/home/DailyChart.tsx",
+    "lang": "tsx",
+    "title": {
+      "fr": "Vingt-quatre cases horaires pour la courbe du jour",
+      "en": "Twenty-four hourly buckets for the day's curve"
+    },
+    "code": "const DailyChart: React.FC<Props> = ({ entries }) => {\n  const dataByHour = Array(24).fill(0);\n  entries.forEach((entry) => {\n    dataByHour[entry.hour]++;\n  });\n  const [tooltip, setTooltip] = useState<{ x: number; y: number } | null>(null);\n  const [tooltipText, setTooltipText] = useState<string>('');\n  const [fadeAnim] = useState(new Animated.Value(0));\n  const handlePointClick = (data: any) => {\n    const matchedEntry = entries.find((e) => e.hour === Math.floor(data.index));\n    if (!matchedEntry) return;"
+  },
+  "modules": [
+    {
+      "name": "src/screens/Home/HomeScreen.tsx",
+      "role": {
+        "fr": "État des relevés, relie modale et graphique",
+        "en": "Entries state, wires modal and chart"
+      }
+    },
+    {
+      "name": "src/components/home/AddEntryModal.tsx",
+      "role": {
+        "fr": "Choix de la raison, horodatage à l'heure",
+        "en": "Reason picker, stamped to the hour"
+      }
+    },
+    {
+      "name": "src/components/home/DailyChart.tsx",
+      "role": {
+        "fr": "Compteur par heure, courbe et infobulle",
+        "en": "Hourly counter, curve and tooltip"
+      }
+    },
+    {
+      "name": "src/components/home/WelcomeCard.tsx",
+      "role": {
+        "fr": "Date du jour et message selon le compte",
+        "en": "Today's date and count-based message"
+      }
+    },
+    {
+      "name": "src/type/Entry.tsx",
+      "role": {
+        "fr": "Relevé : heure, horodatage, raison",
+        "en": "Entry: hour, timestamp, reason"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "react-native-chart-kit",
+      "role": {
+        "fr": "Courbe des relevés par heure",
+        "en": "Hourly entries curve"
+      }
+    },
+    {
+      "name": "React Navigation",
+      "role": {
+        "fr": "Pile native à un écran",
+        "en": "Single-screen native stack"
+      }
+    },
+    {
+      "name": "React Native",
+      "role": {
+        "fr": "Exécution iOS et Android",
+        "en": "iOS and Android runtime"
+      }
+    }
+  ]
+}
