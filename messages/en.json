@@ -198,13 +198,13 @@
     "pathTitle": "The path, one step per screen.",
     "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
     "founder": "Founder",
-    "stackTitle": "The stack, actually stacked.",
-    "stackIntro": "Four layers of tools. For each one, the projects on this site where it was used and since when: nothing is declared, everything is read from the project files.",
-    "stackHint": "Hover a tool to see where it was used.",
-    "stackSince": "since {year}",
-    "stackUses": "{count, plural, one {# project on this site} other {# projects on this site}}",
-    "stackLayerCount": "{count, plural, one {# tool} other {# tools}}",
-    "stackToday": "today"
+    "stackTitle": "The stack, over time.",
+    "stackIntro": "Each tool traced over the years it was used, one stroke per project. The playhead runs from 2020 to today and lights what was in service: nothing is declared, everything comes from the project files.",
+    "stackHint": "Move the pointer over the timeline to change the year.",
+    "stackToday": "today",
+    "stackLive": "{count, plural, =0 {No tool in service} one {# tool in service} other {# tools in service}}",
+    "stackProjects": "Running that year",
+    "stackNone": "Nothing documented here."
   },
   "contact": {
     "title": "Contact",

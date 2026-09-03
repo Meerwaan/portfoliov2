@@ -9,7 +9,7 @@ import { getAbout, getStory } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/mdx";
 import { site } from "@/lib/site";
 import { PathStory } from "@/components/about/PathStory";
-import { StackLayers } from "@/components/about/StackLayers";
+import { StackTrace } from "@/components/about/StackTrace";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -63,7 +63,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           </h2>
           <p className="max-w-[44ch] text-lg text-ink-2 lg:col-span-5 lg:col-start-8">{t("stackIntro")}</p>
         </div>
-        <StackLayers locale={locale} />
+        <StackTrace locale={locale} />
       </section>
 
     </>
