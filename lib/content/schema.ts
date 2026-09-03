@@ -177,12 +177,20 @@ export const LabSpecimen = z.object({
 });
 export type LabSpecimen = z.infer<typeof LabSpecimen>;
 
-/** content/about/stack.json: the stack as an architecture, rows by year and columns by layer. */
-export const StackMapData = z.object({
-  columns: z.array(z.object({ id: z.string().regex(/^[a-z]+$/), label: Localized })).min(3),
-  years: z.array(z.object({ year: z.number().int(), where: Localized, caption: Localized })).min(3),
-  nodes: z
-    .array(z.object({ name: z.string().min(1), col: z.string(), year: z.number().int(), from: z.array(z.string()).default([]), core: z.boolean().default(false) }))
+/** content/about/stack.json: the stack as a changelog, one release per year; usages come from the project files. */
+export const StackLogData = z.object({
+  layers: z.array(z.object({ id: z.string().regex(/^[a-z]+$/), label: Localized })).min(3),
+  releases: z.array(z.object({ year: z.number().int(), where: Localized, caption: Localized })).min(3),
+  tools: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        layer: z.string(),
+        year: z.number().int(),
+        match: z.array(z.string().min(1)).optional(),
+        core: z.boolean().default(false),
+      }),
+    )
     .min(10),
 });
-export type StackMapData = z.infer<typeof StackMapData>;
+export type StackLogData = z.infer<typeof StackLogData>;

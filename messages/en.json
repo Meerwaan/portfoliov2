@@ -198,10 +198,15 @@
     "pathTitle": "The path, one step per screen.",
     "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
     "founder": "Founder",
-    "stackTitle": "My stack, as an architecture.",
-    "stackIntro": "Read it like a blueprint: one row per year, one column per layer. Each tool arrives at its date and plugs into what it extends. The diagram draws as you scroll; hovering isolates a part and its links.",
-    "stackDiagramLabel": "Stack diagram: {count} tools placed by year and layer, linked together.",
-    "stackLegend": "{count} tools · in blue, today's core · hover a tool to see what it connects"
+    "stackTitle": "My stack, release by release.",
+    "stackIntro": "The release log of my stack, like a changelog: one version per year, what arrived, where, and what is in service today. The projects where each tool served come from this site's files.",
+    "stackVersion": "Version",
+    "stackInstalled": "tools installed",
+    "stackInService": "in service today",
+    "stackHint": "Hover a tool to see where it served.",
+    "stackSince": "since",
+    "stackToday": "today",
+    "stackLatest": "latest"
   },
   "contact": {
     "title": "Contact",

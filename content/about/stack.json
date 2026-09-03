@@ -1,5 +1,5 @@
 {
-  "columns": [
+  "layers": [
     {
       "id": "lang",
       "label": {
@@ -57,27 +57,27 @@
       }
     }
   ],
-  "years": [
+  "releases": [
     {
       "year": 2020,
       "where": {
-        "fr": "Licence ESIEE",
-        "en": "ESIEE bachelor"
+        "fr": "Licence ESIEE, en alternance",
+        "en": "ESIEE bachelor, work-study"
       },
       "caption": {
-        "fr": "HTML, CSS, JavaScript, Python, SQL : les bases de tout le web, apprises en alternance.",
-        "en": "HTML, CSS, JavaScript, Python, SQL: the basics of the whole web, learned on a work-study."
+        "fr": "Les bases de tout le web, apprises en même temps que les premiers projets d'école.",
+        "en": "The basics of the whole web, learned alongside the first school projects."
       }
     },
     {
       "year": 2021,
       "where": {
-        "fr": "Licence ESIEE",
-        "en": "ESIEE bachelor"
+        "fr": "Licence ESIEE, en alternance",
+        "en": "ESIEE bachelor, work-study"
       },
       "caption": {
-        "fr": "Java et Android, PHP, Node.js côté serveur, Git tous les jours.",
-        "en": "Java and Android, PHP, Node.js on the server, Git every day."
+        "fr": "Le serveur et le mobile natif entrent dans le jeu : Node.js, Java et Android, PHP.",
+        "en": "Server and native mobile join in: Node.js, Java and Android, PHP."
       }
     },
     {
@@ -87,19 +87,19 @@
         "en": "Youggy, SIPP"
       },
       "caption": {
-        "fr": "Premier front en production chez Youggy : React sur le web, React Native sur mobile.",
-        "en": "First front end in production at Youggy: React on the web, React Native on mobile."
+        "fr": "Premier front en production : React sur le web, React Native sur mobile, un site WordPress.",
+        "en": "First front end in production: React on the web, React Native on mobile, a WordPress site."
       }
     },
     {
       "year": 2023,
       "where": {
-        "fr": "Master",
-        "en": "Master's"
+        "fr": "Master ESIEE",
+        "en": "ESIEE master's"
       },
       "caption": {
-        "fr": "Master : Flutter sur mobile, premières bases documentaires.",
-        "en": "Master's: Flutter on mobile, first document databases."
+        "fr": "Flutter sur mobile et une première base documentaire sur des projets d'école.",
+        "en": "Flutter on mobile and a first document database on school projects."
       }
     },
     {
@@ -109,399 +109,344 @@
         "en": "Neocortex, Hall of Arts"
       },
       "caption": {
-        "fr": "Neocortex : toute la chaîne, du client Electron à PostgreSQL, en TypeScript.",
-        "en": "Neocortex: the whole chain, from the Electron client to PostgreSQL, in TypeScript."
+        "fr": "Toute la chaîne pour la première fois : du client Electron à PostgreSQL, en TypeScript.",
+        "en": "The whole chain for the first time: from the Electron client to PostgreSQL, in TypeScript."
       }
     },
     {
       "year": 2025,
       "where": {
-        "fr": "SaaS, famille G2",
-        "en": "SaaS, G2 family"
+        "fr": "SaaS en solo, famille G2",
+        "en": "Solo SaaS, G2 family"
       },
       "caption": {
-        "fr": "En solo : Next.js, Firebase, Vercel, et la famille G2 en Python, bots Telegram et IA.",
-        "en": "Solo: Next.js, Firebase, Vercel, and the G2 family in Python, Telegram bots and AI."
+        "fr": "Next.js, Firebase et Vercel pour les produits ; Python, bots Telegram et IA pour la famille G2.",
+        "en": "Next.js, Firebase and Vercel for the products; Python, Telegram bots and AI for the G2 family."
       }
     },
     {
       "year": 2026,
       "where": {
-        "fr": "Reputap, Capsule",
-        "en": "Reputap, Capsule"
+        "fr": "Reputap, Capsule Manufacturing",
+        "en": "Reputap, Capsule Manufacturing"
       },
       "caption": {
-        "fr": "Reputap et Capsule : multi-tenant, paiement, Prisma, Stripe, Auth.js.",
-        "en": "Reputap and Capsule: multi-tenant, payments, Prisma, Stripe, Auth.js."
+        "fr": "Multi-tenant et paiement : Prisma, Stripe, Auth.js, MySQL, Resend.",
+        "en": "Multi-tenant and payments: Prisma, Stripe, Auth.js, MySQL, Resend."
       }
     }
   ],
-  "nodes": [
+  "tools": [
     {
       "name": "HTML / CSS",
-      "col": "lang",
-      "year": 2020
+      "layer": "lang",
+      "year": 2020,
+      "match": [
+        "HTML",
+        "CSS",
+        "CSS Modules",
+        "Sass"
+      ]
     },
     {
       "name": "JavaScript",
-      "col": "lang",
+      "layer": "lang",
       "year": 2020
     },
     {
       "name": "Python",
-      "col": "lang",
+      "layer": "lang",
       "year": 2020,
       "core": true
     },
     {
       "name": "SQL",
-      "col": "lang",
-      "year": 2020
+      "layer": "lang",
+      "year": 2020,
+      "match": [
+        "SQL",
+        "PostgreSQL",
+        "MySQL"
+      ]
     },
     {
       "name": "Bash",
-      "col": "lang",
+      "layer": "lang",
       "year": 2020
     },
     {
       "name": "Java",
-      "col": "lang",
+      "layer": "lang",
       "year": 2021
     },
     {
       "name": "PHP",
-      "col": "lang",
+      "layer": "lang",
       "year": 2021
     },
     {
       "name": "Android",
-      "col": "mobile",
-      "year": 2021,
-      "from": [
-        "Java"
-      ]
+      "layer": "mobile",
+      "year": 2021
     },
     {
       "name": "Node.js",
-      "col": "server",
+      "layer": "server",
       "year": 2021,
-      "from": [
-        "JavaScript"
+      "match": [
+        "Node.js",
+        "Express"
       ]
     },
     {
       "name": "Git",
-      "col": "infra",
+      "layer": "infra",
       "year": 2021
     },
     {
       "name": "React",
-      "col": "web",
+      "layer": "web",
       "year": 2022,
-      "from": [
-        "JavaScript",
-        "HTML / CSS"
+      "match": [
+        "React",
+        "React 19"
       ]
     },
     {
       "name": "WordPress",
-      "col": "web",
-      "year": 2022,
-      "from": [
-        "PHP"
-      ]
+      "layer": "web",
+      "year": 2022
     },
     {
       "name": "React Native",
-      "col": "mobile",
-      "year": 2022,
-      "from": [
-        "React"
-      ]
+      "layer": "mobile",
+      "year": 2022
     },
     {
       "name": "Flutter",
-      "col": "mobile",
+      "layer": "mobile",
       "year": 2023
     },
     {
       "name": "MongoDB",
-      "col": "data",
-      "year": 2023,
-      "from": [
-        "Node.js"
-      ]
+      "layer": "data",
+      "year": 2023
     },
     {
       "name": "TypeScript",
-      "col": "lang",
+      "layer": "lang",
       "year": 2024,
-      "from": [
-        "JavaScript"
-      ],
       "core": true
     },
     {
       "name": "Electron",
-      "col": "web",
-      "year": 2024,
-      "from": [
-        "JavaScript"
-      ]
+      "layer": "web",
+      "year": 2024
     },
     {
       "name": "Mapbox",
-      "col": "mobile",
-      "year": 2024,
-      "from": [
-        "React Native"
-      ]
+      "layer": "mobile",
+      "year": 2024
     },
     {
       "name": "Express",
-      "col": "server",
-      "year": 2024,
-      "from": [
-        "Node.js",
-        "Electron"
-      ]
+      "layer": "server",
+      "year": 2024
     },
     {
       "name": "JWT",
-      "col": "server",
-      "year": 2024,
-      "from": [
-        "Express"
-      ]
+      "layer": "server",
+      "year": 2024
     },
     {
       "name": "Sequelize",
-      "col": "server",
-      "year": 2024,
-      "from": [
-        "Express"
-      ]
+      "layer": "server",
+      "year": 2024
     },
     {
       "name": "PostgreSQL",
-      "col": "data",
+      "layer": "data",
       "year": 2024,
-      "from": [
-        "Sequelize",
-        "SQL"
-      ],
       "core": true
     },
     {
       "name": "Firebase",
-      "col": "data",
+      "layer": "data",
       "year": 2024,
-      "from": [
-        "React Native"
+      "match": [
+        "Firebase",
+        "Firebase Auth",
+        "Firestore",
+        "Cloud Storage"
       ]
     },
     {
       "name": "AWS",
-      "col": "infra",
-      "year": 2024,
-      "from": [
-        "Node.js"
-      ]
+      "layer": "infra",
+      "year": 2024
     },
     {
       "name": "Docker",
-      "col": "infra",
-      "year": 2024,
-      "from": [
-        "PostgreSQL"
-      ]
+      "layer": "infra",
+      "year": 2024
     },
     {
       "name": "Next.js",
-      "col": "web",
+      "layer": "web",
       "year": 2025,
-      "from": [
-        "React",
-        "TypeScript"
+      "match": [
+        "Next.js",
+        "Next.js 16"
       ],
       "core": true
     },
     {
       "name": "Vite",
-      "col": "web",
-      "year": 2025,
-      "from": [
-        "React"
-      ]
-    },
-    {
-      "name": "Tailwind CSS",
-      "col": "web",
-      "year": 2025,
-      "from": [
-        "Next.js"
-      ]
-    },
-    {
-      "name": "Sass",
-      "col": "web",
-      "year": 2025,
-      "from": [
-        "Next.js"
-      ]
-    },
-    {
-      "name": "Nest.js",
-      "col": "server",
-      "year": 2025,
-      "from": [
-        "Node.js",
-        "TypeScript"
-      ]
-    },
-    {
-      "name": "WebSockets",
-      "col": "server",
-      "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "Vercel",
-      "col": "infra",
-      "year": 2025,
-      "from": [
-        "Next.js"
-      ]
-    },
-    {
-      "name": "Telegram bots",
-      "col": "auto",
-      "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "Pyrogram",
-      "col": "auto",
-      "year": 2025,
-      "from": [
-        "Telegram bots"
-      ]
-    },
-    {
-      "name": "Selenium",
-      "col": "auto",
-      "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "Scraping",
-      "col": "auto",
-      "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "n8n",
-      "col": "auto",
+      "layer": "web",
       "year": 2025
     },
     {
-      "name": "Whisper",
-      "col": "ai",
+      "name": "Tailwind CSS",
+      "layer": "web",
       "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "FFmpeg",
-      "col": "ai",
-      "year": 2025,
-      "from": [
-        "Whisper"
-      ]
-    },
-    {
-      "name": "OpenAI",
-      "col": "ai",
-      "year": 2025,
-      "from": [
-        "Python"
-      ]
-    },
-    {
-      "name": "ElevenLabs",
-      "col": "ai",
-      "year": 2025,
-      "from": [
-        "OpenAI"
+      "match": [
+        "Tailwind CSS",
+        "Tailwind 4"
       ]
     },
     {
       "name": "GSAP",
-      "col": "web",
-      "year": 2026,
-      "from": [
-        "Next.js"
+      "layer": "web",
+      "year": 2026
+    },
+    {
+      "name": "Nest.js",
+      "layer": "server",
+      "year": 2025
+    },
+    {
+      "name": "WebSockets",
+      "layer": "server",
+      "year": 2025,
+      "match": [
+        "WebSocket",
+        "WebSockets"
       ]
     },
     {
-      "name": "Prisma",
-      "col": "server",
-      "year": 2026,
-      "from": [
-        "Next.js",
-        "PostgreSQL"
+      "name": "Vercel",
+      "layer": "infra",
+      "year": 2025,
+      "core": true
+    },
+    {
+      "name": "Telegram bots",
+      "layer": "auto",
+      "year": 2025,
+      "match": [
+        "python-telegram-bot",
+        "aiogram"
       ],
       "core": true
     },
     {
-      "name": "Auth.js",
-      "col": "server",
-      "year": 2026,
-      "from": [
-        "Next.js"
+      "name": "Pyrogram",
+      "layer": "auto",
+      "year": 2025
+    },
+    {
+      "name": "Selenium",
+      "layer": "auto",
+      "year": 2025
+    },
+    {
+      "name": "Scraping",
+      "layer": "auto",
+      "year": 2025,
+      "match": [
+        "yt-dlp",
+        "Scraping"
       ]
     },
     {
-      "name": "Stripe",
-      "col": "server",
-      "year": 2026,
-      "from": [
-        "Next.js"
+      "name": "n8n",
+      "layer": "auto",
+      "year": 2025
+    },
+    {
+      "name": "Whisper",
+      "layer": "ai",
+      "year": 2025,
+      "match": [
+        "faster-whisper",
+        "Whisper"
       ]
     },
     {
-      "name": "Resend",
-      "col": "server",
-      "year": 2026,
-      "from": [
-        "Next.js"
+      "name": "FFmpeg",
+      "layer": "ai",
+      "year": 2025,
+      "match": [
+        "FFmpeg",
+        "MoviePy"
       ]
     },
     {
-      "name": "MySQL",
-      "col": "data",
-      "year": 2026,
-      "from": [
-        "Prisma",
-        "SQL"
-      ]
+      "name": "OpenAI",
+      "layer": "ai",
+      "year": 2025
+    },
+    {
+      "name": "ElevenLabs",
+      "layer": "ai",
+      "year": 2025
     },
     {
       "name": "TikTok Live",
-      "col": "ai",
+      "layer": "ai",
       "year": 2026,
-      "from": [
-        "WebSockets"
+      "match": [
+        "TikTokLive",
+        "tiktok-live-connector"
       ]
+    },
+    {
+      "name": "Prisma",
+      "layer": "server",
+      "year": 2026,
+      "core": true
+    },
+    {
+      "name": "Auth.js",
+      "layer": "server",
+      "year": 2026,
+      "match": [
+        "Auth.js",
+        "NextAuth"
+      ],
+      "core": true
+    },
+    {
+      "name": "Stripe",
+      "layer": "server",
+      "year": 2026,
+      "core": true
+    },
+    {
+      "name": "Resend",
+      "layer": "server",
+      "year": 2026
+    },
+    {
+      "name": "Zod",
+      "layer": "server",
+      "year": 2025,
+      "core": true
+    },
+    {
+      "name": "MySQL",
+      "layer": "data",
+      "year": 2026
     }
   ]
 }

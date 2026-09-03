@@ -726,126 +726,70 @@ body {
   }
 }
 
-/* ---------- About: stack diagram focus (hover a tool: its links stay, the rest fades) ---------- */
-.stack-map [data-node] {
-  cursor: default;
-  outline: none;
-  transition: opacity var(--dur-2) var(--ease-out);
-}
-.stack-map [data-link] {
-  transition: opacity var(--dur-2) var(--ease-out);
-}
-.stack-map [data-focus] [data-node]:not([data-hi]),
-.stack-map [data-focus] [data-link]:not([data-hi]) {
-  opacity: 0.18 !important;
-}
-.stack-map [data-focus] [data-link][data-hi] {
-  opacity: 1 !important;
-  stroke: var(--signal);
-  stroke-width: 1.75;
-}
-.stack-map [data-node]:focus-visible path {
-  stroke: var(--signal);
-}
-
-/* ---------- About: stack diagram, pinned frame and intertitles following the step being drawn ---------- */
-.stack-map-frame {
-  position: relative;
-  margin-inline: auto;
-}
-.stack-map-diagram {
-  margin-block: 0;
-}
-.stack-map-intertitle {
-  position: relative;
-}
-.stack-map-line {
+/* ---------- About: the stack as a changelog ---------- */
+.stack-log-version {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.stack-log-latest {
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: var(--signal);
+  color: var(--paper);
+}
+.stack-log-year {
+  color: var(--ink-3);
+  transition: color var(--dur-2) var(--ease-out);
+}
+.stack-log-release[data-current] .stack-log-year {
+  color: var(--signal);
+}
+.stack-log-chip {
+  display: inline-flex;
+  align-items: baseline;
   gap: 0.3rem;
-  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  color: var(--ink);
+  cursor: default;
+  transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out), opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
 }
-@media (min-width: 48rem) {
-  /* Fit the pinned block in the viewport: width follows the available height (nav, offset, legend). */
-  .stack-map-frame {
-    width: min(100%, calc((100svh - 11rem) * var(--aspect)));
-  }
-  /* Over the automation and AI columns, empty until 2025 (the last rows). */
-  .stack-map-intertitle {
-    position: absolute;
-    top: 6%;
-    left: 74%;
-    width: 26%;
-    pointer-events: none;
-  }
-  .stack-map-line {
-    position: absolute;
-    inset: 0 0 auto 0;
+.stack-log-plus {
+  color: var(--signal);
+}
+.stack-log-chip[data-core]::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: 0.15rem;
+  border-radius: 50%;
+  background: var(--signal);
+  align-self: center;
+}
+.stack-log-chip:hover,
+.stack-log-chip:focus-visible,
+.stack-log-chip[aria-pressed="true"] {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+  color: var(--signal);
+  outline: none;
+}
+/* Each release installs its tools the first time it comes into view. */
+@media (prefers-reduced-motion: no-preference) {
+  .stack-log-release:not([data-seen]) .stack-log-chip {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(4px);
   }
-  /* Before the drawing starts (or without motion): the last line, today's state. */
-  .stack-map:not(:has([data-diagram][data-step])) .stack-map-line:last-child {
-    opacity: 1;
-    transform: none;
-  }
-.stack-map:has([data-diagram][data-step="1"]) .stack-map-line[data-i="1"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="1"] [data-step="1"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="2"]) .stack-map-line[data-i="2"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="2"] [data-step="2"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="3"]) .stack-map-line[data-i="3"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="3"] [data-step="3"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="4"]) .stack-map-line[data-i="4"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="4"] [data-step="4"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="5"]) .stack-map-line[data-i="5"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="5"] [data-step="5"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="6"]) .stack-map-line[data-i="6"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="6"] [data-step="6"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-.stack-map:has([data-diagram][data-step="7"]) .stack-map-line[data-i="7"] {
-  opacity: 1;
-  transform: none;
-}
-.stack-map [data-diagram][data-step="7"] [data-step="7"] [data-year] text:first-child {
-  fill: var(--signal);
-}
-}
-.stack-map [data-year] text {
-  transition: fill var(--dur-2) var(--ease-out);
-}
-@media (max-width: 47.9375rem) {
-  .stack-map-line {
-    padding-block: 0.75rem;
-    border-top: 1px solid var(--rule);
+  .stack-log-release[data-seen] .stack-log-chip {
+    transition-delay: calc(var(--i) * 40ms);
   }
 }
 

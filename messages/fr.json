@@ -198,10 +198,15 @@
     "pathTitle": "Le parcours, une étape par écran.",
     "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
     "founder": "Fondateur",
-    "stackTitle": "Ma stack, comme une architecture.",
-    "stackIntro": "Lis-le comme un plan : une ligne par année, une colonne par couche. Chaque outil arrive à sa date et se branche sur ce qu'il prolonge. Le schéma se dessine au scroll, le survol isole une pièce et ses liens.",
-    "stackDiagramLabel": "Schéma de la stack : {count} outils placés par année et par couche, reliés entre eux.",
-    "stackLegend": "{count} outils · en bleu, le socle d'aujourd'hui · survoler un outil pour voir ce qu'il relie"
+    "stackTitle": "Ma stack, version par version.",
+    "stackIntro": "Le journal des versions de ma stack, comme un changelog : une version par année, ce qui est arrivé, où, et ce qui est en service aujourd'hui. Les projets où chaque outil a servi viennent des fiches de ce site.",
+    "stackVersion": "Version",
+    "stackInstalled": "outils installés",
+    "stackInService": "en service aujourd'hui",
+    "stackHint": "Survoler un outil pour voir où il a servi.",
+    "stackSince": "depuis",
+    "stackToday": "aujourd'hui",
+    "stackLatest": "latest"
   },
   "contact": {
     "title": "Contact",
