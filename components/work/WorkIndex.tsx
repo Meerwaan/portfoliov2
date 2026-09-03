@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { ViewTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
@@ -135,12 +134,12 @@ export function WorkIndex({ projects }: { projects: ProjectCard[] }) {
 
       <aside className="hidden lg:col-span-5 lg:block" aria-hidden="true">
         <div className="sticky top-24">
+          {/* Decorative preview: no shared view-transition name here. The names live on the home stacks and the
+              case hero, so a slug is never mounted twice at once (React errors on duplicate shared names). */}
           {shown?.hero ? (
-            <ViewTransition name={`screen-${shown.slug}`} share="screen" default="none">
-              <div className="overflow-hidden rounded-md border border-rule bg-paper-2">
-                <Image key={shown.slug} src={shown.hero.src} alt="" width={shown.hero.width} height={shown.hero.height} sizes="40vw" placeholder={shown.hero.blurDataURL ? "blur" : "empty"} blurDataURL={shown.hero.blurDataURL} className="h-auto w-full" />
-              </div>
-            </ViewTransition>
+            <div className="overflow-hidden rounded-md border border-rule bg-paper-2">
+              <Image key={shown.slug} src={shown.hero.src} alt="" width={shown.hero.width} height={shown.hero.height} sizes="40vw" placeholder={shown.hero.blurDataURL ? "blur" : "empty"} blurDataURL={shown.hero.blurDataURL} className="h-auto w-full" />
+            </div>
           ) : shown ? (
             <div className="flex aspect-[16/10] flex-col justify-end gap-3 rounded-md border border-dashed border-rule-strong p-6">
               <span className="mono-label text-ink-3">{shown.screensNote ? t("noScreen") : t("screenPending")}</span>
