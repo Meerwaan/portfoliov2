@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
  * imported on demand when the diagram is within one viewport, never on page load. Reduced motion: nothing runs
  * and the server-rendered SVG stays fully visible.
  */
-export function DiagramMotion() {
+export function DiagramMotion({ end }: { end?: string } = {}) {
   const anchor = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -37,7 +37,9 @@ export function DiagramMotion() {
               scrollTrigger: {
                 trigger: root,
                 start: "top 78%",
-                end: desktop ? "bottom 45%" : "top 40%",
+                // Default: the drawing finishes as the diagram passes mid-screen. A tall diagram passes `end` so
+                // it is complete by the time it fills the viewport.
+                end: desktop ? (end ?? "bottom 45%") : "top 40%",
                 scrub: desktop ? 0.8 : false,
               },
             });
@@ -61,7 +63,7 @@ export function DiagramMotion() {
       io.disconnect();
       cleanup?.();
     };
-  }, []);
+  }, [end]);
 
   return <span ref={anchor} hidden />;
 }

@@ -198,15 +198,10 @@
     "pathTitle": "The path, one step per screen.",
     "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
     "founder": "Founder",
-    "stackTitle": "The stack, over time.",
-    "stackIntro": "Each tool traced over the years it was used, one stroke per project. The playhead runs from 2020 to today and lights what was in service: nothing is declared, everything comes from the project files.",
-    "stackHint": "Move the pointer over the timeline to change the year, hover a tool for its projects.",
-    "stackToday": "today",
-    "stackLive": "{count, plural, =0 {No tool in service} one {# tool in service} other {# tools in service}}",
-    "stackProjects": "Running that year",
-    "stackNone": "Nothing documented here.",
-    "stackSince": "since {year}",
-    "stackUses": "{count, plural, one {# project on this site} other {# projects on this site}}"
+    "stackTitle": "My stack, as an architecture.",
+    "stackIntro": "Each tool arrives at its year and plugs into what it joined, from language to infrastructure. The diagram draws itself as you scroll, one year at a time.",
+    "stackDiagramLabel": "Stack diagram: {count} tools placed by year and layer, linked together.",
+    "stackLegend": "{count} tools · in blue, today's core · dates from the site's projects and the CV"
   },
   "contact": {
     "title": "Contact",

@@ -8,7 +8,7 @@ import matter from "gray-matter";
 import {
   AboutFrontmatter,
   StoryData,
-  StackLayersData,
+  StackMapData,
   StackData,
   LabFrontmatter,
   LabMeta,
@@ -213,9 +213,17 @@ export async function getAbout(locale: Locale): Promise<About> {
   return { ...data, locale, fallbackBody, body };
 }
 
-/** Tools by layer for the stack section (content/about/stack.json). */
-export async function getStackLayers(): Promise<StackLayersData> {
-  return readJson(path.join(CONTENT, "about", "stack.json"), StackLayersData);
+/** The stack map (content/about/stack.json) and its generated diagram (scripts/dev/stack-diagram.py). */
+export async function getStackMap(): Promise<StackMapData> {
+  return readJson(path.join(CONTENT, "about", "stack.json"), StackMapData);
+}
+export async function getStackDiagram(locale: Locale): Promise<string> {
+  const file = path.join(CONTENT, "about", `stack-diagram.${locale}.svg`);
+  try {
+    return await fs.readFile(file, "utf8");
+  } catch (e) {
+    fail(file, e);
+  }
 }
 
 /** Steps of the path page (content/about/story.json). */

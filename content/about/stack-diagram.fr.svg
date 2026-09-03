@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1261 664" role="img" aria-labelledby="stack-t stack-d" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="11" letter-spacing="0.04em">
+  <title id="stack-t">Ma stack, comme une architecture : chaque outil à son année, relié à ce qu'il a rejoint</title>
+  <desc id="stack-d">Lignes par année de 2020 à 2026, colonnes par couche : langages, interface, serveur, données, infra, automatisation, IA et média. Les liens relient chaque outil à ceux qu'il prolonge.</desc>
+  <g fill="currentColor" stroke="none" opacity="0.55">
+    <text x="64" y="20">Langages</text>
+    <text x="238" y="20">Interface</text>
+    <text x="460" y="20">Serveur</text>
+    <text x="648" y="20">Données</text>
+    <text x="767" y="20">Infra</text>
+    <text x="858" y="20">Automatisation</text>
+    <text x="1080" y="20">IA et média</text>
+  </g>
+  <g data-step="1">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="64" font-weight="700">2020</text></g>
+    <path data-draw opacity="0.45" d="M64 59 H54 V24 H450 V59 H460"/>
+    <path data-draw d="M64 44 H153 V74 H64 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="74" y="64">JavaScript</text></g>
+    <path data-draw d="M161 44 H201 V74 H161 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="171" y="64">SQL</text></g>
+    <path data-draw d="M64 82 H111 V112 H64 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="74" y="102">Bash</text></g>
+    <path data-draw d="M460 44 H528 V74 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="64">Node.js</text></g>
+    <path data-draw d="M767 44 H807 V74 H767 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="777" y="64">Git</text></g>
+  </g>
+  <g data-step="2">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="172" font-weight="700">2022</text></g>
+    <path data-draw opacity="0.45" d="M64 59 H54 V132 H228 V167 H238"/>
+    <path data-draw opacity="0.45" d="M292 167 H328"/>
+    <path data-draw d="M238 152 H292 V182 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="172">React</text></g>
+    <path data-draw d="M328 152 H430 V182 H328 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="338" y="172">React Native</text></g>
+    <path data-draw d="M238 190 H320 V220 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="210">WordPress</text></g>
+  </g>
+  <g data-step="3">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="280" font-weight="700">2023</text></g>
+    <path data-draw opacity="0.45" d="M460 59 H450 V240 H638 V275 H648"/>
+    <path data-draw d="M648 260 H716 V290 H648 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="658" y="280">MongoDB</text></g>
+  </g>
+  <g data-step="4">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="350" font-weight="700">2024</text></g>
+    <path data-draw opacity="0.45" d="M64 59 H54 V310 H54 V345 H64"/>
+    <path data-draw opacity="0.45" d="M64 59 H54 V310 H228 V345 H238"/>
+    <path data-draw opacity="0.45" d="M430 167 H440 V310 H228 V383 H238"/>
+    <path data-draw opacity="0.45" d="M460 59 H450 V310 H450 V345 H460"/>
+    <path data-draw opacity="0.45" d="M313 345 H460"/>
+    <path data-draw opacity="0.45" d="M528 345 H550"/>
+    <path data-draw opacity="0.45" d="M494 360 V368"/>
+    <path data-draw opacity="0.45" d="M460 383 H450 V310 H638 V345 H648"/>
+    <path data-draw opacity="0.45" d="M201 59 H218 V310 H638 V345 H648"/>
+    <path data-draw opacity="0.45" d="M430 167 H440 V310 H638 V383 H648"/>
+    <path data-draw opacity="0.45" d="M460 59 H450 V310 H757 V345 H767"/>
+    <path data-draw opacity="0.45" d="M648 345 H638 V310 H757 V383 H767"/>
+    <path data-draw stroke="var(--signal)" d="M64 330 H153 V360 H64 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="74" y="350" fill="var(--signal)">TypeScript</text></g>
+    <path data-draw d="M238 330 H313 V360 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="350">Electron</text></g>
+    <path data-draw d="M238 368 H299 V398 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="388">Mapbox</text></g>
+    <path data-draw d="M460 330 H528 V360 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="350">Express</text></g>
+    <path data-draw d="M550 330 H590 V360 H550 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="560" y="350">JWT</text></g>
+    <path data-draw d="M460 368 H542 V398 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="388">Sequelize</text></g>
+    <path data-draw stroke="var(--signal)" d="M648 330 H737 V360 H648 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="658" y="350" fill="var(--signal)">PostgreSQL</text></g>
+    <path data-draw d="M648 368 H723 V398 H648 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="658" y="388">Firebase</text></g>
+    <path data-draw d="M767 330 H807 V360 H767 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="777" y="350">AWS</text></g>
+    <path data-draw d="M767 368 H828 V398 H767 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="777" y="388">Docker</text></g>
+  </g>
+  <g data-step="5">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="458" font-weight="700">2025</text></g>
+    <path data-draw opacity="0.45" d="M238 167 H228 V418 H228 V453 H238"/>
+    <path data-draw opacity="0.45" d="M64 345 H54 V418 H228 V453 H238"/>
+    <path data-draw opacity="0.45" d="M238 167 H228 V418 H440 V453 H395"/>
+    <path data-draw opacity="0.45" d="M272 468 V476"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V418 H440 V491 H395"/>
+    <path data-draw opacity="0.45" d="M460 59 H450 V418 H450 V453 H460"/>
+    <path data-draw opacity="0.45" d="M64 345 H54 V418 H450 V453 H460"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H450 V491 H460"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V418 H757 V453 H767"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H848 V453 H858"/>
+    <path data-draw opacity="0.45" d="M967 453 H975"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H848 V491 H858"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H1060 V491 H1050"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H1070 V453 H1080"/>
+    <path data-draw opacity="0.45" d="M1148 453 H1156"/>
+    <path data-draw opacity="0.45" d="M64 453 H54 V418 H1070 V491 H1080"/>
+    <path data-draw opacity="0.45" d="M1141 491 H1156"/>
+    <path data-draw stroke="var(--signal)" d="M64 438 H125 V468 H64 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="74" y="458" fill="var(--signal)">Python</text></g>
+    <path data-draw stroke="var(--signal)" d="M238 438 H306 V468 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="458" fill="var(--signal)">Next.js</text></g>
+    <path data-draw d="M348 438 H395 V468 H348 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="358" y="458">Vite</text></g>
+    <path data-draw d="M238 476 H340 V506 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="496">Tailwind CSS</text></g>
+    <path data-draw d="M348 476 H395 V506 H348 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="358" y="496">Sass</text></g>
+    <path data-draw d="M460 438 H528 V468 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="458">Nest.js</text></g>
+    <path data-draw d="M460 476 H549 V506 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="496">WebSockets</text></g>
+    <path data-draw d="M767 438 H828 V468 H767 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="777" y="458">Vercel</text></g>
+    <path data-draw d="M858 438 H967 V468 H858 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="868" y="458">Telegram bots</text></g>
+    <path data-draw d="M975 438 H1050 V468 H975 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="985" y="458">Pyrogram</text></g>
+    <path data-draw d="M858 476 H933 V506 H858 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="868" y="496">Selenium</text></g>
+    <path data-draw d="M975 476 H1050 V506 H975 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="985" y="496">Scraping</text></g>
+    <path data-draw d="M858 514 H898 V544 H858 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="868" y="534">n8n</text></g>
+    <path data-draw d="M1080 438 H1148 V468 H1080 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="1090" y="458">Whisper</text></g>
+    <path data-draw d="M1156 438 H1217 V468 H1156 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="1166" y="458">FFmpeg</text></g>
+    <path data-draw d="M1080 476 H1141 V506 H1080 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="1090" y="496">OpenAI</text></g>
+    <path data-draw d="M1156 476 H1245 V506 H1156 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="1166" y="496">ElevenLabs</text></g>
+  </g>
+  <g data-step="6">
+    <g data-label fill="currentColor" stroke="none"><text x="0" y="604" font-weight="700">2026</text></g>
+    <path data-draw opacity="0.45" d="M238 453 H228 V564 H228 V599 H238"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V564 H450 V599 H460"/>
+    <path data-draw opacity="0.45" d="M648 345 H638 V564 H450 V599 H460"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V564 H628 V599 H597"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V564 H450 V637 H460"/>
+    <path data-draw opacity="0.45" d="M238 453 H228 V564 H628 V637 H590"/>
+    <path data-draw opacity="0.45" d="M460 599 H450 V564 H638 V599 H648"/>
+    <path data-draw opacity="0.45" d="M201 59 H218 V564 H638 V599 H648"/>
+    <path data-draw opacity="0.45" d="M460 491 H450 V564 H1070 V599 H1080"/>
+    <path data-draw d="M238 584 H285 V614 H238 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="248" y="604">GSAP</text></g>
+    <path data-draw stroke="var(--signal)" d="M460 584 H521 V614 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="604" fill="var(--signal)">Prisma</text></g>
+    <path data-draw d="M529 584 H597 V614 H529 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="539" y="604">Auth.js</text></g>
+    <path data-draw d="M460 622 H521 V652 H460 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="470" y="642">Stripe</text></g>
+    <path data-draw d="M529 622 H590 V652 H529 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="539" y="642">Resend</text></g>
+    <path data-draw d="M648 584 H702 V614 H648 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="658" y="604">MySQL</text></g>
+    <path data-draw d="M1080 584 H1175 V614 H1080 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="1090" y="604">TikTok Live</text></g>
+  </g>
+</svg>

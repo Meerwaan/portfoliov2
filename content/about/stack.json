@@ -1,57 +1,432 @@
 {
-  "layers": [
+  "columns": [
     {
       "id": "lang",
-      "label": { "fr": "Langages", "en": "Languages" },
-      "items": [
-        { "name": "TypeScript" },
-        { "name": "JavaScript" },
-        { "name": "Python" },
-        { "name": "SQL", "match": ["SQL", "PostgreSQL", "MySQL"] }
-      ]
+      "label": {
+        "fr": "Langages",
+        "en": "Languages"
+      }
     },
     {
       "id": "ui",
-      "label": { "fr": "Interface", "en": "Interface" },
-      "items": [
-        { "name": "React", "match": ["React", "React 19"] },
-        { "name": "Next.js", "match": ["Next.js", "Next.js 16"] },
-        { "name": "React Native" },
-        { "name": "Tailwind CSS", "match": ["Tailwind CSS", "Tailwind 4"] },
-        { "name": "GSAP" },
-        { "name": "Electron" },
-        { "name": "Mapbox" },
-        { "name": "WordPress" }
-      ]
+      "label": {
+        "fr": "Interface",
+        "en": "Interface"
+      }
     },
     {
       "id": "server",
-      "label": { "fr": "Serveur et données", "en": "Server and data" },
-      "items": [
-        { "name": "Node.js" },
-        { "name": "Express" },
-        { "name": "Prisma" },
-        { "name": "Sequelize" },
-        { "name": "PostgreSQL" },
-        { "name": "MySQL" },
-        { "name": "Firebase", "match": ["Firebase", "Firebase Auth", "Firestore", "Cloud Storage"] },
-        { "name": "Auth.js", "match": ["Auth.js", "NextAuth", "JWT"] },
-        { "name": "Stripe" },
-        { "name": "Vercel" }
-      ]
+      "label": {
+        "fr": "Serveur",
+        "en": "Server"
+      }
+    },
+    {
+      "id": "data",
+      "label": {
+        "fr": "Données",
+        "en": "Data"
+      }
+    },
+    {
+      "id": "infra",
+      "label": {
+        "fr": "Infra",
+        "en": "Infra"
+      }
     },
     {
       "id": "auto",
-      "label": { "fr": "Automatisation et IA", "en": "Automation and AI" },
-      "items": [
-        { "name": "Selenium" },
-        { "name": "Pyrogram" },
-        { "name": "Bots Telegram", "match": ["python-telegram-bot", "aiogram"] },
-        { "name": "Whisper", "match": ["faster-whisper"] },
-        { "name": "OpenAI" },
-        { "name": "ElevenLabs" },
-        { "name": "FFmpeg", "match": ["FFmpeg", "MoviePy"] },
-        { "name": "TikTok Live", "match": ["TikTokLive", "tiktok-live-connector"] }
+      "label": {
+        "fr": "Automatisation",
+        "en": "Automation"
+      }
+    },
+    {
+      "id": "ai",
+      "label": {
+        "fr": "IA et média",
+        "en": "AI and media"
+      }
+    }
+  ],
+  "years": [
+    {
+      "year": 2020,
+      "caption": {
+        "fr": "Licence à l'ESIEE, en alternance : les bases, JavaScript, SQL, Node.js, le terminal.",
+        "en": "Bachelor at ESIEE, work-study: the basics, JavaScript, SQL, Node.js, the terminal."
+      }
+    },
+    {
+      "year": 2022,
+      "caption": {
+        "fr": "Youggy et SIPP : le front, web et mobile, React et React Native.",
+        "en": "Youggy and SIPP: the front end, web and mobile, React and React Native."
+      }
+    },
+    {
+      "year": 2023,
+      "caption": {
+        "fr": "Master : premières bases documentaires sur des projets d'école.",
+        "en": "Master's: first document databases on school projects."
+      }
+    },
+    {
+      "year": 2024,
+      "caption": {
+        "fr": "Neocortex et Hall of Arts : toute la chaîne, du client à la base, en TypeScript.",
+        "en": "Neocortex and Hall of Arts: the whole chain, from client to database, in TypeScript."
+      }
+    },
+    {
+      "year": 2025,
+      "caption": {
+        "fr": "SaaS en solo et famille G2 : Next.js, Firebase, Python, bots Telegram, IA.",
+        "en": "Solo SaaS and the G2 family: Next.js, Firebase, Python, Telegram bots, AI."
+      }
+    },
+    {
+      "year": 2026,
+      "caption": {
+        "fr": "Multi-tenant et paiement : Prisma, Stripe, Auth.js, MySQL, Resend.",
+        "en": "Multi-tenant and payments: Prisma, Stripe, Auth.js, MySQL, Resend."
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "name": "JavaScript",
+      "col": "lang",
+      "year": 2020
+    },
+    {
+      "name": "SQL",
+      "col": "lang",
+      "year": 2020
+    },
+    {
+      "name": "Bash",
+      "col": "lang",
+      "year": 2020
+    },
+    {
+      "name": "Node.js",
+      "col": "server",
+      "year": 2020,
+      "from": [
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Git",
+      "col": "infra",
+      "year": 2020
+    },
+    {
+      "name": "React",
+      "col": "ui",
+      "year": 2022,
+      "from": [
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "React Native",
+      "col": "ui",
+      "year": 2022,
+      "from": [
+        "React"
+      ]
+    },
+    {
+      "name": "WordPress",
+      "col": "ui",
+      "year": 2022
+    },
+    {
+      "name": "MongoDB",
+      "col": "data",
+      "year": 2023,
+      "from": [
+        "Node.js"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "col": "lang",
+      "year": 2024,
+      "from": [
+        "JavaScript"
+      ],
+      "core": true
+    },
+    {
+      "name": "Electron",
+      "col": "ui",
+      "year": 2024,
+      "from": [
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Mapbox",
+      "col": "ui",
+      "year": 2024,
+      "from": [
+        "React Native"
+      ]
+    },
+    {
+      "name": "Express",
+      "col": "server",
+      "year": 2024,
+      "from": [
+        "Node.js",
+        "Electron"
+      ]
+    },
+    {
+      "name": "JWT",
+      "col": "server",
+      "year": 2024,
+      "from": [
+        "Express"
+      ]
+    },
+    {
+      "name": "Sequelize",
+      "col": "server",
+      "year": 2024,
+      "from": [
+        "Express"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
+      "col": "data",
+      "year": 2024,
+      "from": [
+        "Sequelize",
+        "SQL"
+      ],
+      "core": true
+    },
+    {
+      "name": "Firebase",
+      "col": "data",
+      "year": 2024,
+      "from": [
+        "React Native"
+      ]
+    },
+    {
+      "name": "AWS",
+      "col": "infra",
+      "year": 2024,
+      "from": [
+        "Node.js"
+      ]
+    },
+    {
+      "name": "Docker",
+      "col": "infra",
+      "year": 2024,
+      "from": [
+        "PostgreSQL"
+      ]
+    },
+    {
+      "name": "Python",
+      "col": "lang",
+      "year": 2025,
+      "core": true
+    },
+    {
+      "name": "Next.js",
+      "col": "ui",
+      "year": 2025,
+      "from": [
+        "React",
+        "TypeScript"
+      ],
+      "core": true
+    },
+    {
+      "name": "Vite",
+      "col": "ui",
+      "year": 2025,
+      "from": [
+        "React"
+      ]
+    },
+    {
+      "name": "Tailwind CSS",
+      "col": "ui",
+      "year": 2025,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Sass",
+      "col": "ui",
+      "year": 2025,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Nest.js",
+      "col": "server",
+      "year": 2025,
+      "from": [
+        "Node.js",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "WebSockets",
+      "col": "server",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "col": "infra",
+      "year": 2025,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Telegram bots",
+      "col": "auto",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "Pyrogram",
+      "col": "auto",
+      "year": 2025,
+      "from": [
+        "Telegram bots"
+      ]
+    },
+    {
+      "name": "Selenium",
+      "col": "auto",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "Scraping",
+      "col": "auto",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "n8n",
+      "col": "auto",
+      "year": 2025
+    },
+    {
+      "name": "Whisper",
+      "col": "ai",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "FFmpeg",
+      "col": "ai",
+      "year": 2025,
+      "from": [
+        "Whisper"
+      ]
+    },
+    {
+      "name": "OpenAI",
+      "col": "ai",
+      "year": 2025,
+      "from": [
+        "Python"
+      ]
+    },
+    {
+      "name": "ElevenLabs",
+      "col": "ai",
+      "year": 2025,
+      "from": [
+        "OpenAI"
+      ]
+    },
+    {
+      "name": "GSAP",
+      "col": "ui",
+      "year": 2026,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Prisma",
+      "col": "server",
+      "year": 2026,
+      "from": [
+        "Next.js",
+        "PostgreSQL"
+      ],
+      "core": true
+    },
+    {
+      "name": "Auth.js",
+      "col": "server",
+      "year": 2026,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Stripe",
+      "col": "server",
+      "year": 2026,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "Resend",
+      "col": "server",
+      "year": 2026,
+      "from": [
+        "Next.js"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "col": "data",
+      "year": 2026,
+      "from": [
+        "Prisma",
+        "SQL"
+      ]
+    },
+    {
+      "name": "TikTok Live",
+      "col": "ai",
+      "year": 2026,
+      "from": [
+        "WebSockets"
       ]
     }
   ]
