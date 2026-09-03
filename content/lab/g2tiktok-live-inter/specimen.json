@@ -1,0 +1,86 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "modules/game_engine.py",
+    "lang": "python",
+    "title": {
+      "fr": "Réponse exacte, réponse proche et délai par joueur",
+      "en": "Exact match, near miss and per-player cooldown"
+    },
+    "code": "if user_msg == correct_answer:\n    await self.handle_winner(user, avatar_url)\n    return\nif len(user_msg) >= 3:\n    ratio = SequenceMatcher(None, user_msg, correct_answer).ratio()\n    if ratio >= 0.80:\n        now = time.time()\n        if now - self.last_near_miss.get(user, 0) < 5:\n            return\n        self.last_near_miss[user] = now"
+  },
+  "modules": [
+    {
+      "name": "modules/game_engine.py",
+      "role": {
+        "fr": "Manches, correspondance floue, délai des presque",
+        "en": "Rounds, fuzzy matching, near-miss cooldown"
+      }
+    },
+    {
+      "name": "modules/tiktok_client.py",
+      "role": {
+        "fr": "Commentaires, cadeaux, follows vers le moteur",
+        "en": "Comments, gifts, follows into the engine"
+      }
+    },
+    {
+      "name": "interfaces/overlay_server.py",
+      "role": {
+        "fr": "Serveur aiohttp et diffusion WebSocket JSON",
+        "en": "aiohttp server and JSON WebSocket broadcast"
+      }
+    },
+    {
+      "name": "modules/audio_generator.py",
+      "role": {
+        "fr": "Voix Edge à la volée, cache purgé",
+        "en": "On-demand Edge voice, purged cache"
+      }
+    },
+    {
+      "name": "overlay/app.js",
+      "role": {
+        "fr": "Overlay navigateur : WebSocket, timer, popups",
+        "en": "Browser overlay: WebSocket, timer, popups"
+      }
+    },
+    {
+      "name": "main.py",
+      "role": {
+        "fr": "Lance serveur, moteur, client et simulateur",
+        "en": "Boots server, engine, client and simulator"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "TikTok Live (TikTokLive)",
+      "role": {
+        "fr": "Flux chat, likes, cadeaux, follows",
+        "en": "Chat, likes, gifts, follows stream"
+      }
+    },
+    {
+      "name": "EulerStream",
+      "role": {
+        "fr": "Signature des requêtes Webcast",
+        "en": "Signs the Webcast requests"
+      }
+    },
+    {
+      "name": "Microsoft Edge TTS",
+      "role": {
+        "fr": "Voix française des questions",
+        "en": "French voice for the questions"
+      }
+    },
+    {
+      "name": "OBS (source navigateur)",
+      "role": {
+        "fr": "Reçoit l'overlay par WebSocket",
+        "en": "Receives the overlay over WebSocket"
+      }
+    }
+  ]
+}

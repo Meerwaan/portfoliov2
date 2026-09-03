@@ -1,0 +1,12 @@
+---
+title: "G2Tiktok-Live-inter, le jeu en direct"
+summary: "Un jeu de devinettes pour TikTok Live : le chat propose, un overlay OBS affiche les scores et une voix annonce les manches."
+myRole: "Conception et développement, seul"
+keywords: ["g2", "tiktok live", "jeu", "overlay", "obs", "websocket", "chat", "interactif"]
+screenshotAlt:
+  overlay: "Overlay OBS du jeu : question en cours, propositions du chat et tableau des scores."
+---
+
+La famille G2 a un membre tourné vers le direct. Un client écoute le chat d'un TikTok Live, un moteur de jeu tient les questions, les réponses et les scores, un serveur WebSocket pousse l'état vers un overlay que le streamer incruste dans OBS, et une voix de synthèse annonce les manches.
+
+Prototype : les questions sont dans un fichier JSON, il n'y a pas de comptes ni de persistance au-delà d'une session. Il a servi à comprendre ce qu'un chat peut faire en temps réel, ce qui a nourri Roast My Music.

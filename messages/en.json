@@ -1,0 +1,238 @@
+{
+  "site": {
+    "name": "Merwan Laouini",
+    "tagline": "Full-stack product engineer",
+    "description": "Full-stack product engineer. I build software end to end, from the database schema to the day it goes live: healthcare software, multi-tenant SaaS, billing."
+  },
+  "a11y": {
+    "skipLink": "Skip to content",
+    "mainNav": "Main navigation",
+    "rail": "System status",
+    "openCommand": "Open command"
+  },
+  "nav": {
+    "work": "Work",
+    "lab": "Lab",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "sentence": "I build software end to end, from the database schema to the day it goes live.",
+    "commandPlaceholder": "Ask me about the healthcare project, multi-tenancy, the stack…",
+    "commandLabel": "Query the site",
+    "doors": {
+      "work": {
+        "title": "Work",
+        "meta": "Systems in production or delivered"
+      },
+      "lab": {
+        "title": "Lab",
+        "meta": "Prototypes, automations, experiments"
+      },
+      "contact": {
+        "title": "Contact",
+        "meta": "Reply within 48 hours"
+      }
+    }
+  },
+  "rail": {
+    "status": "STATUS",
+    "probing": "PROBING",
+    "live": "LIVE",
+    "degraded": "DEGRADED",
+    "region": "REGION",
+    "rtt": "RTT",
+    "build": "BUILD",
+    "deploy": "DEPLOY",
+    "local": "LOCAL",
+    "context": {
+      "home": "ENTRY",
+      "work": "INDEX",
+      "node": "NODE",
+      "lab": "LAB",
+      "about": "PATH",
+      "contact": "CONTACT",
+      "notFound": "ROUTE_NOT_FOUND"
+    }
+  },
+  "theme": {
+    "toNight": "Night mode",
+    "toDay": "Day mode",
+    "night": "NIGHT",
+    "day": "DAY"
+  },
+  "locale": {
+    "switchTo": "Passer en français",
+    "short": "FR"
+  },
+  "notFound": {
+    "title": "This route does not exist.",
+    "body": "The requested path matches no node of the system.",
+    "home": "Back to entry"
+  },
+  "error": {
+    "title": "A runtime error occurred.",
+    "retry": "Retry"
+  },
+  "footer": {
+    "rights": "Merwan Laouini, Sèvres. Source code on GitHub."
+  },
+  "work": {
+    "title": "Work",
+    "description": "Systems built end to end by Merwan Laouini: healthcare software, multi-tenant SaaS, interactive portfolio. Role held and real status for each.",
+    "intro": "Systems carried from the database schema to deployment. Each entry states the role held and its real status.",
+    "filters": {
+      "role": "Role",
+      "status": "Status",
+      "search": "Filter",
+      "searchPlaceholder": "filter by word, stack…"
+    },
+    "role": {
+      "founder": "Founder",
+      "freelance": "Freelance",
+      "employee": "Work-study",
+      "study": "Studies"
+    },
+    "status": {
+      "production": "In production",
+      "delivered": "Delivered",
+      "building": "Building"
+    },
+    "count": "{count, plural, =0 {No results} one {# system} other {# systems}}",
+    "empty": "No system matches these filters.",
+    "screenPending": "SCREEN PENDING",
+    "meta": {
+      "role": "Role",
+      "period": "Period",
+      "status": "Status",
+      "stack": "Stack",
+      "links": "Links",
+      "live": "Visit",
+      "repo": "Code"
+    },
+    "diagram": "Architecture",
+    "outcomes": "Outcomes",
+    "source": "Source",
+    "next": "Next system",
+    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
+    "step": "Step {n}",
+    "noScreen": "NO CAPTURE"
+  },
+  "command": {
+    "label": "Command",
+    "placeholder": "Search a system, a page… or > for actions",
+    "empty": "NO_MATCH",
+    "copied": "EMAIL COPIED",
+    "askSoon": "Natural-language questions arrive in a later version.",
+    "groups": {
+      "systems": "Systems",
+      "lab": "Lab",
+      "pages": "Pages",
+      "sections": "Sections",
+      "actions": "Actions"
+    },
+    "actions": {
+      "night": "Switch to night mode",
+      "day": "Switch to day mode",
+      "locale": "Passer en français",
+      "copyEmail": "Copy email address",
+      "cv": "Open CV (PDF)",
+      "top": "Back to top"
+    },
+    "hints": {
+      "navigate": "navigate",
+      "open": "open",
+      "actions": "actions",
+      "go": "go to"
+    }
+  },
+  "lab": {
+    "title": "Lab",
+    "description": "Prototypes, automations and experiments by Merwan Laouini, with their real status: active, paused, prototype.",
+    "intro": "Eight experiments opened in section: the surface when there is one, an excerpt of the real code, the repository's modules, the services it calls. Every status is the real one.",
+    "status": {
+      "prototype": "Prototype",
+      "active": "Active",
+      "paused": "Paused",
+      "archived": "Archived"
+    },
+    "links": {
+      "live": "Visit",
+      "repo": "Code"
+    },
+    "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
+    "statement": "What is running, what was tried, what is paused.",
+    "indexLabel": "Experiments index",
+    "groups": {
+      "g2": {
+        "title": "The G2 family",
+        "intro": "G2 reads \"Go to\". Four video tools on the same Telegram base, from writing a script to publishing, and a cousin that listens to a blockchain."
+      },
+      "other": {
+        "title": "Other experiments",
+        "intro": "Three projects outside the Telegram base: a live format, a field app, a behavioural health prototype."
+      }
+    },
+    "layers": {
+      "surface": "Surface",
+      "code": "Code",
+      "modules": "Modules",
+      "services": "Services"
+    },
+    "layerNotes": {
+      "surface": "Real capture",
+      "modules": "{count} files from the repository",
+      "services": "{count, plural, one {# service called} other {# services called}}"
+    },
+    "layerHint": "Hover a layer to isolate it."
+  },
+  "about": {
+    "title": "About",
+    "description": "Merwan Laouini's path as a full-stack product engineer: work-study at Neocortex and Youggy, Master's at ESIEE IT, what he is looking for.",
+    "experience": "Experience",
+    "education": "Education",
+    "stack": "Stack",
+    "cv": "Download CV (PDF)",
+    "today": "today",
+    "readCase": "Read the case study",
+    "pathTitle": "The path, one step per screen.",
+    "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
+    "founder": "Founder"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contact Merwan Laouini for a full-time product engineer role or a freelance mission. Reply within 48 hours.",
+    "intro": "A full-time role, a mission, a question about a project: write to me directly. I reply within 48 hours.",
+    "copy": "Copy address",
+    "copied": "ADDRESS COPIED",
+    "availabilityTitle": "Availability",
+    "availability": "Open to a full-time product engineer role and to short, well-scoped freelance missions. On site in the Paris region, remote anywhere.",
+    "form": {
+      "title": "Or through this form",
+      "email": "Your email",
+      "message": "Your message",
+      "send": "Send",
+      "sending": "Sending…",
+      "success": "Message sent. I will get back to you within 48 hours.",
+      "error": "Sending failed. Please write to me directly by email."
+    }
+  },
+  "stack": {
+    "title": "A system, in section.",
+    "intro": "Each product exploded into its real layers, from the interface down to the infrastructure. The routes and models below are read from the projects' code, not drawn for the occasion.",
+    "layers": {
+      "ui": "Interface",
+      "routes": "Routes and actions",
+      "models": "Data model",
+      "infra": "Infrastructure"
+    },
+    "counts": {
+      "ui": "{count, plural, one {# linked area} other {# linked areas}}",
+      "routes": "{count} routes in the code",
+      "models": "{count} models",
+      "infra": "{count, plural, one {# service} other {# services}}"
+    },
+    "hint": "Hover the interface to follow a piece of data down to the database.",
+    "open": "Read the case study"
+  }
+}

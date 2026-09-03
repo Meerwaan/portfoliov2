@@ -1,0 +1,238 @@
+{
+  "site": {
+    "name": "Merwan Laouini",
+    "tagline": "Ingénieur produit full-stack",
+    "description": "Ingénieur produit full-stack. Je construis des logiciels de bout en bout, du schéma de base de données à la mise en service : logiciel de santé, SaaS multi-tenant, facturation."
+  },
+  "a11y": {
+    "skipLink": "Aller au contenu",
+    "mainNav": "Navigation principale",
+    "rail": "État du système",
+    "openCommand": "Ouvrir la commande"
+  },
+  "nav": {
+    "work": "Travaux",
+    "lab": "Atelier",
+    "about": "Parcours",
+    "contact": "Contact"
+  },
+  "hero": {
+    "sentence": "Je construis des logiciels de bout en bout, du schéma de base de données à la mise en service.",
+    "commandPlaceholder": "Demande-moi le projet santé, le multi-tenant, la stack…",
+    "commandLabel": "Interroger le site",
+    "doors": {
+      "work": {
+        "title": "Travaux",
+        "meta": "Systèmes en production ou livrés"
+      },
+      "lab": {
+        "title": "Atelier",
+        "meta": "Prototypes, automatisations, essais"
+      },
+      "contact": {
+        "title": "Contact",
+        "meta": "Réponse sous 48 h"
+      }
+    }
+  },
+  "rail": {
+    "status": "STATUS",
+    "probing": "PROBING",
+    "live": "LIVE",
+    "degraded": "DEGRADED",
+    "region": "REGION",
+    "rtt": "RTT",
+    "build": "BUILD",
+    "deploy": "DEPLOY",
+    "local": "LOCAL",
+    "context": {
+      "home": "ENTRY",
+      "work": "INDEX",
+      "node": "NODE",
+      "lab": "LAB",
+      "about": "PATH",
+      "contact": "CONTACT",
+      "notFound": "ROUTE_NOT_FOUND"
+    }
+  },
+  "theme": {
+    "toNight": "Mode nuit",
+    "toDay": "Mode jour",
+    "night": "NUIT",
+    "day": "JOUR"
+  },
+  "locale": {
+    "switchTo": "Switch to English",
+    "short": "EN"
+  },
+  "notFound": {
+    "title": "Cette route n'existe pas.",
+    "body": "Le chemin demandé ne correspond à aucun nœud du système.",
+    "home": "Retour à l'entrée"
+  },
+  "error": {
+    "title": "Une erreur d'exécution s'est produite.",
+    "retry": "Réessayer"
+  },
+  "footer": {
+    "rights": "Merwan Laouini, Sèvres. Code source sur GitHub."
+  },
+  "work": {
+    "title": "Travaux",
+    "description": "Les systèmes construits de bout en bout par Merwan Laouini : logiciel de santé, SaaS multi-tenant, portfolio interactif. Rôle tenu et statut réel pour chacun.",
+    "intro": "Des systèmes tenus du schéma de base de données au déploiement. Chaque entrée annonce le rôle tenu et son statut réel.",
+    "filters": {
+      "role": "Rôle",
+      "status": "Statut",
+      "search": "Filtrer",
+      "searchPlaceholder": "filtrer par mot, stack…"
+    },
+    "role": {
+      "founder": "Fondateur",
+      "freelance": "Freelance",
+      "employee": "Alternance",
+      "study": "Études"
+    },
+    "status": {
+      "production": "En production",
+      "delivered": "Livré",
+      "building": "En construction"
+    },
+    "count": "{count, plural, =0 {Aucun résultat} one {# système} other {# systèmes}}",
+    "empty": "Aucun système ne correspond à ces filtres.",
+    "screenPending": "CAPTURE À VENIR",
+    "meta": {
+      "role": "Rôle",
+      "period": "Période",
+      "status": "Statut",
+      "stack": "Stack",
+      "links": "Liens",
+      "live": "Voir en ligne",
+      "repo": "Code"
+    },
+    "diagram": "Architecture",
+    "outcomes": "Résultats",
+    "source": "Source",
+    "next": "Système suivant",
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
+    "step": "Étape {n}",
+    "noScreen": "PAS DE CAPTURE"
+  },
+  "command": {
+    "label": "Commande",
+    "placeholder": "Chercher un système, une page… ou > pour les actions",
+    "empty": "NO_MATCH",
+    "copied": "EMAIL COPIÉ",
+    "askSoon": "Les questions en langage naturel arrivent dans une prochaine version.",
+    "groups": {
+      "systems": "Systèmes",
+      "lab": "Atelier",
+      "pages": "Pages",
+      "sections": "Sections",
+      "actions": "Actions"
+    },
+    "actions": {
+      "night": "Passer en mode nuit",
+      "day": "Passer en mode jour",
+      "locale": "Switch to English",
+      "copyEmail": "Copier l'adresse email",
+      "cv": "Ouvrir le CV (PDF)",
+      "top": "Remonter en haut de page"
+    },
+    "hints": {
+      "navigate": "naviguer",
+      "open": "ouvrir",
+      "actions": "actions",
+      "go": "aller à"
+    }
+  },
+  "lab": {
+    "title": "Atelier",
+    "description": "Prototypes, automatisations et essais de Merwan Laouini, avec leur statut réel : en cours, en pause, prototype.",
+    "intro": "Huit expériences ouvertes en coupe : la surface quand elle existe, un extrait du vrai code, les modules du dépôt, les services appelés. Chaque statut est le vrai.",
+    "status": {
+      "prototype": "Prototype",
+      "active": "En cours",
+      "paused": "En pause",
+      "archived": "Archivé"
+    },
+    "links": {
+      "live": "Voir en ligne",
+      "repo": "Code"
+    },
+    "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
+    "statement": "Ce qui tourne, ce qui a été essayé, ce qui est en pause.",
+    "indexLabel": "Sommaire des expériences",
+    "groups": {
+      "g2": {
+        "title": "La famille G2",
+        "intro": "G2 se lit « Go to ». Quatre outils vidéo sur le même socle Telegram, de l'écriture d'un script à la publication, et un cousin qui écoute une blockchain."
+      },
+      "other": {
+        "title": "Autres essais",
+        "intro": "Trois projets indépendants du socle Telegram : un format de live, une application de terrain, un prototype de santé comportementale."
+      }
+    },
+    "layers": {
+      "surface": "Surface",
+      "code": "Code",
+      "modules": "Modules",
+      "services": "Services"
+    },
+    "layerNotes": {
+      "surface": "Capture réelle",
+      "modules": "{count} fichiers du dépôt",
+      "services": "{count, plural, one {# service appelé} other {# services appelés}}"
+    },
+    "layerHint": "Survoler une couche pour l'isoler."
+  },
+  "about": {
+    "title": "Parcours",
+    "description": "Parcours de Merwan Laouini, ingénieur produit full-stack : alternances Neocortex et Youggy, Master ESIEE IT, ce qu'il cherche.",
+    "experience": "Expérience",
+    "education": "Formation",
+    "stack": "Stack",
+    "cv": "Télécharger le CV (PDF)",
+    "today": "aujourd'hui",
+    "readCase": "Lire l'étude de cas",
+    "pathTitle": "Le parcours, une étape par écran.",
+    "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
+    "founder": "Fondateur"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contacter Merwan Laouini pour un CDI d'ingénieur produit ou une mission freelance. Réponse sous 48 h.",
+    "intro": "Un CDI, une mission, une question sur un projet : écris-moi directement. Je réponds sous 48 h.",
+    "copy": "Copier l'adresse",
+    "copied": "ADRESSE COPIÉE",
+    "availabilityTitle": "Disponibilité",
+    "availability": "Ouvert à un poste d'ingénieur produit en CDI et à des missions freelance courtes et cadrées. Présentiel en Île-de-France, à distance partout.",
+    "form": {
+      "title": "Ou par ce formulaire",
+      "email": "Votre email",
+      "message": "Votre message",
+      "send": "Envoyer",
+      "sending": "Envoi…",
+      "success": "Message envoyé. Je reviens vers vous sous 48 h.",
+      "error": "L'envoi a échoué. Écrivez-moi directement par email."
+    }
+  },
+  "stack": {
+    "title": "Un système, en coupe.",
+    "intro": "Chaque produit éclaté en ses vraies couches, de l'interface à l'infrastructure. Les routes et les modèles ci-dessous sont lus dans le code des projets, pas dessinés pour l'occasion.",
+    "layers": {
+      "ui": "Interface",
+      "routes": "Routes et actions",
+      "models": "Modèle de données",
+      "infra": "Infrastructure"
+    },
+    "counts": {
+      "ui": "{count, plural, one {# zone reliée} other {# zones reliées}}",
+      "routes": "{count} routes dans le code",
+      "models": "{count} modèles",
+      "infra": "{count, plural, one {# service} other {# services}}"
+    },
+    "hint": "Survoler l'interface pour suivre une donnée jusqu'à la base.",
+    "open": "Lire l'étude de cas"
+  }
+}

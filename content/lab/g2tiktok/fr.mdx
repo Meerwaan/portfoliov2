@@ -1,0 +1,13 @@
+---
+title: "G2Tiktok, le découpeur"
+summary: "Une vidéo longue entre, des clips 9:16 sous-titrés sortent, vendus en crédits directement dans Telegram."
+myRole: "Conception et développement, seul"
+keywords: ["g2", "découpage", "clips", "9:16", "telegram stars", "pyrogram", "whisper", "yt-dlp", "bot"]
+screenshotAlt:
+  landing: "Page de présentation du bot G2Tiktok : découpage automatique de vidéos longues en clips verticaux."
+  dashboard-tiktokdash: "Version tableau de bord du même moteur : liste des découpages, paramètres d'API et prompt d'analyse."
+---
+
+Le second membre de la famille prend le problème à l'envers : la matière existe déjà, sous forme de vidéo longue (YouTube, TikTok, Instagram). Le bot la télécharge, repère les segments qui tiennent seuls, les recadre en 9:16 avec fond flouté, y brûle des sous-titres Whisper et renvoie les clips.
+
+Deux contraintes ont dicté l'architecture : des fichiers lourds, d'où Pyrogram et le protocole MTProto pour envoyer jusqu'à deux gigaoctets, et un modèle payant, d'où des crédits achetés en Telegram Stars avec une file de traitement par utilisateur. Le même moteur existe en tableau de bord web, qui a servi de banc d'essai avant la version bot.

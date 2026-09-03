@@ -1,0 +1,73 @@
+---
+title: "Reputap"
+summary: "SaaS multi-tenant qui transforme un scan NFC en avis Google, avec roue de gains tirée côté serveur et validation humaine en caisse."
+oneLiner: "Collecte d'avis Google par NFC, multi-établissements, avec anti-abus."
+roleLabel: "Fondateur, conception et développement"
+keywords: ["nfc", "avis google", "multi-tenant", "saas", "prisma", "auth.js", "rbac", "stripe", "roue", "anti-abus", "commerce local"]
+screenshotAlt:
+  merchant-dashboard: "Tableau de bord marchand Reputap : scans totaux, taux de conversion, clients fidèles, lots distribués et activité en temps réel d'une boulangerie de démonstration."
+  scan-mobile: "Page publique ouverte par la plaque NFC : les trois étapes, laisser un avis Google, tourner la roue, gagner un cadeau."
+  wheel-mobile: "Roue de gains sur téléphone après l'avis : café offert, réduction sur l'addition ou perdu, une participation par 24 h."
+  ticket-mobile: "Ticket gagnant avec son code à quatre caractères et le bouton de validation réservé au commerçant."
+  merchant-campaigns: "Liste des campagnes d'un établissement avec leur statut, leur roue et leurs règles."
+  admin-system: "Centre de contrôle super-admin : uptime, charge, latence API, statut des services et console temps réel."
+  home: "Page d'accueil de Reputap : plaque NFC posée sur un comptoir de café, promesse de transformer chaque client satisfait en avis Google."
+---
+
+## Le problème
+
+Un commerce local vit de ses avis Google, mais les obtenir demande un effort au pire moment : le client est en train de payer et de partir. Les solutions existantes mettent un QR code sur la table et s'arrêtent là. Elles ne savent ni motiver le client, ni empêcher que la même personne enchaîne les récompenses, ni donner au staff un geste simple en caisse.
+
+Reputap part d'une contrainte physique : une puce NFC unique par établissement. Il faut être sur place pour scanner. À partir de là, le parcours est guidé : scan, avis, roue de gains, ticket, validation par le commerçant. Le produit se vend aujourd'hui aux commerces des Alpes-Maritimes avec la plaque incluse.
+
+## Les contraintes
+
+- **Google ne fournit aucune API fiable pour prouver qu'un avis a été déposé.** Tout le système devait fonctionner sans cette preuve.
+- **Multi-établissements dès le premier jour.** Un même client SaaS peut avoir plusieurs points de vente, chacun avec ses tags, sa campagne, ses récompenses.
+- **Zéro friction côté client final.** Pas de compte, pas d'application : une URL ouverte par le téléphone au contact de la plaque.
+- **Un geste en caisse qui tient en cinq secondes** pour un staff qui n'a pas le temps de lire une documentation.
+
+## Les décisions d'architecture
+
+<Decision title="Déplacer la barrière anti-fraude à l'endroit où un humain est déjà présent">
+Puisque l'avis ne peut pas être vérifié, la récompense l'est. Le spin produit un ticket `ISSUED` avec un code unique et une expiration. Rien n'est remis tant que le commerçant ne l'a pas passé à `REDEEMED` depuis son écran de validations, ou rejeté avec un motif. La fraude devient un problème de caisse, pas un problème de cryptographie.
+</Decision>
+
+<Decision title="Tirer la roue côté serveur, animer côté client">
+Le client ne tire jamais. Il envoie une requête de spin ; le serveur vérifie la session, les cooldowns et les plafonds, tire le lot selon les poids configurés, écrit `spin` et `claim` en base, puis renvoie le résultat. L'animation GSAP ne fait que jouer ce résultat. Un client modifié ne peut pas gagner plus souvent.
+</Decision>
+
+<Decision title="Isolation par tenant dans la couche d'accès aux données">
+Chaque requête passe par une couche d'accès qui reçoit le tenant courant et ne peut pas l'oublier. Les rôles `super_admin`, `owner` et `user` sont portés par Auth.js et vérifiés côté serveur sur chaque action. Un propriétaire ne peut pas lire les données d'un autre établissement, même en devinant un identifiant.
+</Decision>
+
+<Decision title="Des règles anti-abus configurables par campagne, pas codées en dur">
+Un spin maximum par session de scan, cooldown de 24 h par appareil, limite douce par adresse IP hachée, plafond de spins par tag et par heure, jetons NFC non devinables avec rotation possible, tickets expirants. Chaque règle est un paramètre de campagne, parce qu'un bar de nuit et une boulangerie n'ont pas le même trafic.
+</Decision>
+
+## Le parcours, tel qu'il tourne
+
+<Screens ids="scan-mobile,wheel-mobile,ticket-mobile" caption="Ce que voit le client entre la plaque et la caisse : les trois étapes, la roue, le ticket à faire valider." />
+
+1. La plaque ouvre une URL du type `/s/{publicToken}`. Le serveur résout le tag, l'établissement et la campagne active, puis crée une `scan_session` avec ses métadonnées anti-abus et son expiration.
+2. La page affiche le branding de l'établissement et un seul bouton : laisser un avis. Le clic enregistre une intention d'avis et ouvre la fiche Google.
+3. Au retour, la roue est disponible si la session est valide. Le tirage est serveur, l'animation est client.
+4. Le ticket s'affiche avec son code. En caisse, le staff le retrouve par code, valide ou rejette.
+
+<Architecture />
+
+## Ce qui n'est pas résolu
+
+<Callout label="Limite assumée">
+Reputap ne sait pas si l'avis a réellement été publié. Il sait que la personne était sur place, qu'elle a ouvert Google, et qu'un humain a accepté de remettre la récompense. C'est un compromis explicite, documenté dans le cadrage du projet, préféré à une fausse promesse de vérification.
+</Callout>
+
+## Côté exploitation
+
+<Screen id="admin-system" caption="Le centre de contrôle super-admin : uptime, latence, statut des services et console temps réel." />
+
+Une console super-admin liste les tenants, gère les abonnements et génère des liens de connexion magiques pour le support. Un tableau de bord système affiche la latence de la base, l'usage disque et les journaux. Les emails transactionnels partent par Resend, la facturation est branchée sur Stripe, le tout est déployé sur Vercel avec PostgreSQL géré par Supabase.
+
+## Stack et conventions
+
+Next.js 16 en App Router avec Server Actions, TypeScript strict, Prisma sur PostgreSQL, Auth.js v5 avec contrôle d'accès par rôle, validation Zod de toutes les entrées, SCSS Modules. Le cadrage impose des fichiers de moins de 300 lignes et une séparation nette entre interface, orchestration, domaine et accès aux données. Ce n'est pas de la coquetterie : c'est ce qui permet d'ajouter un fournisseur d'avis ou une règle anti-abus sans toucher au reste.

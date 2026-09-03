@@ -1,0 +1,17 @@
+---
+title: "Roast My Music"
+summary: "Plateforme pour streamers : écouter des morceaux en live et les noter avec sa communauté, votes du chat Twitch et TikTok en temps réel."
+myRole: "Conception et développement, seul"
+keywords: ["streamers", "musique", "notation live", "twitch", "tiktok", "chat", "communauté", "overlay", "prototype"]
+screenshotAlt:
+  streamer-dashboard: "Tableau de bord du streamer : lecture en cours, note du streamer, moyennes Twitch et TikTok, score final verrouillé et activité en direct."
+  album: "Fiche d'album avec sa note moyenne et les avis des auditeurs."
+---
+
+Le point de départ est un format de live : un streamer écoute des morceaux ou des albums avec sa communauté et les note en direct. Roast My Music outille ce moment. Le streamer charge un morceau, donne sa note de 1 à 10, et le chat vote en même temps : les messages Twitch et TikTok sont lus en temps réel, pondérés (un cadeau TikTok pèse plus qu'un message), et le score final se fige quand les votes sont clos.
+
+Trois surfaces : le tableau de bord du streamer (lecture en cours, sa note, les moyennes par plateforme, l'activité du chat en direct), un overlay à incruster dans le live qui affiche le score qui bouge, et un historique des sessions. Un pont écoute les chats via `tmi.js` pour Twitch et un connecteur TikTok Live.
+
+Une seconde piste, plus ancienne, explorait la fiche d'album classique avec notes et critiques. Elle a servi à tester le parcours de notation, mais c'est le format live qui porte le produit : la note collective en temps réel est ce que ni Letterboxd ni RateYourMusic ne font.
+
+État réel : prototype fonctionnel en local, pas de comptes, sessions stockées en JSON. Prochaine étape : un modèle de données partagé et l'authentification Twitch pour ouvrir l'outil à d'autres streamers.

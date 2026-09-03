@@ -1,0 +1,53 @@
+---
+title: "KastMe"
+summary: "Link-in-bio immersif pour créatifs : une page publique où images et vidéos flottent dans une sphère 3D, servie en SSR avec image de partage."
+oneLiner: "Portfolio interactif en une adresse, pour artistes, mannequins et photographes."
+roleLabel: "Fondateur, conception et développement"
+keywords: ["link in bio", "portfolio", "3d", "firebase", "firestore", "isr", "slug", "og image", "créatifs", "saas"]
+screenshotAlt:
+  landing-demo: "Page publique de démonstration KastMe : les photos d'un photographe animalier fictif flottent dans une sphère autour de sa carte de profil et d'un bouton de réservation."
+  home: "Page d'accueil de KastMe : le titre « Votre travail mérite mieux qu'une liste de liens » au-dessus d'une galerie d'images inclinées en perspective."
+  landing: "Vitrine de KastMe avec sa navigation, sa promesse et l'appel à réserver son espace."
+---
+
+## Le problème
+
+<Screen id="home" caption="La vitrine : une adresse, une sphère, pas une liste de liens." />
+
+Un photographe ou un mannequin met en bio un lien vers une liste de liens. Sa meilleure image est à trois clics. KastMe remplace la liste par une page publique `kastme.fr/son-slug` où ses images et ses vidéos flottent dans une sphère que le visiteur fait tourner au doigt. Le produit est en ligne, en construction : la vitrine, l'inscription, l'éditeur et les pages publiques tournent ; la facturation n'est pas encore branchée.
+
+## Les contraintes
+
+- **La page publique doit être rapide et partageable** : elle sera ouverte depuis Instagram ou TikTok, sur mobile, en 4G, et son aperçu doit être beau dans les messageries.
+- **Chaque créatif possède son adresse.** Le slug est une ressource rare et doit être unique, sans course entre deux inscriptions simultanées.
+- **Les clés Firebase du client sont publiques par conception.** La sécurité ne peut reposer que sur les règles.
+
+## Les décisions d'architecture
+
+<Decision title="Page publique en SSR avec revalidation, image de partage dynamique">
+La route `[slug]` est rendue côté serveur et mise en cache par ISR. Chaque page génère sa propre image Open Graph à partir des médias du créatif, pour que le lien partagé montre son travail et pas un logo. L'ancienne forme d'URL `p/[id]` est redirigée en 301 vers le slug.
+</Decision>
+
+<Decision title="Ne jamais transformer une panne de base en 404">
+C'est la règle la plus importante du dépôt. Une page publique en ISR qui répond `notFound()` à cause d'une indisponibilité passagère de Firestore fige un 404 dans le CDN pour tous les visiteurs de ce créatif. Les erreurs d'infrastructure remontent donc en exception, donc en 500 non mis en cache, et seule l'absence réelle du document produit un 404.
+</Decision>
+
+<Decision title="Réserver les noms de routes, et le vérifier par un test">
+`app/[slug]` vit à la racine et une route statique gagne toujours sur une route dynamique. Ajouter `app/blog/` sans réserver `blog` remplacerait en silence la page du créatif qui possède ce slug. La liste des slugs réservés est partagée entre le routeur et les règles Firestore, et un test unitaire échoue si un segment de route n'y figure pas.
+</Decision>
+
+<Decision title="Unicité du slug par une collection en création seule">
+Une collection `slugs/{slug}` accepte la création et refuse la mise à jour. Deux inscriptions simultanées sur le même nom ne peuvent pas réussir toutes les deux : la deuxième écriture est rejetée par les règles, pas par une vérification applicative qu'une course pourrait contourner.
+</Decision>
+
+<Architecture />
+
+## Sécurité par les règles
+
+`users/{uid}` n'est jamais inscriptible par le client : le plan et le rôle ne changent que côté serveur via le SDK Admin. Les portfolios sont lisibles publiquement et modifiables par leur propriétaire seul. Le stockage cantonne l'écriture au dossier de l'utilisateur, avec des types de fichiers autorisés et des plafonds de 10 Mo par image et 50 Mo par vidéo. Toute modification des règles passe par les tests sur l'émulateur avant déploiement.
+
+## Ce qui reste à faire
+
+<Callout label="État réel">
+La sphère 3D et l'éditeur fonctionnent, les pages publiques sont servies avec leur image de partage. Le paiement est une grille de tarifs sans passage en caisse : Stripe est la prochaine étape, et le domaine définitif n'est pas encore posé.
+</Callout>

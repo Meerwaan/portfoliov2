@@ -1,0 +1,86 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "tiktok_uploader/tiktok_bot/uploader_core.py",
+    "lang": "python",
+    "title": {
+      "fr": "Saisie humaine de la légende, hashtags confirmés un à un",
+      "en": "Human-paced caption typing, hashtags confirmed one by one"
+    },
+    "code": "if part == \"\\n\":\n    actions.reset_actions()\n    actions.send_keys(Keys.SHIFT + Keys.ENTER).perform()\n    time.sleep(0.1)\n    continue\nif part.startswith(\"#\"):\n    tag_content = part[1:]\n    if tag_content:\n        actions.reset_actions()\n        actions.send_keys(\"#\").perform()\n        time.sleep(0.5)\n        actions.send_keys(tag_content).perform()\n        time.sleep(2.5)  # Wait for dropdown\n        actions.send_keys(Keys.ENTER).perform()  # Confirm"
+  },
+  "modules": [
+    {
+      "name": "tiktok_uploader/tiktok_bot/uploader_core.py",
+      "role": {
+        "fr": "Pilote Chrome : cookies, saisie, attente du bouton Publier",
+        "en": "Drives Chrome: cookies, typing, waits for the Post button"
+      }
+    },
+    {
+      "name": "tiktok_uploader/tiktok_bot/bot_interface.py",
+      "role": {
+        "fr": "Menus Telegram, séries, boucle d'upload en thread",
+        "en": "Telegram menus, series, threaded upload loop"
+      }
+    },
+    {
+      "name": "tiktok_uploader/tiktok_bot/watcher.py",
+      "role": {
+        "fr": "Scanne les dossiers séries, trie par numéro",
+        "en": "Scans series folders, sorts by part number"
+      }
+    },
+    {
+      "name": "tiktok_uploader/tiktok_bot/main.py",
+      "role": {
+        "fr": "Point d'entrée, signale les nouvelles séries",
+        "en": "Entry point, reports newly detected series"
+      }
+    },
+    {
+      "name": "tiktok_uploader/tiktok_bot/settings.py",
+      "role": {
+        "fr": "Config env, validation du dossier d'upload",
+        "en": "Env config, upload folder validation"
+      }
+    },
+    {
+      "name": "tiktok_uploader/run.sh",
+      "role": {
+        "fr": "Prépare le venv, empêche la mise en veille",
+        "en": "Bootstraps the venv, keeps the Mac awake"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Telegram Bot API",
+      "role": {
+        "fr": "Menus, commandes, avancement",
+        "en": "Menus, commands, progress"
+      }
+    },
+    {
+      "name": "Telegram MTProto (Pyrogram)",
+      "role": {
+        "fr": "Téléchargement de secours des grosses vidéos",
+        "en": "Fallback download for large videos"
+      }
+    },
+    {
+      "name": "Selenium / undetected-chromedriver",
+      "role": {
+        "fr": "Profil Chrome persistant par compte",
+        "en": "Persistent Chrome profile per account"
+      }
+    },
+    {
+      "name": "TikTok Creator Center",
+      "role": {
+        "fr": "Page d'upload pilotée dans le navigateur",
+        "en": "Upload page driven in the browser"
+      }
+    }
+  ]
+}

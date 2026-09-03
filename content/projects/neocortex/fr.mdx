@@ -1,0 +1,42 @@
+---
+title: "Neocortex"
+summary: "Logiciel de bureau pour neuropsychologues : dossiers patients, tests cognitifs et bilans PDF, porté de l'architecture à la mise en service."
+oneLiner: "Outil de suivi neuropsychologique, du dossier patient au bilan PDF."
+roleLabel: "Développeur full-stack en alternance, seul développeur sur l'outil"
+screensNote: "Pas de capture publiée : logiciel médical déployé chez un client, avec des données de patients. Je n'ai pas les droits de montrer l'interface. Le schéma d'architecture est la seule vue rendue publique."
+keywords: ["santé", "neuropsychologie", "electron", "logiciel de bureau", "tests cognitifs", "bilan", "pdf", "express", "sequelize", "jwt", "rôles"]
+---
+
+## Le contexte
+
+Neocortex est une structure de neuropsychologie présente à Paris, Maisons-Alfort et Aix-en-Provence. Les praticiens jonglaient entre plusieurs outils : un tableur pour les patients, des supports de test séparés, un traitement de texte pour les bilans. L'alternance consistait à construire un outil interne unique qui centralise ce travail, puis à le mettre entre les mains des praticiens.
+
+## Les contraintes
+
+- **Des données de santé.** Les dossiers ne doivent pas quitter le périmètre de la structure et l'accès doit être nominatif et par rôle.
+- **Des praticiens, pas des informaticiens.** L'outil devait s'installer sur leurs postes et se lancer comme n'importe quelle application, sans navigateur ni URL à retenir.
+- **Un seul développeur.** Chaque choix technique devait rester maintenable par une personne, puis transmissible.
+
+## Les décisions d'architecture
+
+<Decision title="Une application de bureau plutôt qu'un site">
+Electron encapsule l'interface et la distribue comme un logiciel installé. Les praticiens retrouvent leurs habitudes : une icône, une fenêtre, un fichier PDF produit à la fin. Le rendu reste du web standard, ce qui a permis d'itérer vite sur les écrans de passation.
+</Decision>
+
+<Decision title="Une API séparée, avec authentification et rôles côté serveur">
+Le client de bureau parle à une API Express. L'authentification repose sur des jetons signés et des mots de passe hachés avec bcrypt ; un middleware vérifie le rôle sur chaque route sensible, l'administration étant réservée à un rôle dédié. Sequelize porte le modèle de données et a permis de cibler PostgreSQL en production tout en développant sur SQLite.
+</Decision>
+
+<Decision title="Le bilan comme sortie unique">
+Le parcours va du dossier patient à la passation (questionnaires, épreuves chronométrées) puis au bilan. Le bilan est composé à partir des résultats et exporté en PDF depuis l'application, pour que le document remis au patient ou au médecin soit produit au même endroit que les données qui le fondent.
+</Decision>
+
+<Architecture />
+
+## La mise en service
+
+Le logiciel a été installé sur les postes des praticiens et utilisé pour le suivi réel des patients. Cette partie du travail, moins visible que le code, a compté autant : former, recueillir les retours après les premières passations, corriger les écrans qui ralentissaient une consultation.
+
+<Callout label="Confidentialité">
+Les captures d'écran de l'outil ne sont pas publiées : elles montreraient des écrans de dossiers patients. Cette étude de cas décrit l'architecture et les décisions, pas les données.
+</Callout>

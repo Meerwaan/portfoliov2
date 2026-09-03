@@ -1,0 +1,768 @@
+@import "tailwindcss";
+
+/* ---------- Tokens: paper (light) is the default, operations (dark) swaps the same variables ---------- */
+:root {
+  --paper: #f6f5f1;
+  --paper-2: #ffffff;
+  --ink: #111210;
+  --ink-2: #4b4b47;
+  --ink-3: #62625c;
+  --rule: #dddcd6;
+  --rule-strong: #b9b8b1;
+  --signal: #0a5bff;
+  --signal-soft: rgb(10 91 255 / 0.1);
+  --on-signal: #ffffff;
+  --shadow-command: 0 24px 64px -24px rgb(10 91 255 / 0.18);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #0c0d0f;
+  --paper-2: #121316;
+  --ink: #ecebe6;
+  --ink-2: #a5a49e;
+  --ink-3: #8b8b85;
+  --rule: #232428;
+  --rule-strong: #34353a;
+  --signal: #3b82ff;
+  --signal-soft: rgb(59 130 255 / 0.14);
+  --on-signal: #0c0d0f;
+  --shadow-command: 0 24px 64px -24px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c0d0f;
+    --paper-2: #121316;
+    --ink: #ecebe6;
+    --ink-2: #a5a49e;
+    --ink-3: #8b8b85;
+    --rule: #232428;
+    --rule-strong: #34353a;
+    --signal: #3b82ff;
+    --signal-soft: rgb(59 130 255 / 0.14);
+    --on-signal: #0c0d0f;
+    --shadow-command: 0 24px 64px -24px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-*: initial;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-on-signal: var(--on-signal);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--font-cabinet), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-cabinet), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-commit), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-display: clamp(3.5rem, 9vw, 8rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.03em;
+  --text-3xl: clamp(2.5rem, 5vw, 4.5rem);
+  --text-3xl--line-height: 1.02;
+  --text-3xl--letter-spacing: -0.025em;
+  --text-2xl: 2.125rem;
+  --text-2xl--line-height: 1.12;
+  --text-2xl--letter-spacing: -0.02em;
+  --text-xl: 1.625rem;
+  --text-xl--line-height: 1.25;
+  --text-xl--letter-spacing: -0.01em;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.4;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.55;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-mono: 0.8125rem;
+  --text-mono--line-height: 1.4;
+
+  --radius-*: initial;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+
+  --shadow-*: initial;
+  --shadow-command: var(--shadow-command);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --spacing-gutter: clamp(1rem, 4vw, 3rem);
+  --spacing-section: clamp(4rem, 10vw, 10rem);
+  --spacing-nav: 4rem;
+  --spacing-rail: 2rem;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+}
+
+/* Motion durations kept as plain variables (used by CSS and by JS via getComputedStyle). */
+:root {
+  --dur-1: 120ms;
+  --dur-2: 240ms;
+  --dur-3: 480ms;
+  --dur-4: 900ms;
+}
+
+/* ---------- Base (layered so utilities can override, e.g. outline-none) ---------- */
+@layer base {
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--signal-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  border-radius: var(--radius-sm);
+}
+.skip-link:focus-visible {
+  transform: none;
+}
+}
+
+/* ---------- Utilities ---------- */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: var(--text-mono--line-height);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Live dot: the only circle, the only pulse ---------- */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  vertical-align: middle;
+}
+.live-dot[data-state="probing"] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
+}
+.live-dot[data-state="degraded"] {
+  background: var(--ink-3);
+}
+.live-dot[data-state="live"] {
+  animation: live-pulse 1.6s var(--ease-in-out) infinite;
+}
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* ---------- Name resolve: server text, CSS-only crossfade from mono to display ---------- */
+.name-resolve {
+  position: relative;
+  display: block;
+}
+.name-resolve .name-mono,
+.name-resolve .name-display {
+  display: block;
+}
+.name-resolve .name-mono {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: name-mono-out var(--dur-4) var(--ease-out) 200ms both;
+}
+.name-resolve .name-display {
+  animation: name-display-in var(--dur-4) var(--ease-out) 200ms both;
+}
+@keyframes name-mono-out {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes name-display-in {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.02em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* ---------- Route transitions (React <ViewTransition default="page">) ---------- */
+::view-transition-old(.page) {
+  animation: var(--dur-2) var(--ease-out) both page-out;
+}
+::view-transition-new(.page) {
+  animation: var(--dur-2) var(--ease-out) both page-in;
+}
+::view-transition-group(.screen) {
+  animation-duration: var(--dur-3);
+  animation-timing-function: var(--ease-out);
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* ---------- Reduced motion: everything settles instantly ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .live-dot[data-state="live"],
+  .name-resolve .name-mono,
+  .name-resolve .name-display {
+    animation: none !important;
+  }
+  .name-resolve .name-mono {
+    visibility: hidden;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ---------- Case study prose & code (Shiki dual theme via CSS variables) ---------- */
+@theme inline {
+  --spacing-section-sm: clamp(3rem, 6vw, 5rem);
+}
+.prose-case {
+  max-width: 68ch;
+}
+.code-block {
+  margin-block: 2rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: 1.6;
+  tab-size: 2;
+}
+.code-block code {
+  font-family: inherit;
+  background: transparent;
+}
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+}
+[data-theme="dark"] .shiki,
+[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .shiki,
+  :root:not([data-theme="light"]) .shiki span {
+    color: var(--shiki-dark);
+  }
+}
+.shiki {
+  background: transparent !important;
+}
+.diagram svg text {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* ---------- Command palette (cmdk) ---------- */
+.command-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
+  backdrop-filter: blur(2px);
+}
+.command-dialog {
+  position: fixed;
+  top: 12vh;
+  left: 50%;
+  z-index: 50;
+  width: min(44rem, calc(100vw - 2rem));
+  transform: translateX(-50%);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-command);
+  animation: command-in var(--dur-2) var(--ease-out) both;
+}
+@keyframes command-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+.command-dialog [cmdk-group-heading] {
+  padding: 0.75rem 0.75rem 0.375rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.command-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease-out);
+}
+.command-item[data-selected="true"] {
+  background: var(--signal-soft);
+}
+.command-item[data-selected="true"] > span:first-child > span:first-child {
+  color: var(--signal);
+}
+@media (prefers-reduced-motion: reduce) {
+  .command-dialog {
+    animation: none;
+  }
+}
+
+.prose-lab p {
+  margin-block: 0.75rem;
+  color: var(--ink-2);
+}
+
+/* ---------- Exploded stack (CSS 3D, --explode scrubbed by GSAP on desktop) ---------- */
+.stack-stage {
+  --explode: 1;
+  --tilt: 56;
+  --spin: -30;
+  --gap: 115px;
+}
+.stack-scene {
+  perspective: 1800px;
+  perspective-origin: 50% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34rem;
+}
+.stack {
+  position: relative;
+  width: min(100%, 40rem);
+  aspect-ratio: 16 / 10;
+  transform-style: preserve-3d;
+  /* Lift the whole stack as it explodes so the lowest layer stays inside the stage. */
+  transform: translateY(calc(var(--explode) * -9rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.stack-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  transform: translateZ(calc(var(--explode) * var(--gap) * var(--n) * -1 - var(--n) * 3px));
+  transform-style: preserve-3d;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.stack-layer-ui {
+  padding: 0;
+  overflow: visible; /* the threads must leave the plane */
+  background: var(--paper);
+}
+.stack-layer-ui .stack-shot {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+/* Lower layers are partly covered by the ones above (top-left band), so their content sits at the bottom. */
+.stack-layer:not(.stack-layer-ui) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.25rem 0.9rem 0.9rem;
+}
+.stack-layer-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.75rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  opacity: var(--explode);
+}
+.stack-layer-ui .stack-layer-tag {
+  padding: 0.15rem 0.4rem;
+  background: var(--paper-2);
+  border-radius: var(--radius-sm);
+}
+.stack-stage[data-focus-layer] .stack-layer {
+  opacity: 0.22;
+}
+.stack-stage[data-focus-layer="ui"] .stack-layer[data-layer="ui"],
+.stack-stage[data-focus-layer="routes"] .stack-layer[data-layer="routes"],
+.stack-stage[data-focus-layer="models"] .stack-layer[data-layer="models"],
+.stack-stage[data-focus-layer="infra"] .stack-layer[data-layer="infra"] {
+  opacity: 1;
+}
+.stack-hotspot {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+}
+.stack-hotspot:hover,
+.stack-hotspot:focus-visible,
+.stack-hotspot.is-active {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+}
+.stack-hotspot:focus-visible {
+  outline-offset: 2px;
+}
+/* The thread: a vertical line from the hotspot down through the layers, standing up in 3D. */
+.stack-thread {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  margin-left: -1px;
+  height: calc(var(--explode) * var(--gap) * 3);
+  background: var(--signal);
+  opacity: 0;
+  transform-origin: top;
+  transform: rotateX(-90deg); /* stands into the stack, toward the lower layers */
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.stack-hotspot:hover .stack-thread,
+.stack-hotspot:focus-visible .stack-thread,
+.stack-hotspot.is-active .stack-thread {
+  opacity: 1;
+}
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.stack-grid-models {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.stack-grid-infra {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.stack-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  transition: border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+}
+.stack-cell > span {
+  overflow-wrap: anywhere;
+}
+.stack-cell.is-lit {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+}
+.stack-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-2);
+  white-space: normal !important;
+}
+.stack-fields .is-lit {
+  color: var(--signal);
+  font-weight: 700;
+}
+/* Flat layout below lg and for reduced motion: same content, no perspective, no pin. */
+@media (max-width: 63.9375rem), (prefers-reduced-motion: reduce) {
+  .stack-scene {
+    perspective: none;
+    min-height: 0;
+  }
+  .stack {
+    width: 100%;
+    aspect-ratio: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .stack-layer {
+    position: relative;
+    inset: auto;
+    transform: none;
+  }
+  .stack-thread {
+    display: none;
+  }
+  .stack-layer-tag {
+    opacity: 1;
+  }
+  .stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Captures inside the case narrative ---------- */
+@media (min-width: 64rem) {
+  .case-screen,
+  .case-screens,
+  .case-architecture {
+    width: calc(100% + 16rem);
+    margin-left: -8rem;
+  }
+}
+.case-screens-phones ol {
+  align-items: start;
+}
+
+/* ---------- Lab ledger: each experiment opened in section, exploded as it reaches the centre ---------- */
+.lab-statement {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+/* --progress is written on .lab-stage by ScrollProgress (0 at the bottom of the viewport, 1 at the centre). */
+.lab-stage {
+  --explode: var(--progress, 1);
+  --tilt: calc(62 - var(--explode) * 8);
+  --spin: calc(-32 + var(--explode) * 8);
+  --gap: 118px;
+}
+.lab-stage .stack-scene {
+  min-height: 34rem;
+  perspective: 1700px;
+  perspective-origin: 50% 35%;
+}
+.lab-stage .stack {
+  width: min(100%, 36rem);
+  transform: translateY(calc(var(--explode) * -4.5rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.lab-stage[data-layers="3"] .stack {
+  transform: translateY(calc(var(--explode) * -2.5rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.lab-file {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  color: var(--ink-3);
+  opacity: var(--explode);
+}
+.lab-code {
+  min-width: 0;
+}
+.lab-code pre {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  tab-size: 4;
+}
+/* The produced video stands in front of the page that sells it. */
+.lab-inset {
+  position: absolute;
+  right: 4%;
+  bottom: -7%;
+  width: 22%;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  transform: translateZ(calc(var(--explode) * 44px + 6px));
+}
+.lab-inset img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lab-legend li {
+  cursor: default;
+}
+/* Hovering a layer, in the legend or on the stage, isolates it. */
+.lab-entry:has(.lab-legend [data-layer="surface"]:hover) .stack-layer:not([data-layer="surface"]),
+.lab-stage:has(.stack-layer[data-layer="surface"]:hover) .stack-layer:not([data-layer="surface"]),
+.lab-entry:has(.lab-legend [data-layer="code"]:hover) .stack-layer:not([data-layer="code"]),
+.lab-stage:has(.stack-layer[data-layer="code"]:hover) .stack-layer:not([data-layer="code"]),
+.lab-entry:has(.lab-legend [data-layer="modules"]:hover) .stack-layer:not([data-layer="modules"]),
+.lab-stage:has(.stack-layer[data-layer="modules"]:hover) .stack-layer:not([data-layer="modules"]),
+.lab-entry:has(.lab-legend [data-layer="services"]:hover) .stack-layer:not([data-layer="services"]),
+.lab-stage:has(.stack-layer[data-layer="services"]:hover) .stack-layer:not([data-layer="services"]) {
+  opacity: 0.22;
+}
+@media (max-width: 63.9375rem), (prefers-reduced-motion: reduce) {
+  .lab-stage .stack-scene {
+    min-height: 0;
+  }
+  .lab-stage .stack,
+  .lab-stage[data-layers="3"] .stack {
+    width: 100%;
+    transform: none;
+  }
+  .lab-stage .stack-layer-ui {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+  }
+  .lab-inset {
+    position: static;
+    width: 7rem;
+    transform: none;
+  }
+  .lab-code pre {
+    font-size: 0.75rem;
+    overflow-x: auto;
+  }
+  .lab-file {
+    position: static;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 1;
+  }
+  .lab-entry:has(:hover) .stack-layer {
+    opacity: 1;
+  }
+}
+
+/* ---------- Path story: one step per screen ---------- */
+.path-year {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.path-rail-tick {
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.path-rail-item[aria-current="step"] .path-rail-tick {
+  opacity: 1;
+  width: 2rem;
+}
+.path-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.path-story[data-pinned="true"] .path-steps {
+  display: grid;
+  gap: 0;
+}
+.path-story[data-pinned="true"] .path-step-panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+}
+.path-story[data-pinned="true"] .path-step-panel[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.path-diagram svg text {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}

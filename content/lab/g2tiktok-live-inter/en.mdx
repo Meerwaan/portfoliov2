@@ -1,0 +1,12 @@
+---
+title: "G2Tiktok-Live-inter, the live game"
+summary: "A guessing game for TikTok Live: the chat guesses, an OBS overlay shows scores and a voice announces rounds."
+myRole: "Design and development, solo"
+keywords: ["g2", "tiktok live", "game", "overlay", "obs", "websocket", "chat", "interactive"]
+screenshotAlt:
+  overlay: "OBS overlay of the game: current question, chat guesses and scoreboard."
+---
+
+The G2 family has one member turned toward live. A client listens to a TikTok Live chat, a game engine keeps questions, answers and scores, a WebSocket server pushes state to an overlay the streamer embeds in OBS, and a synthetic voice announces rounds.
+
+Prototype: questions live in a JSON file, no accounts, no persistence beyond a session. It taught what a chat can do in real time, which fed Roast My Music.

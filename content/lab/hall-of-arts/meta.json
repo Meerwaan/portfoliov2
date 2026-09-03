@@ -1,0 +1,17 @@
+{
+  "slug": "hall-of-arts",
+  "status": "paused",
+  "year": "2024-2025",
+  "stack": [
+    "React Native",
+    "Firebase",
+    "Mapbox",
+    "ViroReact (AR)",
+    "TypeScript"
+  ],
+  "links": {
+    "repo": "https://github.com/HallOfArt"
+  },
+  "screenshots": [],
+  "order": 7
+}

@@ -1,0 +1,93 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "core/sniper_analyzer.py",
+    "lang": "python",
+    "title": {
+      "fr": "Autorités de mint et de gel : pénalité ou bonus au score",
+      "en": "Mint and freeze authorities: score penalty or bonus"
+    },
+    "code": "has_mint_auth = mint_info.get(\"mint_authority\") is not None\nhas_freeze_auth = mint_info.get(\"freeze_authority\") is not None\nif has_mint_auth:\n    score -= 10  # Pénalité Mint Auth\n    details[\"mint_revoked\"] = False\n    details[\"warnings\"].append(\n        \"Mint Authority Active (Dev can create tokens)\"\n    )\nelse:\n    score += BONUS_MINT_REVOKED  # +15\n    details[\"mint_revoked\"] = True\nif has_freeze_auth:\n    score -= 5  # Pénalité Freeze Auth\n    details[\"freeze_revoked\"] = False\nelse:\n    score += BONUS_FREEZE_REVOKED  # +10\n    details[\"freeze_revoked\"] = True"
+  },
+  "modules": [
+    {
+      "name": "core/scanner.py",
+      "role": {
+        "fr": "Écoute des logs Raydium, nouveaux pools",
+        "en": "Listens to Raydium logs for new pools"
+      }
+    },
+    {
+      "name": "core/sniper_analyzer.py",
+      "role": {
+        "fr": "Score : autorités, liquidité, achats/ventes, détenteurs",
+        "en": "Score: authorities, liquidity, buy/sell ratio, holders"
+      }
+    },
+    {
+      "name": "core/token_health_monitor.py",
+      "role": {
+        "fr": "Santé du token : volume, structure, temps, liquidité",
+        "en": "Token health: volume, structure, time, liquidity"
+      }
+    },
+    {
+      "name": "core/trader.py",
+      "role": {
+        "fr": "Achat, paliers de gain, stop, trailing, sortie temporelle",
+        "en": "Buy, profit steps, stop, trailing, time exit"
+      }
+    },
+    {
+      "name": "interface/telegram_bot.py",
+      "role": {
+        "fr": "Tableau de bord et alertes aiogram",
+        "en": "aiogram dashboard and alerts"
+      }
+    },
+    {
+      "name": "database/db_manager.py",
+      "role": {
+        "fr": "Trades et positions en SQLite",
+        "en": "Trades and positions in SQLite"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Solana RPC",
+      "role": {
+        "fr": "WebSocket des logs et transactions",
+        "en": "Log WebSocket and transactions"
+      }
+    },
+    {
+      "name": "Raydium",
+      "role": {
+        "fr": "Pools de liquidité surveillés",
+        "en": "Watched liquidity pools"
+      }
+    },
+    {
+      "name": "DexScreener API",
+      "role": {
+        "fr": "Liquidité, volume, prix",
+        "en": "Liquidity, volume, price"
+      }
+    },
+    {
+      "name": "Jupiter",
+      "role": {
+        "fr": "Cotations et swaps",
+        "en": "Quotes and swaps"
+      }
+    },
+    {
+      "name": "Telegram Bot API",
+      "role": {
+        "fr": "Pilotage et alertes",
+        "en": "Control and alerts"
+      }
+    }
+  ]
+}

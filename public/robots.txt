@@ -1,5 +1,0 @@
-# robots.txt pour mwn-tech.com
-User-agent: *
-Allow: /
-
-Sitemap: https://mwn-tech.com/sitemap.xml

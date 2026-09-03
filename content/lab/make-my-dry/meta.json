@@ -1,0 +1,14 @@
+{
+  "slug": "make-my-dry",
+  "status": "prototype",
+  "year": "2025",
+  "stack": [
+    "React Native",
+    "TypeScript",
+    "Reanimated",
+    "react-native-chart-kit"
+  ],
+  "links": {},
+  "screenshots": [],
+  "order": 8
+}

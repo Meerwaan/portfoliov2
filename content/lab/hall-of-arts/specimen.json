@@ -1,0 +1,86 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "src/components/Map/MapComponent.js",
+    "lang": "jsx",
+    "title": {
+      "fr": "Zoom déduit de la région affichée, marqueur ancré",
+      "en": "Zoom derived from the visible region, anchored marker"
+    },
+    "code": "initialRegion={userLocation ? undefined : initialRegion}\nonRegionChangeComplete={region => {\n  const calculatedZoom = Math.log2(360 / region.latitudeDelta) + 1;\n  setZoom(calculatedZoom);\n}}>\n{userLocation && (\n  <Marker\n    coordinate={{\n      latitude: userLocation.latitude,\n      longitude: userLocation.longitude,\n    }}\n    anchor={{x: 0.5, y: 0.5}}>"
+  },
+  "modules": [
+    {
+      "name": "src/components/Navbar/Navbar.js",
+      "role": {
+        "fr": "Onglets : fil, carte, ajout, réactions, profil",
+        "en": "Tabs: feed, map, add, reactions, profile"
+      }
+    },
+    {
+      "name": "src/api/hooks/useWorkService.js",
+      "role": {
+        "fr": "Client des œuvres : liste, détail, création, images",
+        "en": "Works client: list, detail, create, images"
+      }
+    },
+    {
+      "name": "src/components/Map/MapComponent.js",
+      "role": {
+        "fr": "Carte : suivi GPS, œuvres en marqueurs, zoom calculé",
+        "en": "Map: GPS watch, works as markers, derived zoom"
+      }
+    },
+    {
+      "name": "src/components/Map/CustomMarker.js",
+      "role": {
+        "fr": "Marqueur image dont la taille suit le zoom",
+        "en": "Image marker sized by the zoom"
+      }
+    },
+    {
+      "name": "src/screens/AddArt/AddArt.js",
+      "role": {
+        "fr": "Fiche : photo, recherche Deezer, publication",
+        "en": "Form: photo, Deezer search, publish"
+      }
+    },
+    {
+      "name": "src/screens/ViewArt/",
+      "role": {
+        "fr": "Œuvre : piste Deezer, lecture audio, photos",
+        "en": "Work: Deezer track, audio playback, photos"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "API REST maison (axios)",
+      "role": {
+        "fr": "Œuvres, images, création",
+        "en": "Works, images, creation"
+      }
+    },
+    {
+      "name": "Deezer API",
+      "role": {
+        "fr": "Recherche et extraits de pistes",
+        "en": "Track search and previews"
+      }
+    },
+    {
+      "name": "react-native-maps",
+      "role": {
+        "fr": "Carte native et marqueurs",
+        "en": "Native map and markers"
+      }
+    },
+    {
+      "name": "Géolocalisation",
+      "role": {
+        "fr": "Position de l'utilisateur en continu",
+        "en": "Continuous user position"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="neocortex-t neocortex-d" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="11" letter-spacing="0.04em">
+  <title id="neocortex-t">Architecture Neocortex : application Electron, API Express avec rôles, Sequelize, PostgreSQL, bilan PDF</title>
+  <desc id="neocortex-d">Le praticien utilise une application de bureau Electron. Elle parle à une API Express protégée par jetons signés et middleware de rôles. Sequelize porte le modèle vers PostgreSQL en production et SQLite en développement. Le parcours va du dossier patient à la passation puis au bilan exporté en PDF.</desc>
+  <g data-step="1">
+    <path data-draw d="M20 40 H154 V104 H20 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="32" y="64">PRATICIEN</text><text x="32" y="86" opacity="0.6">poste du cabinet</text></g>
+  </g>
+  <g data-step="2">
+    <path data-draw d="M154 72 H194"/>
+    <path data-draw d="M194 40 H404 V104 H194 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="206" y="64">ELECTRON · renderer</text><text x="206" y="86" opacity="0.6">dossier · passation · bilan</text></g>
+  </g>
+  <g data-step="3">
+    <path data-draw d="M404 72 H444"/>
+    <path data-draw stroke="var(--signal)" d="M444 40 H606 V104 H444 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="456" y="64" fill="var(--signal)">API EXPRESS</text><text x="456" y="86" opacity="0.6">JWT · bcrypt · rôles</text></g>
+  </g>
+  <g data-step="4">
+    <path data-draw d="M606 72 H646"/>
+    <path data-draw d="M646 40 H849 V104 H646 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="658" y="64">SEQUELIZE</text><text x="658" y="86" opacity="0.6">PostgreSQL · SQLite en dev</text></g>
+  </g>
+  <g data-step="5">
+    <path data-draw d="M525 104 V160"/>
+    <path data-draw d="M444 160 H626 V224 H444 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="456" y="184">ROUTES</text><text x="456" y="206" opacity="0.6">/auth · /users · /admin</text></g>
+  </g>
+  <g data-step="6">
+    <path data-draw d="M299 104 V160"/>
+    <path data-draw d="M194 160 H411 V224 H194 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="206" y="184">BILAN → PDF</text><text x="206" y="206" opacity="0.6">composé depuis les résultats</text></g>
+  </g>
+</svg>

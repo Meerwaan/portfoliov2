@@ -1,0 +1,93 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "modules/transcriber.py",
+    "lang": "python",
+    "title": {
+      "fr": "Aligner les mots entendus par Whisper sur le script",
+      "en": "Aligning the words Whisper heard onto the script"
+    },
+    "code": "heard = [_normalize(w[\"word\"]) for w in words]\ntarget = [_normalize(t) for t in ref_tokens]\nmatcher = difflib.SequenceMatcher(a=heard, b=target, autojunk=False)\nfor tag, i1, i2, j1, j2 in matcher.get_opcodes():\n    count = j2 - j1\n    if count == 0:\n        continue  # Whisper a entendu des mots absents du script.\n    if tag == \"equal\":\n        for k in range(count):\n            aligned.append(\n                {\n                    \"word\": ref_tokens[j1 + k],\n                    \"start\": words[i1 + k][\"start\"],\n                    \"end\": words[i1 + k][\"end\"],\n                }\n            )"
+  },
+  "modules": [
+    {
+      "name": "main.py",
+      "role": {
+        "fr": "Bot Telegram : menu, métiers, comptes, import rapide",
+        "en": "Telegram bot: menu, niches, accounts, quick import"
+      }
+    },
+    {
+      "name": "modules/ai_generator.py",
+      "role": {
+        "fr": "Script et accroche OpenAI, voix ElevenLabs avec repli",
+        "en": "OpenAI script and hook, ElevenLabs voice with fallback"
+      }
+    },
+    {
+      "name": "modules/transcriber.py",
+      "role": {
+        "fr": "Whisper mot à mot, aligné sur le script",
+        "en": "Word-level Whisper, aligned onto the script"
+      }
+    },
+    {
+      "name": "modules/media_sourcing.py",
+      "role": {
+        "fr": "Rushs libres de droits par mots-clés",
+        "en": "Royalty-free footage fetched by keywords"
+      }
+    },
+    {
+      "name": "modules/video_processor.py",
+      "role": {
+        "fr": "Plan de coupe calé sur les silences de la voix",
+        "en": "Cut plan timed on the voice's pauses"
+      }
+    },
+    {
+      "name": "modules/visual_effects.py",
+      "role": {
+        "fr": "Sous-titres ASS karaoké, musique, rendu FFmpeg",
+        "en": "ASS karaoke subtitles, music, FFmpeg render"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Telegram Bot API",
+      "role": {
+        "fr": "Interface, comptes et crédits",
+        "en": "Interface, accounts and credits"
+      }
+    },
+    {
+      "name": "OpenAI",
+      "role": {
+        "fr": "Génération du script et de l'accroche",
+        "en": "Script and hook generation"
+      }
+    },
+    {
+      "name": "ElevenLabs",
+      "role": {
+        "fr": "Voix de synthèse, repli edge-tts",
+        "en": "Synthetic voice, edge-tts fallback"
+      }
+    },
+    {
+      "name": "Pexels / Pixabay",
+      "role": {
+        "fr": "Banques de rushs libres de droits",
+        "en": "Royalty-free footage libraries"
+      }
+    },
+    {
+      "name": "FFmpeg",
+      "role": {
+        "fr": "Montage et rendu 1080×1920",
+        "en": "Editing and 1080×1920 render"
+      }
+    }
+  ]
+}

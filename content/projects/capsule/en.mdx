@@ -1,0 +1,60 @@
+---
+title: "Capsule Manufacturing"
+summary: "B2B platform for a small-series garment workshop: quote configurator, workshop admin and brand portal, from pricing to production tracking."
+oneLiner: "From quote to production tracking, for a small-series textile workshop."
+roleLabel: "Founder, design and development, solo"
+keywords: ["textile", "garment", "erp", "b2b", "quote", "configurator", "production", "prisma", "mysql", "nextauth", "workshop", "small series", "moq"]
+screenshotAlt:
+  admin-project-tracker: "Project page on the workshop side: manufacturing details, delivery address and nine-step production tracker with the current step highlighted."
+  landing-quote-configurator: "Six-step quote configurator on the marketing site: product, fabric, branding, finishing, technical, contact."
+  admin-quote-detail-pricing: "Workshop pricing of a quote: contact, garment specifications, unit price, setup fees, lead time and estimated total."
+  client-project-tracking: "Brand portal: a project's production timeline, identical to the workshop's."
+  admin-dashboard: "Workshop dashboard: quotes received, quotes to price, active projects, estimated revenue."
+  landing-hero: "Capsule marketing site: premium small-series garment making, with the workshop's key figures."
+---
+
+## The problem
+
+An independent brand that wants to produce fifty pieces hits two walls: workshops that refuse small runs, and opaque pricing. The quote arrives by email after back-and-forth, production is followed by phone, the delivery address gets lost in a thread.
+
+Capsule is the platform of a premium garment workshop designed for those brands, with a fifty-piece minimum. Three surfaces in one application: a marketing site with a six-step quote configurator, a workshop interface to price and produce, a brand portal to pay and follow. It is a product under construction that I carry alone.
+
+<Screen id="landing-quote-configurator" caption="The configurator: six steps, a live estimated price, an attached tech pack." />
+
+## The constraints
+
+- **Two actors, one state.** The quote goes from the brand to the workshop and back. Each transition must create exactly what is needed, and nothing else.
+- **Sensitive files.** A brand's patterns and tech packs must never be served publicly.
+- **An explainable price.** Automatic pricing must read line by line, because a textile buyer negotiates on items, not on a total.
+
+## Architecture decisions
+
+<Decision title="A readable pricing engine, not a black box">
+The unit price is a making cost per product, multiplied by a fabric coefficient and a volume discount, plus branding per location and finishing. Setup fees are itemised: screen-printing screens, embroidery programme, pattern making if the brand has none, prototype. Lead time is computed the same way. It all fits in one function the workshop can re-read.
+</Decision>
+
+<Decision title="The quote's state machine creates the business objects">
+A priced quote moves to `PRICED`, which creates the brand's account from the quote email. Payment moves it to `PAID`, which creates the project with its `PRJ-2026-0002` reference and its shipment carrying the address. No screen creates a project by hand: it is born from a transition.
+</Decision>
+
+<Decision title="Production tracking is one timeline seen from two sides">
+Nine steps, from validated quote to delivery. The workshop advances the step in one click; the brand sees the same timeline in its portal. The address stays editable by the brand until something ships, then locks.
+</Decision>
+
+<Decision title="Private files and dependency-free printing">
+Tech packs are written outside the public folder and served through an authenticated route reserved to the workshop. The delivery slip is an A4 page styled for print, with no PDF library.
+</Decision>
+
+<Architecture />
+
+<Screens ids="admin-quote-detail-pricing,client-project-tracking" caption="Both sides of the same object: pricing by the workshop, the timeline followed by the brand." />
+
+## What is not finished
+
+<Callout label="Actual state">
+Payment is simulated, emails do not go out yet, fabric reception entry only has its screen, the platform is not deployed. The delivery slip has a bug to fix: an event handler placed in a server component. The core is there: configurator, quote, pricing, project, production, portal.
+</Callout>
+
+## Stack
+
+Next.js 16 App Router with the React Compiler, Prisma on MySQL, NextAuth with two access modes (magic link for brands, credentials for the workshop) and two roles checked on every route, GSAP for the marketing site. All of it was built in one short sprint, which explains both the coherence of the model and the list of what remains.

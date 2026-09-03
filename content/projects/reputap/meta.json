@@ -1,0 +1,63 @@
+{
+  "slug": "reputap",
+  "node": "NODE_01",
+  "status": "production",
+  "role": "founder",
+  "period": {
+    "from": "2026-01",
+    "to": null
+  },
+  "stack": [
+    "Next.js 16",
+    "TypeScript",
+    "PostgreSQL",
+    "Prisma",
+    "Auth.js",
+    "Zod",
+    "GSAP",
+    "Resend",
+    "Stripe",
+    "Vercel"
+  ],
+  "links": {
+    "live": "https://reputap.fr"
+  },
+  "screenshots": [
+    {
+      "id": "merchant-dashboard",
+      "frame": "browser"
+    },
+    {
+      "id": "scan-mobile",
+      "frame": "phone"
+    },
+    {
+      "id": "wheel-mobile",
+      "frame": "phone"
+    },
+    {
+      "id": "ticket-mobile",
+      "frame": "phone"
+    },
+    {
+      "id": "merchant-campaigns",
+      "frame": "browser"
+    },
+    {
+      "id": "admin-system",
+      "frame": "browser"
+    },
+    {
+      "id": "home",
+      "frame": "browser"
+    }
+  ],
+  "heroScreenshot": 0,
+  "diagram": true,
+  "order": 1,
+  "featured": true,
+  "space": {
+    "index": 1,
+    "tilt": -4
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "g2tiktokautopost",
+  "status": "active",
+  "year": "2025-2026",
+  "stack": [
+    "Python",
+    "Selenium",
+    "Pyrogram",
+    "python-telegram-bot"
+  ],
+  "links": {},
+  "screenshots": [],
+  "order": 3
+}

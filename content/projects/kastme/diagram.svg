@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 300" role="img" aria-labelledby="kastme-t kastme-d" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="11" letter-spacing="0.04em">
+  <title id="kastme-t">Architecture KastMe : page publique SSR + ISR, Firestore, Storage, image OG, éditeur</title>
+  <desc id="kastme-d">Un visiteur ouvre kastme.fr/slug. Le serveur rend la page et la met en cache par ISR, lit le portfolio dans Firestore et les médias dans Cloud Storage, et génère l'image de partage. L'éditeur sauvegarde via l'API validée par Zod et revalide la page.</desc>
+  <g data-step="1">
+    <path data-draw d="M20 40 H140 V104 H20 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="32" y="64">VISITEUR</text><text x="32" y="86" opacity="0.6">kastme.fr/slug</text></g>
+  </g>
+  <g data-step="2">
+    <path data-draw d="M140 72 H180"/>
+    <path data-draw stroke="var(--signal)" d="M180 40 H417 V104 H180 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="192" y="64" fill="var(--signal)">app/[slug] · SSR + ISR</text><text x="192" y="86" opacity="0.6">revalidate 3600 · 404 si absent</text></g>
+  </g>
+  <g data-step="3">
+    <path data-draw d="M417 72 H457"/>
+    <path data-draw d="M457 40 H660 V104 H457 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="469" y="64">FIRESTORE</text><text x="469" y="86" opacity="0.6">portfolios · slugs · users</text></g>
+  </g>
+  <g data-step="4">
+    <path data-draw d="M660 72 H700"/>
+    <path data-draw d="M700 40 H944 V104 H700 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="712" y="64">ÉDITEUR</text><text x="712" y="86" opacity="0.6">PATCH /api/portfolios/[id] · Zod</text></g>
+  </g>
+  <g data-step="5">
+    <path data-draw d="M558 104 V160"/>
+    <path data-draw d="M457 160 H667 V224 H457 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="469" y="184">CLOUD STORAGE</text><text x="469" y="206" opacity="0.6">images 10 Mo · vidéos 50 Mo</text></g>
+  </g>
+  <g data-step="6">
+    <path data-draw d="M298 104 V160"/>
+    <path data-draw d="M180 160 H376 V224 H180 Z"/>
+    <g data-label fill="currentColor" stroke="none"><text x="192" y="184">opengraph-image</text><text x="192" y="206" opacity="0.6">générée depuis les médias</text></g>
+  </g>
+  <g data-step="7">
+    <path data-draw d="M822 104 V264 H80 V104"/>
+    <g data-label fill="currentColor" stroke="none"><text x="180" y="258" opacity="0.6">revalidation de la page publique après sauvegarde</text></g>
+  </g>
+</svg>

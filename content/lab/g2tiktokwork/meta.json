@@ -1,0 +1,26 @@
+{
+  "slug": "g2tiktokwork",
+  "status": "active",
+  "year": "2025-2026",
+  "stack": [
+    "Python",
+    "python-telegram-bot",
+    "OpenAI",
+    "ElevenLabs",
+    "faster-whisper",
+    "MoviePy",
+    "FFmpeg"
+  ],
+  "links": {},
+  "screenshots": [
+    {
+      "id": "landing",
+      "frame": "browser"
+    },
+    {
+      "id": "demo-frame",
+      "frame": "phone"
+    }
+  ],
+  "order": 1
+}

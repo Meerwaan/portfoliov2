@@ -1,0 +1,13 @@
+---
+title: "G2Tiktok, the splitter"
+summary: "A long video goes in, subtitled 9:16 clips come out, sold as credits directly inside Telegram."
+myRole: "Design and development, solo"
+keywords: ["g2", "splitting", "clips", "9:16", "telegram stars", "pyrogram", "whisper", "yt-dlp", "bot"]
+screenshotAlt:
+  landing: "G2Tiktok bot landing page: automatic splitting of long videos into vertical clips."
+  dashboard-tiktokdash: "Dashboard version of the same engine: list of splits, API settings and analysis prompt."
+---
+
+The second member of the family takes the problem the other way round: the material already exists as a long video (YouTube, TikTok, Instagram). The bot downloads it, spots the segments that stand on their own, reframes them to 9:16 with a blurred background, burns Whisper subtitles in and returns the clips.
+
+Two constraints shaped the architecture: heavy files, hence Pyrogram and the MTProto protocol to send up to two gigabytes, and a paid model, hence credits bought with Telegram Stars and a per-user processing queue. The same engine exists as a web dashboard, which served as a test bench before the bot version.

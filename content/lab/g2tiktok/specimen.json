@@ -1,0 +1,93 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "core/database.py",
+    "lang": "python",
+    "title": {
+      "fr": "Limite gratuite : trois clips par fenêtre de cinq heures",
+      "en": "Free tier: three clips per five-hour window"
+    },
+    "code": "def check_download_limit(user_id):\n    user = get_user(user_id)\n    if user[\"is_premium\"]:\n        return True, \"Premium\"\n    count = user[\"free_downloads_count\"] or 0\n    last_reset = user[\"last_download_reset\"]\n    now = datetime.now()\n    if last_reset:\n        last_reset_dt = datetime.fromisoformat(last_reset)\n        if (now - last_reset_dt).total_seconds() > 5 * 3600:\n            count = 0\n            # ... remise à zéro écrite en base\n    if count < 3:\n        return True, f\"Free ({count+1}/3)\"\n    return False, \"Limite atteinte (3 clips / 5h).\""
+  },
+  "modules": [
+    {
+      "name": "bot/handlers/processing.py",
+      "role": {
+        "fr": "Reçoit le lien, lance le découpage, renvoie les clips",
+        "en": "Takes the link, runs the split, sends clips back"
+      }
+    },
+    {
+      "name": "bot/services/queue_manager.py",
+      "role": {
+        "fr": "File par utilisateur, priorité, débit des crédits",
+        "en": "Per-user queue, priority, credit deduction"
+      }
+    },
+    {
+      "name": "bot/services/uploader.py",
+      "role": {
+        "fr": "Envoi MTProto des fichiers lourds via Pyrogram",
+        "en": "MTProto upload of large files via Pyrogram"
+      }
+    },
+    {
+      "name": "core/splitter.py",
+      "role": {
+        "fr": "Recadrage 9:16 sur fond flouté, sous-titres, rendu",
+        "en": "9:16 reframe on blurred background, subtitles, render"
+      }
+    },
+    {
+      "name": "core/analyzer.py",
+      "role": {
+        "fr": "Repérage des segments qui tiennent seuls",
+        "en": "Finds the segments that stand alone"
+      }
+    },
+    {
+      "name": "core/database.py",
+      "role": {
+        "fr": "Utilisateurs, crédits, abonnements, limites",
+        "en": "Users, credits, subscriptions, limits"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Telegram Bot API",
+      "role": {
+        "fr": "Interface, paiements en Telegram Stars",
+        "en": "Interface, Telegram Stars payments"
+      }
+    },
+    {
+      "name": "Telegram MTProto (Pyrogram)",
+      "role": {
+        "fr": "Fichiers jusqu'à deux gigaoctets",
+        "en": "Files up to two gigabytes"
+      }
+    },
+    {
+      "name": "yt-dlp",
+      "role": {
+        "fr": "Téléchargement YouTube, TikTok, Instagram",
+        "en": "YouTube, TikTok, Instagram download"
+      }
+    },
+    {
+      "name": "Google Gemini",
+      "role": {
+        "fr": "Analyse de la vidéo et choix des segments",
+        "en": "Video analysis and segment selection"
+      }
+    },
+    {
+      "name": "FFmpeg",
+      "role": {
+        "fr": "Recadrage, flou, sous-titres, encodage",
+        "en": "Reframe, blur, subtitles, encoding"
+      }
+    }
+  ]
+}

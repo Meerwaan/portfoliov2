@@ -1,0 +1,24 @@
+{
+  "slug": "roast-my-music",
+  "status": "prototype",
+  "year": "2025-2026",
+  "stack": [
+    "Next.js",
+    "TypeScript",
+    "Sass",
+    "tiktok-live-connector",
+    "tmi.js"
+  ],
+  "links": {},
+  "screenshots": [
+    {
+      "id": "streamer-dashboard",
+      "frame": "browser"
+    },
+    {
+      "id": "album",
+      "frame": "browser"
+    }
+  ],
+  "order": 6
+}

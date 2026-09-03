@@ -1,0 +1,86 @@
+{
+  "surface": {
+    "kind": "code",
+    "file": "scripts/live-listener.mjs",
+    "lang": "javascript",
+    "title": {
+      "fr": "Un cadeau TikTok multiplie le poids du vote",
+      "en": "A TikTok gift multiplies the vote's weight"
+    },
+    "code": "let multiplier = 1;\nif (coins > 0 && coins < 100) multiplier = 1.5;\nelse if (coins >= 100 && coins < 500) multiplier = 2;\nelse if (coins >= 500) multiplier = 3;\n\n// updateUserScore(platform, user, score)\nusers.forEach(u => {\n    const rawScore = db.currentSession.scores[platform][u];\n    const weight = savedMultipliers[u] || 1; // Default 1\n    totalWeightedScore += rawScore * weight;\n    totalWeight += weight;\n});\nconst avg = totalWeight > 0 ? totalWeightedScore / totalWeight : 0;\ndb.currentSession.averages[platform] = parseFloat(avg.toFixed(1));"
+  },
+  "modules": [
+    {
+      "name": "scripts/live-listener.mjs",
+      "role": {
+        "fr": "Pont Twitch et TikTok : votes, cadeaux, moyennes",
+        "en": "Twitch and TikTok bridge: votes, gifts, averages"
+      }
+    },
+    {
+      "name": "src/app/api/session/route.js",
+      "role": {
+        "fr": "Note du streamer, score global, clôture des votes",
+        "en": "Streamer score, global score, closing the votes"
+      }
+    },
+    {
+      "name": "src/components/StreamerDashboard.js",
+      "role": {
+        "fr": "Lecture en cours, note, moyennes par plateforme",
+        "en": "Now playing, score, per-platform averages"
+      }
+    },
+    {
+      "name": "src/app/overlay/page.js",
+      "role": {
+        "fr": "Overlay OBS du score global",
+        "en": "OBS overlay of the global score"
+      }
+    },
+    {
+      "name": "src/app/history/page.js",
+      "role": {
+        "fr": "Sessions archivées",
+        "en": "Archived sessions"
+      }
+    },
+    {
+      "name": "src/lib/db.js",
+      "role": {
+        "fr": "Session et historique en JSON",
+        "en": "Session and history in JSON"
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "Twitch IRC (tmi.js)",
+      "role": {
+        "fr": "Lecture des votes du chat Twitch",
+        "en": "Reads Twitch chat votes"
+      }
+    },
+    {
+      "name": "TikTok Live (tiktok-live-connector)",
+      "role": {
+        "fr": "Votes et cadeaux du live TikTok",
+        "en": "TikTok live votes and gifts"
+      }
+    },
+    {
+      "name": "Spotify Web API",
+      "role": {
+        "fr": "Morceau en cours et contrôle",
+        "en": "Now playing and playback control"
+      }
+    },
+    {
+      "name": "YouTube (lecteur)",
+      "role": {
+        "fr": "Lecture des morceaux",
+        "en": "Track playback"
+      }
+    }
+  ]
+}
