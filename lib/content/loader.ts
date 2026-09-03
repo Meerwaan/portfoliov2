@@ -9,7 +9,6 @@ import {
   AboutFrontmatter,
   StoryData,
   StackData,
-  PathData,
   LabFrontmatter,
   LabMeta,
   LabSpecimen,
@@ -21,7 +20,6 @@ import {
 } from "./schema";
 
 export type Locale = "fr" | "en";
-const LOCALES: Locale[] = ["fr", "en"];
 const DEFAULT_LOCALE: Locale = "fr";
 
 const ROOT = process.cwd();
@@ -69,7 +67,7 @@ async function exists(file: string) {
 }
 
 let manifestCache: Promise<ScreensManifest> | null = null;
-export function getScreensManifest(): Promise<ScreensManifest> {
+function getScreensManifest(): Promise<ScreensManifest> {
   manifestCache ??= (async () => {
     const file = path.join(CONTENT, "screens.manifest.json");
     if (!(await exists(file))) return {};
@@ -161,11 +159,11 @@ export async function getProjects(locale: Locale): Promise<Project[]> {
   return projects.sort((a, b) => a.order - b.order);
 }
 
-export async function getLabSlugs(): Promise<string[]> {
+async function getLabSlugs(): Promise<string[]> {
   return listDirs(path.join(CONTENT, "lab"));
 }
 
-export async function getLabEntry(slug: string, locale: Locale): Promise<LabEntry> {
+async function getLabEntry(slug: string, locale: Locale): Promise<LabEntry> {
   const dir = path.join(CONTENT, "lab", slug);
   const metaFile = path.join(dir, "meta.json");
   const meta = await readJson(metaFile, LabMeta);
@@ -208,15 +206,11 @@ export async function getProjectDiagram(slug: string): Promise<string | null> {
   return fs.readFile(file, "utf8");
 }
 
-export type About = AboutFrontmatter & { locale: Locale; fallbackBody: boolean; body: string; path: PathData };
+export type About = AboutFrontmatter & { locale: Locale; fallbackBody: boolean; body: string };
 
 export async function getAbout(locale: Locale): Promise<About> {
-  const dir = path.join(CONTENT, "about");
-  const [{ data, body, fallbackBody }, pathData] = await Promise.all([
-    readMdx(dir, locale, AboutFrontmatter),
-    readJson(path.join(dir, "path.json"), PathData),
-  ]);
-  return { ...data, locale, fallbackBody, body, path: pathData };
+  const { data, body, fallbackBody } = await readMdx(path.join(CONTENT, "about"), locale, AboutFrontmatter);
+  return { ...data, locale, fallbackBody, body };
 }
 
 /** Steps of the path page (content/about/story.json). */
@@ -224,4 +218,3 @@ export async function getStory(): Promise<StoryData> {
   return readJson(path.join(CONTENT, "about", "story.json"), StoryData);
 }
 
-export { LOCALES as CONTENT_LOCALES };

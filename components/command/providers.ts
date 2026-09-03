@@ -45,7 +45,7 @@ const ALIASES: Record<string, string[]> = {
 };
 
 /** `> ...` : actions. Empty `>` lists them all. */
-export const actionsProvider: CommandProvider = {
+const actionsProvider: CommandProvider = {
   id: "actions",
   priority: 0,
   matches: (q) => q.trimStart().startsWith(">"),
@@ -65,7 +65,7 @@ export const actionsProvider: CommandProvider = {
 };
 
 /** `go <target>` : navigation to a page or a system. */
-export const navigationProvider: CommandProvider = {
+const navigationProvider: CommandProvider = {
   id: "navigation",
   priority: 0,
   matches: (q) => /^go(\s|$)/i.test(q.trimStart()),
@@ -79,7 +79,7 @@ export const navigationProvider: CommandProvider = {
 };
 
 /** Plain text : search across systems, lab, pages and sections. Empty query : suggestions. */
-export const searchProvider: CommandProvider = {
+const searchProvider: CommandProvider = {
   id: "search",
   priority: 1,
   matches: (q) => !q.trimStart().startsWith(">") && !/^go(\s|$)/i.test(q.trimStart()) && !q.trimStart().startsWith("?"),
@@ -95,7 +95,7 @@ export const searchProvider: CommandProvider = {
 };
 
 /** `? question` : reserved for the phase-2 streaming answer provider. */
-export const askPlaceholderProvider: CommandProvider = {
+const askPlaceholderProvider: CommandProvider = {
   id: "ask",
   priority: 0,
   matches: (q) => q.trimStart().startsWith("?"),

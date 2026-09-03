@@ -14,7 +14,7 @@ export function extractHeadings(source: string): Heading[] {
 }
 
 /** Close enough to github-slugger (used by rehype-slug) for our headings. */
-export function slugify(text: string): string {
+function slugify(text: string): string {
   return text
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")

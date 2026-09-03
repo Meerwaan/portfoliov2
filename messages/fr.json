@@ -192,19 +192,11 @@
     "experience": "Expérience",
     "education": "Formation",
     "stack": "Stack",
-    "stackGroups": {
-      "front": "Front",
-      "mobile": "Mobile",
-      "back": "Back",
-      "data": "Données",
-      "infra": "Infra"
-    },
     "cv": "Télécharger le CV (PDF)",
     "today": "aujourd'hui",
     "readCase": "Lire l'étude de cas",
     "pathTitle": "Le parcours, une étape par écran.",
     "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
-    "stackNote": "CE QUE JE TIENS EN PRODUCTION, PAS UN MUR DE LOGOS",
     "founder": "Fondateur"
   },
   "contact": {

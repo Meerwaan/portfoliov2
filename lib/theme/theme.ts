@@ -1,15 +1,6 @@
 export type Theme = "light" | "dark";
-export const THEME_STORAGE_KEY = "mwn.theme";
+const THEME_STORAGE_KEY = "mwn.theme";
 export const THEME_EVENT = "mwn:theme";
-
-export function readStoredTheme(): Theme | null {
-  try {
-    const v = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return v === "light" || v === "dark" ? v : null;
-  } catch {
-    return null;
-  }
-}
 
 export function resolveTheme(): Theme {
   const attr = document.documentElement.getAttribute("data-theme");

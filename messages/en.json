@@ -192,19 +192,11 @@
     "experience": "Experience",
     "education": "Education",
     "stack": "Stack",
-    "stackGroups": {
-      "front": "Front",
-      "mobile": "Mobile",
-      "back": "Back",
-      "data": "Data",
-      "infra": "Infra"
-    },
     "cv": "Download CV (PDF)",
     "today": "today",
     "readCase": "Read the case study",
     "pathTitle": "The path, one step per screen.",
     "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
-    "stackNote": "WHAT I RUN IN PRODUCTION, NOT A WALL OF LOGOS",
     "founder": "Founder"
   },
   "contact": {

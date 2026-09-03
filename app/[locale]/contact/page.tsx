@@ -27,7 +27,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   return (
     <>
       <section className="container-page pt-16 pb-12 md:pt-24">
-        <p className="max-w-[40ch] text-xl text-ink-2">{t("intro")}</p>
+        <h1 className="max-w-[40ch] text-xl font-normal text-ink-2">{t("intro")}</h1>
         <div className="mt-8 flex flex-col gap-4">
           <a href={`mailto:${site.email}`} className="w-fit break-all font-display text-3xl font-medium text-ink transition-colors duration-(--dur-1) hover:text-signal">
             {site.email}

@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowDown } from "@phosphor-icons/react/ssr";
 import { routing } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { getAbout } from "@/lib/content/loader";
+import { getAbout, getStory } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/mdx";
 import { site } from "@/lib/site";
 import { PathStory } from "@/components/about/PathStory";
@@ -22,10 +22,9 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations("about");
-  const about = await getAbout(locale);
+  const [about, story] = await Promise.all([getAbout(locale), getStory()]);
   const body = await renderMdx(about.body);
-  const years = about.path.education.concat(about.path.experience).map((e) => e.from.slice(0, 4));
-  const span = `${Math.min(...years.map(Number))} → ${new Date().getFullYear()}`;
+  const span = `${Math.min(...story.steps.map((step) => Number(step.from)))} → ${new Date().getFullYear()}`;
 
   return (
     <>

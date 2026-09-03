@@ -1,18 +1,5 @@
 import type { Role, Status } from "@/lib/content/schema";
 
-export const STATUS_KEYS: Record<Status, "production" | "delivered" | "building"> = {
-  production: "production",
-  delivered: "delivered",
-  building: "building",
-};
-
-export const ROLE_KEYS: Record<Role, "founder" | "freelance" | "employee" | "study"> = {
-  founder: "founder",
-  freelance: "freelance",
-  employee: "employee",
-  study: "study",
-};
-
 export type ProjectCard = {
   slug: string;
   node: string;

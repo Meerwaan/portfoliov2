@@ -30,4 +30,3 @@ export async function renderMdx(source: string, extra: MDXComponents = {}) {
   return content;
 }
 
-export { extractHeadings, slugify, stripMdx } from "./text";

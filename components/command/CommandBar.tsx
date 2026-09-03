@@ -23,6 +23,9 @@ export function CommandBar() {
   const pathname = usePathname();
   const router = useRouter();
   const [items, setItems] = useState<CommandItem[]>([]);
+  // cmdk keeps a stale selection when the item list is replaced asynchronously; the selection is owned here
+  // and falls back to the first visible item, so Enter always has a target.
+  const [selectedRaw, setSelectedRaw] = useState("");
   const [answer, setAnswer] = useState<Answer | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const tAny = t as unknown as (key: string) => string;
@@ -105,6 +108,9 @@ export function CommandBar() {
     return GROUP_ORDER.filter((g) => map.has(g)).map((g) => ({ group: g, items: (map.get(g) ?? []).sort((a, b) => b.score - a.score) }));
   }, [items]);
 
+  const firstId = grouped[0]?.items[0]?.id ?? "";
+  const selected = items.some((item) => item.id === selectedRaw) ? selectedRaw : firstId;
+
   function select(item: CommandItem) {
     if (item.run) void item.run(ctx);
     else if (item.href) ctx.navigate(item.href);
@@ -114,6 +120,14 @@ export function CommandBar() {
     if ((e.metaKey || e.ctrlKey) && /^[1-5]$/.test(e.key)) {
       e.preventDefault();
       ctx.navigate(ROUTE_SHORTCUTS[Number(e.key) - 1]);
+      return;
+    }
+    if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+      const item = items.find((i) => i.id === selected);
+      if (item) {
+        e.preventDefault();
+        select(item);
+      }
     }
   }
 
@@ -124,6 +138,8 @@ export function CommandBar() {
       label={t("label")}
       shouldFilter={false}
       loop
+      value={selected}
+      onValueChange={setSelectedRaw}
       onKeyDown={onKeyDown}
       overlayClassName="command-overlay"
       contentClassName="command-dialog"

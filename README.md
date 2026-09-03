@@ -1,20 +1,43 @@
-# merwan-laouini (mwn-tech.com)
+# mwn-tech.com
 
-Personal site of Merwan Laouini, full-stack product engineer. Next.js App Router, TypeScript strict, Tailwind v4,
-next-intl (fr/en), MDX content, GSAP + Three.js for the interface space.
+Personal site of Merwan Laouini, product engineer. Next.js 16 App Router, TypeScript strict, Tailwind v4,
+next-intl (fr / en), MDX content validated with zod, GSAP for the scroll choreography. Everything is static
+except the two API routes.
 
 ## Commands
 
 ```bash
-pnpm dev          # local dev (rail shows BUILD LOCAL / REGION LOCAL)
-pnpm build        # prebuild search index + next build (all routes static except /api/*)
+pnpm dev          # local dev (the telemetry rail shows BUILD LOCAL / REGION LOCAL)
+pnpm build        # prebuild search index, then next build
 pnpm start        # serve the production build
 pnpm typecheck    # tsc --noEmit
 pnpm lint         # eslint
-pnpm screens      # process content/raw-screenshots/* into public/screens + manifest
-pnpm search-index # regenerate public/search-index.{fr,en}.json
-pnpm lhci         # Lighthouse CI assertions
+pnpm screens      # content/raw-screenshots/<slug>/*.png -> public/screens + content/screens.manifest.json
+pnpm search-index # regenerate public/search-index.{fr,en}.json (also runs before build)
+pnpm lhci         # Lighthouse CI assertions (lighthouserc.cjs) against a running pnpm start
 ```
+
+`content/raw-screenshots/`, `content/screens.manifest.json` and `public/search-index.*.json` are generated or
+private and not committed: after a fresh clone, copy the raw captures back and run `pnpm screens`.
+
+## Layout
+
+```
+app/[locale]/        routes: home, work, work/[slug], lab, about, contact (+ opengraph-image per route)
+app/api/             ping (region + RTT for the rail), contact (Resend)
+components/          one folder per surface: hero, stack (home exploded views), work, lab, about, command
+                     (palette), telemetry (rail), nav, footer, contact, mdx, motion, system
+content/projects/    <slug>/meta.json, fr.mdx, en.mdx, diagram.svg, stack.json (layers read from the codebase)
+content/lab/         <slug>/meta.json, fr.mdx, en.mdx, specimen.json (real code excerpt, modules, services)
+content/about/       fr.mdx, en.mdx, story.json (one step per screen on /about)
+lib/content/         zod schema, filesystem loader, MDX renderer, code highlighter
+lib/seo/             metadata, JSON-LD, Open Graph images
+i18n/, messages/     next-intl routing and UI strings (content lives in MDX, not here)
+scripts/             prepare-screenshots, build-search-index; scripts/dev holds one-off capture and diagram tools
+```
+
+Content rules: facts shared by both languages live in `meta.json`; each locale MDX carries the texts; a missing
+`en.mdx` falls back to the French body with a visible notice. Any invalid content file fails the build with its path.
 
 ## Environment
 
@@ -23,11 +46,12 @@ pnpm lhci         # Lighthouse CI assertions
 | `NEXT_PUBLIC_SITE_URL` | canonical origin (default `https://mwn-tech.com`) |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | email shown on /contact and in JSON-LD |
 | `NEXT_PUBLIC_LINKEDIN_URL` | LinkedIn profile URL |
-| `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | contact form (form is hidden when the key is absent) |
-| `NEXT_PUBLIC_SPACE` | set to `off` to force the static fallback of the 3D interface space |
+| `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | contact form (hidden when the key is absent) |
 
-Vercel system env (`VERCEL_GIT_COMMIT_SHA`, `VERCEL_REGION`) must be exposed for the telemetry rail to show real values.
+On Vercel, expose the system env (`VERCEL_GIT_COMMIT_SHA`, `VERCEL_REGION`) so the telemetry rail shows real values.
 
 ## Design
 
-See `docs/superpowers/specs/2026-09-02-portfolio-rebuild-design.md`.
+The initial design document is in `docs/superpowers/specs/2026-09-02-portfolio-rebuild-design.md`. Two parts were
+superseded during the build: the Three.js "interface space" became the CSS-3D exploded views on the home, and the
+lab and about pages reuse that exploded language instead of the layouts described there.
