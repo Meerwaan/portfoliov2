@@ -200,11 +200,13 @@
     "founder": "Founder",
     "stackTitle": "The stack, over time.",
     "stackIntro": "Each tool traced over the years it was used, one stroke per project. The playhead runs from 2020 to today and lights what was in service: nothing is declared, everything comes from the project files.",
-    "stackHint": "Move the pointer over the timeline to change the year.",
+    "stackHint": "Move the pointer over the timeline to change the year, hover a tool for its projects.",
     "stackToday": "today",
     "stackLive": "{count, plural, =0 {No tool in service} one {# tool in service} other {# tools in service}}",
     "stackProjects": "Running that year",
-    "stackNone": "Nothing documented here."
+    "stackNone": "Nothing documented here.",
+    "stackSince": "since {year}",
+    "stackUses": "{count, plural, one {# project on this site} other {# projects on this site}}"
   },
   "contact": {
     "title": "Contact",

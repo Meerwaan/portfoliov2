@@ -200,11 +200,13 @@
     "founder": "Fondateur",
     "stackTitle": "La stack, dans le temps.",
     "stackIntro": "Chaque outil tracé sur les années où il a servi, un trait par projet. La tête de lecture remonte de 2020 à aujourd'hui et allume ce qui était en service : rien n'est déclaré, tout vient des fiches des projets.",
-    "stackHint": "Déplacer le curseur sur la frise pour changer d'année.",
+    "stackHint": "Déplacer le curseur sur la frise pour changer d'année, survoler un outil pour ses projets.",
     "stackToday": "aujourd'hui",
     "stackLive": "{count, plural, =0 {Aucun outil en service} one {# outil en service} other {# outils en service}}",
     "stackProjects": "En cours cette année-là",
-    "stackNone": "Rien de documenté ici."
+    "stackNone": "Rien de documenté ici.",
+    "stackSince": "depuis {year}",
+    "stackUses": "{count, plural, one {# projet sur ce site} other {# projets sur ce site}}"
   },
   "contact": {
     "title": "Contact",

@@ -729,7 +729,9 @@ body {
 /* ---------- About: the stack traced over time (playhead on --t, one stroke per project) ---------- */
 .trace {
   --t: 1;
-  --name-col: 8.5rem;
+  --name-col: 9rem;
+  --stroke: 6px;
+  --lane: 9px;
   position: relative;
   touch-action: pan-y;
   user-select: none;
@@ -739,25 +741,48 @@ body {
   line-height: 1;
   letter-spacing: -0.03em;
 }
-.trace-axis {
+.trace-axis,
+.trace-row {
   display: grid;
   grid-template-columns: var(--name-col) minmax(0, 1fr);
-  gap: 0.75rem;
+  gap: 1rem;
+  align-items: center;
 }
 .trace-grid {
   position: relative;
 }
 .trace-axis-track {
-  height: 1.25rem;
+  height: 2.25rem;
+  border-bottom: 1px solid var(--rule);
 }
 .trace-tick {
   position: absolute;
   top: 0;
   transform: translateX(-50%);
 }
+.trace-tick::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.05rem;
+  width: 1px;
+  height: 0.4rem;
+  background: var(--rule-strong);
+}
+/* The year travels with the head, as a chip on the axis. */
+.trace-head-tag {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  z-index: 1;
+  left: calc(var(--t) * 100%);
+  transform: translateX(-50%);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: var(--signal);
+  color: var(--paper);
+}
 .trace-body {
   position: relative;
-  padding-block: 0.75rem 0.25rem;
 }
 .trace-lines {
   position: absolute;
@@ -767,13 +792,6 @@ body {
 .trace-lines .trace-grid {
   height: 100%;
 }
-.trace-vline {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--rule);
-}
 .trace-head {
   position: absolute;
   top: 0;
@@ -782,29 +800,25 @@ body {
   width: 1px;
   background: var(--signal);
 }
-.trace-head > span {
-  position: absolute;
-  bottom: -1.5rem;
-  left: 0;
-  transform: translateX(-50%);
-  color: var(--signal);
-}
 .trace-group-label {
-  padding: 0.9rem 0 0.35rem;
+  padding: 1.5rem 0 0.5rem;
+}
+.trace-group:first-of-type .trace-group-label {
+  padding-top: 1rem;
 }
 .trace-row {
-  display: grid;
-  grid-template-columns: var(--name-col) minmax(0, 1fr);
-  gap: 0.75rem;
-  align-items: center;
-  padding-block: 2px;
+  min-height: 1.75rem;
+  padding-block: 3px;
   border-radius: var(--radius-sm);
   outline: none;
+  cursor: default;
 }
 .trace-row:focus-visible {
   box-shadow: 0 0 0 2px var(--signal);
 }
 .trace-name {
+  font-size: 0.9375rem;
+  line-height: 1.2;
   color: var(--ink-3);
   transition: color var(--dur-1) var(--ease-out);
 }
@@ -812,77 +826,58 @@ body {
   color: var(--ink-2);
 }
 .trace-row[data-live] .trace-name {
+  color: var(--ink);
+}
+.trace-row[data-hover] .trace-name {
   color: var(--signal);
 }
 .trace-track {
   position: relative;
-  height: max(0.75rem, calc(var(--n) * 5px - 2px));
-  transition: height var(--dur-2) var(--ease-out);
+  height: max(var(--stroke), calc(var(--n) * var(--lane) - (var(--lane) - var(--stroke))));
 }
 .trace-bar {
   position: absolute;
-  top: calc(var(--i) * 5px);
+  top: calc(var(--i) * var(--lane));
   left: calc(var(--a) * 100%);
   width: calc((var(--b) - var(--a)) * 100%);
-  height: 3px;
-  border-radius: 1px;
-  background: var(--rule-strong);
-  transition: top var(--dur-2) var(--ease-out), height var(--dur-2) var(--ease-out);
+  height: var(--stroke);
+  border-radius: calc(var(--stroke) / 2);
+  background: var(--rule);
+  overflow: hidden;
 }
-/* The stroke fills behind the head: the part already reached is drawn in ink, the live part in signal. */
+/* The stroke fills behind the head: what has been reached is drawn in ink, what is running in signal. */
 .trace-bar::after {
   content: "";
   position: absolute;
   inset: 0;
   width: clamp(0%, calc((var(--t) - var(--a)) / (var(--b) - var(--a)) * 100%), 100%);
+  border-radius: inherit;
   background: var(--ink-2);
 }
 .trace-bar[data-live]::after {
   background: var(--signal);
 }
-/* On an open row each stroke names its project, beside the stroke on the side that has room. */
-.trace-bar-label {
-  position: absolute;
-  top: 0;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  line-height: 14px;
-  white-space: nowrap;
-  color: var(--ink-2);
-  opacity: 0;
-  transition: opacity var(--dur-1) var(--ease-out);
+.trace-row[data-hover] .trace-bar {
+  background: var(--signal-soft);
 }
-.trace-bar[data-side="right"] .trace-bar-label {
-  left: calc(100% + 0.4rem);
-}
-.trace-bar[data-side="left"] .trace-bar-label {
-  right: calc(100% + 0.4rem);
-}
-.trace-bar[data-live] .trace-bar-label {
-  color: var(--signal);
-}
-.trace-row:hover .trace-track,
-.trace-row:focus-visible .trace-track {
-  height: calc(var(--n) * 16px - 2px);
-}
-.trace-row:hover .trace-bar,
-.trace-row:focus-visible .trace-bar {
-  top: calc(var(--i) * 16px);
-  height: 14px;
-}
-.trace-row:hover .trace-bar-label,
-.trace-row:focus-visible .trace-bar-label {
-  opacity: 1;
+.trace-row[data-hover] .trace-bar::after {
+  background: var(--signal);
 }
 @media (max-width: 40rem) {
   .trace {
     --name-col: 6.5rem;
+    --stroke: 4px;
+    --lane: 6px;
+  }
+  /* Narrow axis: one year label out of two, the tick marks stay. */
+  .trace-tick:nth-child(even) {
+    font-size: 0;
+  }
+  .trace-name {
+    font-size: 0.8125rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .trace-track,
-  .trace-bar,
-  .trace-bar-label,
   .trace-name {
     transition: none;
   }

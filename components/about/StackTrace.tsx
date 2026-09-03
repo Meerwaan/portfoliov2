@@ -52,10 +52,12 @@ export async function StackTrace({ locale }: { locale: Locale }) {
       const uses: TraceUse[] = sources
         .filter((src) => src.stack.some((x) => matchers.has(norm(x))))
         .sort((x, y) => x.a - y.a)
-        .map((src) => ({ title: src.title, href: src.href, a: frac(src.a), b: Math.max(frac(src.b), frac(src.a) + 0.012), ongoing: src.ongoing }));
-      return { id: `${layer.id}:${norm(item.name)}`, name: item.name, uses };
+        .map((src) => ({ title: src.title, href: src.href, a: frac(src.a), b: Math.max(frac(src.b), frac(src.a) + 0.012), ongoing: src.ongoing, from: Math.floor(src.a), to: src.ongoing ? null : Math.ceil(src.b) - 1 }));
+      return { id: `${layer.id}:${norm(item.name)}`, name: item.name, uses, since: uses[0]?.from ?? null };
     }),
   }));
+  // Inside a family, tools in order of first use: the strokes cascade down the chart instead of scattering.
+  for (const g of groups) g.tools.sort((p, q) => (p.uses[0]?.a ?? 1) - (q.uses[0]?.a ?? 1));
 
   // Ticks sit at their true position on the axis (not clamped to today) and stop at the current year.
   const years: { year: number; x: number }[] = [];
