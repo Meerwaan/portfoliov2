@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import {
   AboutFrontmatter,
   StoryData,
+  StackLayersData,
   StackData,
   LabFrontmatter,
   LabMeta,
@@ -210,6 +211,11 @@ export type About = AboutFrontmatter & { locale: Locale; fallbackBody: boolean; 
 export async function getAbout(locale: Locale): Promise<About> {
   const { data, body, fallbackBody } = await readMdx(path.join(CONTENT, "about"), locale, AboutFrontmatter);
   return { ...data, locale, fallbackBody, body };
+}
+
+/** Tools by layer for the stack section (content/about/stack.json). */
+export async function getStackLayers(): Promise<StackLayersData> {
+  return readJson(path.join(CONTENT, "about", "stack.json"), StackLayersData);
 }
 
 /** Steps of the path page (content/about/story.json). */

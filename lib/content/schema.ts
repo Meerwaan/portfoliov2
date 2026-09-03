@@ -176,3 +176,18 @@ export const LabSpecimen = z.object({
   services: z.array(z.object({ name: z.string().min(1), role: Localized })).min(2).max(5),
 });
 export type LabSpecimen = z.infer<typeof LabSpecimen>;
+
+/** content/about/stack.json: the tools by layer; where each one was used is computed from the projects. */
+export const StackLayersData = z.object({
+  layers: z
+    .array(
+      z.object({
+        id: z.string().regex(/^[a-z]+$/),
+        label: Localized,
+        items: z.array(z.object({ name: z.string().min(1), match: z.array(z.string().min(1)).optional() })).min(2).max(12),
+      }),
+    )
+    .min(2)
+    .max(5),
+});
+export type StackLayersData = z.infer<typeof StackLayersData>;

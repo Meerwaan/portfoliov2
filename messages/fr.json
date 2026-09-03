@@ -197,7 +197,14 @@
     "readCase": "Lire l'étude de cas",
     "pathTitle": "Le parcours, une étape par écran.",
     "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
-    "founder": "Fondateur"
+    "founder": "Fondateur",
+    "stackTitle": "La stack, empilée pour de vrai.",
+    "stackIntro": "Quatre couches d'outils. Pour chacun, les projets de ce site où il a servi et depuis quand : rien n'est déclaré, tout est lu dans les fiches des projets.",
+    "stackHint": "Survoler un outil pour voir où il a servi.",
+    "stackSince": "depuis {year}",
+    "stackUses": "{count, plural, one {# projet sur ce site} other {# projets sur ce site}}",
+    "stackLayerCount": "{count, plural, one {# outil} other {# outils}}",
+    "stackToday": "aujourd'hui"
   },
   "contact": {
     "title": "Contact",

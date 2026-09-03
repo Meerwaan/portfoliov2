@@ -726,6 +726,60 @@ body {
   }
 }
 
+/* ---------- About: the stack, stacked (same planes as the home and the lab) ---------- */
+/* Wider gap than the home: every plane carries up to two rows of tools, which must stay visible below the plane above. */
+.about-stack-stage {
+  --explode: var(--progress, 1);
+  --tilt: calc(62 - var(--explode) * 8);
+  --spin: calc(-32 + var(--explode) * 8);
+  --gap: 150px;
+}
+.about-stack-stage .stack-scene {
+  min-height: 40rem;
+  perspective: 1700px;
+  perspective-origin: 50% 35%;
+}
+.about-stack-stage .stack {
+  width: min(100%, 40rem);
+  transform: translateY(calc(var(--explode) * -7rem)) rotateX(calc(var(--tilt) * 1deg)) rotateZ(calc(var(--spin) * 1deg));
+}
+.about-stack-stage .stack-layer[data-dim] {
+  opacity: 0.22;
+}
+.about-stack-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+.about-stack-cell {
+  width: 100%;
+  padding: 0.3rem 0.45rem;
+  text-align: left;
+  cursor: pointer;
+}
+.about-stack-cell > span:last-child {
+  font-size: 0.68rem;
+  line-height: 1.3;
+}
+.about-stack-cell:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+@media (max-width: 63.9375rem), (prefers-reduced-motion: reduce) {
+  .about-stack-stage .stack-scene {
+    min-height: 0;
+  }
+  .about-stack-stage .stack {
+    width: 100%;
+    transform: none;
+  }
+  .about-stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-stack-cell {
+    padding: 0.4rem 0.55rem;
+  }
+}
+
 /* ---------- Path story: one step per screen ---------- */
 .path-year {
   font-size: clamp(2.5rem, 6vw, 5rem);

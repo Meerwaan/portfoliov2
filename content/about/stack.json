@@ -1,0 +1,58 @@
+{
+  "layers": [
+    {
+      "id": "lang",
+      "label": { "fr": "Langages", "en": "Languages" },
+      "items": [
+        { "name": "TypeScript" },
+        { "name": "JavaScript" },
+        { "name": "Python" },
+        { "name": "SQL", "match": ["SQL", "PostgreSQL", "MySQL"] }
+      ]
+    },
+    {
+      "id": "ui",
+      "label": { "fr": "Interface", "en": "Interface" },
+      "items": [
+        { "name": "React", "match": ["React", "React 19"] },
+        { "name": "Next.js", "match": ["Next.js", "Next.js 16"] },
+        { "name": "React Native" },
+        { "name": "Tailwind CSS", "match": ["Tailwind CSS", "Tailwind 4"] },
+        { "name": "GSAP" },
+        { "name": "Electron" },
+        { "name": "Mapbox" },
+        { "name": "WordPress" }
+      ]
+    },
+    {
+      "id": "server",
+      "label": { "fr": "Serveur et données", "en": "Server and data" },
+      "items": [
+        { "name": "Node.js" },
+        { "name": "Express" },
+        { "name": "Prisma" },
+        { "name": "Sequelize" },
+        { "name": "PostgreSQL" },
+        { "name": "MySQL" },
+        { "name": "Firebase", "match": ["Firebase", "Firebase Auth", "Firestore", "Cloud Storage"] },
+        { "name": "Auth.js", "match": ["Auth.js", "NextAuth", "JWT"] },
+        { "name": "Stripe" },
+        { "name": "Vercel" }
+      ]
+    },
+    {
+      "id": "auto",
+      "label": { "fr": "Automatisation et IA", "en": "Automation and AI" },
+      "items": [
+        { "name": "Selenium" },
+        { "name": "Pyrogram" },
+        { "name": "Bots Telegram", "match": ["python-telegram-bot", "aiogram"] },
+        { "name": "Whisper", "match": ["faster-whisper"] },
+        { "name": "OpenAI" },
+        { "name": "ElevenLabs" },
+        { "name": "FFmpeg", "match": ["FFmpeg", "MoviePy"] },
+        { "name": "TikTok Live", "match": ["TikTokLive", "tiktok-live-connector"] }
+      ]
+    }
+  ]
+}
