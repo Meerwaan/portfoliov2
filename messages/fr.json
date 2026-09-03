@@ -199,9 +199,9 @@
     "pathIntro": "Du plus récent au plus ancien. Chaque étape vient seule, avec ce qu'elle a produit.",
     "founder": "Fondateur",
     "stackTitle": "Ma stack, comme une architecture.",
-    "stackIntro": "Chaque outil arrive à son année et se branche sur ce qu'il a rejoint, du langage à l'infrastructure. Le schéma se dessine au scroll, une année à la fois.",
+    "stackIntro": "Lis-le comme un plan : une ligne par année, une colonne par couche. Chaque outil arrive à sa date et se branche sur ce qu'il prolonge. Le schéma se dessine au scroll, le survol isole une pièce et ses liens.",
     "stackDiagramLabel": "Schéma de la stack : {count} outils placés par année et par couche, reliés entre eux.",
-    "stackLegend": "{count} outils · en bleu, le socle d'aujourd'hui · dates issues des projets du site et du CV"
+    "stackLegend": "{count} outils · en bleu, le socle d'aujourd'hui · survoler un outil pour voir ce qu'il relie"
   },
   "contact": {
     "title": "Contact",

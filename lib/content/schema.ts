@@ -180,7 +180,7 @@ export type LabSpecimen = z.infer<typeof LabSpecimen>;
 /** content/about/stack.json: the stack as an architecture, rows by year and columns by layer. */
 export const StackMapData = z.object({
   columns: z.array(z.object({ id: z.string().regex(/^[a-z]+$/), label: Localized })).min(3),
-  years: z.array(z.object({ year: z.number().int(), caption: Localized })).min(3),
+  years: z.array(z.object({ year: z.number().int(), where: Localized, caption: Localized })).min(3),
   nodes: z
     .array(z.object({ name: z.string().min(1), col: z.string(), year: z.number().int(), from: z.array(z.string()).default([]), core: z.boolean().default(false) }))
     .min(10),

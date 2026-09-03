@@ -199,9 +199,9 @@
     "pathIntro": "From now back to the start. Each step comes alone, with what it produced.",
     "founder": "Founder",
     "stackTitle": "My stack, as an architecture.",
-    "stackIntro": "Each tool arrives at its year and plugs into what it joined, from language to infrastructure. The diagram draws itself as you scroll, one year at a time.",
+    "stackIntro": "Read it like a blueprint: one row per year, one column per layer. Each tool arrives at its date and plugs into what it extends. The diagram draws as you scroll; hovering isolates a part and its links.",
     "stackDiagramLabel": "Stack diagram: {count} tools placed by year and layer, linked together.",
-    "stackLegend": "{count} tools · in blue, today's core · dates from the site's projects and the CV"
+    "stackLegend": "{count} tools · in blue, today's core · hover a tool to see what it connects"
   },
   "contact": {
     "title": "Contact",

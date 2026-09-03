@@ -3,11 +3,12 @@ Rows are years, columns are layers; each year is one drawing step (boxes of that
 that connect them to earlier boxes). Boxes grow with their text (mono 11px ≈ 6.9px/char)."""
 import json
 CH = 6.9; PAD = 10; H = 30; GAP = 8; FS = 11
-COL_GAP = 30; ROW_GAP = 40; LEFT = 64; TOP = 44
+COL_GAP = 30; ROW_GAP = 40; LEFT = 176; TOP = 46
 
 data = json.load(open("content/about/stack.json"))
 cols = [c["id"] for c in data["columns"]]
 years = [y["year"] for y in data["years"]]
+where = {y["year"]: y["where"] for y in data["years"]}
 nodes = data["nodes"]
 for n in nodes:
     n["w"] = int(len(n["name"]) * CH + PAD * 2)
@@ -87,29 +88,31 @@ def edge(a, b):
 
 TITLES = {
     "fr": ("Ma stack, comme une architecture : chaque outil à son année, relié à ce qu'il a rejoint",
-           "Lignes par année de 2020 à 2026, colonnes par couche : langages, interface, serveur, données, infra, automatisation, IA et média. Les liens relient chaque outil à ceux qu'il prolonge."),
+           "Lignes par année de 2020 à 2026, colonnes par couche : langages, web et desktop, mobile, serveur, données, infra, automatisation, IA et média. Les liens relient chaque outil à ceux qu'il prolonge."),
     "en": ("My stack as an architecture: each tool at its year, linked to what it joined",
-           "Rows per year from 2020 to 2026, columns per layer: languages, interface, server, data, infra, automation, AI and media. Links connect each tool to the ones it extends."),
+           "Rows per year from 2020 to 2026, columns per layer: languages, web and desktop, mobile, server, data, infra, automation, AI and media. Links connect each tool to the ones it extends."),
 }
 for loc, (title, desc) in TITLES.items():
-  out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="stack-t stack-d" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="{FS}" letter-spacing="0.04em">',
-         f'  <title id="stack-t">{title}</title>', f'  <desc id="stack-d">{desc}</desc>',
-         '  <g fill="currentColor" stroke="none" opacity="0.55">']
-  for c in data["columns"]:
-    out.append(f'    <text x="{colx[c["id"]]}" y="20">{c["label"][loc]}</text>')
-  out.append('  </g>')
-  for i, yr in enumerate(years, 1):
-      out.append(f'  <g data-step="{i}">')
-      out.append(f'    <g data-label fill="currentColor" stroke="none"><text x="0" y="{rowy[yr]+20}" font-weight="700">{yr}</text></g>')
-      for n in [n for n in nodes if n["year"] == yr]:
-          for src in n.get("from", []):
-              out.append(f'    <path data-draw opacity="0.45" d="{edge(by[src], n)}"/>')
-      for n in [n for n in nodes if n["year"] == yr]:
-          stroke = ' stroke="var(--signal)"' if n.get("core") else ""
-          fill = ' fill="var(--signal)"' if n.get("core") else ""
-          out.append(f'    <path data-draw{stroke} d="M{n["x"]} {n["y"]} H{n["x"]+n["w"]} V{n["y"]+H} H{n["x"]} Z"/>')
-          out.append(f'    <g data-label fill="currentColor" stroke="none"><text x="{n["x"]+PAD}" y="{n["y"]+20}"{fill}>{n["name"]}</text></g>')
-      out.append('  </g>')
-  out.append('</svg>')
-  open(f"content/about/stack-diagram.{loc}.svg", "w").write("\n".join(out) + "\n")
-  print("wrote", f"content/about/stack-diagram.{loc}.svg", WIDTH, HEIGHT)
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="stack-t stack-d" fill="none" stroke="currentColor" stroke-width="1.25" font-family="var(--font-mono), ui-monospace, monospace" font-size="{FS}" letter-spacing="0.04em">',
+           f'  <title id="stack-t">{title}</title>', f'  <desc id="stack-d">{desc}</desc>',
+           '  <g fill="currentColor" stroke="none" opacity="0.7" font-weight="700">']
+    for c in data["columns"]:
+        out.append(f'    <text x="{colx[c["id"]]}" y="20">{c["label"][loc].upper()}</text>')
+    out.append('  </g>')
+    for i, yr in enumerate(years, 1):
+        out.append(f'  <g data-step="{i}">')
+        out.append(f'    <g data-label data-year fill="currentColor" stroke="none"><text x="0" y="{rowy[yr]+20}" font-weight="700">{yr}</text><text x="0" y="{rowy[yr]+36}" opacity="0.6">{where[yr][loc]}</text></g>')
+        for n in [n for n in nodes if n["year"] == yr]:
+            for src in n.get("from", []):
+                out.append(f'    <path data-draw data-link="{src}|{n["name"]}" opacity="0.45" d="{edge(by[src], n)}"/>')
+        for n in [n for n in nodes if n["year"] == yr]:
+            stroke = ' stroke="var(--signal)"' if n.get("core") else ""
+            fill = ' fill="var(--signal)"' if n.get("core") else ""
+            out.append(f'    <g data-node="{n["name"]}" tabindex="0">')
+            out.append(f'      <path data-draw{stroke} d="M{n["x"]} {n["y"]} H{n["x"]+n["w"]} V{n["y"]+H} H{n["x"]} Z"/>')
+            out.append(f'      <g data-label fill="currentColor" stroke="none"><text x="{n["x"]+PAD}" y="{n["y"]+20}"{fill}>{n["name"]}</text></g>')
+            out.append('    </g>')
+        out.append('  </g>')
+    out.append('</svg>')
+    open(f"content/about/stack-diagram.{loc}.svg", "w").write("\n".join(out) + "\n")
+    print("wrote", f"content/about/stack-diagram.{loc}.svg", WIDTH, HEIGHT)

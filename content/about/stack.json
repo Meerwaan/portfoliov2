@@ -8,10 +8,17 @@
       }
     },
     {
-      "id": "ui",
+      "id": "web",
       "label": {
-        "fr": "Interface",
-        "en": "Interface"
+        "fr": "Web et desktop",
+        "en": "Web and desktop"
+      }
+    },
+    {
+      "id": "mobile",
+      "label": {
+        "fr": "Mobile",
+        "en": "Mobile"
       }
     },
     {
@@ -53,52 +60,98 @@
   "years": [
     {
       "year": 2020,
+      "where": {
+        "fr": "Licence ESIEE",
+        "en": "ESIEE bachelor"
+      },
       "caption": {
-        "fr": "Licence à l'ESIEE, en alternance : les bases, JavaScript, SQL, Node.js, le terminal.",
-        "en": "Bachelor at ESIEE, work-study: the basics, JavaScript, SQL, Node.js, the terminal."
+        "fr": "HTML, CSS, JavaScript, Python, SQL : les bases de tout le web, apprises en alternance.",
+        "en": "HTML, CSS, JavaScript, Python, SQL: the basics of the whole web, learned on a work-study."
+      }
+    },
+    {
+      "year": 2021,
+      "where": {
+        "fr": "Licence ESIEE",
+        "en": "ESIEE bachelor"
+      },
+      "caption": {
+        "fr": "Java et Android, PHP, Node.js côté serveur, Git tous les jours.",
+        "en": "Java and Android, PHP, Node.js on the server, Git every day."
       }
     },
     {
       "year": 2022,
+      "where": {
+        "fr": "Youggy, SIPP",
+        "en": "Youggy, SIPP"
+      },
       "caption": {
-        "fr": "Youggy et SIPP : le front, web et mobile, React et React Native.",
-        "en": "Youggy and SIPP: the front end, web and mobile, React and React Native."
+        "fr": "Premier front en production chez Youggy : React sur le web, React Native sur mobile.",
+        "en": "First front end in production at Youggy: React on the web, React Native on mobile."
       }
     },
     {
       "year": 2023,
+      "where": {
+        "fr": "Master",
+        "en": "Master's"
+      },
       "caption": {
-        "fr": "Master : premières bases documentaires sur des projets d'école.",
-        "en": "Master's: first document databases on school projects."
+        "fr": "Master : Flutter sur mobile, premières bases documentaires.",
+        "en": "Master's: Flutter on mobile, first document databases."
       }
     },
     {
       "year": 2024,
+      "where": {
+        "fr": "Neocortex, Hall of Arts",
+        "en": "Neocortex, Hall of Arts"
+      },
       "caption": {
-        "fr": "Neocortex et Hall of Arts : toute la chaîne, du client à la base, en TypeScript.",
-        "en": "Neocortex and Hall of Arts: the whole chain, from client to database, in TypeScript."
+        "fr": "Neocortex : toute la chaîne, du client Electron à PostgreSQL, en TypeScript.",
+        "en": "Neocortex: the whole chain, from the Electron client to PostgreSQL, in TypeScript."
       }
     },
     {
       "year": 2025,
+      "where": {
+        "fr": "SaaS, famille G2",
+        "en": "SaaS, G2 family"
+      },
       "caption": {
-        "fr": "SaaS en solo et famille G2 : Next.js, Firebase, Python, bots Telegram, IA.",
-        "en": "Solo SaaS and the G2 family: Next.js, Firebase, Python, Telegram bots, AI."
+        "fr": "En solo : Next.js, Firebase, Vercel, et la famille G2 en Python, bots Telegram et IA.",
+        "en": "Solo: Next.js, Firebase, Vercel, and the G2 family in Python, Telegram bots and AI."
       }
     },
     {
       "year": 2026,
+      "where": {
+        "fr": "Reputap, Capsule",
+        "en": "Reputap, Capsule"
+      },
       "caption": {
-        "fr": "Multi-tenant et paiement : Prisma, Stripe, Auth.js, MySQL, Resend.",
-        "en": "Multi-tenant and payments: Prisma, Stripe, Auth.js, MySQL, Resend."
+        "fr": "Reputap et Capsule : multi-tenant, paiement, Prisma, Stripe, Auth.js.",
+        "en": "Reputap and Capsule: multi-tenant, payments, Prisma, Stripe, Auth.js."
       }
     }
   ],
   "nodes": [
     {
+      "name": "HTML / CSS",
+      "col": "lang",
+      "year": 2020
+    },
+    {
       "name": "JavaScript",
       "col": "lang",
       "year": 2020
+    },
+    {
+      "name": "Python",
+      "col": "lang",
+      "year": 2020,
+      "core": true
     },
     {
       "name": "SQL",
@@ -111,9 +164,27 @@
       "year": 2020
     },
     {
+      "name": "Java",
+      "col": "lang",
+      "year": 2021
+    },
+    {
+      "name": "PHP",
+      "col": "lang",
+      "year": 2021
+    },
+    {
+      "name": "Android",
+      "col": "mobile",
+      "year": 2021,
+      "from": [
+        "Java"
+      ]
+    },
+    {
       "name": "Node.js",
       "col": "server",
-      "year": 2020,
+      "year": 2021,
       "from": [
         "JavaScript"
       ]
@@ -121,28 +192,37 @@
     {
       "name": "Git",
       "col": "infra",
-      "year": 2020
+      "year": 2021
     },
     {
       "name": "React",
-      "col": "ui",
+      "col": "web",
       "year": 2022,
       "from": [
-        "JavaScript"
+        "JavaScript",
+        "HTML / CSS"
+      ]
+    },
+    {
+      "name": "WordPress",
+      "col": "web",
+      "year": 2022,
+      "from": [
+        "PHP"
       ]
     },
     {
       "name": "React Native",
-      "col": "ui",
+      "col": "mobile",
       "year": 2022,
       "from": [
         "React"
       ]
     },
     {
-      "name": "WordPress",
-      "col": "ui",
-      "year": 2022
+      "name": "Flutter",
+      "col": "mobile",
+      "year": 2023
     },
     {
       "name": "MongoDB",
@@ -163,7 +243,7 @@
     },
     {
       "name": "Electron",
-      "col": "ui",
+      "col": "web",
       "year": 2024,
       "from": [
         "JavaScript"
@@ -171,7 +251,7 @@
     },
     {
       "name": "Mapbox",
-      "col": "ui",
+      "col": "mobile",
       "year": 2024,
       "from": [
         "React Native"
@@ -237,14 +317,8 @@
       ]
     },
     {
-      "name": "Python",
-      "col": "lang",
-      "year": 2025,
-      "core": true
-    },
-    {
       "name": "Next.js",
-      "col": "ui",
+      "col": "web",
       "year": 2025,
       "from": [
         "React",
@@ -254,7 +328,7 @@
     },
     {
       "name": "Vite",
-      "col": "ui",
+      "col": "web",
       "year": 2025,
       "from": [
         "React"
@@ -262,7 +336,7 @@
     },
     {
       "name": "Tailwind CSS",
-      "col": "ui",
+      "col": "web",
       "year": 2025,
       "from": [
         "Next.js"
@@ -270,7 +344,7 @@
     },
     {
       "name": "Sass",
-      "col": "ui",
+      "col": "web",
       "year": 2025,
       "from": [
         "Next.js"
@@ -372,7 +446,7 @@
     },
     {
       "name": "GSAP",
-      "col": "ui",
+      "col": "web",
       "year": 2026,
       "from": [
         "Next.js"
