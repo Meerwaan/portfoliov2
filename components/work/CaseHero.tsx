@@ -53,8 +53,9 @@ export async function CaseHero({ project }: { project: Project }) {
             </figure>
           </ViewTransition>
         ) : (
-          <div className="flex aspect-[16/10] items-center justify-center rounded-md border border-dashed border-rule-strong">
-            <span className="mono-label text-ink-3">{t("screenPending")}</span>
+          <div className="flex aspect-[16/10] flex-col justify-end gap-3 rounded-md border border-dashed border-rule-strong p-6">
+            <span className="mono-label text-ink-3">{project.screensNote ? t("noScreen") : t("screenPending")}</span>
+            {project.screensNote && <p className="max-w-[44ch] text-ink-2">{project.screensNote}</p>}
           </div>
         )}
       </div>

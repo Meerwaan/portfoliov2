@@ -115,6 +115,7 @@ export function WorkIndex({ projects }: { projects: ProjectCard[] }) {
                         <Image src={p.hero.src} alt={p.hero.alt} width={p.hero.width} height={p.hero.height} sizes="(min-width: 64rem) 0px, 100vw" placeholder={p.hero.blurDataURL ? "blur" : "empty"} blurDataURL={p.hero.blurDataURL} className="h-auto w-full" />
                       </span>
                     )}
+                    {!p.hero && p.screensNote && <span className="mt-1 text-sm text-ink-3 lg:hidden">{p.screensNote}</span>}
                     <span className="mono-label mt-1 flex flex-wrap gap-x-4 gap-y-1 text-ink-3">
                       <span>{t(`role.${p.role}`)}</span>
                       <span>{formatPeriod(p.period, locale)}</span>
@@ -141,8 +142,9 @@ export function WorkIndex({ projects }: { projects: ProjectCard[] }) {
               </div>
             </ViewTransition>
           ) : shown ? (
-            <div className="flex aspect-[16/10] items-center justify-center rounded-md border border-dashed border-rule-strong">
-              <span className="mono-label text-ink-3">{t("screenPending")}</span>
+            <div className="flex aspect-[16/10] flex-col justify-end gap-3 rounded-md border border-dashed border-rule-strong p-6">
+              <span className="mono-label text-ink-3">{shown.screensNote ? t("noScreen") : t("screenPending")}</span>
+              {shown.screensNote && <span className="max-w-[38ch] text-sm text-ink-2">{shown.screensNote}</span>}
             </div>
           ) : null}
           {shown && (

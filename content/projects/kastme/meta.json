@@ -1,6 +1,6 @@
 {
   "slug": "kastme",
-  "node": "NODE_03",
+  "node": "NODE_02",
   "status": "building",
   "role": "founder",
   "period": {
@@ -38,7 +38,7 @@
   ],
   "heroScreenshot": 0,
   "diagram": true,
-  "order": 3,
+  "order": 2,
   "featured": true,
   "space": {
     "index": 2,

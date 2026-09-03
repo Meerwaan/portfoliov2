@@ -1,6 +1,6 @@
 {
   "slug": "neocortex",
-  "node": "NODE_01",
+  "node": "NODE_04",
   "status": "delivered",
   "role": "employee",
   "period": {
@@ -20,7 +20,7 @@
   "screenshots": [],
   "heroScreenshot": 0,
   "diagram": true,
-  "order": 1,
+  "order": 4,
   "featured": true,
   "space": {
     "index": 0,

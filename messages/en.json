@@ -115,7 +115,8 @@
     "source": "Source",
     "next": "Next system",
     "fallbackBody": "FRENCH VERSION SHOWN · TRANSLATION PENDING",
-    "step": "Step {n}"
+    "step": "Step {n}",
+    "noScreen": "NO CAPTURE"
   },
   "command": {
     "label": "Command",

@@ -33,6 +33,7 @@ export default async function WorkPage({ params }: PageProps<"/[locale]/work">) 
     stack: p.stack,
     keywords: p.keywords,
     hero: p.hero ? { src: p.hero.src, width: p.hero.width, height: p.hero.height, blurDataURL: p.hero.blurDataURL, alt: p.hero.alt } : null,
+    screensNote: p.screensNote,
   }));
 
   return (

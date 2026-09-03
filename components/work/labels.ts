@@ -24,6 +24,8 @@ export type ProjectCard = {
   stack: string[];
   keywords: string[];
   hero: { src: string; width: number; height: number; blurDataURL?: string; alt: string } | null;
+  /** Why no capture is published, when hero is null. */
+  screensNote?: string;
 };
 
 export function formatPeriod(period: { from: string; to: string | null }, locale: string): string {

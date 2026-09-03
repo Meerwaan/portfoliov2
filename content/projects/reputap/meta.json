@@ -1,6 +1,6 @@
 {
   "slug": "reputap",
-  "node": "NODE_02",
+  "node": "NODE_01",
   "status": "production",
   "role": "founder",
   "period": {
@@ -54,7 +54,7 @@
   ],
   "heroScreenshot": 0,
   "diagram": true,
-  "order": 2,
+  "order": 1,
   "featured": true,
   "space": {
     "index": 1,

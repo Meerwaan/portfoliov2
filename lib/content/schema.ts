@@ -74,6 +74,8 @@ export const ProjectFrontmatter = z.object({
   keywords: z.array(z.string()).default([]),
   /** Alt text per screenshot id, in this locale. */
   screenshotAlt: z.record(z.string(), z.string().min(12)).default({}),
+  /** Why no capture is published (rights, medical data...). Shown wherever the hero would be. */
+  screensNote: z.string().min(12).optional(),
 });
 export type ProjectFrontmatter = z.infer<typeof ProjectFrontmatter>;
 

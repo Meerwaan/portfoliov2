@@ -115,7 +115,8 @@
     "source": "Source",
     "next": "Système suivant",
     "fallbackBody": "VERSION FR AFFICHÉE · TRADUCTION EN COURS",
-    "step": "Étape {n}"
+    "step": "Étape {n}",
+    "noScreen": "PAS DE CAPTURE"
   },
   "command": {
     "label": "Commande",
